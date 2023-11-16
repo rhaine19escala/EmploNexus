@@ -42,14 +42,18 @@ namespace EmploNexus.Forms
             this.txtpass_word = new System.Windows.Forms.TextBox();
             this.txtuser_name = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtempName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbBoxDepartment = new System.Windows.Forms.ComboBox();
+            this.cmbBoxPosition = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbBoxGender = new System.Windows.Forms.ComboBox();
             this.grpBox_useraccIfno.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -121,7 +125,7 @@ namespace EmploNexus.Forms
             this.grpBox_useraccIfno.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.grpBox_useraccIfno.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpBox_useraccIfno.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.grpBox_useraccIfno.Location = new System.Drawing.Point(17, 220);
+            this.grpBox_useraccIfno.Location = new System.Drawing.Point(12, 292);
             this.grpBox_useraccIfno.Name = "grpBox_useraccIfno";
             this.grpBox_useraccIfno.Size = new System.Drawing.Size(433, 176);
             this.grpBox_useraccIfno.TabIndex = 7;
@@ -134,7 +138,7 @@ namespace EmploNexus.Forms
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegister.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegister.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnRegister.Location = new System.Drawing.Point(459, 361);
+            this.btnRegister.Location = new System.Drawing.Point(457, 432);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(167, 36);
             this.btnRegister.TabIndex = 24;
@@ -186,86 +190,6 @@ namespace EmploNexus.Forms
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox1.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.groupBox1.Location = new System.Drawing.Point(17, 66);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(433, 148);
-            this.groupBox1.TabIndex = 31;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Basic Information";
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox4.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(211, 102);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(187, 26);
-            this.textBox4.TabIndex = 30;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(26, 101);
-            this.label4.Name = "label4";
-            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label4.Size = new System.Drawing.Size(64, 26);
-            this.label4.TabIndex = 29;
-            this.label4.Text = "Email";
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox5.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(211, 70);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(187, 26);
-            this.textBox5.TabIndex = 28;
-            // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.Color.LightCyan;
-            this.textBox6.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(211, 38);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(187, 26);
-            this.textBox6.TabIndex = 27;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(26, 69);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(108, 26);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "Last Name";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(26, 37);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 26);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "First Name";
-            // 
             // txtCurrentTime
             // 
             this.txtCurrentTime.BackColor = System.Drawing.Color.LightCyan;
@@ -277,13 +201,138 @@ namespace EmploNexus.Forms
             this.txtCurrentTime.TabIndex = 32;
             this.txtCurrentTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(25, 37);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 26);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "Name";
+            // 
+            // txtempName
+            // 
+            this.txtempName.BackColor = System.Drawing.Color.LightCyan;
+            this.txtempName.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtempName.Location = new System.Drawing.Point(210, 37);
+            this.txtempName.Multiline = true;
+            this.txtempName.Name = "txtempName";
+            this.txtempName.Size = new System.Drawing.Size(187, 26);
+            this.txtempName.TabIndex = 27;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(25, 105);
+            this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label4.Size = new System.Drawing.Size(64, 26);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "Email";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.BackColor = System.Drawing.Color.LightCyan;
+            this.txtEmail.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(210, 105);
+            this.txtEmail.Multiline = true;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(187, 26);
+            this.txtEmail.TabIndex = 30;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(25, 137);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label1.Size = new System.Drawing.Size(122, 26);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "Department";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(25, 173);
+            this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label2.Size = new System.Drawing.Size(120, 26);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "Job Position";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.cmbBoxGender);
+            this.groupBox1.Controls.Add(this.cmbBoxPosition);
+            this.groupBox1.Controls.Add(this.cmbBoxDepartment);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txtEmail);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txtempName);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.groupBox1.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.groupBox1.Location = new System.Drawing.Point(12, 66);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(433, 220);
+            this.groupBox1.TabIndex = 31;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Basic Information";
+            // 
+            // cmbBoxDepartment
+            // 
+            this.cmbBoxDepartment.BackColor = System.Drawing.Color.LightCyan;
+            this.cmbBoxDepartment.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBoxDepartment.FormattingEnabled = true;
+            this.cmbBoxDepartment.Location = new System.Drawing.Point(210, 137);
+            this.cmbBoxDepartment.Name = "cmbBoxDepartment";
+            this.cmbBoxDepartment.Size = new System.Drawing.Size(187, 30);
+            this.cmbBoxDepartment.TabIndex = 24;
+            // 
+            // cmbBoxPosition
+            // 
+            this.cmbBoxPosition.BackColor = System.Drawing.Color.LightCyan;
+            this.cmbBoxPosition.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBoxPosition.FormattingEnabled = true;
+            this.cmbBoxPosition.Location = new System.Drawing.Point(210, 173);
+            this.cmbBoxPosition.Name = "cmbBoxPosition";
+            this.cmbBoxPosition.Size = new System.Drawing.Size(187, 30);
+            this.cmbBoxPosition.TabIndex = 34;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(25, 69);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 26);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Gender";
+            // 
+            // cmbBoxGender
+            // 
+            this.cmbBoxGender.BackColor = System.Drawing.Color.LightCyan;
+            this.cmbBoxGender.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBoxGender.FormattingEnabled = true;
+            this.cmbBoxGender.Location = new System.Drawing.Point(210, 69);
+            this.cmbBoxGender.Name = "cmbBoxGender";
+            this.cmbBoxGender.Size = new System.Drawing.Size(187, 30);
+            this.cmbBoxGender.TabIndex = 35;
+            // 
             // Frm_Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::EmploNexus.Properties.Resources._6765093_3429734;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(633, 409);
+            this.ClientSize = new System.Drawing.Size(633, 480);
             this.Controls.Add(this.txtCurrentTime);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.groupBox1);
@@ -320,13 +369,17 @@ namespace EmploNexus.Forms
         private System.Windows.Forms.TextBox txtuser_name;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtCurrentTime;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtempName;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbBoxPosition;
+        private System.Windows.Forms.ComboBox cmbBoxDepartment;
+        private System.Windows.Forms.ComboBox cmbBoxGender;
+        private System.Windows.Forms.Label label5;
     }
 }
