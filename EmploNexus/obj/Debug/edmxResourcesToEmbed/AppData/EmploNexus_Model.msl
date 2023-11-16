@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EMPLONEXUS_DATABASEModelStoreContainer" CdmEntityContainer="EMPLONEXUS_DATABASE_Entities">
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="EMPLONEXUS_DATABASEModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="emp_ID" ColumnName="emp_ID" />
+          <ScalarProperty Name="emp_Name" ColumnName="emp_Name" />
+          <ScalarProperty Name="emp_address" ColumnName="emp_address" />
+          <ScalarProperty Name="emp_DOB" ColumnName="emp_DOB" />
+          <ScalarProperty Name="emp_Gender" ColumnName="emp_Gender" />
+          <ScalarProperty Name="emp_Email" ColumnName="emp_Email" />
+          <ScalarProperty Name="emp_Department" ColumnName="emp_Department" />
+          <ScalarProperty Name="emp_Position" ColumnName="emp_Position" />
+          <ScalarProperty Name="emp_Salary" ColumnName="emp_Salary" />
+          <ScalarProperty Name="emp_UserID" ColumnName="emp_UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payrolls">
+      <EntityTypeMapping TypeName="EMPLONEXUS_DATABASEModel.Payroll">
+        <MappingFragment StoreEntitySet="Payroll">
+          <ScalarProperty Name="payroll_ID" ColumnName="payroll_ID" />
+          <ScalarProperty Name="payroll_PayDate" ColumnName="payroll_PayDate" />
+          <ScalarProperty Name="payroll_Amount" ColumnName="payroll_Amount" />
+          <ScalarProperty Name="payroll_EmployeeID" ColumnName="payroll_EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="EMPLONEXUS_DATABASEModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="roleId" ColumnName="roleId" />
+          <ScalarProperty Name="roleName" ColumnName="roleName" />
+          <ScalarProperty Name="roleDescription" ColumnName="roleDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAccounts">
+      <EntityTypeMapping TypeName="EMPLONEXUS_DATABASEModel.UserAccount">
+        <MappingFragment StoreEntitySet="UserAccounts">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="roleId" ColumnName="roleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_all_user_role">
+      <EntityTypeMapping TypeName="EMPLONEXUS_DATABASEModel.vw_all_user_role">
+        <MappingFragment StoreEntitySet="vw_all_user_role">
+          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE ID" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_newUser" FunctionName="EMPLONEXUS_DATABASEModel.Store.sp_newUser" />
+  </EntityContainerMapping>
+</Mapping>
