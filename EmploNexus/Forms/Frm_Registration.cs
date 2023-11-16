@@ -25,6 +25,8 @@ namespace EmploNexus.Forms
         private void Frm_Register_Load(object sender, EventArgs e)
         {
             loadCbBoxRole();
+            DateTime currentTime = DateTime.Now;
+            txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
         }
 
         private void cbBoxRole_SelectedIndexChanged(object sender, EventArgs e)
