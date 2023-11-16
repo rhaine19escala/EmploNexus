@@ -36,10 +36,9 @@ namespace EmploNexus
 
         private void LoginWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            // Simulate a time-consuming task (e.g., database validation)
             for (int i = 1; i <= 100; i++)
             {
-                Thread.Sleep(50); // Simulate work being done
+                Thread.Sleep(50);
                 loginWorker.ReportProgress(i);
             }
         }
@@ -51,13 +50,12 @@ namespace EmploNexus
 
         private void Login_Load(object sender, EventArgs e)
         {
-            //EDIT THIS ONE(NEEDED TO BE PASS ONTO ANOTHER FORM
+            //EDIT THIS ONE(NEEDED TO BE PASS ONTO ANOTHER FORM (ASAP!!)
             user_Name = txtusername.Text;
         }
 
         private void linklbl_register_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // Instantiate new object of class Frm_Register
             Frm_Registration frm = new Frm_Registration();
             frm.ShowDialog();
 
