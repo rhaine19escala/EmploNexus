@@ -14,8 +14,15 @@ namespace EmploNexus.AppData
     
     public partial class Position
     {
+        public Position()
+        {
+            this.UserAccounts = new HashSet<UserAccount>();
+        }
+    
         public int positionId { get; set; }
         public string positionName { get; set; }
         public string positionDescription { get; set; }
+    
+        public virtual ICollection<UserAccount> UserAccounts { get; set; }
     }
 }

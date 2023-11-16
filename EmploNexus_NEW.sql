@@ -11,8 +11,10 @@ CREATE TABLE UserAccounts (
     [password] NVARCHAR(255) NOT NULL,
     roleId INT NOT NULL,
     departmentId INT NOT NULL,
+	positionId INT NOT NULL,
     FOREIGN KEY(roleId) REFERENCES Roles(roleId),
-    FOREIGN KEY(departmentId) REFERENCES Departments(departmentId)
+    FOREIGN KEY(departmentId) REFERENCES Departments(departmentId),
+	FOREIGN KEY(positionId) REFERENCES Positions(positionId)
 );
 
 -- Create a table for employees

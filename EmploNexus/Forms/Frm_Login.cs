@@ -108,6 +108,8 @@ namespace EmploNexus
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
+
             if (String.IsNullOrEmpty(txtusername.Text))
             {
                 errorProvider1.SetError(txtusername, "Empty Field!");

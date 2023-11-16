@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EMPLONEXUS_NEWModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EMPLONEXUS_NEWModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Departments">
           <Key>
             <PropertyRef Name="departmentId" />
@@ -63,6 +63,7 @@
           <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="roleId" Type="int" Nullable="false" />
           <Property Name="departmentId" Type="int" Nullable="false" />
+          <Property Name="positionId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -81,7 +82,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
           <Property Name="PASSWORD" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="ROLE NAME" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK__Employee__emp_Us__20C1E124">
+        <Association Name="FK__Employee__emp_Us__1DE57479">
           <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="0..1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -93,7 +94,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payroll__payroll__239E4DCF">
+        <Association Name="FK__Payroll__payroll__20C1E124">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Payroll" Type="Self.Payroll" Multiplicity="*" />
           <ReferentialConstraint>
@@ -105,7 +106,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserAccou__depar__1BFD2C07">
+        <Association Name="FK__UserAccou__depar__182C9B23">
           <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
           <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -117,7 +118,19 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserAccou__roleI__1B0907CE">
+        <Association Name="FK__UserAccou__posit__1920BF5C">
+          <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
+          <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Positions">
+              <PropertyRef Name="positionId" />
+            </Principal>
+            <Dependent Role="UserAccounts">
+              <PropertyRef Name="positionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserAccou__roleI__173876EA">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -150,25 +163,28 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
 [vw_all_user_role].[ROLE NAME] AS [ROLE NAME]
 FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Employee__emp_Us__20C1E124" Association="Self.FK__Employee__emp_Us__20C1E124">
+          <AssociationSet Name="FK__Employee__emp_Us__1DE57479" Association="Self.FK__Employee__emp_Us__1DE57479">
             <End Role="UserAccounts" EntitySet="UserAccounts" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payroll__payroll__239E4DCF" Association="Self.FK__Payroll__payroll__239E4DCF">
+          <AssociationSet Name="FK__Payroll__payroll__20C1E124" Association="Self.FK__Payroll__payroll__20C1E124">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Payroll" EntitySet="Payroll" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserAccou__depar__1BFD2C07" Association="Self.FK__UserAccou__depar__1BFD2C07">
+          <AssociationSet Name="FK__UserAccou__depar__182C9B23" Association="Self.FK__UserAccou__depar__182C9B23">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="UserAccounts" EntitySet="UserAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserAccou__roleI__1B0907CE" Association="Self.FK__UserAccou__roleI__1B0907CE">
+          <AssociationSet Name="FK__UserAccou__posit__1920BF5C" Association="Self.FK__UserAccou__posit__1920BF5C">
+            <End Role="Positions" EntitySet="Positions" />
+            <End Role="UserAccounts" EntitySet="UserAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserAccou__roleI__173876EA" Association="Self.FK__UserAccou__roleI__173876EA">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="UserAccounts" EntitySet="UserAccounts" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EMPLONEXUS_NEWModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -213,6 +229,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <Property Name="positionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="positionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="positionDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserAccounts" Relationship="EMPLONEXUS_NEWModel.FK__UserAccou__posit__1920BF5C" FromRole="Position" ToRole="UserAccount" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -238,6 +255,8 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <NavigationProperty Name="Department" Relationship="Self.FK__UserAccou__depar__1BFD2C07" FromRole="UserAccounts" ToRole="Departments" />
           <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__emp_Us__20C1E124" FromRole="UserAccounts" ToRole="Employee" />
           <NavigationProperty Name="Role" Relationship="Self.FK__UserAccou__roleI__1B0907CE" FromRole="UserAccounts" ToRole="Roles" />
+          <Property Name="positionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Position" Relationship="EMPLONEXUS_NEWModel.FK__UserAccou__posit__1920BF5C" FromRole="UserAccount" ToRole="Position" />
         </EntityType>
         <EntityType Name="vw_all_user_role">
           <Key>
@@ -330,7 +349,23 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             <Parameter Name="userName" Mode="In" Type="String" />
             <Parameter Name="userPassword" Mode="In" Type="String" />
           </FunctionImport>
+          <AssociationSet Name="FK__UserAccou__posit__1920BF5C" Association="EMPLONEXUS_NEWModel.FK__UserAccou__posit__1920BF5C">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK__UserAccou__posit__1920BF5C">
+          <End Type="EMPLONEXUS_NEWModel.Position" Role="Position" Multiplicity="1" />
+          <End Type="EMPLONEXUS_NEWModel.UserAccount" Role="UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="positionId" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="positionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -391,6 +426,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <EntitySetMapping Name="UserAccounts">
             <EntityTypeMapping TypeName="EMPLONEXUS_NEWModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccounts">
+                <ScalarProperty Name="positionId" ColumnName="positionId" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="gender" ColumnName="gender" />

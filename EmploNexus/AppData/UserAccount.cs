@@ -27,9 +27,11 @@ namespace EmploNexus.AppData
         public string password { get; set; }
         public int roleId { get; set; }
         public int departmentId { get; set; }
+        public int positionId { get; set; }
     
         public virtual Department Department { get; set; }
         public virtual ICollection<Employee> Employees { get; set; }
         public virtual Role Role { get; set; }
+        public virtual Position Position { get; set; }
     }
 }

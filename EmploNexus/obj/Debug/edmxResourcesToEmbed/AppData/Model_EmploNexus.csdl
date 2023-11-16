@@ -41,6 +41,7 @@
     <Property Name="positionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="positionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="positionDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserAccounts" Relationship="EMPLONEXUS_NEWModel.FK__UserAccou__posit__1920BF5C" FromRole="Position" ToRole="UserAccount" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -66,6 +67,8 @@
     <NavigationProperty Name="Department" Relationship="Self.FK__UserAccou__depar__1BFD2C07" FromRole="UserAccounts" ToRole="Departments" />
     <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__emp_Us__20C1E124" FromRole="UserAccounts" ToRole="Employee" />
     <NavigationProperty Name="Role" Relationship="Self.FK__UserAccou__roleI__1B0907CE" FromRole="UserAccounts" ToRole="Roles" />
+    <Property Name="positionId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Position" Relationship="EMPLONEXUS_NEWModel.FK__UserAccou__posit__1920BF5C" FromRole="UserAccount" ToRole="Position" />
   </EntityType>
   <EntityType Name="vw_all_user_role">
     <Key>
@@ -158,5 +161,21 @@
       <Parameter Name="userName" Mode="In" Type="String" />
       <Parameter Name="userPassword" Mode="In" Type="String" />
     </FunctionImport>
+    <AssociationSet Name="FK__UserAccou__posit__1920BF5C" Association="EMPLONEXUS_NEWModel.FK__UserAccou__posit__1920BF5C">
+      <End Role="Position" EntitySet="Positions" />
+      <End Role="UserAccount" EntitySet="UserAccounts" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK__UserAccou__posit__1920BF5C">
+    <End Type="EMPLONEXUS_NEWModel.Position" Role="Position" Multiplicity="1" />
+    <End Type="EMPLONEXUS_NEWModel.UserAccount" Role="UserAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="positionId" />
+      </Principal>
+      <Dependent Role="UserAccount">
+        <PropertyRef Name="positionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

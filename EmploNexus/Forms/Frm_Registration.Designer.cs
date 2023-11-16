@@ -36,11 +36,11 @@ namespace EmploNexus.Forms
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.grpBox_useraccIfno = new System.Windows.Forms.GroupBox();
-            this.btnRegister = new System.Windows.Forms.Button();
             this.cmbBoxRole = new System.Windows.Forms.ComboBox();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.txtpass_word = new System.Windows.Forms.TextBox();
             this.txtuser_name = new System.Windows.Forms.TextBox();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,10 +50,10 @@ namespace EmploNexus.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbBoxDepartment = new System.Windows.Forms.ComboBox();
-            this.cmbBoxPosition = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.cmbBoxGender = new System.Windows.Forms.ComboBox();
+            this.cmbBoxPosition = new System.Windows.Forms.ComboBox();
+            this.cmbBoxDepartment = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.grpBox_useraccIfno.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -131,20 +131,7 @@ namespace EmploNexus.Forms
             this.grpBox_useraccIfno.TabIndex = 7;
             this.grpBox_useraccIfno.TabStop = false;
             this.grpBox_useraccIfno.Text = "Account Registration";
-            // 
-            // btnRegister
-            // 
-            this.btnRegister.BackColor = System.Drawing.Color.SkyBlue;
-            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRegister.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegister.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnRegister.Location = new System.Drawing.Point(457, 432);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(167, 36);
-            this.btnRegister.TabIndex = 24;
-            this.btnRegister.Text = "REGISTER";
-            this.btnRegister.UseVisualStyleBackColor = false;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            this.grpBox_useraccIfno.Enter += new System.EventHandler(this.grpBox_useraccIfno_Enter);
             // 
             // cmbBoxRole
             // 
@@ -153,8 +140,9 @@ namespace EmploNexus.Forms
             this.cmbBoxRole.FormattingEnabled = true;
             this.cmbBoxRole.Location = new System.Drawing.Point(210, 133);
             this.cmbBoxRole.Name = "cmbBoxRole";
-            this.cmbBoxRole.Size = new System.Drawing.Size(187, 30);
+            this.cmbBoxRole.Size = new System.Drawing.Size(206, 30);
             this.cmbBoxRole.TabIndex = 21;
+            this.cmbBoxRole.SelectedIndexChanged += new System.EventHandler(this.cmbBoxRole_SelectedIndexChanged);
             // 
             // txtConfirmPassword
             // 
@@ -163,8 +151,9 @@ namespace EmploNexus.Forms
             this.txtConfirmPassword.Location = new System.Drawing.Point(210, 101);
             this.txtConfirmPassword.Multiline = true;
             this.txtConfirmPassword.Name = "txtConfirmPassword";
-            this.txtConfirmPassword.Size = new System.Drawing.Size(187, 26);
+            this.txtConfirmPassword.Size = new System.Drawing.Size(206, 26);
             this.txtConfirmPassword.TabIndex = 23;
+            this.txtConfirmPassword.TextChanged += new System.EventHandler(this.txtConfirmPassword_TextChanged);
             // 
             // txtpass_word
             // 
@@ -173,8 +162,9 @@ namespace EmploNexus.Forms
             this.txtpass_word.Location = new System.Drawing.Point(210, 69);
             this.txtpass_word.Multiline = true;
             this.txtpass_word.Name = "txtpass_word";
-            this.txtpass_word.Size = new System.Drawing.Size(187, 26);
+            this.txtpass_word.Size = new System.Drawing.Size(206, 26);
             this.txtpass_word.TabIndex = 22;
+            this.txtpass_word.TextChanged += new System.EventHandler(this.txtpass_word_TextChanged);
             // 
             // txtuser_name
             // 
@@ -183,8 +173,23 @@ namespace EmploNexus.Forms
             this.txtuser_name.Location = new System.Drawing.Point(210, 37);
             this.txtuser_name.Multiline = true;
             this.txtuser_name.Name = "txtuser_name";
-            this.txtuser_name.Size = new System.Drawing.Size(187, 26);
+            this.txtuser_name.Size = new System.Drawing.Size(206, 26);
             this.txtuser_name.TabIndex = 21;
+            this.txtuser_name.TextChanged += new System.EventHandler(this.txtuser_name_TextChanged);
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRegister.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegister.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnRegister.Location = new System.Drawing.Point(460, 432);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(167, 36);
+            this.btnRegister.TabIndex = 24;
+            this.btnRegister.Text = "REGISTER";
+            this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // errorProvider1
             // 
@@ -194,7 +199,7 @@ namespace EmploNexus.Forms
             // 
             this.txtCurrentTime.BackColor = System.Drawing.Color.LightCyan;
             this.txtCurrentTime.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrentTime.Location = new System.Drawing.Point(458, 12);
+            this.txtCurrentTime.Location = new System.Drawing.Point(465, 12);
             this.txtCurrentTime.Name = "txtCurrentTime";
             this.txtCurrentTime.ReadOnly = true;
             this.txtCurrentTime.Size = new System.Drawing.Size(163, 29);
@@ -218,8 +223,9 @@ namespace EmploNexus.Forms
             this.txtempName.Location = new System.Drawing.Point(210, 37);
             this.txtempName.Multiline = true;
             this.txtempName.Name = "txtempName";
-            this.txtempName.Size = new System.Drawing.Size(187, 26);
+            this.txtempName.Size = new System.Drawing.Size(206, 26);
             this.txtempName.TabIndex = 27;
+            this.txtempName.TextChanged += new System.EventHandler(this.txtempName_TextChanged);
             // 
             // label4
             // 
@@ -239,8 +245,9 @@ namespace EmploNexus.Forms
             this.txtEmail.Location = new System.Drawing.Point(210, 105);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(187, 26);
+            this.txtEmail.Size = new System.Drawing.Size(206, 26);
             this.txtEmail.TabIndex = 30;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // label1
             // 
@@ -287,15 +294,16 @@ namespace EmploNexus.Forms
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Basic Information";
             // 
-            // cmbBoxDepartment
+            // cmbBoxGender
             // 
-            this.cmbBoxDepartment.BackColor = System.Drawing.Color.LightCyan;
-            this.cmbBoxDepartment.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBoxDepartment.FormattingEnabled = true;
-            this.cmbBoxDepartment.Location = new System.Drawing.Point(210, 137);
-            this.cmbBoxDepartment.Name = "cmbBoxDepartment";
-            this.cmbBoxDepartment.Size = new System.Drawing.Size(187, 30);
-            this.cmbBoxDepartment.TabIndex = 24;
+            this.cmbBoxGender.BackColor = System.Drawing.Color.LightCyan;
+            this.cmbBoxGender.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBoxGender.FormattingEnabled = true;
+            this.cmbBoxGender.Location = new System.Drawing.Point(210, 69);
+            this.cmbBoxGender.Name = "cmbBoxGender";
+            this.cmbBoxGender.Size = new System.Drawing.Size(206, 30);
+            this.cmbBoxGender.TabIndex = 35;
+            this.cmbBoxGender.SelectedIndexChanged += new System.EventHandler(this.cmbBoxGender_SelectedIndexChanged);
             // 
             // cmbBoxPosition
             // 
@@ -304,8 +312,20 @@ namespace EmploNexus.Forms
             this.cmbBoxPosition.FormattingEnabled = true;
             this.cmbBoxPosition.Location = new System.Drawing.Point(210, 173);
             this.cmbBoxPosition.Name = "cmbBoxPosition";
-            this.cmbBoxPosition.Size = new System.Drawing.Size(187, 30);
+            this.cmbBoxPosition.Size = new System.Drawing.Size(206, 30);
             this.cmbBoxPosition.TabIndex = 34;
+            this.cmbBoxPosition.SelectedIndexChanged += new System.EventHandler(this.cmbBoxPosition_SelectedIndexChanged);
+            // 
+            // cmbBoxDepartment
+            // 
+            this.cmbBoxDepartment.BackColor = System.Drawing.Color.LightCyan;
+            this.cmbBoxDepartment.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBoxDepartment.FormattingEnabled = true;
+            this.cmbBoxDepartment.Location = new System.Drawing.Point(210, 137);
+            this.cmbBoxDepartment.Name = "cmbBoxDepartment";
+            this.cmbBoxDepartment.Size = new System.Drawing.Size(206, 30);
+            this.cmbBoxDepartment.TabIndex = 24;
+            this.cmbBoxDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbBoxDepartment_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -317,23 +337,13 @@ namespace EmploNexus.Forms
             this.label5.TabIndex = 26;
             this.label5.Text = "Gender";
             // 
-            // cmbBoxGender
-            // 
-            this.cmbBoxGender.BackColor = System.Drawing.Color.LightCyan;
-            this.cmbBoxGender.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBoxGender.FormattingEnabled = true;
-            this.cmbBoxGender.Location = new System.Drawing.Point(210, 69);
-            this.cmbBoxGender.Name = "cmbBoxGender";
-            this.cmbBoxGender.Size = new System.Drawing.Size(187, 30);
-            this.cmbBoxGender.TabIndex = 35;
-            // 
             // Frm_Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::EmploNexus.Properties.Resources._6765093_3429734;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(633, 480);
+            this.ClientSize = new System.Drawing.Size(640, 480);
             this.Controls.Add(this.txtCurrentTime);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.groupBox1);

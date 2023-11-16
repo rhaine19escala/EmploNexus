@@ -55,6 +55,7 @@
     <EntitySetMapping Name="UserAccounts">
       <EntityTypeMapping TypeName="EMPLONEXUS_NEWModel.UserAccount">
         <MappingFragment StoreEntitySet="UserAccounts">
+          <ScalarProperty Name="positionId" ColumnName="positionId" />
           <ScalarProperty Name="userID" ColumnName="userID" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="gender" ColumnName="gender" />

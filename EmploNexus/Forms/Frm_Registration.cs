@@ -58,12 +58,12 @@ namespace EmploNexus.Forms
 
         public void loadCbBoxPosition()
         {
-            // SELECT * FROM DEPARTMENT
+            // SELECT * FROM POSITION
             var positions = db.Positions.ToList();
 
-            cmbBoxDepartment.ValueMember = "positionId";
-            cmbBoxDepartment.DisplayMember = "positionDescription";
-            cmbBoxDepartment.DataSource = positions;
+            cmbBoxPosition.ValueMember = "positionId";
+            cmbBoxPosition.DisplayMember = "positionDescription";
+            cmbBoxPosition.DataSource = positions;
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -113,6 +113,11 @@ namespace EmploNexus.Forms
             nUserAccount.username = txtuser_name.Text;
             nUserAccount.password = txtpass_word.Text;
             nUserAccount.roleId = (Int32)cmbBoxRole.SelectedValue;
+            nUserAccount.name = txtempName.Text;
+            nUserAccount.email = txtEmail.Text;
+            nUserAccount.departmentId = (Int32)cmbBoxDepartment.SelectedValue;
+            nUserAccount.positionId = (Int32)cmbBoxPosition.SelectedValue;
+
 
             username = txtuser_name.Text;
 
@@ -122,7 +127,59 @@ namespace EmploNexus.Forms
             txtpass_word.Clear();
             txtConfirmPassword.Clear();
             txtuser_name.Clear();
+            txtempName.Clear();
+            txtEmail.Clear();
             MessageBox.Show("Registered!");
+        }
+
+        private void txtempName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbBoxGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbBoxDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbBoxPosition_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grpBox_useraccIfno_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtuser_name_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtpass_word_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtConfirmPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbBoxRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

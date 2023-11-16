@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b0a77579d3ad45a9bef63c5ce0a9840f" Name="Diagram1">
+      <Diagram DiagramId="b0a77579d3ad45a9bef63c5ce0a9840f" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="EMPLONEXUS_NEWModel.Department" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" FillColor="0, 64, 64" />
         <EntityTypeShape EntityType="EMPLONEXUS_NEWModel.Employee" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" FillColor="0, 64, 64" />
         <EntityTypeShape EntityType="EMPLONEXUS_NEWModel.Payroll" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" FillColor="0, 64, 64" />
@@ -16,6 +16,7 @@
         <AssociationConnector Association="EMPLONEXUS_NEWModel.FK__Employee__emp_Us__20C1E124" ManuallyRouted="false" />
         <AssociationConnector Association="EMPLONEXUS_NEWModel.FK__Payroll__payroll__239E4DCF" ManuallyRouted="false" />
         <AssociationConnector Association="EMPLONEXUS_NEWModel.FK__UserAccou__roleI__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="EMPLONEXUS_NEWModel.FK__UserAccou__posit__1920BF5C" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
