@@ -24,6 +24,7 @@ namespace EmploNexus.Forms
 
         private void Frm_Register_Load(object sender, EventArgs e)
         {
+            loadCbBoxGender();
             loadCbBoxDepartment();
             loadCbBoxPosition();
             loadCbBoxRole();
@@ -64,6 +65,16 @@ namespace EmploNexus.Forms
             cmbBoxPosition.ValueMember = "positionId";
             cmbBoxPosition.DisplayMember = "positionDescription";
             cmbBoxPosition.DataSource = positions;
+        }
+
+        public void loadCbBoxGender()
+        {
+            // SELECT * FROM POSITION
+            var gender = db.Genders.ToList();
+
+            cmbBoxPosition.ValueMember = "positionId";
+            cmbBoxPosition.DisplayMember = "positionDescription";
+            cmbBoxPosition.DataSource = gender;
         }
 
         private void btnRegister_Click(object sender, EventArgs e)

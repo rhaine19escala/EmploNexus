@@ -17,6 +17,11 @@
         <AssociationConnector Association="EMPLONEXUS_NEWModel.FK__Payroll__payroll__239E4DCF" ManuallyRouted="false" />
         <AssociationConnector Association="EMPLONEXUS_NEWModel.FK__UserAccou__roleI__1B0907CE" ManuallyRouted="false" />
         <AssociationConnector Association="EMPLONEXUS_NEWModel.FK__UserAccou__posit__1920BF5C" />
+        <EntityTypeShape EntityType="EMPLONEXUS_NEWModel.Gender" Width="1.5" PointX="7.375" PointY="4.875" FillColor="0, 64, 64" />
+        <AssociationConnector Association="EMPLONEXUS_NEWModel.FK__Employee__emp_De__286302EC" />
+        <AssociationConnector Association="EMPLONEXUS_NEWModel.FK__Employee__emp_Ge__276EDEB3" />
+        <AssociationConnector Association="EMPLONEXUS_NEWModel.FK__Employee__emp_Po__29572725" />
+        <AssociationConnector Association="EMPLONEXUS_NEWModel.FK__UserAccou__gende__1BFD2C07" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

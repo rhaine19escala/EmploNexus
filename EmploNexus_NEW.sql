@@ -1,44 +1,6 @@
 CREATE DATABASE EMPLONEXUS_NEW
 USE EMPLONEXUS_NEW
 
--- Create a table for users
-CREATE TABLE UserAccounts (
-    userID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-    name NVARCHAR(255) NOT NULL,
-    gender NVARCHAR(255) NOT NULL,
-    email NVARCHAR(255) NOT NULL,
-    username NVARCHAR(255) NOT NULL UNIQUE,
-    [password] NVARCHAR(255) NOT NULL,
-    roleId INT NOT NULL,
-    departmentId INT NOT NULL,
-	positionId INT NOT NULL,
-    FOREIGN KEY(roleId) REFERENCES Roles(roleId),
-    FOREIGN KEY(departmentId) REFERENCES Departments(departmentId),
-	FOREIGN KEY(positionId) REFERENCES Positions(positionId)
-);
-
--- Create a table for employees
-CREATE TABLE Employee (
-    emp_ID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-    emp_Name VARCHAR(255) NOT NULL,
-	emp_Gender VARCHAR(255) NOT NULL,
-    emp_Email VARCHAR NOT NULL UNIQUE,
-	emp_Department VARCHAR(255) NOT NULL,
-	emp_Position VARCHAR(255) NOT NULL,
-    emp_Salary DECIMAL(10, 2) DEFAULT 0.00,
-    emp_UserID INT,
-    FOREIGN KEY(emp_UserID)REFERENCES UserAccounts(UserID)
-)
-
--- Create a table for payroll
-CREATE TABLE Payroll (
-    payroll_ID INT PRIMARY KEY NOT NULL,
-    payroll_PayDate DATE NOT NULL,
-    payroll_Amount DECIMAL(10, 2) NOT NULL,
-	payroll_EmployeeID INT,
-    FOREIGN KEY(payroll_EmployeeID) REFERENCES Employee(emp_ID)
-)
-
 -- Create a table for Role
 CREATE TABLE [dbo].[Roles](
 	[roleId] [int] IDENTITY(1,1) NOT NULL,
@@ -97,6 +59,61 @@ INSERT [dbo].[Positions] ([positionId], [positionName], [positionDescription]) V
 INSERT [dbo].[Positions] ([positionId], [positionName], [positionDescription]) VALUES (5, N'IT_Manager', N'Information Technology Manager');
 INSERT [dbo].[Positions] ([positionId], [positionName], [positionDescription]) VALUES (6, N'Software_Developer', N'Software Developer');
 SET IDENTITY_INSERT [dbo].[Positions] OFF;
+
+-- Create a table for Gender
+CREATE TABLE [dbo].[Gender](
+    [genderId] [int] IDENTITY(1,1) NOT NULL,
+    [genderName] [nvarchar](10) NULL,
+ CONSTRAINT [PK_Gender] PRIMARY KEY CLUSTERED 
+ ([genderId] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+SET IDENTITY_INSERT [dbo].[Gender] ON;
+INSERT [dbo].[Gender] ([genderId], [genderName]) VALUES (1, N'Male');
+INSERT [dbo].[Gender] ([genderId], [genderName]) VALUES (2, N'Female');
+SET IDENTITY_INSERT [dbo].[Gender] OFF;
+
+-- Create a table for users
+CREATE TABLE UserAccounts (
+    userID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    name NVARCHAR(255) NOT NULL,
+    email NVARCHAR(255) NOT NULL,
+    username NVARCHAR(255) NOT NULL UNIQUE,
+    [password] NVARCHAR(255) NOT NULL,
+    roleId INT NOT NULL,
+    departmentId INT NOT NULL,
+	positionId INT NOT NULL,
+	genderId INT NOT NULL,
+    FOREIGN KEY(roleId) REFERENCES Roles(roleId),
+    FOREIGN KEY(departmentId) REFERENCES Departments(departmentId),
+	FOREIGN KEY(positionId) REFERENCES Positions(positionId),
+    FOREIGN KEY(genderId) REFERENCES Gender(genderId)
+);
+
+-- Create a table for employees
+CREATE TABLE Employee (
+    emp_ID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    emp_Name NVARCHAR(255) NOT NULL,
+    emp_Email NVARCHAR(255) NOT NULL UNIQUE,
+    emp_Salary DECIMAL(10, 2) DEFAULT 0.00,
+    emp_UserID INT,
+	emp_GenderId INT NOT NULL,
+	emp_DepartmentId INT NOT NULL,
+	emp_PositionId INT NOT NULL,
+    FOREIGN KEY(emp_UserID) REFERENCES UserAccounts(userID),
+    FOREIGN KEY(emp_GenderId) REFERENCES Gender(genderId),
+    FOREIGN KEY(emp_DepartmentId) REFERENCES Departments(departmentId),
+	FOREIGN KEY(emp_PositionId) REFERENCES Positions(positionId)
+);
+
+-- Create a table for payroll
+CREATE TABLE Payroll (
+    payroll_ID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    payroll_PayDate DATE NOT NULL,
+    payroll_Amount DECIMAL(10, 2) NOT NULL,
+	payroll_EmployeeID INT,
+    FOREIGN KEY(payroll_EmployeeID) REFERENCES Employee(emp_ID)
+)
 
 ------VIEW ALL USER ROLE
 CREATE VIEW vw_all_user_role

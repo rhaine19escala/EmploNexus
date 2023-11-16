@@ -35,6 +35,7 @@ namespace EmploNexus.AppData
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserAccount> UserAccounts { get; set; }
         public DbSet<vw_all_user_role> vw_all_user_role { get; set; }
+        public DbSet<Gender> Genders { get; set; }
     
         public virtual int sp_newUser(string userName, string userPassword)
         {

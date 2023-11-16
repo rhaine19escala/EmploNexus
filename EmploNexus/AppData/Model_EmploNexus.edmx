@@ -18,19 +18,26 @@
             <PropertyRef Name="emp_ID" />
           </Key>
           <Property Name="emp_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="emp_Name" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="emp_Gender" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="emp_Email" Type="varchar" MaxLength="1" Nullable="false" />
-          <Property Name="emp_Department" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="emp_Position" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="emp_Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="emp_Email" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="emp_Salary" Type="decimal" Precision="10" Scale="2" />
           <Property Name="emp_UserID" Type="int" />
+          <Property Name="emp_GenderId" Type="int" Nullable="false" />
+          <Property Name="emp_DepartmentId" Type="int" Nullable="false" />
+          <Property Name="emp_PositionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="genderId" />
+          </Key>
+          <Property Name="genderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="genderName" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Payroll">
           <Key>
             <PropertyRef Name="payroll_ID" />
           </Key>
-          <Property Name="payroll_ID" Type="int" Nullable="false" />
+          <Property Name="payroll_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="payroll_PayDate" Type="date" Nullable="false" />
           <Property Name="payroll_Amount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="payroll_EmployeeID" Type="int" />
@@ -57,13 +64,13 @@
           </Key>
           <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="gender" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="username" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="roleId" Type="int" Nullable="false" />
           <Property Name="departmentId" Type="int" Nullable="false" />
           <Property Name="positionId" Type="int" Nullable="false" />
+          <Property Name="genderId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -82,7 +89,43 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
           <Property Name="PASSWORD" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="ROLE NAME" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK__Employee__emp_Us__1DE57479">
+        <Association Name="FK__Employee__emp_De__22AA2996">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="departmentId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="emp_DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__emp_Ge__21B6055D">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="genderId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="emp_GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__emp_Po__239E4DCF">
+          <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Positions">
+              <PropertyRef Name="positionId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="emp_PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__emp_Us__20C1E124">
           <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="0..1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -94,7 +137,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payroll__payroll__20C1E124">
+        <Association Name="FK__Payroll__payroll__267ABA7A">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="Payroll" Type="Self.Payroll" Multiplicity="*" />
           <ReferentialConstraint>
@@ -106,7 +149,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserAccou__depar__182C9B23">
+        <Association Name="FK__UserAccou__depar__1A14E395">
           <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
           <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -118,7 +161,19 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserAccou__posit__1920BF5C">
+        <Association Name="FK__UserAccou__gende__1BFD2C07">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="genderId" />
+            </Principal>
+            <Dependent Role="UserAccounts">
+              <PropertyRef Name="genderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserAccou__posit__1B0907CE">
           <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
           <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -130,7 +185,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserAccou__roleI__173876EA">
+        <Association Name="FK__UserAccou__roleI__1920BF5C">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -149,6 +204,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
         <EntityContainer Name="EMPLONEXUS_NEWModelStoreContainer">
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payroll" EntityType="Self.Payroll" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
@@ -163,23 +219,39 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
 [vw_all_user_role].[ROLE NAME] AS [ROLE NAME]
 FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Employee__emp_Us__1DE57479" Association="Self.FK__Employee__emp_Us__1DE57479">
+          <AssociationSet Name="FK__Employee__emp_De__22AA2996" Association="Self.FK__Employee__emp_De__22AA2996">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__emp_Ge__21B6055D" Association="Self.FK__Employee__emp_Ge__21B6055D">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__emp_Po__239E4DCF" Association="Self.FK__Employee__emp_Po__239E4DCF">
+            <End Role="Positions" EntitySet="Positions" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__emp_Us__20C1E124" Association="Self.FK__Employee__emp_Us__20C1E124">
             <End Role="UserAccounts" EntitySet="UserAccounts" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payroll__payroll__20C1E124" Association="Self.FK__Payroll__payroll__20C1E124">
+          <AssociationSet Name="FK__Payroll__payroll__267ABA7A" Association="Self.FK__Payroll__payroll__267ABA7A">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Payroll" EntitySet="Payroll" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserAccou__depar__182C9B23" Association="Self.FK__UserAccou__depar__182C9B23">
+          <AssociationSet Name="FK__UserAccou__depar__1A14E395" Association="Self.FK__UserAccou__depar__1A14E395">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="UserAccounts" EntitySet="UserAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserAccou__posit__1920BF5C" Association="Self.FK__UserAccou__posit__1920BF5C">
+          <AssociationSet Name="FK__UserAccou__gende__1BFD2C07" Association="Self.FK__UserAccou__gende__1BFD2C07">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="UserAccounts" EntitySet="UserAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserAccou__posit__1B0907CE" Association="Self.FK__UserAccou__posit__1B0907CE">
             <End Role="Positions" EntitySet="Positions" />
             <End Role="UserAccounts" EntitySet="UserAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserAccou__roleI__173876EA" Association="Self.FK__UserAccou__roleI__173876EA">
+          <AssociationSet Name="FK__UserAccou__roleI__1920BF5C" Association="Self.FK__UserAccou__roleI__1920BF5C">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="UserAccounts" EntitySet="UserAccounts" />
           </AssociationSet>
@@ -196,21 +268,28 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <Property Name="departmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="departmentDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="UserAccounts" Relationship="Self.FK__UserAccou__depar__1BFD2C07" FromRole="Departments" ToRole="UserAccounts" />
+          <NavigationProperty Name="Employees" Relationship="EMPLONEXUS_NEWModel.FK__Employee__emp_De__286302EC" FromRole="Department" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="emp_ID" />
           </Key>
           <Property Name="emp_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="emp_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emp_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="emp_Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="emp_Email" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emp_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="emp_Department" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="emp_Position" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="emp_Salary" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="emp_UserID" Type="Int32" />
           <NavigationProperty Name="UserAccount" Relationship="Self.FK__Employee__emp_Us__20C1E124" FromRole="Employee" ToRole="UserAccounts" />
           <NavigationProperty Name="Payrolls" Relationship="Self.FK__Payroll__payroll__239E4DCF" FromRole="Employee" ToRole="Payroll" />
+          <Property Name="emp_GenderId" Type="Int32" Nullable="false" />
+          <Property Name="emp_DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="emp_PositionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="EMPLONEXUS_NEWModel.FK__Employee__emp_De__286302EC" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Gender" Relationship="EMPLONEXUS_NEWModel.FK__Employee__emp_Ge__276EDEB3" FromRole="Employee" ToRole="Gender" />
+          <NavigationProperty Name="Position" Relationship="EMPLONEXUS_NEWModel.FK__Employee__emp_Po__29572725" FromRole="Employee" ToRole="Position" />
         </EntityType>
         <EntityType Name="Payroll">
           <Key>
@@ -230,6 +309,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <Property Name="positionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="positionDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="UserAccounts" Relationship="EMPLONEXUS_NEWModel.FK__UserAccou__posit__1920BF5C" FromRole="Position" ToRole="UserAccount" />
+          <NavigationProperty Name="Employees" Relationship="EMPLONEXUS_NEWModel.FK__Employee__emp_Po__29572725" FromRole="Position" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -257,6 +337,8 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <NavigationProperty Name="Role" Relationship="Self.FK__UserAccou__roleI__1B0907CE" FromRole="UserAccounts" ToRole="Roles" />
           <Property Name="positionId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Position" Relationship="EMPLONEXUS_NEWModel.FK__UserAccou__posit__1920BF5C" FromRole="UserAccount" ToRole="Position" />
+          <Property Name="genderId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gender" Relationship="EMPLONEXUS_NEWModel.FK__UserAccou__gende__1BFD2C07" FromRole="UserAccount" ToRole="Gender" />
         </EntityType>
         <EntityType Name="vw_all_user_role">
           <Key>
@@ -353,6 +435,23 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             <End Role="Position" EntitySet="Positions" />
             <End Role="UserAccount" EntitySet="UserAccounts" />
           </AssociationSet>
+          <EntitySet Name="Genders" EntityType="EMPLONEXUS_NEWModel.Gender" />
+          <AssociationSet Name="FK__Employee__emp_De__286302EC" Association="EMPLONEXUS_NEWModel.FK__Employee__emp_De__286302EC">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__emp_Ge__276EDEB3" Association="EMPLONEXUS_NEWModel.FK__Employee__emp_Ge__276EDEB3">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__emp_Po__29572725" Association="EMPLONEXUS_NEWModel.FK__Employee__emp_Po__29572725">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserAccou__gende__1BFD2C07" Association="EMPLONEXUS_NEWModel.FK__UserAccou__gende__1BFD2C07">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK__UserAccou__posit__1920BF5C">
           <End Type="EMPLONEXUS_NEWModel.Position" Role="Position" Multiplicity="1" />
@@ -363,6 +462,63 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </Principal>
             <Dependent Role="UserAccount">
               <PropertyRef Name="positionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="genderId" />
+          </Key>
+          <Property Name="genderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="genderName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="EMPLONEXUS_NEWModel.FK__Employee__emp_Ge__276EDEB3" FromRole="Gender" ToRole="Employee" />
+          <NavigationProperty Name="UserAccounts" Relationship="EMPLONEXUS_NEWModel.FK__UserAccou__gende__1BFD2C07" FromRole="Gender" ToRole="UserAccount" />
+        </EntityType>
+        <Association Name="FK__Employee__emp_De__286302EC">
+          <End Type="EMPLONEXUS_NEWModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="EMPLONEXUS_NEWModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="departmentId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="emp_DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__emp_Ge__276EDEB3">
+          <End Type="EMPLONEXUS_NEWModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="EMPLONEXUS_NEWModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="genderId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="emp_GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__emp_Po__29572725">
+          <End Type="EMPLONEXUS_NEWModel.Position" Role="Position" Multiplicity="1" />
+          <End Type="EMPLONEXUS_NEWModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="positionId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="emp_PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserAccou__gende__1BFD2C07">
+          <End Type="EMPLONEXUS_NEWModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="EMPLONEXUS_NEWModel.UserAccount" Role="UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="genderId" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="genderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -384,12 +540,12 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="EMPLONEXUS_NEWModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="emp_PositionId" ColumnName="emp_PositionId" />
+                <ScalarProperty Name="emp_DepartmentId" ColumnName="emp_DepartmentId" />
+                <ScalarProperty Name="emp_GenderId" ColumnName="emp_GenderId" />
                 <ScalarProperty Name="emp_ID" ColumnName="emp_ID" />
                 <ScalarProperty Name="emp_Name" ColumnName="emp_Name" />
-                <ScalarProperty Name="emp_Gender" ColumnName="emp_Gender" />
                 <ScalarProperty Name="emp_Email" ColumnName="emp_Email" />
-                <ScalarProperty Name="emp_Department" ColumnName="emp_Department" />
-                <ScalarProperty Name="emp_Position" ColumnName="emp_Position" />
                 <ScalarProperty Name="emp_Salary" ColumnName="emp_Salary" />
                 <ScalarProperty Name="emp_UserID" ColumnName="emp_UserID" />
               </MappingFragment>
@@ -426,10 +582,10 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <EntitySetMapping Name="UserAccounts">
             <EntityTypeMapping TypeName="EMPLONEXUS_NEWModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccounts">
+                <ScalarProperty Name="genderId" ColumnName="genderId" />
                 <ScalarProperty Name="positionId" ColumnName="positionId" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="gender" ColumnName="gender" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
@@ -451,6 +607,14 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_newUser" FunctionName="EMPLONEXUS_NEWModel.Store.sp_newUser" />
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="EMPLONEXUS_NEWModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="genderName" ColumnName="genderName" />
+                <ScalarProperty Name="genderId" ColumnName="genderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

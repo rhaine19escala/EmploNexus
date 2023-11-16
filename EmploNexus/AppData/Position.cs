@@ -17,6 +17,7 @@ namespace EmploNexus.AppData
         public Position()
         {
             this.UserAccounts = new HashSet<UserAccount>();
+            this.Employees = new HashSet<Employee>();
         }
     
         public int positionId { get; set; }
@@ -24,5 +25,6 @@ namespace EmploNexus.AppData
         public string positionDescription { get; set; }
     
         public virtual ICollection<UserAccount> UserAccounts { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }

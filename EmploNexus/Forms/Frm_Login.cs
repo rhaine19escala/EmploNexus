@@ -121,10 +121,27 @@ namespace EmploNexus
                 return;
             }
 
-            // Start the background worker
-            loginWorker.RunWorkerAsync();
-            btnLogin.Enabled = false;
+            var userLogged = userRepo.GetUserByUsername(txtusername.Text);
+
+            if (userLogged != null)
+            {
+                if (userLogged.password.Equals(txtpassword.Text))
+                {
+                    // Start the background worker only if the credentials are valid
+                    loginWorker.RunWorkerAsync();
+                    btnLogin.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect Password");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Username not found");
+            }
         }
+
 
         private void chckbox_showpass_CheckedChanged(object sender, EventArgs e)
         {

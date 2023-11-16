@@ -27,8 +27,14 @@ namespace EmploNexus.AppData
         public string emp_Position { get; set; }
         public Nullable<decimal> emp_Salary { get; set; }
         public Nullable<int> emp_UserID { get; set; }
+        public int emp_GenderId { get; set; }
+        public int emp_DepartmentId { get; set; }
+        public int emp_PositionId { get; set; }
     
         public virtual UserAccount UserAccount { get; set; }
         public virtual ICollection<Payroll> Payrolls { get; set; }
+        public virtual Department Department { get; set; }
+        public virtual Gender Gender { get; set; }
+        public virtual Position Position { get; set; }
     }
 }
