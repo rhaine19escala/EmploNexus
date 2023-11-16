@@ -1,21 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="EMPLONEXUS_DATABASEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="departmentId" />
+    </Key>
+    <Property Name="departmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="departmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="departmentDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserAccounts" Relationship="Self.FK__UserAccou__depar__5629CD9C" FromRole="Departments" ToRole="UserAccounts" />
+  </EntityType>
   <EntityType Name="Employee">
     <Key>
       <PropertyRef Name="emp_ID" />
     </Key>
     <Property Name="emp_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="emp_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="emp_address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="emp_DOB" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="emp_Gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="emp_Email" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="emp_Department" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="emp_Position" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="emp_Salary" Type="Decimal" Precision="10" Scale="2" />
     <Property Name="emp_UserID" Type="Int32" />
-    <NavigationProperty Name="UserAccount" Relationship="Self.FK__Employee__emp_Us__164452B1" FromRole="Employee" ToRole="UserAccounts" />
-    <NavigationProperty Name="Payrolls" Relationship="Self.FK__Payroll__payroll__1920BF5C" FromRole="Employee" ToRole="Payroll" />
+    <NavigationProperty Name="UserAccount" Relationship="Self.FK__Employee__emp_Us__5AEE82B9" FromRole="Employee" ToRole="UserAccounts" />
+    <NavigationProperty Name="Payrolls" Relationship="Self.FK__Payroll__payroll__5DCAEF64" FromRole="Employee" ToRole="Payroll" />
   </EntityType>
   <EntityType Name="Payroll">
     <Key>
@@ -25,7 +32,15 @@
     <Property Name="payroll_PayDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="payroll_Amount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
     <Property Name="payroll_EmployeeID" Type="Int32" />
-    <NavigationProperty Name="Employee" Relationship="Self.FK__Payroll__payroll__1920BF5C" FromRole="Payroll" ToRole="Employee" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Payroll__payroll__5DCAEF64" FromRole="Payroll" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="positionId" />
+    </Key>
+    <Property Name="positionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="positionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="positionDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -34,29 +49,52 @@
     <Property Name="roleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="roleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserAccounts" Relationship="Self.FK__UserAccou__roleI__5535A963" FromRole="Roles" ToRole="UserAccounts" />
   </EntityType>
   <EntityType Name="UserAccount">
     <Key>
       <PropertyRef Name="userID" />
     </Key>
     <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="gender" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="roleId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__emp_Us__164452B1" FromRole="UserAccounts" ToRole="Employee" />
+    <Property Name="departmentId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Department" Relationship="Self.FK__UserAccou__depar__5629CD9C" FromRole="UserAccounts" ToRole="Departments" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__emp_Us__5AEE82B9" FromRole="UserAccounts" ToRole="Employee" />
+    <NavigationProperty Name="Role" Relationship="Self.FK__UserAccou__roleI__5535A963" FromRole="UserAccounts" ToRole="Roles" />
   </EntityType>
   <EntityType Name="vw_all_user_role">
     <Key>
       <PropertyRef Name="ROLE_ID" />
+      <PropertyRef Name="EMPLOYEE_NAME" />
+      <PropertyRef Name="E_MAIL" />
       <PropertyRef Name="USERNAME" />
       <PropertyRef Name="PASSWORD" />
     </Key>
     <Property Name="ROLE_ID" Type="Int32" Nullable="false" />
-    <Property Name="USERNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PASSWORD" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMPLOYEE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="E_MAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="USERNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ROLE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
-  <Association Name="FK__Employee__emp_Us__164452B1">
+  <Association Name="FK__UserAccou__depar__5629CD9C">
+    <End Role="Departments" Type="Self.Department" Multiplicity="1" />
+    <End Role="UserAccounts" Type="Self.UserAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="departmentId" />
+      </Principal>
+      <Dependent Role="UserAccounts">
+        <PropertyRef Name="departmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employee__emp_Us__5AEE82B9">
     <End Role="UserAccounts" Type="Self.UserAccount" Multiplicity="0..1" />
     <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
     <ReferentialConstraint>
@@ -68,7 +106,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Payroll__payroll__1920BF5C">
+  <Association Name="FK__Payroll__payroll__5DCAEF64">
     <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
     <End Role="Payroll" Type="Self.Payroll" Multiplicity="*" />
     <ReferentialConstraint>
@@ -80,19 +118,41 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="EMPLONEXUS_DATABASE_Entities" annotation:LazyLoadingEnabled="true">
+  <Association Name="FK__UserAccou__roleI__5535A963">
+    <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserAccounts" Type="Self.UserAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="roleId" />
+      </Principal>
+      <Dependent Role="UserAccounts">
+        <PropertyRef Name="roleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmploNexus_Entities_NEW" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Departments" EntityType="Self.Department" />
     <EntitySet Name="Employees" EntityType="Self.Employee" />
     <EntitySet Name="Payrolls" EntityType="Self.Payroll" />
+    <EntitySet Name="Positions" EntityType="Self.Position" />
     <EntitySet Name="Roles" EntityType="Self.Role" />
     <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
     <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" />
-    <AssociationSet Name="FK__Employee__emp_Us__164452B1" Association="Self.FK__Employee__emp_Us__164452B1">
+    <AssociationSet Name="FK__UserAccou__depar__5629CD9C" Association="Self.FK__UserAccou__depar__5629CD9C">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="UserAccounts" EntitySet="UserAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employee__emp_Us__5AEE82B9" Association="Self.FK__Employee__emp_Us__5AEE82B9">
       <End Role="UserAccounts" EntitySet="UserAccounts" />
       <End Role="Employee" EntitySet="Employees" />
     </AssociationSet>
-    <AssociationSet Name="FK__Payroll__payroll__1920BF5C" Association="Self.FK__Payroll__payroll__1920BF5C">
+    <AssociationSet Name="FK__Payroll__payroll__5DCAEF64" Association="Self.FK__Payroll__payroll__5DCAEF64">
       <End Role="Employee" EntitySet="Employees" />
       <End Role="Payroll" EntitySet="Payrolls" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserAccou__roleI__5535A963" Association="Self.FK__UserAccou__roleI__5535A963">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="UserAccounts" EntitySet="UserAccounts" />
     </AssociationSet>
     <FunctionImport Name="sp_newUser">
       <Parameter Name="userName" Mode="In" Type="String" />

@@ -59,6 +59,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppData\Department.cs">
+      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="AppData\EmploNexus_Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,6 +81,9 @@
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\Payroll.cs">
+      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\Position.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\Role.cs">

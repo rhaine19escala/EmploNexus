@@ -21,8 +21,6 @@ namespace EmploNexus.AppData
     
         public int emp_ID { get; set; }
         public string emp_Name { get; set; }
-        public string emp_address { get; set; }
-        public System.DateTime emp_DOB { get; set; }
         public string emp_Gender { get; set; }
         public string emp_Email { get; set; }
         public string emp_Department { get; set; }

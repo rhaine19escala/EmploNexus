@@ -331,6 +331,7 @@ namespace EmploNexus.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::EmploNexus.Properties.Resources._6765093_3429734;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(633, 480);
             this.Controls.Add(this.txtCurrentTime);

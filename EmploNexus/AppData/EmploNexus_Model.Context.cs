@@ -16,10 +16,10 @@ namespace EmploNexus.AppData
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class EMPLONEXUS_DATABASE_Entities : DbContext
+    public partial class EmploNexus_Entities_NEW : DbContext
     {
-        public EMPLONEXUS_DATABASE_Entities()
-            : base("name=EMPLONEXUS_DATABASE_Entities")
+        public EmploNexus_Entities_NEW()
+            : base("name=EmploNexus_Entities_NEW")
         {
         }
     
@@ -28,8 +28,10 @@ namespace EmploNexus.AppData
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<Department> Departments { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Payroll> Payrolls { get; set; }
+        public DbSet<Position> Positions { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserAccount> UserAccounts { get; set; }
         public DbSet<vw_all_user_role> vw_all_user_role { get; set; }

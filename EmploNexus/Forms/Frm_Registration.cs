@@ -14,16 +14,18 @@ namespace EmploNexus.Forms
     public partial class Frm_Registration : Form
     {
         public string username = String.Empty;
-        EMPLONEXUS_DATABASE_Entities db;
+        EmploNexus_Entities_NEW db;
         public Frm_Registration()
         {
             InitializeComponent();
             //
-            db = new EMPLONEXUS_DATABASE_Entities();
+            db = new EmploNexus_Entities_NEW();
         }
 
         private void Frm_Register_Load(object sender, EventArgs e)
         {
+            loadCbBoxDepartment();
+            loadCbBoxPosition();
             loadCbBoxRole();
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
@@ -44,10 +46,39 @@ namespace EmploNexus.Forms
             cmbBoxRole.DataSource = roles;
         }
 
+        public void loadCbBoxDepartment()
+        {
+            // SELECT * FROM DEPARTMENT
+            var department = db.Departments.ToList();
+
+            cmbBoxDepartment.ValueMember = "departmentId";
+            cmbBoxDepartment.DisplayMember = "departmentDescription";
+            cmbBoxDepartment.DataSource = department;
+        }
+
+        public void loadCbBoxPosition()
+        {
+            // SELECT * FROM DEPARTMENT
+            var positions = db.Positions.ToList();
+
+            cmbBoxDepartment.ValueMember = "positionId";
+            cmbBoxDepartment.DisplayMember = "positionDescription";
+            cmbBoxDepartment.DataSource = positions;
+        }
+
         private void btnRegister_Click(object sender, EventArgs e)
         {
             //String cbResultSelected = cbBoxRole.SelectedValue.ToString();
-
+            if (String.IsNullOrEmpty(txtempName.Text))
+            {
+                errorProvider1.SetError(txtempName, "Empty field");
+                return;
+            }
+            if (String.IsNullOrEmpty(txtEmail.Text))
+            {
+                errorProvider1.SetError(txtEmail, "Empty field");
+                return;
+            }
             if (String.IsNullOrEmpty(txtuser_name.Text))
             {
                 errorProvider1.SetError(txtuser_name, "Empty field");

@@ -14,8 +14,15 @@ namespace EmploNexus.AppData
     
     public partial class Role
     {
+        public Role()
+        {
+            this.UserAccounts = new HashSet<UserAccount>();
+        }
+    
         public int roleId { get; set; }
         public string roleName { get; set; }
         public string roleDescription { get; set; }
+    
+        public virtual ICollection<UserAccount> UserAccounts { get; set; }
     }
 }
