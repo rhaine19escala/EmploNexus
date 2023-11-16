@@ -16,15 +16,15 @@ namespace EmploNexus.AppData
     {
         public Position()
         {
-            this.UserAccounts = new HashSet<UserAccount>();
             this.Employees = new HashSet<Employee>();
+            this.UserAccounts = new HashSet<UserAccount>();
         }
     
         public int positionId { get; set; }
         public string positionName { get; set; }
         public string positionDescription { get; set; }
     
-        public virtual ICollection<UserAccount> UserAccounts { get; set; }
         public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<UserAccount> UserAccounts { get; set; }
     }
 }

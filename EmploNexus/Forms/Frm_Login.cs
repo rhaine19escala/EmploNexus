@@ -97,12 +97,16 @@ namespace EmploNexus
                 }
                 else
                 {
-                    MessageBox.Show("Incorrect Password");
+                    MessageBox.Show("Incorrect Password. Please try Again.", "EmploNexus: Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtusername.Clear();
+                    txtpassword.Clear();
                 }
             }
             else
             {
-                MessageBox.Show("Username not found");
+                MessageBox.Show("Username Entered not Found! Please try Again.", "EmploNexus: Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtusername.Clear();
+                txtpassword.Clear();
             }
         }
 
@@ -112,11 +116,13 @@ namespace EmploNexus
 
             if (String.IsNullOrEmpty(txtusername.Text))
             {
+                errorProvider1.Clear();
                 errorProvider1.SetError(txtusername, "Empty Field!");
                 return;
             }
             if (String.IsNullOrEmpty(txtpassword.Text))
             {
+                errorProvider1.Clear();
                 errorProvider1.SetError(txtpassword, "Empty Field!");
                 return;
             }
@@ -133,12 +139,16 @@ namespace EmploNexus
                 }
                 else
                 {
-                    MessageBox.Show("Incorrect Password");
+                    MessageBox.Show("Incorrect Password. Please try Again.", "EmploNexus: Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtusername.Clear();
+                    txtpassword.Clear();
                 }
             }
             else
             {
-                MessageBox.Show("Username not found");
+                MessageBox.Show("Username Entered not Found! Please try Again.", "EmploNexus: Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtusername.Clear();
+                txtpassword.Clear();
             }
         }
 

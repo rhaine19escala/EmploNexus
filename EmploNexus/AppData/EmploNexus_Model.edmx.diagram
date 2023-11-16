@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4cf2f27acb3348febaff441b156433ac" Name="Diagram1">
+        <EntityTypeShape EntityType="EmploNexus_Model.Department" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploNexus_Model.Employee" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploNexus_Model.Gender" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploNexus_Model.Payroll" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploNexus_Model.Position" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploNexus_Model.Role" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploNexus_Model.UserAccount" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploNexus_Model.vw_all_user_role" Width="1.5" PointX="8.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="EmploNexus_Model.FK__Employee__emp_De__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploNexus_Model.FK__UserAccou__depar__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploNexus_Model.FK__Employee__emp_Ge__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploNexus_Model.FK__Employee__emp_Po__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploNexus_Model.FK__Employee__emp_Us__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploNexus_Model.FK__Payroll__payroll__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploNexus_Model.FK__UserAccou__gende__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploNexus_Model.FK__UserAccou__posit__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploNexus_Model.FK__UserAccou__roleI__1920BF5C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -11,18 +11,18 @@ namespace EmploNexus
 {
     public class UserRepository
     {
-        private EMPLONEXUS_NEWEntities emploNexusEntities;
+        private EmploNexus_Entities_N emploNexusEntities;
 
         public UserRepository()
         {
-            emploNexusEntities = new EMPLONEXUS_NEWEntities();
+            emploNexusEntities = new EmploNexus_Entities_N();
         }
 
         public ErrorCode Register(String username, String password)
         {
             try
             {
-                using (var emploNexusEntities = new EMPLONEXUS_NEWEntities())
+                using (var emploNexusEntities = new EmploNexus_Entities_N())
                 {
                     var newUser = new UserAccount();
                     newUser.username = username;
@@ -43,14 +43,14 @@ namespace EmploNexus
         public UserAccount GetUserByUsername(String username)
         {          
             // re-initialize emploNexusEntities object because sometimes data in the list not updated
-            emploNexusEntities = new EMPLONEXUS_NEWEntities();
+            emploNexusEntities = new EmploNexus_Entities_N();
             // SELECT TOP 1 * FROM USERACCOUNT WHERE username == username
             return emploNexusEntities.UserAccounts.Where(s => s.username == username).FirstOrDefault();
         }
 
         public List<vw_all_user_role> AllUserRole()
         {
-            emploNexusEntities = new EMPLONEXUS_NEWEntities();
+            emploNexusEntities = new EmploNexus_Entities_N();
 
             return emploNexusEntities.vw_all_user_role.ToList();
         }
