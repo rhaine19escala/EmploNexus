@@ -14,12 +14,12 @@ namespace EmploNexus.Forms
     public partial class Frm_Registration : Form
     {
         public string username = String.Empty;
-        EmploNexus_Entities_NEW db;
+        EMPLONEXUS_NEWEntities db;
         public Frm_Registration()
         {
             InitializeComponent();
             //
-            db = new EmploNexus_Entities_NEW();
+            db = new EMPLONEXUS_NEWEntities();
         }
 
         private void Frm_Register_Load(object sender, EventArgs e)

@@ -60,40 +60,40 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppData\Department.cs">
-      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\EmploNexus_Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EmploNexus_Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\EmploNexus_Model.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\EmploNexus_Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EmploNexus_Model.edmx</DependentUpon>
+      <DependentUpon>Model_EmploNexus.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\Employee.cs">
-      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+      <DependentUpon>Model_EmploNexus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\Model_EmploNexus.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_EmploNexus.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\Model_EmploNexus.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_EmploNexus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\Model_EmploNexus.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model_EmploNexus.edmx</DependentUpon>
     </Compile>
     <Compile Include="AppData\Payroll.cs">
-      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+      <DependentUpon>Model_EmploNexus.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\Position.cs">
-      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+      <DependentUpon>Model_EmploNexus.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\Role.cs">
-      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+      <DependentUpon>Model_EmploNexus.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\UserAccount.cs">
-      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+      <DependentUpon>Model_EmploNexus.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\vw_all_user_role.cs">
-      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+      <DependentUpon>Model_EmploNexus.tt</DependentUpon>
     </Compile>
     <Compile Include="Forms\Frm_Admin_Dashboard.cs">
       <SubType>Form</SubType>
@@ -165,12 +165,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="AppData\EmploNexus_Model.edmx">
+    <EntityDeploy Include="AppData\Model_EmploNexus.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EmploNexus_Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model_EmploNexus.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="AppData\EmploNexus_Model.edmx.diagram">
-      <DependentUpon>EmploNexus_Model.edmx</DependentUpon>
+    <None Include="AppData\Model_EmploNexus.edmx.diagram">
+      <DependentUpon>Model_EmploNexus.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -202,15 +202,15 @@
     <None Include="Resources\planning.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AppData\EmploNexus_Model.Context.tt">
+    <Content Include="AppData\Model_EmploNexus.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EmploNexus_Model.edmx</DependentUpon>
-      <LastGenOutput>EmploNexus_Model.Context.cs</LastGenOutput>
+      <DependentUpon>Model_EmploNexus.edmx</DependentUpon>
+      <LastGenOutput>Model_EmploNexus.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="AppData\EmploNexus_Model.tt">
+    <Content Include="AppData\Model_EmploNexus.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EmploNexus_Model.edmx</DependentUpon>
-      <LastGenOutput>EmploNexus_Model.cs</LastGenOutput>
+      <DependentUpon>Model_EmploNexus.edmx</DependentUpon>
+      <LastGenOutput>Model_EmploNexus.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

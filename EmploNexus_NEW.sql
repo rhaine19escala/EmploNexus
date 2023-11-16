@@ -1,5 +1,5 @@
-CREATE DATABASE EMPLONEXUS_DATABASE
-USE EMPLONEXUS_DATABASE
+CREATE DATABASE EMPLONEXUS_NEW
+USE EMPLONEXUS_NEW
 
 -- Create a table for users
 CREATE TABLE UserAccounts (
@@ -46,7 +46,7 @@ CREATE TABLE [dbo].[Roles](
  ([roleId] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-USE [EMPLONEXUS_DATABASE]
+USE [EMPLONEXUS_NEW]
 GO
 SET IDENTITY_INSERT [dbo].[Roles] ON 
 INSERT [dbo].[Roles] ([roleId], [roleName], [roleDescription]) VALUES (1, N'Employee', N'Employee ')
@@ -65,7 +65,7 @@ CREATE TABLE [dbo].[Departments](
 ) ON [PRIMARY]
 
 -- Inserting data into Department Table
-USE [EMPLONEXUS_DATABASE]
+USE [EMPLONEXUS_NEW]
 GO
 SET IDENTITY_INSERT [dbo].[Departments] ON;
 INSERT [dbo].[Departments] ([departmentId], [departmentName], [departmentDescription]) VALUES (1, N'HR', N'Human Resources');
@@ -85,7 +85,7 @@ CREATE TABLE [dbo].[Positions](
 ) ON [PRIMARY]
 
 -- Inserting data into Position Table
-USE [EMPLONEXUS_DATABASE]
+USE [EMPLONEXUS_NEW]
 GO
 SET IDENTITY_INSERT [dbo].[Positions] ON;
 INSERT [dbo].[Positions] ([positionId], [positionName], [positionDescription]) VALUES (1, N'HR_Manager', N'Human Resources Manager');
