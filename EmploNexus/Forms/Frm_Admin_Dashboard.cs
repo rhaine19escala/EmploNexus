@@ -24,5 +24,19 @@ namespace EmploNexus.Forms
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Frm_Login logout = new Frm_Login();
+            logout.Show();
+            this.Hide();
+        }
+
+        private void logOutToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Frm_Login logout = new Frm_Login();
+            logout.Show();
+            this.Hide();
+        }
     }
 }

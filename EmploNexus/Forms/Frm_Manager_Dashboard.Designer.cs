@@ -29,6 +29,7 @@ namespace EmploNexus.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Manager_Dashboard));
             this.lblsystemName = new System.Windows.Forms.Label();
             this.sidePanel = new System.Windows.Forms.Panel();
             this.btnRequest = new System.Windows.Forms.Button();
@@ -248,6 +249,7 @@ namespace EmploNexus.Forms
             this.Controls.Add(this.sidePanel);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Frm_Manager_Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
