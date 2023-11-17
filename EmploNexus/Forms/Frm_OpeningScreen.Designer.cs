@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnRun = new System.Windows.Forms.Button();
+            this.lblCLose = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -126,6 +127,20 @@
             this.btnRun.UseVisualStyleBackColor = false;
             this.btnRun.Click += new System.EventHandler(this.BtnRun_Click);
             // 
+            // lblCLose
+            // 
+            this.lblCLose.AutoSize = true;
+            this.lblCLose.BackColor = System.Drawing.Color.Transparent;
+            this.lblCLose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblCLose.Font = new System.Drawing.Font("Palatino Linotype", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCLose.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.lblCLose.Location = new System.Drawing.Point(389, -11);
+            this.lblCLose.Name = "lblCLose";
+            this.lblCLose.Size = new System.Drawing.Size(38, 47);
+            this.lblCLose.TabIndex = 10;
+            this.lblCLose.Text = "x";
+            this.lblCLose.Click += new System.EventHandler(this.lblCLose_Click);
+            // 
             // Frm_OpeningScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 31F);
@@ -134,6 +149,7 @@
             this.BackgroundImage = global::EmploNexus.Properties.Resources.antoine_rault_IhWRrZx4_kk_unsplash;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(423, 292);
+            this.Controls.Add(this.lblCLose);
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -162,5 +178,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btnRun;
+        private System.Windows.Forms.Label lblCLose;
     }
 }

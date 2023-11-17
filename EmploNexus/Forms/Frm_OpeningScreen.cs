@@ -53,5 +53,20 @@ namespace EmploNexus.Forms
             circularProgressBar1.Value = 0;
             timer1.Enabled = true;
         }
+
+        private void lblCLose_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Quit EmploNexus?", "Quit EmploNexus?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.OK)
+            {
+                this.Close();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                MessageBox.Show("Quit operation canceled.", "Quit EmploNexus?", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
     }
 }
