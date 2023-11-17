@@ -40,24 +40,28 @@
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.txtempSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblSearch = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtempID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtempName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtempEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtempSalary = new System.Windows.Forms.TextBox();
+            this.btnempAdd = new System.Windows.Forms.Button();
+            this.btnempUpdate = new System.Windows.Forms.Button();
+            this.btnempDelete = new System.Windows.Forms.Button();
+            this.btnempClear = new System.Windows.Forms.Button();
+            this.cmbBox_empGender = new System.Windows.Forms.ComboBox();
+            this.cmbBox_empDepartment = new System.Windows.Forms.ComboBox();
+            this.cmbBox_empPosition = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_AllEmployeesWdetails)).BeginInit();
             this.menuStrip2.SuspendLayout();
@@ -79,28 +83,32 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.cmbBox_empPosition);
+            this.panel1.Controls.Add(this.cmbBox_empDepartment);
+            this.panel1.Controls.Add(this.cmbBox_empGender);
+            this.panel1.Controls.Add(this.btnempClear);
+            this.panel1.Controls.Add(this.btnempDelete);
+            this.panel1.Controls.Add(this.btnempUpdate);
+            this.panel1.Controls.Add(this.btnempAdd);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.textBox7);
+            this.panel1.Controls.Add(this.txtempSalary);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.textBox6);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.textBox5);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.textBox4);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.txtempEmail);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtempName);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtempID);
             this.panel1.Controls.Add(this.lblTitle);
             this.panel1.Controls.Add(this.lblSearch);
             this.panel1.Controls.Add(this.btnSearch);
-            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Controls.Add(this.txtempSearch);
             this.panel1.Controls.Add(this.dgv_AllEmployeesWdetails);
             this.panel1.Location = new System.Drawing.Point(20, 104);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(859, 322);
+            this.panel1.Size = new System.Drawing.Size(859, 367);
             this.panel1.TabIndex = 12;
             // 
             // dgv_AllEmployeesWdetails
@@ -111,7 +119,7 @@
             this.dgv_AllEmployeesWdetails.GridColor = System.Drawing.Color.SteelBlue;
             this.dgv_AllEmployeesWdetails.Location = new System.Drawing.Point(412, 49);
             this.dgv_AllEmployeesWdetails.Name = "dgv_AllEmployeesWdetails";
-            this.dgv_AllEmployeesWdetails.Size = new System.Drawing.Size(430, 258);
+            this.dgv_AllEmployeesWdetails.Size = new System.Drawing.Size(430, 298);
             this.dgv_AllEmployeesWdetails.TabIndex = 9;
             // 
             // txtCurrentTime
@@ -181,13 +189,14 @@
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
             this.toolStripMenuItem7.Size = new System.Drawing.Size(280, 26);
             this.toolStripMenuItem7.Text = "Log out";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
             // 
-            // txtSearch
+            // txtempSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(505, 12);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(302, 29);
-            this.txtSearch.TabIndex = 10;
+            this.txtempSearch.Location = new System.Drawing.Point(504, 12);
+            this.txtempSearch.Name = "txtempSearch";
+            this.txtempSearch.Size = new System.Drawing.Size(302, 29);
+            this.txtempSearch.TabIndex = 10;
             // 
             // btnSearch
             // 
@@ -206,7 +215,7 @@
             this.lblSearch.BackColor = System.Drawing.Color.LightBlue;
             this.lblSearch.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.lblSearch.Location = new System.Drawing.Point(414, 13);
+            this.lblSearch.Location = new System.Drawing.Point(413, 13);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(82, 26);
             this.lblSearch.TabIndex = 12;
@@ -224,12 +233,12 @@
             this.lblTitle.TabIndex = 13;
             this.lblTitle.Text = "Employee Details :";
             // 
-            // textBox1
+            // txtempID
             // 
-            this.textBox1.Location = new System.Drawing.Point(165, 58);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(230, 29);
-            this.textBox1.TabIndex = 14;
+            this.txtempID.Location = new System.Drawing.Point(165, 58);
+            this.txtempID.Name = "txtempID";
+            this.txtempID.Size = new System.Drawing.Size(230, 29);
+            this.txtempID.TabIndex = 14;
             // 
             // label2
             // 
@@ -255,12 +264,12 @@
             this.label3.TabIndex = 17;
             this.label3.Text = "Name";
             // 
-            // textBox2
+            // txtempName
             // 
-            this.textBox2.Location = new System.Drawing.Point(165, 93);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(230, 29);
-            this.textBox2.TabIndex = 16;
+            this.txtempName.Location = new System.Drawing.Point(165, 93);
+            this.txtempName.Name = "txtempName";
+            this.txtempName.Size = new System.Drawing.Size(230, 29);
+            this.txtempName.TabIndex = 16;
             // 
             // label4
             // 
@@ -274,12 +283,12 @@
             this.label4.TabIndex = 19;
             this.label4.Text = "E-mail";
             // 
-            // textBox3
+            // txtempEmail
             // 
-            this.textBox3.Location = new System.Drawing.Point(165, 128);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(230, 29);
-            this.textBox3.TabIndex = 18;
+            this.txtempEmail.Location = new System.Drawing.Point(165, 128);
+            this.txtempEmail.Name = "txtempEmail";
+            this.txtempEmail.Size = new System.Drawing.Size(230, 29);
+            this.txtempEmail.TabIndex = 18;
             // 
             // label5
             // 
@@ -293,31 +302,17 @@
             this.label5.TabIndex = 21;
             this.label5.Text = "Gender";
             // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(165, 163);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(230, 29);
-            this.textBox4.TabIndex = 20;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.LightBlue;
             this.label6.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label6.Location = new System.Drawing.Point(13, 198);
+            this.label6.Location = new System.Drawing.Point(13, 199);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(122, 26);
             this.label6.TabIndex = 23;
             this.label6.Text = "Department";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(165, 198);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(230, 29);
-            this.textBox5.TabIndex = 22;
             // 
             // label7
             // 
@@ -325,18 +320,11 @@
             this.label7.BackColor = System.Drawing.Color.LightBlue;
             this.label7.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label7.Location = new System.Drawing.Point(13, 233);
+            this.label7.Location = new System.Drawing.Point(13, 235);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 26);
             this.label7.TabIndex = 25;
             this.label7.Text = "Job Position";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(165, 233);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(230, 29);
-            this.textBox6.TabIndex = 24;
             // 
             // label8
             // 
@@ -344,18 +332,82 @@
             this.label8.BackColor = System.Drawing.Color.LightBlue;
             this.label8.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label8.Location = new System.Drawing.Point(13, 268);
+            this.label8.Location = new System.Drawing.Point(13, 271);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 26);
             this.label8.TabIndex = 27;
             this.label8.Text = "Salary";
             // 
-            // textBox7
+            // txtempSalary
             // 
-            this.textBox7.Location = new System.Drawing.Point(165, 268);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(230, 29);
-            this.textBox7.TabIndex = 26;
+            this.txtempSalary.Location = new System.Drawing.Point(165, 271);
+            this.txtempSalary.Name = "txtempSalary";
+            this.txtempSalary.Size = new System.Drawing.Size(230, 29);
+            this.txtempSalary.TabIndex = 26;
+            // 
+            // btnempAdd
+            // 
+            this.btnempAdd.Location = new System.Drawing.Point(13, 315);
+            this.btnempAdd.Name = "btnempAdd";
+            this.btnempAdd.Size = new System.Drawing.Size(92, 32);
+            this.btnempAdd.TabIndex = 28;
+            this.btnempAdd.Text = "ADD";
+            this.btnempAdd.UseVisualStyleBackColor = true;
+            this.btnempAdd.Click += new System.EventHandler(this.btnempAdd_Click);
+            // 
+            // btnempUpdate
+            // 
+            this.btnempUpdate.Location = new System.Drawing.Point(111, 315);
+            this.btnempUpdate.Name = "btnempUpdate";
+            this.btnempUpdate.Size = new System.Drawing.Size(92, 32);
+            this.btnempUpdate.TabIndex = 29;
+            this.btnempUpdate.Text = "UPDATE";
+            this.btnempUpdate.UseVisualStyleBackColor = true;
+            this.btnempUpdate.Click += new System.EventHandler(this.btnempUpdate_Click);
+            // 
+            // btnempDelete
+            // 
+            this.btnempDelete.Location = new System.Drawing.Point(209, 315);
+            this.btnempDelete.Name = "btnempDelete";
+            this.btnempDelete.Size = new System.Drawing.Size(92, 32);
+            this.btnempDelete.TabIndex = 30;
+            this.btnempDelete.Text = "DELETE";
+            this.btnempDelete.UseVisualStyleBackColor = true;
+            this.btnempDelete.Click += new System.EventHandler(this.btnempDelete_Click);
+            // 
+            // btnempClear
+            // 
+            this.btnempClear.Location = new System.Drawing.Point(307, 315);
+            this.btnempClear.Name = "btnempClear";
+            this.btnempClear.Size = new System.Drawing.Size(92, 32);
+            this.btnempClear.TabIndex = 31;
+            this.btnempClear.Text = "CLEAR";
+            this.btnempClear.UseVisualStyleBackColor = true;
+            this.btnempClear.Click += new System.EventHandler(this.btnempClear_Click);
+            // 
+            // cmbBox_empGender
+            // 
+            this.cmbBox_empGender.FormattingEnabled = true;
+            this.cmbBox_empGender.Location = new System.Drawing.Point(165, 163);
+            this.cmbBox_empGender.Name = "cmbBox_empGender";
+            this.cmbBox_empGender.Size = new System.Drawing.Size(230, 30);
+            this.cmbBox_empGender.TabIndex = 32;
+            // 
+            // cmbBox_empDepartment
+            // 
+            this.cmbBox_empDepartment.FormattingEnabled = true;
+            this.cmbBox_empDepartment.Location = new System.Drawing.Point(165, 199);
+            this.cmbBox_empDepartment.Name = "cmbBox_empDepartment";
+            this.cmbBox_empDepartment.Size = new System.Drawing.Size(230, 30);
+            this.cmbBox_empDepartment.TabIndex = 33;
+            // 
+            // cmbBox_empPosition
+            // 
+            this.cmbBox_empPosition.FormattingEnabled = true;
+            this.cmbBox_empPosition.Location = new System.Drawing.Point(165, 235);
+            this.cmbBox_empPosition.Name = "cmbBox_empPosition";
+            this.cmbBox_empPosition.Size = new System.Drawing.Size(230, 30);
+            this.cmbBox_empPosition.TabIndex = 34;
             // 
             // Frm_Employee_Management
             // 
@@ -363,7 +415,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::EmploNexus.Properties.Resources.alexandr_podvalny_n_Jb_d8O43Q_unsplash;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(900, 438);
+            this.ClientSize = new System.Drawing.Size(900, 483);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCurrentTime);
             this.Controls.Add(this.menuStrip2);
@@ -397,23 +449,27 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
-        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.TextBox txtempSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtempID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtempName;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtempSalary;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtempEmail;
+        private System.Windows.Forms.Button btnempDelete;
+        private System.Windows.Forms.Button btnempUpdate;
+        private System.Windows.Forms.Button btnempAdd;
+        private System.Windows.Forms.Button btnempClear;
+        private System.Windows.Forms.ComboBox cmbBox_empPosition;
+        private System.Windows.Forms.ComboBox cmbBox_empDepartment;
+        private System.Windows.Forms.ComboBox cmbBox_empGender;
     }
 }

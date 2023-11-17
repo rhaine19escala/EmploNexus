@@ -28,16 +28,24 @@ namespace EmploNexus.Forms
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            Frm_Login logout = new Frm_Login();
-            logout.Show();
-            this.Hide();
+            DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (res == DialogResult.OK)
+            {
+                Frm_Login logout = new Frm_Login();
+                logout.Show();
+                this.Hide();
+            }
         }
 
         private void logOutToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            Frm_Login logout = new Frm_Login();
-            logout.Show();
-            this.Hide();
+            DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if(res == DialogResult.OK)
+            {
+                Frm_Login logout = new Frm_Login();
+                logout.Show();
+                this.Hide();
+            }             
         }
 
         private void btnEmployee_Click(object sender, EventArgs e)
