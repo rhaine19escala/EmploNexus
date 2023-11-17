@@ -118,11 +118,32 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="management" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\management.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="conference-room-with-desk-wall-windows-that-says-office" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\conference-room-with-desk-wall-windows-that-says-office.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="team-management" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\team-management.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="management1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\management.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gearwheel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gearwheel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="blue-fractal-circle-fractal-art-wallpaper-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blue-fractal-circle-fractal-art-wallpaper-preview.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="logoICON3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logoICON3.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="management" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\management.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="employee_account_business_time_clock_icon_124657" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\employee_account_business_time_clock_icon_124657.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fabrizio-conti-kXVogATbFgA-unsplash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fabrizio-conti-kXVogATbFgA-unsplash.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="34377504_v894-kul-13-a" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\34377504_v894-kul-13-a.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,28 +151,19 @@
   <data name="antoine-rault-IhWRrZx4-kk-unsplash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\antoine-rault-IhWRrZx4-kk-unsplash.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="management1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\management.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="planning" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\planning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fabrizio-conti-kXVogATbFgA-unsplash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fabrizio-conti-kXVogATbFgA-unsplash.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="team-management" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\team-management.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="conference-room-with-desk-wall-windows-that-says-office" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\conference-room-with-desk-wall-windows-that-says-office.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="employee-management" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\employee-management.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="6765093_3429734" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\6765093_3429734.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="blue-fractal-circle-fractal-art-wallpaper-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\blue-fractal-circle-fractal-art-wallpaper-preview.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="compensation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\compensation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="employee_account_business_time_clock_icon_124657" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\employee_account_business_time_clock_icon_124657.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="planning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\planning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BACKIEGROUND" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BACKIEGROUND.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

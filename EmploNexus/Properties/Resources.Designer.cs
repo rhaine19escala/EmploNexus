@@ -93,9 +93,29 @@ namespace EmploNexus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BACKIEGROUND {
+            get {
+                object obj = ResourceManager.GetObject("BACKIEGROUND", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap blue_fractal_circle_fractal_art_wallpaper_preview {
             get {
                 object obj = ResourceManager.GetObject("blue-fractal-circle-fractal-art-wallpaper-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap compensation {
+            get {
+                object obj = ResourceManager.GetObject("compensation", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +143,29 @@ namespace EmploNexus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap employee_management {
+            get {
+                object obj = ResourceManager.GetObject("employee-management", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fabrizio_conti_kXVogATbFgA_unsplash {
             get {
                 object obj = ResourceManager.GetObject("fabrizio-conti-kXVogATbFgA-unsplash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gearwheel {
+            get {
+                object obj = ResourceManager.GetObject("gearwheel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

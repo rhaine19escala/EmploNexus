@@ -34,7 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRun = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -44,7 +44,7 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label1.Font = new System.Drawing.Font("Modern No. 20", 47.99999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.label1.Location = new System.Drawing.Point(28, 9);
+            this.label1.Location = new System.Drawing.Point(28, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(366, 65);
             this.label1.TabIndex = 0;
@@ -60,7 +60,7 @@
             this.circularProgressBar1.InnerColor = System.Drawing.Color.Transparent;
             this.circularProgressBar1.InnerMargin = 2;
             this.circularProgressBar1.InnerWidth = -1;
-            this.circularProgressBar1.Location = new System.Drawing.Point(126, 80);
+            this.circularProgressBar1.Location = new System.Drawing.Point(124, 74);
             this.circularProgressBar1.MarqueeAnimationSpeed = 2000;
             this.circularProgressBar1.Name = "circularProgressBar1";
             this.circularProgressBar1.OuterColor = System.Drawing.Color.SteelBlue;
@@ -89,7 +89,7 @@
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.label2.Location = new System.Drawing.Point(157, 238);
+            this.label2.Location = new System.Drawing.Point(155, 232);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 28);
             this.label2.TabIndex = 2;
@@ -102,7 +102,7 @@
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.label3.Location = new System.Drawing.Point(117, 269);
+            this.label3.Location = new System.Drawing.Point(115, 263);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(187, 22);
             this.label3.TabIndex = 3;
@@ -112,19 +112,19 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button1
+            // btnRun
             // 
-            this.button1.BackColor = System.Drawing.Color.SkyBlue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.button1.Location = new System.Drawing.Point(346, 261);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 30);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Run";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.BtnRun_Click);
+            this.btnRun.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnRun.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRun.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRun.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btnRun.Location = new System.Drawing.Point(339, 258);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(72, 27);
+            this.btnRun.TabIndex = 9;
+            this.btnRun.Text = "Run";
+            this.btnRun.UseVisualStyleBackColor = false;
+            this.btnRun.Click += new System.EventHandler(this.BtnRun_Click);
             // 
             // Frm_OpeningScreen
             // 
@@ -133,8 +133,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
             this.BackgroundImage = global::EmploNexus.Properties.Resources.antoine_rault_IhWRrZx4_kk_unsplash;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(424, 296);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(423, 292);
+            this.Controls.Add(this.btnRun);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.circularProgressBar1);
@@ -161,6 +161,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRun;
     }
 }

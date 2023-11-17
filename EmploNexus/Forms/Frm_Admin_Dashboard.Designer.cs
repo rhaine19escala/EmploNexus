@@ -43,9 +43,11 @@ namespace EmploNexus.Forms
             this.lblsystemName = new System.Windows.Forms.Label();
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.grpBox_Menus = new System.Windows.Forms.GroupBox();
-            this.sidePanel = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.sidePanel = new System.Windows.Forms.Panel();
+            this.grpBox_Date = new System.Windows.Forms.GroupBox();
             this.txtCurrentDate = new System.Windows.Forms.TextBox();
             this.grpBox_Name = new System.Windows.Forms.GroupBox();
             this.txtName_User = new System.Windows.Forms.TextBox();
@@ -53,9 +55,11 @@ namespace EmploNexus.Forms
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.grpBox_Menus.SuspendLayout();
-            this.sidePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.sidePanel.SuspendLayout();
+            this.grpBox_Date.SuspendLayout();
             this.grpBox_Name.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -119,21 +123,23 @@ namespace EmploNexus.Forms
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LightBlue;
-            this.button1.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(72, 129);
+            this.button1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button1.Location = new System.Drawing.Point(13, 166);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(306, 31);
+            this.button1.Size = new System.Drawing.Size(120, 53);
             this.button1.TabIndex = 12;
-            this.button1.Text = "USER ACCOUNT MANAGEMENT";
+            this.button1.Text = "USER MANAGEMENT";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // btnSalary
             // 
             this.btnSalary.BackColor = System.Drawing.Color.LightBlue;
-            this.btnSalary.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalary.Location = new System.Drawing.Point(72, 203);
+            this.btnSalary.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalary.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnSalary.Location = new System.Drawing.Point(295, 166);
             this.btnSalary.Name = "btnSalary";
-            this.btnSalary.Size = new System.Drawing.Size(306, 31);
+            this.btnSalary.Size = new System.Drawing.Size(120, 53);
             this.btnSalary.TabIndex = 11;
             this.btnSalary.Text = "SALARY MANAGEMENT";
             this.btnSalary.UseVisualStyleBackColor = false;
@@ -141,10 +147,11 @@ namespace EmploNexus.Forms
             // btnEmployee
             // 
             this.btnEmployee.BackColor = System.Drawing.Color.LightBlue;
-            this.btnEmployee.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployee.Location = new System.Drawing.Point(72, 166);
+            this.btnEmployee.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployee.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnEmployee.Location = new System.Drawing.Point(158, 166);
             this.btnEmployee.Name = "btnEmployee";
-            this.btnEmployee.Size = new System.Drawing.Size(306, 31);
+            this.btnEmployee.Size = new System.Drawing.Size(120, 53);
             this.btnEmployee.TabIndex = 10;
             this.btnEmployee.Text = "EMPLOYEE MANAGEMENT";
             this.btnEmployee.UseVisualStyleBackColor = false;
@@ -155,7 +162,7 @@ namespace EmploNexus.Forms
             this.lblsystemName.BackColor = System.Drawing.Color.Transparent;
             this.lblsystemName.Font = new System.Drawing.Font("Modern No. 20", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblsystemName.ForeColor = System.Drawing.Color.LightBlue;
-            this.lblsystemName.Location = new System.Drawing.Point(327, 46);
+            this.lblsystemName.Location = new System.Drawing.Point(230, 46);
             this.lblsystemName.Name = "lblsystemName";
             this.lblsystemName.Size = new System.Drawing.Size(268, 50);
             this.lblsystemName.TabIndex = 7;
@@ -175,10 +182,14 @@ namespace EmploNexus.Forms
             // grpBox_Menus
             // 
             this.grpBox_Menus.BackColor = System.Drawing.Color.Transparent;
+            this.grpBox_Menus.Controls.Add(this.pictureBox4);
+            this.grpBox_Menus.Controls.Add(this.pictureBox3);
+            this.grpBox_Menus.Controls.Add(this.pictureBox2);
             this.grpBox_Menus.Controls.Add(this.btnSalary);
             this.grpBox_Menus.Controls.Add(this.btnEmployee);
             this.grpBox_Menus.Controls.Add(this.button1);
             this.grpBox_Menus.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpBox_Menus.ForeColor = System.Drawing.Color.LightBlue;
             this.grpBox_Menus.Location = new System.Drawing.Point(239, 105);
             this.grpBox_Menus.Name = "grpBox_Menus";
             this.grpBox_Menus.Size = new System.Drawing.Size(427, 252);
@@ -186,13 +197,46 @@ namespace EmploNexus.Forms
             this.grpBox_Menus.TabStop = false;
             this.grpBox_Menus.Text = "MENU";
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = global::EmploNexus.Properties.Resources.compensation;
+            this.pictureBox4.Location = new System.Drawing.Point(295, 43);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(120, 105);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 18;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = global::EmploNexus.Properties.Resources.employee_management;
+            this.pictureBox3.Location = new System.Drawing.Point(158, 43);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(120, 105);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 17;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::EmploNexus.Properties.Resources.gearwheel;
+            this.pictureBox2.Location = new System.Drawing.Point(13, 43);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(120, 105);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
+            // 
             // sidePanel
             // 
-            this.sidePanel.BackgroundImage = global::EmploNexus.Properties.Resources._34377504_v894_kul_13_a;
+            this.sidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
             this.sidePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.sidePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.sidePanel.Controls.Add(this.pictureBox1);
-            this.sidePanel.Controls.Add(this.groupBox1);
+            this.sidePanel.Controls.Add(this.grpBox_Date);
             this.sidePanel.Controls.Add(this.grpBox_Name);
             this.sidePanel.Controls.Add(this.btnLogout);
             this.sidePanel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -201,29 +245,18 @@ namespace EmploNexus.Forms
             this.sidePanel.Size = new System.Drawing.Size(224, 337);
             this.sidePanel.TabIndex = 2;
             // 
-            // pictureBox2
+            // grpBox_Date
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::EmploNexus.Properties.Resources.employee_account_business_time_clock_icon_124657;
-            this.pictureBox2.Location = new System.Drawing.Point(239, 38);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(82, 64);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 14;
-            this.pictureBox2.TabStop = false;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.txtCurrentDate);
-            this.groupBox1.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.groupBox1.Location = new System.Drawing.Point(10, 204);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(197, 64);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Date Login";
+            this.grpBox_Date.BackColor = System.Drawing.Color.Transparent;
+            this.grpBox_Date.Controls.Add(this.txtCurrentDate);
+            this.grpBox_Date.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpBox_Date.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.grpBox_Date.Location = new System.Drawing.Point(10, 204);
+            this.grpBox_Date.Name = "grpBox_Date";
+            this.grpBox_Date.Size = new System.Drawing.Size(197, 64);
+            this.grpBox_Date.TabIndex = 13;
+            this.grpBox_Date.TabStop = false;
+            this.grpBox_Date.Text = "Date";
             // 
             // txtCurrentDate
             // 
@@ -287,9 +320,9 @@ namespace EmploNexus.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::EmploNexus.Properties.Resources.antoine_rault_IhWRrZx4_kk_unsplash;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(678, 369);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.grpBox_Menus);
             this.Controls.Add(this.txtCurrentTime);
             this.Controls.Add(this.lblsystemName);
@@ -307,10 +340,12 @@ namespace EmploNexus.Forms
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.grpBox_Menus.ResumeLayout(false);
-            this.sidePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.sidePanel.ResumeLayout(false);
+            this.grpBox_Date.ResumeLayout(false);
+            this.grpBox_Date.PerformLayout();
             this.grpBox_Name.ResumeLayout(false);
             this.grpBox_Name.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -337,10 +372,12 @@ namespace EmploNexus.Forms
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.GroupBox grpBox_Name;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpBox_Date;
         private System.Windows.Forms.TextBox txtCurrentDate;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox grpBox_Menus;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

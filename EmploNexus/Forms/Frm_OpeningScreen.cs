@@ -35,7 +35,7 @@ namespace EmploNexus.Forms
             if (circularProgressBar1.Value >= 100)
             {
                 timer1.Enabled = false;
-                button1.Enabled = true;
+                btnRun.Enabled = true;
 
                 Frm_Login login = new Frm_Login();
                 login.Show();
@@ -43,7 +43,7 @@ namespace EmploNexus.Forms
             }
             else
             {
-                button1.Enabled = false;
+                btnRun.Enabled = false;
             }
         }
 

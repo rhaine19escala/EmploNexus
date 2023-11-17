@@ -224,6 +224,10 @@
       <DependentUpon>EmploNexus_Model.edmx</DependentUpon>
       <LastGenOutput>EmploNexus_Model.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\BACKIEGROUND.png" />
+    <None Include="Resources\compensation.png" />
+    <None Include="Resources\employee-management.png" />
+    <None Include="Resources\gearwheel.png" />
     <None Include="Resources\employee_account_business_time_clock_icon_124657.png" />
     <None Include="Resources\logoICON3.PNG" />
     <None Include="Resources\management.png" />
