@@ -12,12 +12,11 @@ using System.Windows.Forms;
 
 namespace EmploNexus.Forms
 {
-    public partial class Frm_Employee_Management : Form
+    public partial class Frm_AEmployee_Management : Form
     {
-        String strConnection = @"Data Source=.\sqlexpress;Initial Catalog=EMPLONEXUS_NEW;Integrated Security=True";
+        //String strConnection = @"Data Source=.\sqlexpress;Initial Catalog=EMPLONEXUS_NEW;Integrated Security=True";
         EmploNexus_Entities_N db;
-
-        public Frm_Employee_Management()
+        public Frm_AEmployee_Management()
         {
             InitializeComponent();
             //

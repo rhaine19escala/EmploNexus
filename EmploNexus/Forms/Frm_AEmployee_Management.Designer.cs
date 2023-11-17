@@ -1,6 +1,6 @@
 ﻿namespace EmploNexus.Forms
 {
-    partial class Frm_Employee_Management
+    partial class Frm_AEmployee_Management
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Employee_Management));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_AEmployee_Management));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgv_AllEmployeesWdetails = new System.Windows.Forms.DataGridView();
