@@ -61,5 +61,33 @@ namespace EmploNexus.Forms
             employee_Management.Show();
             this.Hide();
         }
+
+        private void btnSalary_Click(object sender, EventArgs e)
+        {
+            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
+            aSalary_Management.Show();
+            this.Hide();
+        }
+
+        private void logoutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
+            aSalary_Management.Show();
+            this.Hide();
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            Frm_AUser_Management aUser_Management = new Frm_AUser_Management();
+            aUser_Management.Show();
+            this.Hide();
+        }
+
+        private void profileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_AUser_Management aUser_Management = new Frm_AUser_Management();
+            aUser_Management.Show();
+            this.Hide();
+        }
     }
 }

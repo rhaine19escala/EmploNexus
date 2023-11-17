@@ -37,7 +37,7 @@ namespace EmploNexus.Forms
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnUser = new System.Windows.Forms.Button();
             this.btnSalary = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
             this.lblsystemName = new System.Windows.Forms.Label();
@@ -101,6 +101,7 @@ namespace EmploNexus.Forms
             this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
             this.profileToolStripMenuItem.Size = new System.Drawing.Size(280, 26);
             this.profileToolStripMenuItem.Text = "User Account Management";
+            this.profileToolStripMenuItem.Click += new System.EventHandler(this.profileToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
@@ -114,6 +115,7 @@ namespace EmploNexus.Forms
             this.logoutToolStripMenuItem1.Name = "logoutToolStripMenuItem1";
             this.logoutToolStripMenuItem1.Size = new System.Drawing.Size(280, 26);
             this.logoutToolStripMenuItem1.Text = "Salary Management";
+            this.logoutToolStripMenuItem1.Click += new System.EventHandler(this.logoutToolStripMenuItem1_Click);
             // 
             // logOutToolStripMenuItem2
             // 
@@ -122,19 +124,20 @@ namespace EmploNexus.Forms
             this.logOutToolStripMenuItem2.Text = "Log out";
             this.logOutToolStripMenuItem2.Click += new System.EventHandler(this.logOutToolStripMenuItem2_Click);
             // 
-            // button1
+            // btnUser
             // 
-            this.button1.BackColor = System.Drawing.Color.LightBlue;
-            this.button1.BackgroundImage = global::EmploNexus.Properties.Resources.BACKIEGROUND;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.button1.Location = new System.Drawing.Point(13, 166);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 53);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "USER MANAGEMENT";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnUser.BackColor = System.Drawing.Color.LightBlue;
+            this.btnUser.BackgroundImage = global::EmploNexus.Properties.Resources.BACKIEGROUND;
+            this.btnUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnUser.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUser.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.btnUser.Location = new System.Drawing.Point(13, 166);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Size = new System.Drawing.Size(120, 53);
+            this.btnUser.TabIndex = 12;
+            this.btnUser.Text = "USER MANAGEMENT";
+            this.btnUser.UseVisualStyleBackColor = false;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
             // 
             // btnSalary
             // 
@@ -149,6 +152,7 @@ namespace EmploNexus.Forms
             this.btnSalary.TabIndex = 11;
             this.btnSalary.Text = "SALARY MANAGEMENT";
             this.btnSalary.UseVisualStyleBackColor = false;
+            this.btnSalary.Click += new System.EventHandler(this.btnSalary_Click);
             // 
             // btnEmployee
             // 
@@ -196,7 +200,7 @@ namespace EmploNexus.Forms
             this.grpBox_Menus.Controls.Add(this.pictureBox2);
             this.grpBox_Menus.Controls.Add(this.btnSalary);
             this.grpBox_Menus.Controls.Add(this.btnEmployee);
-            this.grpBox_Menus.Controls.Add(this.button1);
+            this.grpBox_Menus.Controls.Add(this.btnUser);
             this.grpBox_Menus.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpBox_Menus.ForeColor = System.Drawing.Color.LightBlue;
             this.grpBox_Menus.Location = new System.Drawing.Point(239, 105);
@@ -380,7 +384,7 @@ namespace EmploNexus.Forms
         private System.Windows.Forms.TextBox txtCurrentTime;
         private System.Windows.Forms.Button btnEmployee;
         private System.Windows.Forms.Button btnSalary;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnUser;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.GroupBox grpBox_Name;
         private System.Windows.Forms.GroupBox grpBox_Date;

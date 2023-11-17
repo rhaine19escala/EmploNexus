@@ -401,7 +401,7 @@
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
             this.toolStripMenuItem6.Size = new System.Drawing.Size(280, 26);
-            this.toolStripMenuItem6.Text = "Salaryl Management";
+            this.toolStripMenuItem6.Text = "Salary Management";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // toolStripMenuItem7

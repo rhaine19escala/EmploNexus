@@ -36,6 +36,12 @@ namespace EmploNexus.Forms
             admin_Dashboard.Show();
             this.Hide();
         }
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
+            aSalary_Management.Show();
+            this.Hide();
+        }
 
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
@@ -46,11 +52,6 @@ namespace EmploNexus.Forms
                 logout.Show();
                 this.Hide();
             }
-        }
-
-        private void toolStripMenuItem6_Click(object sender, EventArgs e)
-        {
-            //Frm_ASalary_Management
         }
     }
 }

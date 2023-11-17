@@ -89,7 +89,9 @@ namespace EmploNexus.Forms
         }
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
-            //Frm_ASalary_Management
+            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
+            aSalary_Management.Show();
+            this.Hide();
         }
 
         private void btnempAdd_Click(object sender, EventArgs e)
