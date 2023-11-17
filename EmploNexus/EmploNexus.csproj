@@ -116,16 +116,23 @@
     <Compile Include="AppData\vw_all_user_role.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="EMPLONEXUS_NEWDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EMPLONEXUS_NEWDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Frm_Admin_Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Frm_Admin_Dashboard.Designer.cs">
       <DependentUpon>Frm_Admin_Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_ASalary_Management.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_ASalary_Management.Designer.cs">
+      <DependentUpon>Frm_ASalary_Management.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_AUser_Management.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_AUser_Management.Designer.cs">
+      <DependentUpon>Frm_AUser_Management.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Frm_Employee_Dashboard.cs">
       <SubType>Form</SubType>
@@ -133,11 +140,11 @@
     <Compile Include="Forms\Frm_Employee_Dashboard.Designer.cs">
       <DependentUpon>Frm_Employee_Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Frm_Employee_Management.cs">
+    <Compile Include="Forms\Frm_AEmployee_Management.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Frm_Employee_Management.Designer.cs">
-      <DependentUpon>Frm_Employee_Management.cs</DependentUpon>
+    <Compile Include="Forms\Frm_AEmployee_Management.Designer.cs">
+      <DependentUpon>Frm_AEmployee_Management.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Frm_Login.cs">
       <SubType>Form</SubType>
@@ -172,11 +179,17 @@
     <EmbeddedResource Include="Forms\Frm_Admin_Dashboard.resx">
       <DependentUpon>Frm_Admin_Dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_ASalary_Management.resx">
+      <DependentUpon>Frm_ASalary_Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_AUser_Management.resx">
+      <DependentUpon>Frm_AUser_Management.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_Employee_Dashboard.resx">
       <DependentUpon>Frm_Employee_Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Frm_Employee_Management.resx">
-      <DependentUpon>Frm_Employee_Management.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Frm_AEmployee_Management.resx">
+      <DependentUpon>Frm_AEmployee_Management.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_Login.resx">
       <DependentUpon>Frm_Login.cs</DependentUpon>
@@ -206,17 +219,6 @@
     </EntityDeploy>
     <None Include="AppData\EmploNexus_Model.edmx.diagram">
       <DependentUpon>EmploNexus_Model.edmx</DependentUpon>
-    </None>
-    <None Include="EMPLONEXUS_NEWDataSet.xsc">
-      <DependentUpon>EMPLONEXUS_NEWDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="EMPLONEXUS_NEWDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>EMPLONEXUS_NEWDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="EMPLONEXUS_NEWDataSet.xss">
-      <DependentUpon>EMPLONEXUS_NEWDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

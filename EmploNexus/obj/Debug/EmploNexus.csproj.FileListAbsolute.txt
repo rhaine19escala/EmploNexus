@@ -19,4 +19,6 @@ C:\Users\User\source\repos\EmploNexus\EmploNexus\bin\Debug\CircularProgressBar.d
 C:\Users\User\source\repos\EmploNexus\EmploNexus\bin\Debug\WinFormAnimation.dll
 C:\Users\User\source\repos\EmploNexus\EmploNexus\bin\Debug\CircularProgressBar.xml
 C:\Users\User\source\repos\EmploNexus\EmploNexus\obj\Debug\EmploNexus.Forms.Frm_OpeningScreen.resources
-C:\Users\User\source\repos\EmploNexus\EmploNexus\obj\Debug\EmploNexus.Forms.Frm_Employee_Management.resources
+C:\Users\User\source\repos\EmploNexus\EmploNexus\obj\Debug\EmploNexus.Forms.Frm_ASalary_Management.resources
+C:\Users\User\source\repos\EmploNexus\EmploNexus\obj\Debug\EmploNexus.Forms.Frm_AUser_Management.resources
+C:\Users\User\source\repos\EmploNexus\EmploNexus\obj\Debug\EmploNexus.Forms.Frm_AEmployee_Management.resources
