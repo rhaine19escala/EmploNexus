@@ -56,7 +56,7 @@ namespace EmploNexus.Forms
 
         private void lblCLose_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Quit EmploNexus?", "Quit EmploNexus?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show("Quit EmploNexus?", "EmploNexus: Quit EmploNexus?", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
             if (result == DialogResult.OK)
             {
@@ -64,7 +64,7 @@ namespace EmploNexus.Forms
             }
             else if (result == DialogResult.Cancel)
             {
-                MessageBox.Show("Quit operation canceled.", "Quit EmploNexus?", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Quit operation canceled.", "EmploNexus: Quit EmploNexus?", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
