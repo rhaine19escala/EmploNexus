@@ -70,6 +70,13 @@ namespace EmploNexus.Forms
             this.Hide();
         }
 
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            Frm_AUser_Management aUser_Management = new Frm_AUser_Management();
+            aUser_Management.Show();
+            this.Hide();
+        }
+
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
             DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -79,6 +86,10 @@ namespace EmploNexus.Forms
                 logout.Show();
                 this.Hide();
             }
+        }
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            //Frm_ASalary_Management
         }
 
         private void btnempAdd_Click(object sender, EventArgs e)
@@ -103,7 +114,5 @@ namespace EmploNexus.Forms
             txtempEmail.Clear();
             txtempSalary.Clear();
         }
-
-
     }
 }

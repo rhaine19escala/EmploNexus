@@ -47,5 +47,10 @@ namespace EmploNexus.Forms
                 this.Hide();
             }
         }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            //Frm_ASalary_Management
+        }
     }
 }
