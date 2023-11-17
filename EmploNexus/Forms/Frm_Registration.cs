@@ -17,6 +17,7 @@ namespace EmploNexus.Forms
     {
         public string username = String.Empty;
         EmploNexus_Entities_N db;
+
         public Frm_Registration()
         {
             InitializeComponent();

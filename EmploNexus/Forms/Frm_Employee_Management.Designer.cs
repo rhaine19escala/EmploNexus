@@ -415,7 +415,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::EmploNexus.Properties.Resources.alexandr_podvalny_n_Jb_d8O43Q_unsplash;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(900, 483);
+            this.ClientSize = new System.Drawing.Size(900, 488);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCurrentTime);
             this.Controls.Add(this.menuStrip2);

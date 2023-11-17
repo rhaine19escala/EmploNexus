@@ -224,6 +224,9 @@
       <DependentUpon>EmploNexus_Model.edmx</DependentUpon>
       <LastGenOutput>EmploNexus_Model.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\magnifying-glass.png" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\alexandr-podvalny-n_Jb_d8O43Q-unsplash.jpg" />
     <None Include="Resources\BACKIEGROUND.png" />
     <None Include="Resources\compensation.png" />
     <None Include="Resources\employee-management.png" />

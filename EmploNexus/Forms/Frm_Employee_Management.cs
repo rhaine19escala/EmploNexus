@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmploNexus.AppData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,47 @@ namespace EmploNexus.Forms
 {
     public partial class Frm_Employee_Management : Form
     {
+        EmploNexus_Entities_N db;
         public Frm_Employee_Management()
         {
             InitializeComponent();
+            //
+            db = new EmploNexus_Entities_N();
+            loadCbBoxGender();
+            loadCbBoxDepartment();
+            loadCbBoxPosition();
         }
+
+        public void loadCbBoxGender()
+        {
+            // SELECT * FROM GENDER
+            var gender = db.Genders.ToList();
+
+            cmbBox_empGender.ValueMember = "genderId";
+            cmbBox_empGender.DisplayMember = "genderName";
+            cmbBox_empGender.DataSource = gender;
+        }
+
+        public void loadCbBoxDepartment()
+        {
+            // SELECT * FROM DEPARTMENT
+            var department = db.Departments.ToList();
+
+            cmbBox_empDepartment.ValueMember = "departmentId";
+            cmbBox_empDepartment.DisplayMember = "departmentDescription";
+            cmbBox_empDepartment.DataSource = department;
+        }
+
+        public void loadCbBoxPosition()
+        {
+            // SELECT * FROM POSITION
+            var positions = db.Positions.ToList();
+
+            cmbBox_empPosition.ValueMember = "positionId";
+            cmbBox_empPosition.DisplayMember = "positionDescription";
+            cmbBox_empPosition.DataSource = positions;
+        }
+
 
         private void Frm_Employee_Management_Load(object sender, EventArgs e)
         {
