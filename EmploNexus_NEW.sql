@@ -127,5 +127,3 @@ CREATE PROCEDURE sp_newUser @userName nvarchar(50), @userPassword nvarchar(50)
 AS
 INSERT INTO UserAccounts(username, password) 
 	values (@userName, @userPassword)
-
-

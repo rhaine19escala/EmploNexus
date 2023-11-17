@@ -107,6 +107,9 @@ namespace EmploNexus
             btnLogin.Enabled = true; 
         }
 
+
+
+
         private void chckbox_showpass_CheckedChanged(object sender, EventArgs e)
         {
             if (chckbox_showpass.Checked)
