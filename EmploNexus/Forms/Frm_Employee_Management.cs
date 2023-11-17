@@ -16,5 +16,18 @@ namespace EmploNexus.Forms
         {
             InitializeComponent();
         }
+
+        private void Frm_Employee_Management_Load(object sender, EventArgs e)
+        {
+            DateTime currentTime = DateTime.Now;
+            txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            Frm_Admin_Dashboard admin_Dashboard = new Frm_Admin_Dashboard();
+            admin_Dashboard.Show();
+            this.Hide();
+        }
     }
 }

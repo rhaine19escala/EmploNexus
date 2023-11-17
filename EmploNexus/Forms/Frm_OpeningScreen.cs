@@ -62,11 +62,6 @@ namespace EmploNexus.Forms
             {
                 this.Close();
             }
-            else if (result == DialogResult.Cancel)
-            {
-                MessageBox.Show("Quit operation canceled.", "EmploNexus: Quit EmploNexus?", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
         }
     }
 }

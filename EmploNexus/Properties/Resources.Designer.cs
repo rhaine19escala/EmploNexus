@@ -83,6 +83,16 @@ namespace EmploNexus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap alexandr_podvalny_n_Jb_d8O43Q_unsplash {
+            get {
+                object obj = ResourceManager.GetObject("alexandr-podvalny-n_Jb_d8O43Q-unsplash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap antoine_rault_IhWRrZx4_kk_unsplash {
             get {
                 object obj = ResourceManager.GetObject("antoine-rault-IhWRrZx4-kk-unsplash", resourceCulture);
@@ -183,6 +193,16 @@ namespace EmploNexus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap magnifying_glass {
+            get {
+                object obj = ResourceManager.GetObject("magnifying-glass", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap management {
             get {
                 object obj = ResourceManager.GetObject("management", resourceCulture);
@@ -206,6 +226,16 @@ namespace EmploNexus.Properties {
         internal static System.Drawing.Bitmap planning {
             get {
                 object obj = ResourceManager.GetObject("planning", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search {
+            get {
+                object obj = ResourceManager.GetObject("search", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

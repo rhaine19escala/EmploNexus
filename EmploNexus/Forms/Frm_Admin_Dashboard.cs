@@ -39,5 +39,19 @@ namespace EmploNexus.Forms
             logout.Show();
             this.Hide();
         }
+
+        private void btnEmployee_Click(object sender, EventArgs e)
+        {
+            Frm_Employee_Management employee_Management = new Frm_Employee_Management();
+            employee_Management.Show();
+            this.Hide();
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Employee_Management employee_Management = new Frm_Employee_Management();
+            employee_Management.Show();
+            this.Hide();
+        }
     }
 }
