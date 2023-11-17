@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EmploNexus.AppData;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace EmploNexus
 {
@@ -16,6 +17,22 @@ namespace EmploNexus
         public UserRepository()
         {
             emploNexusEntities = new EmploNexus_Entities_N();
+        }
+
+        
+        public UserAccount GetUserByUsername(String username)
+        {
+            // re-initialize emploNexusEntities object because sometimes data in the list not updated
+            emploNexusEntities = new EmploNexus_Entities_N();
+            // SELECT TOP 1 * FROM USERACCOUNT WHERE username == username
+            return emploNexusEntities.UserAccounts.Where(s => s.username == username).FirstOrDefault();
+        }
+
+        public List<vw_all_user_role> AllUserRole()
+        {
+            emploNexusEntities = new EmploNexus_Entities_N();
+
+            return emploNexusEntities.vw_all_user_role.ToList();
         }
 
         public ErrorCode Register(String username, String password)
@@ -31,7 +48,7 @@ namespace EmploNexus
                     emploNexusEntities.UserAccounts.Add(newUser);
                     emploNexusEntities.SaveChanges();
 
-                    return ErrorCode.Success; 
+                    return ErrorCode.Success;
                 }
             }
             catch (Exception ex)
@@ -40,21 +57,7 @@ namespace EmploNexus
                 return ErrorCode.Error;
             }
         }
-        public UserAccount GetUserByUsername(String username)
-        {          
-            // re-initialize emploNexusEntities object because sometimes data in the list not updated
-            emploNexusEntities = new EmploNexus_Entities_N();
-            // SELECT TOP 1 * FROM USERACCOUNT WHERE username == username
-            return emploNexusEntities.UserAccounts.Where(s => s.username == username).FirstOrDefault();
-        }
 
-        public List<vw_all_user_role> AllUserRole()
-        {
-            emploNexusEntities = new EmploNexus_Entities_N();
-
-            return emploNexusEntities.vw_all_user_role.ToList();
-        }
-        
         public ErrorCode NewUser(UserAccount aUserAccount, ref String outMessage)
         {
             ErrorCode retValue = ErrorCode.Error;
@@ -128,5 +131,11 @@ namespace EmploNexus
 
             return emploNexusEntities.UserAccounts.ToList();
         }
+
+        //public List <UserAccount> GetEmployeeList() 
+        //{
+        //    emploNexusEntities = new EmploNexus_Entities_N();
+        //    return emploNexusEntities.UserAccounts.ToList();
+        //}
     }
 }

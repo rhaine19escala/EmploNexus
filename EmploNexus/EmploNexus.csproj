@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +46,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>employee_account_business_time_clock_icon_124657.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
@@ -97,6 +115,11 @@
     </Compile>
     <Compile Include="AppData\vw_all_user_role.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EMPLONEXUS_NEWDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMPLONEXUS_NEWDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Forms\Frm_Admin_Dashboard.cs">
       <SubType>Form</SubType>
@@ -184,6 +207,17 @@
     <None Include="AppData\EmploNexus_Model.edmx.diagram">
       <DependentUpon>EmploNexus_Model.edmx</DependentUpon>
     </None>
+    <None Include="EMPLONEXUS_NEWDataSet.xsc">
+      <DependentUpon>EMPLONEXUS_NEWDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EMPLONEXUS_NEWDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EMPLONEXUS_NEWDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EMPLONEXUS_NEWDataSet.xss">
+      <DependentUpon>EMPLONEXUS_NEWDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -224,6 +258,7 @@
       <DependentUpon>EmploNexus_Model.edmx</DependentUpon>
       <LastGenOutput>EmploNexus_Model.cs</LastGenOutput>
     </Content>
+    <Content Include="employee_account_business_time_clock_icon_124657.ico" />
     <None Include="Resources\magnifying-glass.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\alexandr-podvalny-n_Jb_d8O43Q-unsplash.jpg" />
@@ -234,6 +269,18 @@
     <None Include="Resources\employee_account_business_time_clock_icon_124657.png" />
     <None Include="Resources\logoICON3.PNG" />
     <None Include="Resources\management.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
