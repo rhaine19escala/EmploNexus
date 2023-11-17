@@ -32,21 +32,25 @@ namespace EmploNexus.Forms
             circularProgressBar1.Value += 1;
             circularProgressBar1.Text = circularProgressBar1.Value.ToString() + "%";
 
-            if (circularProgressBar1.Value == 100)
+            if (circularProgressBar1.Value >= 100)
             {
                 timer1.Enabled = false;
+                button1.Enabled = true;
+
                 Frm_Login login = new Frm_Login();
                 login.Show();
                 this.Hide();
             }
+            else
+            {
+                button1.Enabled = false;
+            }
         }
+
 
         private void BtnRun_Click(object sender, EventArgs e)
         {
-            // Reset the progress bar
             circularProgressBar1.Value = 0;
-
-            // Enable the timer
             timer1.Enabled = true;
         }
     }
