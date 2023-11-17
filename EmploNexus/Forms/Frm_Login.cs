@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,35 +20,13 @@ namespace EmploNexus
     {
         public String user_Name = String.Empty;
         UserRepository userRepo;
-        private BackgroundWorker loginWorker;
 
         public Frm_Login()
         {
             InitializeComponent();
             //
             userRepo = new UserRepository();
-
-            // Initialize BackgroundWorker
-            loginWorker = new BackgroundWorker();
-            loginWorker.WorkerReportsProgress = true;
-            loginWorker.DoWork += LoginWorker_DoWork;
-            loginWorker.ProgressChanged += LoginWorker_ProgressChanged;
-            loginWorker.RunWorkerCompleted += LoginWorker_RunWorkerCompleted;
-        }
-
-        private void LoginWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            for (int i = 1; i <= 100; i++)
-            {
-                Thread.Sleep(50);
-                loginWorker.ReportProgress(i);
-            }
-        }
-
-        private void LoginWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            prgBar_loading.Value = e.ProgressPercentage;
-        }
+          }
 
         private void Login_Load(object sender, EventArgs e)
         {
@@ -62,53 +42,7 @@ namespace EmploNexus
             txtusername.Text = frm.username;
         }
 
-        private void LoginWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            btnLogin.Enabled = true;
-
-            var userLogged = userRepo.GetUserByUsername(txtusername.Text);
-
-            if (userLogged != null)
-            {
-                if (userLogged.password.Equals(txtpassword.Text))
-                {
-                    UserLogged.GetInstance().UserAccounts = userLogged;
-
-                    switch ((Role)userLogged.roleId)
-                    {
-                        case Role.Employee:
-                            new Frm_Employee_Dashboard().Show();
-                            this.Hide();
-                            break;
-                        case Role.Manager:
-                            new Frm_Manager_Dashboard().Show();
-                            this.Hide();
-                            break;
-                        case Role.Admin:
-                            new Frm_Admin_Dashboard().Show();
-                            this.Hide();
-                            break;
-                        default:
-                            MessageBox.Show("User has no role!");
-                            break;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Incorrect Password. Please try Again.", "EmploNexus: Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtusername.Clear();
-                    txtpassword.Clear();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Username Entered not Found! Please try Again.", "EmploNexus: Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtusername.Clear();
-                txtpassword.Clear();
-            }
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
 
@@ -127,13 +61,35 @@ namespace EmploNexus
 
             var userLogged = userRepo.GetUserByUsername(txtusername.Text);
 
+            btnLogin.Enabled = false; // Disable the button during the login process
+
             if (userLogged != null)
             {
                 if (userLogged.password.Equals(txtpassword.Text))
                 {
-                    // Start the background worker only if the credentials are valid
-                    loginWorker.RunWorkerAsync();
-                    btnLogin.Enabled = false;
+                    UserLogged.GetInstance().UserAccounts = userLogged;
+                    timer1.Start();
+                    await Task.Delay(15000);
+                    timer1.Stop();
+
+                    switch ((Role)userLogged.roleId)
+                    {
+                        case Role.Employee:
+                            new Frm_Employee_Dashboard().Show();
+                            this.Hide();
+                            break;
+                        case Role.Manager:
+                            new Frm_Manager_Dashboard().Show();
+                            this.Hide();
+                            break;
+                        case Role.Admin:
+                            new Frm_Admin_Dashboard().Show();
+                            this.Hide();
+                            break;
+                        default:
+                            MessageBox.Show("User Entered has no role!. Please try Again.", "EmploNexus: Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                    }
                 }
                 else
                 {
@@ -148,7 +104,10 @@ namespace EmploNexus
                 txtusername.Clear();
                 txtpassword.Clear();
             }
+            btnLogin.Enabled = true; 
         }
+
+
 
 
         private void chckbox_showpass_CheckedChanged(object sender, EventArgs e)

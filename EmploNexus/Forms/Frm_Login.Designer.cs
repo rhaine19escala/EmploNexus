@@ -242,6 +242,7 @@ namespace EmploNexus
             this.prgBar_loading.Location = new System.Drawing.Point(0, 332);
             this.prgBar_loading.Name = "prgBar_loading";
             this.prgBar_loading.Size = new System.Drawing.Size(647, 34);
+            this.prgBar_loading.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.prgBar_loading.TabIndex = 11;
             // 
             // timer1
