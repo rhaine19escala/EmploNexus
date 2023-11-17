@@ -110,6 +110,12 @@
     <Compile Include="Forms\Frm_Employee_Dashboard.Designer.cs">
       <DependentUpon>Frm_Employee_Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Frm_Employee_Management.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_Employee_Management.Designer.cs">
+      <DependentUpon>Frm_Employee_Management.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Frm_Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_Employee_Dashboard.resx">
       <DependentUpon>Frm_Employee_Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_Employee_Management.resx">
+      <DependentUpon>Frm_Employee_Management.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_Login.resx">
       <DependentUpon>Frm_Login.cs</DependentUpon>
@@ -215,6 +224,9 @@
       <DependentUpon>EmploNexus_Model.edmx</DependentUpon>
       <LastGenOutput>EmploNexus_Model.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\employee_account_business_time_clock_icon_124657.png" />
+    <None Include="Resources\logoICON3.PNG" />
+    <None Include="Resources\management.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
