@@ -54,7 +54,7 @@ namespace EmploNexus
 
             return emploNexusEntities.vw_all_user_role.ToList();
         }
-        /*
+        
         public ErrorCode NewUser(UserAccount aUserAccount, ref String outMessage)
         {
             ErrorCode retValue = ErrorCode.Error;
@@ -80,10 +80,10 @@ namespace EmploNexus
             try
             {
                 // Find the user with id
-                UserAccount user = emploNexusEntities.UserAccounts.Where(m => m.users_empid == userId).FirstOrDefault();
+                UserAccount user = emploNexusEntities.UserAccounts.Where(m => m.userID == userId).FirstOrDefault();
                 // Update the value of the retrieved user
-                user.users_name = aUserAccount.users_name;
-                user.users_pass = aUserAccount.users_pass;
+                user.username = aUserAccount.username;
+                user.password = aUserAccount.password;
 
                 emploNexusEntities.SaveChanges();// Execute the update
 
@@ -104,7 +104,7 @@ namespace EmploNexus
             ErrorCode retValue = ErrorCode.Error;
             try
             {
-                UserAccount user = emploNexusEntities.UserAccounts.Where(m => m.users_empid == userId).FirstOrDefault();
+                UserAccount user = emploNexusEntities.UserAccounts.Where(m => m.userID == userId).FirstOrDefault();
                 // Remove the user
                 emploNexusEntities.UserAccounts.Remove(user);
                 emploNexusEntities.SaveChanges();       // Execute the update
@@ -124,12 +124,9 @@ namespace EmploNexus
         
         public List<UserAccount> UserAccounts()
         {
-            emploNexusEntities = new EmploNexusEntities1();
+            emploNexusEntities = new EmploNexus_Entities_N();
 
             return emploNexusEntities.UserAccounts.ToList();
         }
-
-        
-        */
     }
 }
