@@ -98,9 +98,6 @@
     <Compile Include="AppData\Gender.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\Payroll.cs">
-      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="AppData\Position.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="EMPLONEXUS_ModelStoreContainer" CdmEntityContainer="EMPLONEXUS_Entities1">
+  <EntityContainerMapping StorageEntityContainer="EMPLONEXUS_ModelStoreContainer" CdmEntityContainer="EMPLONEXUS_ENTITIES">
     <EntitySetMapping Name="Departments">
       <EntityTypeMapping TypeName="EMPLONEXUS_Model.Department">
         <MappingFragment StoreEntitySet="Departments">
@@ -53,22 +53,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Payrolls">
-      <EntityTypeMapping TypeName="EMPLONEXUS_Model.Payroll">
-        <MappingFragment StoreEntitySet="Payroll">
-          <ScalarProperty Name="payroll_ID" ColumnName="payroll_ID" />
-          <ScalarProperty Name="payroll_PayDate" ColumnName="payroll_PayDate" />
-          <ScalarProperty Name="payroll_Amount" ColumnName="payroll_Amount" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="vw_all_user_role">
       <EntityTypeMapping TypeName="EMPLONEXUS_Model.vw_all_user_role">
         <MappingFragment StoreEntitySet="vw_all_user_role">
           <ScalarProperty Name="USER_ID" ColumnName="USER ID" />
-          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE ID" />
           <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE NAME" />
-          <ScalarProperty Name="E_MAIL" ColumnName="E-MAIL" />
           <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
           <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
           <ScalarProperty Name="ROLE" ColumnName="ROLE" />

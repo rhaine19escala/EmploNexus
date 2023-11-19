@@ -57,7 +57,7 @@ namespace EmploNexus
             // txtusername
             // 
             this.txtusername.BackColor = System.Drawing.Color.LightCyan;
-            this.txtusername.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtusername.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtusername.Location = new System.Drawing.Point(109, 37);
             this.txtusername.Multiline = true;
             this.txtusername.Name = "txtusername";
@@ -89,7 +89,7 @@ namespace EmploNexus
             // txtpassword
             // 
             this.txtpassword.BackColor = System.Drawing.Color.LightCyan;
-            this.txtpassword.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpassword.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtpassword.Location = new System.Drawing.Point(109, 72);
             this.txtpassword.Multiline = true;
             this.txtpassword.Name = "txtpassword";

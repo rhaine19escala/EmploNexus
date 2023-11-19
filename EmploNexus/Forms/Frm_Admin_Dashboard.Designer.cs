@@ -32,7 +32,6 @@ namespace EmploNexus.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Admin_Dashboard));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,7 +79,6 @@ namespace EmploNexus.Forms
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
             this.profileToolStripMenuItem,
             this.logoutToolStripMenuItem,
             this.logoutToolStripMenuItem1,
@@ -88,13 +86,6 @@ namespace EmploNexus.Forms
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(49, 26);
             this.fileToolStripMenuItem.Text = "File";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Enabled = false;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(280, 26);
-            this.toolStripMenuItem1.Text = "Dashboard";
             // 
             // profileToolStripMenuItem
             // 
@@ -385,7 +376,6 @@ namespace EmploNexus.Forms
         private System.Windows.Forms.Button btnEmployee;
         private System.Windows.Forms.Button btnSalary;
         private System.Windows.Forms.Button btnUser;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.GroupBox grpBox_Name;
         private System.Windows.Forms.GroupBox grpBox_Date;
         private System.Windows.Forms.TextBox txtCurrentDate;

@@ -120,9 +120,11 @@ CREATE TABLE Payroll (
 ------VIEW ALL USER ROLE
 CREATE VIEW vw_all_user_role
 AS
-SELECT ua.userID AS 'USER ID',ua.emp_ID AS 'EMPLOYEE ID', ua.name AS 'EMPLOYEE NAME', ua.email AS 'E-MAIL', ua.userName AS 'USERNAME', ua.password AS 'PASSWORD', R.roleName AS 'ROLE' FROM Roles R
+SELECT ua.userID AS 'USER ID', ua.name AS 'EMPLOYEE NAME', ua.userName AS 'USERNAME', ua.password AS 'PASSWORD', R.roleName AS 'ROLE' FROM Roles R
 INNER JOIN UserAccounts ua 
 ON ua.roleId = R.roleId
+
+
 
 ------STORED PROCEDURE NEW USER
 CREATE PROCEDURE sp_newUser @userName nvarchar(50), @userPassword nvarchar(50)

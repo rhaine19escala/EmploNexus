@@ -15,9 +15,7 @@ namespace EmploNexus.AppData
     public partial class vw_all_user_role
     {
         public int USER_ID { get; set; }
-        public int EMPLOYEE_ID { get; set; }
         public string EMPLOYEE_NAME { get; set; }
-        public string E_MAIL { get; set; }
         public string USERNAME { get; set; }
         public string PASSWORD { get; set; }
         public string ROLE { get; set; }

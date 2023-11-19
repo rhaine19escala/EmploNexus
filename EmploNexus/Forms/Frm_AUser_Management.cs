@@ -12,6 +12,7 @@ namespace EmploNexus.Forms
 {
     public partial class Frm_AUser_Management : Form
     {
+        UserRepository repo;
         public Frm_AUser_Management()
         {
             InitializeComponent();
@@ -21,6 +22,14 @@ namespace EmploNexus.Forms
         {
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
+
+            repo = new UserRepository();
+            loadUser();
+        }
+
+        private void loadUser()
+        {
+            dgv_AllUserWdetails.DataSource = repo.AllUserRole();
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
@@ -51,6 +60,21 @@ namespace EmploNexus.Forms
                 Frm_Login logout = new Frm_Login();
                 logout.Show();
                 this.Hide();
+            }
+        }
+
+        private void dgv_AllUserWdetails_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                txtuserName.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[1].Value as String;
+                txtuserUsername.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[2].Value as String;
+                txtuserPassword.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[3].Value as String;
+                txtRole.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[3].Value as String;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Encountered :" + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

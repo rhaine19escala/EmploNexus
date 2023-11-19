@@ -48,5 +48,11 @@ namespace EmploNexus.Forms
                 this.Hide();
             }
         }
+
+        private void Frm_ASalary_Management_Load(object sender, EventArgs e)
+        {
+            DateTime currentTime = DateTime.Now;
+            txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
+        }
     }
 }

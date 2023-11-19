@@ -380,7 +380,7 @@
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(280, 26);
-            this.toolStripMenuItem3.Text = "Dashboard";
+            this.toolStripMenuItem3.Text = "Back";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // toolStripMenuItem4
