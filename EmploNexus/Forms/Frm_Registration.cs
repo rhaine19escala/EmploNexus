@@ -107,12 +107,6 @@ namespace EmploNexus.Forms
                 errorProvider1.SetError(txtEmployeeID, "Empty field");
                 return;
             }
-            if(txtEmployeeID.Text.Any(char.IsLetter))
-            {
-                errorProvider1.Clear();
-                errorProvider1.SetError(txtEmployeeID, "Invalid input");
-            }
-
             if (String.IsNullOrEmpty(txtempName.Text))
             {
                 errorProvider1.Clear();
@@ -157,12 +151,8 @@ namespace EmploNexus.Forms
             // find the user id
             // code input equal db. useraccoutn code
             UserAccount nUserAccount = new UserAccount();
-            int emp_ID;
-            if (int.TryParse(txtEmployeeID.Text, out emp_ID))
-{
-                nUserAccount.emp_ID = emp_ID;
-            }
-           // nUserAccount.emp_ID = Convert.ToInt32(txtEmployeeID.Text);
+
+            nUserAccount.emp_ID = Convert.ToInt32(txtEmployeeID.Text);
             nUserAccount.name = txtempName.Text;
             nUserAccount.email = txtEmail.Text;
             nUserAccount.username = txtuser_name.Text;
