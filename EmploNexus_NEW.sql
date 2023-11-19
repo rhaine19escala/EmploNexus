@@ -127,7 +127,7 @@ ON ua.roleId = R.roleId
 
 
 ------STORED PROCEDURE NEW USER
-CREATE PROCEDURE sp_newUser @userName nvarchar(50), @userPassword nvarchar(50)
+CREATE PROCEDURE sp_newUser @name nvarchar(50), @userName nvarchar(50), @userPassword nvarchar(50)
 AS
 INSERT INTO UserAccounts(username, password) 
-	values (@userName, @userPassword)
+	values (@name, @userName, @userPassword)
