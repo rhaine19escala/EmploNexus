@@ -16,13 +16,13 @@ namespace EmploNexus.Forms
     public partial class Frm_Registration : Form
     {
         public string username = String.Empty;
-        EmploNexus_Entities_N db;
+        EMPLONEXUS_Entities1 db;
 
         public Frm_Registration()
         {
             InitializeComponent();
             //
-            db = new EmploNexus_Entities_N();
+            db = new EMPLONEXUS_Entities1();
         }
 
         private void Frm_Register_Load(object sender, EventArgs e)
@@ -149,7 +149,7 @@ namespace EmploNexus.Forms
             // find the user id
             // code input equal db. useraccoutn code
             UserAccount nUserAccount = new UserAccount();
-            nUserAccount.emp_ID = txtEmployeeID.Text;
+            nUserAccount.emp_ID = Convert.ToInt32(txtEmployeeID.Text);
             nUserAccount.name = txtempName.Text;
             nUserAccount.email = txtEmail.Text;
             nUserAccount.username = txtuser_name.Text;

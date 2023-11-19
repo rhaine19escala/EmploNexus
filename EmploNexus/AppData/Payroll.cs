@@ -17,8 +17,7 @@ namespace EmploNexus.AppData
         public int payroll_ID { get; set; }
         public System.DateTime payroll_PayDate { get; set; }
         public decimal payroll_Amount { get; set; }
-        public Nullable<int> payroll_EmployeeID { get; set; }
     
-        public virtual Employee Employee { get; set; }
+        public virtual UserAccount UserAccount { get; set; }
     }
 }

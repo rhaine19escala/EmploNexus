@@ -95,9 +95,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmploNexus_Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="AppData\Employee.cs">
-      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="AppData\Gender.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>

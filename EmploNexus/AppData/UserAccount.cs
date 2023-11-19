@@ -16,10 +16,12 @@ namespace EmploNexus.AppData
     {
         public UserAccount()
         {
-            this.Employees = new HashSet<Employee>();
+            this.Payrolls = new HashSet<Payroll>();
         }
     
         public int userID { get; set; }
+        public int emp_ID { get; set; }
+        public Nullable<decimal> emp_Salary { get; set; }
         public string name { get; set; }
         public string email { get; set; }
         public string username { get; set; }
@@ -30,9 +32,9 @@ namespace EmploNexus.AppData
         public int genderId { get; set; }
     
         public virtual Department Department { get; set; }
-        public virtual ICollection<Employee> Employees { get; set; }
         public virtual Gender Gender { get; set; }
         public virtual Position Position { get; set; }
         public virtual Role Role { get; set; }
+        public virtual ICollection<Payroll> Payrolls { get; set; }
     }
 }
