@@ -115,47 +115,6 @@ namespace EmploNexus.Forms
                 errorProvider1.SetError(txtRole, "Empty Field!");
                 return;
             }
-
-            UserAccount newUser = new UserAccount();
-            newUser.name = name;
-            newUser.username = username;
-            newUser.password = password;
-
-            //var userLogged = 
-
-            //switch ((Role).)
-            //{
-            //    case Role.Employee:
-            //        newUser.roleDescription = 1;
-            //        break;
-            //    case Role.Manager:
-            //        new Frm_Manager_Dashboard().Show();
-            //        this.Hide();
-            //        break;
-            //    case Role.Admin:
-            //        new Frm_Admin_Dashboard().Show();
-            //        this.Hide();
-            //        break;
-            //    default:
-            //        MessageBox.Show("User Entered has no role!. Please try Again.", "EmploNexus: Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        break;
-            //}
-
-            String resultMessage = "";
-            ErrorCode result = repo.NewUser(newUser, ref resultMessage);
-            if (result == ErrorCode.Success)
-            {
-                errorProvider1.Clear();
-                MessageBox.Show(resultMessage, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearInputFields();
-            }
-            else
-            {
-                MessageBox.Show("Error: " + resultMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            //int retValue = repo.NewUser(username, password, ref outputMessage);
-            //if(retValue == Constant.Success)
         }
 
         private void ClearInputFields()

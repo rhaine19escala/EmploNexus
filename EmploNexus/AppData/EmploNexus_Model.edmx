@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EMPLONEXUS_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="EMPLONEXUS_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Departments">
           <Key>
             <PropertyRef Name="departmentId" />
@@ -116,8 +116,11 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
           </ReferentialConstraint>
         </Association>
         <Function Name="sp_newUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
           <Parameter Name="userName" Type="nvarchar" Mode="In" />
           <Parameter Name="userPassword" Type="nvarchar" Mode="In" />
+          <Parameter Name="roleId" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="EMPLONEXUS_ModelStoreContainer">
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
@@ -151,7 +154,8 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             <End Role="UserAccounts" EntitySet="UserAccounts" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EMPLONEXUS_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -271,7 +275,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EMPLONEXUS_ENTITIES" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EMPLONEXUS_" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Genders" EntityType="Self.Gender" />
           <EntitySet Name="Positions" EntityType="Self.Position" />
@@ -295,8 +299,11 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             <End Role="UserAccounts" EntitySet="UserAccounts" />
           </AssociationSet>
           <FunctionImport Name="sp_newUser">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
             <Parameter Name="userName" Mode="In" Type="String" />
             <Parameter Name="userPassword" Mode="In" Type="String" />
+            <Parameter Name="roleId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -304,7 +311,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EMPLONEXUS_ModelStoreContainer" CdmEntityContainer="EMPLONEXUS_ENTITIES">
+        <EntityContainerMapping StorageEntityContainer="EMPLONEXUS_ModelStoreContainer" CdmEntityContainer="EMPLONEXUS_">
           <EntitySetMapping Name="Departments">
             <EntityTypeMapping TypeName="EMPLONEXUS_Model.Department">
               <MappingFragment StoreEntitySet="Departments">

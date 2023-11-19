@@ -16,10 +16,10 @@ namespace EmploNexus.AppData
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class EMPLONEXUS_ENTITIES : DbContext
+    public partial class EMPLONEXUS_ : DbContext
     {
-        public EMPLONEXUS_ENTITIES()
-            : base("name=EMPLONEXUS_ENTITIES")
+        public EMPLONEXUS_()
+            : base("name=EMPLONEXUS_")
         {
         }
     
@@ -35,8 +35,16 @@ namespace EmploNexus.AppData
         public DbSet<UserAccount> UserAccounts { get; set; }
         public DbSet<vw_all_user_role> vw_all_user_role { get; set; }
     
-        public virtual int sp_newUser(string userName, string userPassword)
+        public virtual int sp_newUser(Nullable<int> userId, string name, string userName, string userPassword, Nullable<int> roleId)
         {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
             var userNameParameter = userName != null ?
                 new ObjectParameter("userName", userName) :
                 new ObjectParameter("userName", typeof(string));
@@ -45,7 +53,11 @@ namespace EmploNexus.AppData
                 new ObjectParameter("userPassword", userPassword) :
                 new ObjectParameter("userPassword", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_newUser", userNameParameter, userPasswordParameter);
+            var roleIdParameter = roleId.HasValue ?
+                new ObjectParameter("roleId", roleId) :
+                new ObjectParameter("roleId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_newUser", userIdParameter, nameParameter, userNameParameter, userPasswordParameter, roleIdParameter);
         }
     }
 }

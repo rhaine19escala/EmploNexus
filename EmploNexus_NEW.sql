@@ -28,7 +28,6 @@ CREATE TABLE [dbo].[Departments](
  ([departmentId] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
--- Inserting data into Department Table
 USE [EMPLONEXUS_NEW]
 GO
 SET IDENTITY_INSERT [dbo].[Departments] ON;
@@ -68,6 +67,8 @@ CREATE TABLE [dbo].[Gender](
  ([genderId] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
+USE [EMPLONEXUS_NEW]
+GO
 SET IDENTITY_INSERT [dbo].[Gender] ON;
 INSERT [dbo].[Gender] ([genderId], [genderName]) VALUES (1, N'Male');
 INSERT [dbo].[Gender] ([genderId], [genderName]) VALUES (2, N'Female');
@@ -127,7 +128,7 @@ ON ua.roleId = R.roleId
 
 
 ------STORED PROCEDURE NEW USER
-CREATE PROCEDURE sp_newUser @name nvarchar(50), @userName nvarchar(50), @userPassword nvarchar(50)
+CREATE PROCEDURE sp_newUser @userId int, @name nvarchar(50), @userName nvarchar(50), @userPassword nvarchar(50), @roleId int 
 AS
-INSERT INTO UserAccounts(username, password) 
-	values (@name, @userName, @userPassword)
+INSERT INTO UserAccounts(userID,name,username, password, roleId) 
+	values (@userId , @name, @userName, @userPassword, @roleId)
