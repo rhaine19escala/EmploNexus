@@ -111,8 +111,11 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
     </ReferentialConstraint>
   </Association>
   <Function Name="sp_newUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
     <Parameter Name="userName" Type="nvarchar" Mode="In" />
     <Parameter Name="userPassword" Type="nvarchar" Mode="In" />
+    <Parameter Name="roleId" Type="int" Mode="In" />
   </Function>
   <EntityContainer Name="EMPLONEXUS_ModelStoreContainer">
     <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />

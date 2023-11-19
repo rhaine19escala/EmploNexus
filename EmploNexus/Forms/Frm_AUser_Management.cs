@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EmploNexus;
 using EmploNexus.AppData;
-using EmploNexus;
 
 namespace EmploNexus.Forms
 {
     public partial class Frm_AUser_Management : Form
     {
         UserRepository repo;
-        private EMPLONEXUS_ENTITIES emploNexusEntities;
+        private EMPLONEXUS_ emploNexusEntities;
 
         public Frm_AUser_Management()
         {
@@ -25,7 +24,7 @@ namespace EmploNexus.Forms
 
         private void Frm_AUser_Management_Load(object sender, EventArgs e)
         {
-            emploNexusEntities = new EMPLONEXUS_ENTITIES();
+            emploNexusEntities = new EMPLONEXUS_();
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
 
@@ -73,6 +72,7 @@ namespace EmploNexus.Forms
         {
             try
             {
+                txtUserID.Text = Convert.ToInt32(dgv_AllUserWdetails.Rows[e.RowIndex].Cells[0].Value).ToString();
                 txtuserName.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[1].Value as String;
                 txtuserUsername.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[2].Value as String;
                 txtuserPassword.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[3].Value as String;

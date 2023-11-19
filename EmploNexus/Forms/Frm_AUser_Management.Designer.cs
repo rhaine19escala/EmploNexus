@@ -60,6 +60,8 @@
             this.txtRole = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtUserID = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -176,7 +178,7 @@
             this.groupBox2.Controls.Add(this.btnuserUpdate);
             this.groupBox2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.LightBlue;
-            this.groupBox2.Location = new System.Drawing.Point(15, 272);
+            this.groupBox2.Location = new System.Drawing.Point(15, 283);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(424, 83);
             this.groupBox2.TabIndex = 34;
@@ -230,6 +232,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.txtUserID);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtRole);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtuserUsername);
@@ -242,28 +246,28 @@
             this.groupBox1.ForeColor = System.Drawing.Color.LightBlue;
             this.groupBox1.Location = new System.Drawing.Point(15, 49);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(424, 207);
+            this.groupBox1.Size = new System.Drawing.Size(424, 235);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Account Details";
             // 
             // txtuserUsername
             // 
-            this.txtuserUsername.Location = new System.Drawing.Point(179, 73);
+            this.txtuserUsername.Location = new System.Drawing.Point(179, 114);
             this.txtuserUsername.Name = "txtuserUsername";
             this.txtuserUsername.Size = new System.Drawing.Size(230, 33);
             this.txtuserUsername.TabIndex = 18;
             // 
             // txtuserPassword
             // 
-            this.txtuserPassword.Location = new System.Drawing.Point(179, 112);
+            this.txtuserPassword.Location = new System.Drawing.Point(179, 153);
             this.txtuserPassword.Name = "txtuserPassword";
             this.txtuserPassword.Size = new System.Drawing.Size(230, 33);
             this.txtuserPassword.TabIndex = 32;
             // 
             // txtuserName
             // 
-            this.txtuserName.Location = new System.Drawing.Point(179, 34);
+            this.txtuserName.Location = new System.Drawing.Point(179, 75);
             this.txtuserName.Name = "txtuserName";
             this.txtuserName.Size = new System.Drawing.Size(230, 33);
             this.txtuserName.TabIndex = 16;
@@ -274,7 +278,7 @@
             this.label3.BackColor = System.Drawing.Color.LightBlue;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label3.Location = new System.Drawing.Point(27, 37);
+            this.label3.Location = new System.Drawing.Point(27, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 26);
             this.label3.TabIndex = 17;
@@ -286,7 +290,7 @@
             this.label4.BackColor = System.Drawing.Color.LightBlue;
             this.label4.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label4.Location = new System.Drawing.Point(27, 76);
+            this.label4.Location = new System.Drawing.Point(27, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(103, 26);
             this.label4.TabIndex = 19;
@@ -298,7 +302,7 @@
             this.label5.BackColor = System.Drawing.Color.LightBlue;
             this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label5.Location = new System.Drawing.Point(27, 115);
+            this.label5.Location = new System.Drawing.Point(27, 156);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(96, 26);
             this.label5.TabIndex = 21;
@@ -355,13 +359,13 @@
             this.dgv_AllUserWdetails.Location = new System.Drawing.Point(457, 51);
             this.dgv_AllUserWdetails.Name = "dgv_AllUserWdetails";
             this.dgv_AllUserWdetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_AllUserWdetails.Size = new System.Drawing.Size(582, 304);
+            this.dgv_AllUserWdetails.Size = new System.Drawing.Size(582, 313);
             this.dgv_AllUserWdetails.TabIndex = 9;
             this.dgv_AllUserWdetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_AllUserWdetails_CellClick);
             // 
             // txtRole
             // 
-            this.txtRole.Location = new System.Drawing.Point(179, 151);
+            this.txtRole.Location = new System.Drawing.Point(179, 192);
             this.txtRole.Name = "txtRole";
             this.txtRole.Size = new System.Drawing.Size(230, 33);
             this.txtRole.TabIndex = 34;
@@ -372,7 +376,7 @@
             this.label6.BackColor = System.Drawing.Color.LightBlue;
             this.label6.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label6.Location = new System.Drawing.Point(27, 154);
+            this.label6.Location = new System.Drawing.Point(27, 195);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 26);
             this.label6.TabIndex = 33;
@@ -381,6 +385,25 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // txtUserID
+            // 
+            this.txtUserID.Location = new System.Drawing.Point(179, 36);
+            this.txtUserID.Name = "txtUserID";
+            this.txtUserID.Size = new System.Drawing.Size(230, 33);
+            this.txtUserID.TabIndex = 35;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.LightBlue;
+            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label2.Location = new System.Drawing.Point(27, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 26);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "User ID";
             // 
             // Frm_AUser_Management
             // 
@@ -447,5 +470,7 @@
         private System.Windows.Forms.TextBox txtRole;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.TextBox txtUserID;
+        private System.Windows.Forms.Label label2;
     }
 }

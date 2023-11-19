@@ -15,12 +15,12 @@ namespace EmploNexus.Forms
     public partial class Frm_AEmployee_Management : Form
     {
         //String strConnection = @"Data Source=.\sqlexpress;Initial Catalog=EMPLONEXUS_NEW;Integrated Security=True";
-        EMPLONEXUS_ENTITIES db;
+        EMPLONEXUS_ db;
         public Frm_AEmployee_Management()
         {
             InitializeComponent();
             //
-            db = new EMPLONEXUS_ENTITIES();
+            db = new EMPLONEXUS_();
             loadCbBoxGender();
             loadCbBoxDepartment();
             loadCbBoxPosition();

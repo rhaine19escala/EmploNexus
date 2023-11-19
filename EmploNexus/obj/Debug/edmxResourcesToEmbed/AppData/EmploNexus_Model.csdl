@@ -116,7 +116,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="EMPLONEXUS_ENTITIES" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="EMPLONEXUS_" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Departments" EntityType="Self.Department" />
     <EntitySet Name="Genders" EntityType="Self.Gender" />
     <EntitySet Name="Positions" EntityType="Self.Position" />
@@ -140,8 +140,11 @@
       <End Role="UserAccounts" EntitySet="UserAccounts" />
     </AssociationSet>
     <FunctionImport Name="sp_newUser">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
       <Parameter Name="userName" Mode="In" Type="String" />
       <Parameter Name="userPassword" Mode="In" Type="String" />
+      <Parameter Name="roleId" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
 </Schema>
