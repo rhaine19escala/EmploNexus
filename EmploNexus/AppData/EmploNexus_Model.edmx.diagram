@@ -15,6 +15,7 @@
         <AssociationConnector Association="EMPLONEXUS_Model.FK__UserAccou__gende__1CF15040" ManuallyRouted="false" />
         <AssociationConnector Association="EMPLONEXUS_Model.FK__UserAccou__posit__1BFD2C07" ManuallyRouted="false" />
         <AssociationConnector Association="EMPLONEXUS_Model.FK__UserAccou__roleI__1A14E395" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EMPLONEXUS_Model.vw_all_employee" Width="1.5" PointX="5.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

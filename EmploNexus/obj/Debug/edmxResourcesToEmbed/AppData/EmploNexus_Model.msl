@@ -65,5 +65,18 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_newUser" FunctionName="EMPLONEXUS_Model.Store.sp_newUser" />
+    <EntitySetMapping Name="vw_all_employee">
+      <EntityTypeMapping TypeName="EMPLONEXUS_Model.vw_all_employee">
+        <MappingFragment StoreEntitySet="vw_all_employee">
+          <ScalarProperty Name="emp_Salary" ColumnName="emp_Salary" />
+          <ScalarProperty Name="JOB_POSITION" ColumnName="JOB POSITION" />
+          <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="E_MAIL" ColumnName="E-MAIL" />
+          <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE NAME" />
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

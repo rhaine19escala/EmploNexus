@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EMPLONEXUS_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EMPLONEXUS_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Departments">
           <Key>
             <PropertyRef Name="departmentId" />
@@ -51,6 +51,25 @@
           <Property Name="departmentId" Type="int" Nullable="false" />
           <Property Name="positionId" Type="int" Nullable="false" />
           <Property Name="genderId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_all_employee">
+          <Key>
+            <PropertyRef Name="EMPLOYEE ID" />
+            <PropertyRef Name="EMPLOYEE NAME" />
+            <PropertyRef Name="E-MAIL" />
+            <PropertyRef Name="GENDER" />
+            <PropertyRef Name="DEPARTMENT" />
+            <PropertyRef Name="JOB POSITION" />
+          </Key>
+          <Property Name="EMPLOYEE ID" Type="int" Nullable="false" />
+          <Property Name="EMPLOYEE NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="E-MAIL" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="GENDER" Type="int" Nullable="false" />
+          <Property Name="DEPARTMENT" Type="int" Nullable="false" />
+          <Property Name="JOB POSITION" Type="int" Nullable="false" />
+          <Property Name="emp_Salary" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -128,6 +147,17 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
           <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAccounts" EntityType="Self.UserAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_all_employee" EntityType="Self.vw_all_employee" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_all_employee].[EMPLOYEE ID] AS [EMPLOYEE ID], 
+[vw_all_employee].[EMPLOYEE NAME] AS [EMPLOYEE NAME], 
+[vw_all_employee].[E-MAIL] AS [E-MAIL], 
+[vw_all_employee].[GENDER] AS [GENDER], 
+[vw_all_employee].[DEPARTMENT] AS [DEPARTMENT], 
+[vw_all_employee].[JOB POSITION] AS [JOB POSITION], 
+[vw_all_employee].[emp_Salary] AS [emp_Salary]
+FROM [dbo].[vw_all_employee] AS [vw_all_employee]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [vw_all_user_role].[USER ID] AS [USER ID], 
@@ -154,8 +184,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             <End Role="UserAccounts" EntitySet="UserAccounts" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EMPLONEXUS_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -305,7 +334,25 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             <Parameter Name="userPassword" Mode="In" Type="String" />
             <Parameter Name="roleId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="vw_all_employee" EntityType="EMPLONEXUS_Model.vw_all_employee" />
         </EntityContainer>
+        <EntityType Name="vw_all_employee">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+            <PropertyRef Name="EMPLOYEE_NAME" />
+            <PropertyRef Name="E_MAIL" />
+            <PropertyRef Name="GENDER" />
+            <PropertyRef Name="DEPARTMENT" />
+            <PropertyRef Name="JOB_POSITION" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
+          <Property Name="EMPLOYEE_NAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="E_MAIL" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GENDER" Type="Int32" Nullable="false" />
+          <Property Name="DEPARTMENT" Type="Int32" Nullable="false" />
+          <Property Name="JOB_POSITION" Type="Int32" Nullable="false" />
+          <Property Name="emp_Salary" Type="Decimal" Precision="10" Scale="2" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -376,6 +423,19 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_newUser" FunctionName="EMPLONEXUS_Model.Store.sp_newUser" />
+          <EntitySetMapping Name="vw_all_employee">
+            <EntityTypeMapping TypeName="EMPLONEXUS_Model.vw_all_employee">
+              <MappingFragment StoreEntitySet="vw_all_employee">
+                <ScalarProperty Name="emp_Salary" ColumnName="emp_Salary" />
+                <ScalarProperty Name="JOB_POSITION" ColumnName="JOB POSITION" />
+                <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="E_MAIL" ColumnName="E-MAIL" />
+                <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE NAME" />
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

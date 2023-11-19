@@ -125,6 +125,12 @@ SELECT ua.userID AS 'USER ID', ua.name AS 'EMPLOYEE NAME', ua.userName AS 'USERN
 INNER JOIN UserAccounts ua 
 ON ua.roleId = R.roleId
 
+------VIEW ALL USER ROLE
+CREATE VIEW vw_all_employee
+AS
+SELECT ua.emp_ID AS 'EMPLOYEE ID', ua.name AS 'EMPLOYEE NAME', ua.email AS 'E-MAIL', ua.genderId AS 'GENDER', ua.departmentId AS 'DEPARTMENT', ua.positionId AS 'JOB POSITION', ua.emp_Salary FROM Roles R
+INNER JOIN UserAccounts ua 
+ON ua.roleId = R.roleId
 
 
 ------STORED PROCEDURE NEW USER

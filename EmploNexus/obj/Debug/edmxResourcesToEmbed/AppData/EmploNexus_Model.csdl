@@ -146,5 +146,23 @@
       <Parameter Name="userPassword" Mode="In" Type="String" />
       <Parameter Name="roleId" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="vw_all_employee" EntityType="EMPLONEXUS_Model.vw_all_employee" />
   </EntityContainer>
+  <EntityType Name="vw_all_employee">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="EMPLOYEE_NAME" />
+      <PropertyRef Name="E_MAIL" />
+      <PropertyRef Name="GENDER" />
+      <PropertyRef Name="DEPARTMENT" />
+      <PropertyRef Name="JOB_POSITION" />
+    </Key>
+    <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
+    <Property Name="EMPLOYEE_NAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="E_MAIL" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="GENDER" Type="Int32" Nullable="false" />
+    <Property Name="DEPARTMENT" Type="Int32" Nullable="false" />
+    <Property Name="JOB_POSITION" Type="Int32" Nullable="false" />
+    <Property Name="emp_Salary" Type="Decimal" Precision="10" Scale="2" />
+  </EntityType>
 </Schema>

@@ -108,7 +108,7 @@
             this.panel1.Controls.Add(this.dgv_AllEmployeesWdetails);
             this.panel1.Location = new System.Drawing.Point(20, 104);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(859, 367);
+            this.panel1.Size = new System.Drawing.Size(1013, 367);
             this.panel1.TabIndex = 12;
             // 
             // cmbBox_empPosition
@@ -316,7 +316,7 @@
             this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(47)))), ((int)(((byte)(62)))));
             this.btnSearch.BackgroundImage = global::EmploNexus.Properties.Resources.magnifying_glass;
             this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSearch.Location = new System.Drawing.Point(813, 11);
+            this.btnSearch.Location = new System.Drawing.Point(963, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(29, 29);
             this.btnSearch.TabIndex = 11;
@@ -326,7 +326,7 @@
             // 
             this.txtempSearch.Location = new System.Drawing.Point(504, 12);
             this.txtempSearch.Name = "txtempSearch";
-            this.txtempSearch.Size = new System.Drawing.Size(302, 29);
+            this.txtempSearch.Size = new System.Drawing.Size(453, 29);
             this.txtempSearch.TabIndex = 10;
             // 
             // dgv_AllEmployeesWdetails
@@ -337,14 +337,16 @@
             this.dgv_AllEmployeesWdetails.GridColor = System.Drawing.Color.SteelBlue;
             this.dgv_AllEmployeesWdetails.Location = new System.Drawing.Point(412, 49);
             this.dgv_AllEmployeesWdetails.Name = "dgv_AllEmployeesWdetails";
-            this.dgv_AllEmployeesWdetails.Size = new System.Drawing.Size(430, 298);
+            this.dgv_AllEmployeesWdetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_AllEmployeesWdetails.Size = new System.Drawing.Size(580, 298);
             this.dgv_AllEmployeesWdetails.TabIndex = 9;
+            this.dgv_AllEmployeesWdetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_AllEmployeesWdetails_CellClick);
             // 
             // txtCurrentTime
             // 
             this.txtCurrentTime.BackColor = System.Drawing.Color.LightCyan;
             this.txtCurrentTime.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrentTime.Location = new System.Drawing.Point(725, 12);
+            this.txtCurrentTime.Location = new System.Drawing.Point(870, 12);
             this.txtCurrentTime.Name = "txtCurrentTime";
             this.txtCurrentTime.ReadOnly = true;
             this.txtCurrentTime.Size = new System.Drawing.Size(163, 29);
@@ -360,7 +362,7 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStrip2.Size = new System.Drawing.Size(900, 32);
+            this.menuStrip2.Size = new System.Drawing.Size(1045, 32);
             this.menuStrip2.TabIndex = 15;
             this.menuStrip2.Text = "menu_File";
             // 
@@ -417,7 +419,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::EmploNexus.Properties.Resources.alexandr_podvalny_n_Jb_d8O43Q_unsplash;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(900, 488);
+            this.ClientSize = new System.Drawing.Size(1045, 488);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCurrentTime);
             this.Controls.Add(this.menuStrip2);

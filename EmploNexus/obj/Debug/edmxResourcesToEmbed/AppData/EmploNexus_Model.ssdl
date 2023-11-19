@@ -48,6 +48,25 @@
     <Property Name="genderId" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_all_employee">
+    <Key>
+      <PropertyRef Name="EMPLOYEE ID" />
+      <PropertyRef Name="EMPLOYEE NAME" />
+      <PropertyRef Name="E-MAIL" />
+      <PropertyRef Name="GENDER" />
+      <PropertyRef Name="DEPARTMENT" />
+      <PropertyRef Name="JOB POSITION" />
+    </Key>
+    <Property Name="EMPLOYEE ID" Type="int" Nullable="false" />
+    <Property Name="EMPLOYEE NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="E-MAIL" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="GENDER" Type="int" Nullable="false" />
+    <Property Name="DEPARTMENT" Type="int" Nullable="false" />
+    <Property Name="JOB POSITION" Type="int" Nullable="false" />
+    <Property Name="emp_Salary" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_all_user_role">
     <Key>
@@ -123,6 +142,17 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
     <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAccounts" EntityType="Self.UserAccounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_all_employee" EntityType="Self.vw_all_employee" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_all_employee].[EMPLOYEE ID] AS [EMPLOYEE ID], 
+[vw_all_employee].[EMPLOYEE NAME] AS [EMPLOYEE NAME], 
+[vw_all_employee].[E-MAIL] AS [E-MAIL], 
+[vw_all_employee].[GENDER] AS [GENDER], 
+[vw_all_employee].[DEPARTMENT] AS [DEPARTMENT], 
+[vw_all_employee].[JOB POSITION] AS [JOB POSITION], 
+[vw_all_employee].[emp_Salary] AS [emp_Salary]
+FROM [dbo].[vw_all_employee] AS [vw_all_employee]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [vw_all_user_role].[USER ID] AS [USER ID], 

@@ -15,7 +15,9 @@ namespace EmploNexus.Forms
     public partial class Frm_AEmployee_Management : Form
     {
         //String strConnection = @"Data Source=.\sqlexpress;Initial Catalog=EMPLONEXUS_NEW;Integrated Security=True";
+        UserRepository repo;
         EMPLONEXUS_ db;
+
         public Frm_AEmployee_Management()
         {
             InitializeComponent();
@@ -61,6 +63,14 @@ namespace EmploNexus.Forms
         {
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
+
+
+            repo = new UserRepository();
+            loadUser();
+        }
+        private void loadUser()
+        {
+            dgv_AllEmployeesWdetails.DataSource = repo.GetEmployeeList();
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
@@ -115,6 +125,32 @@ namespace EmploNexus.Forms
             txtempName.Clear();
             txtempEmail.Clear();
             txtempSalary.Clear();
+        }
+
+        private void dgv_AllEmployeesWdetails_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            try
+            {
+                txtempID.Text = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[0].Value).ToString();
+                txtempName.Text = dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[1].Value as String;
+                txtempEmail.Text = dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[2].Value as String;
+
+                int genderID = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[3].Value);
+                cmbBox_empGender.SelectedValue = genderID;
+
+                int department = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[4].Value);
+                cmbBox_empDepartment.SelectedValue = department;
+
+                int position = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[5].Value);
+                cmbBox_empPosition.SelectedValue = position;
+
+                txtempSalary.Text = dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[6].Value as String;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Encountered :" + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

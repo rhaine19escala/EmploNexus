@@ -18,14 +18,19 @@ namespace EmploNexus
         {
             emploNexusEntities = new EMPLONEXUS_();
         }
-
-        
+     
         public UserAccount GetUserByUsername(String username)
         {
             // re-initialize emploNexusEntities object because sometimes data in the list not updated
             emploNexusEntities = new EMPLONEXUS_();
             // SELECT TOP 1 * FROM USERACCOUNT WHERE username == username
             return emploNexusEntities.UserAccounts.Where(s => s.username == username).FirstOrDefault();
+        }
+
+        public List<vw_all_employee> GetEmployeeList()
+        {
+            emploNexusEntities = new EMPLONEXUS_();
+            return emploNexusEntities.vw_all_employee.ToList();
         }
 
         public List<vw_all_user_role> AllUserRole()
@@ -123,19 +128,5 @@ namespace EmploNexus
             }
             return retValue;
         }
-
-        
-        public List<UserAccount> UserAccounts()
-        {
-            emploNexusEntities = new EMPLONEXUS_();
-
-            return emploNexusEntities.UserAccounts.ToList();
-        }
-
-        //public List <UserAccount> GetEmployeeList() 
-        //{
-        //    emploNexusEntities = new EmploNexus_Entities_N();
-        //    return emploNexusEntities.UserAccounts.ToList();
-        //}
     }
 }
