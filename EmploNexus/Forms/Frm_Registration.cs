@@ -99,13 +99,18 @@ namespace EmploNexus.Forms
         private void btnRegister_Click(object sender, EventArgs e)
         {
             //String cbResultSelected = cbBoxRole.SelectedValue.ToString();
+            if (String.IsNullOrEmpty(txtEmployeeID.Text))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtEmployeeID, "Empty field");
+                return;
+            }
             if (String.IsNullOrEmpty(txtempName.Text))
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtempName, "Empty field");
                 return;
             }
-
             if (String.IsNullOrEmpty(txtEmail.Text) || !IsValidEmail(txtEmail.Text))
             {
                 errorProvider1.Clear();
@@ -144,6 +149,7 @@ namespace EmploNexus.Forms
             // find the user id
             // code input equal db. useraccoutn code
             UserAccount nUserAccount = new UserAccount();
+            nUserAccount.emp_ID = txtEmployeeID.Text;
             nUserAccount.name = txtempName.Text;
             nUserAccount.email = txtEmail.Text;
             nUserAccount.username = txtuser_name.Text;

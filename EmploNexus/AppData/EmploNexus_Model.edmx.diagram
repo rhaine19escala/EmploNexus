@@ -22,6 +22,7 @@
         <AssociationConnector Association="EmploNexus_Model.FK__UserAccou__gende__1BFD2C07" ManuallyRouted="false" />
         <AssociationConnector Association="EmploNexus_Model.FK__UserAccou__posit__1B0907CE" ManuallyRouted="false" />
         <AssociationConnector Association="EmploNexus_Model.FK__UserAccou__roleI__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploNexus_Model.FK__Payroll__payroll__276EDEB3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

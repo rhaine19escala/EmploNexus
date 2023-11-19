@@ -76,6 +76,8 @@ SET IDENTITY_INSERT [dbo].[Gender] OFF;
 -- Create a table for users
 CREATE TABLE UserAccounts (
     userID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	emp_ID INT NOT NULL,
+	emp_Salary DECIMAL(10, 2) DEFAULT 0.00,
     name NVARCHAR(255) NOT NULL,
     email NVARCHAR(255) NOT NULL,
     username NVARCHAR(255) NOT NULL UNIQUE,
@@ -90,35 +92,35 @@ CREATE TABLE UserAccounts (
     FOREIGN KEY(genderId) REFERENCES Gender(genderId)
 );
 
--- Create a table for employees
-CREATE TABLE Employee (
-    emp_ID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-    emp_Name NVARCHAR(255) NOT NULL,
-    emp_Email NVARCHAR(255) NOT NULL UNIQUE,
-    emp_Salary DECIMAL(10, 2) DEFAULT 0.00,
-    emp_UserID INT,
-	emp_GenderId INT NOT NULL,
-	emp_DepartmentId INT NOT NULL,
-	emp_PositionId INT NOT NULL,
-    FOREIGN KEY(emp_UserID) REFERENCES UserAccounts(userID),
-    FOREIGN KEY(emp_GenderId) REFERENCES Gender(genderId),
-    FOREIGN KEY(emp_DepartmentId) REFERENCES Departments(departmentId),
-	FOREIGN KEY(emp_PositionId) REFERENCES Positions(positionId)
-);
+---- Create a table for employees
+--CREATE TABLE Employee (
+--    emp_ID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+--    emp_Name NVARCHAR(255) NOT NULL,
+--    emp_Email NVARCHAR(255) NOT NULL UNIQUE,
+--    emp_Salary DECIMAL(10, 2) DEFAULT 0.00,
+--    emp_UserID INT,
+--	emp_GenderId INT NOT NULL,
+--	emp_DepartmentId INT NOT NULL,
+--	emp_PositionId INT NOT NULL,
+--    FOREIGN KEY(emp_UserID) REFERENCES UserAccounts(userID),
+--    FOREIGN KEY(emp_GenderId) REFERENCES Gender(genderId),
+--    FOREIGN KEY(emp_DepartmentId) REFERENCES Departments(departmentId),
+--	FOREIGN KEY(emp_PositionId) REFERENCES Positions(positionId)
+--);
 
 -- Create a table for payroll
 CREATE TABLE Payroll (
-    payroll_ID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    payroll_ID INT IDENTITY(1,1) NOT NULL,
     payroll_PayDate DATE NOT NULL,
     payroll_Amount DECIMAL(10, 2) NOT NULL,
-	payroll_EmployeeID INT,
-    FOREIGN KEY(payroll_EmployeeID) REFERENCES Employee(emp_ID)
+	--payroll_EmployeeID INT,
+    FOREIGN KEY(payroll_ID) REFERENCES UserAccounts(userID)
 )
 
 ------VIEW ALL USER ROLE
 CREATE VIEW vw_all_user_role
 AS
-SELECT R.roleId AS 'ROLE ID', ua.name AS 'EMPLOYEE NAME', ua.email AS 'E-MAIL', ua.userName AS 'USERNAME', ua.password AS 'PASSWORD', R.roleName AS 'ROLE NAME' FROM Roles R
+SELECT ua.userID AS 'USER ID',ua.emp_ID AS 'EMPLOYEE ID', ua.name AS 'EMPLOYEE NAME', ua.email AS 'E-MAIL', ua.userName AS 'USERNAME', ua.password AS 'PASSWORD', R.roleName AS 'ROLE' FROM Roles R
 INNER JOIN UserAccounts ua 
 ON ua.roleId = R.roleId
 
