@@ -51,12 +51,12 @@ namespace EmploNexus.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtEmployeeID = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.cmbBoxGender = new System.Windows.Forms.ComboBox();
             this.cmbBoxPosition = new System.Windows.Forms.ComboBox();
             this.cmbBoxDepartment = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtEmployeeID = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.grpBox_useraccIfno.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -299,6 +299,26 @@ namespace EmploNexus.Forms
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Basic Information";
             // 
+            // txtEmployeeID
+            // 
+            this.txtEmployeeID.BackColor = System.Drawing.Color.LightCyan;
+            this.txtEmployeeID.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmployeeID.Location = new System.Drawing.Point(219, 29);
+            this.txtEmployeeID.Multiline = true;
+            this.txtEmployeeID.Name = "txtEmployeeID";
+            this.txtEmployeeID.Size = new System.Drawing.Size(226, 26);
+            this.txtEmployeeID.TabIndex = 37;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(26, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(130, 26);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "Employee ID";
+            // 
             // cmbBoxGender
             // 
             this.cmbBoxGender.BackColor = System.Drawing.Color.LightCyan;
@@ -342,30 +362,11 @@ namespace EmploNexus.Forms
             this.label5.TabIndex = 26;
             this.label5.Text = "Gender";
             // 
-            // txtEmployeeID
-            // 
-            this.txtEmployeeID.BackColor = System.Drawing.Color.LightCyan;
-            this.txtEmployeeID.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmployeeID.Location = new System.Drawing.Point(219, 29);
-            this.txtEmployeeID.Multiline = true;
-            this.txtEmployeeID.Name = "txtEmployeeID";
-            this.txtEmployeeID.Size = new System.Drawing.Size(226, 26);
-            this.txtEmployeeID.TabIndex = 37;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(26, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 26);
-            this.label3.TabIndex = 36;
-            this.label3.Text = "Employee ID";
-            // 
             // Frm_Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::EmploNexus.Properties.Resources._6765093_3429734;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(644, 505);
             this.Controls.Add(this.txtCurrentTime);
