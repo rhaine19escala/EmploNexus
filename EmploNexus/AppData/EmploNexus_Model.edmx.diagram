@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e815c3426bbe4cd7b44250d458d752cb" Name="Diagram1">
-        <EntityTypeShape EntityType="EMPLONEXUS_Model.Department" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMPLONEXUS_Model.Gender" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMPLONEXUS_Model.Position" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMPLONEXUS_Model.Role" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMPLONEXUS_Model.UserAccount" Width="1.5" PointX="3.375" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMPLONEXUS_Model.vw_all_user_role" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="e815c3426bbe4cd7b44250d458d752cb" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="EMPLONEXUS_Model.Department" Width="1.5" PointX="10.5" PointY="2" IsExpanded="true" FillColor="0, 64, 64" />
+        <EntityTypeShape EntityType="EMPLONEXUS_Model.Gender" Width="1.5" PointX="8.5" PointY="3.375" IsExpanded="true" FillColor="0, 64, 64" />
+        <EntityTypeShape EntityType="EMPLONEXUS_Model.Position" Width="1.5" PointX="8.5" PointY="5.125" IsExpanded="true" FillColor="0, 64, 64" />
+        <EntityTypeShape EntityType="EMPLONEXUS_Model.Role" Width="1.5" PointX="10.5" PointY="6.25" IsExpanded="true" FillColor="0, 64, 64" />
+        <EntityTypeShape EntityType="EMPLONEXUS_Model.UserAccount" Width="1.5" PointX="13" PointY="2.875" IsExpanded="true" FillColor="0, 64, 64" />
+        <EntityTypeShape EntityType="EMPLONEXUS_Model.vw_all_user_role" Width="1.5" PointX="15.125" PointY="2.625" IsExpanded="true" FillColor="0, 64, 64" />
         <AssociationConnector Association="EMPLONEXUS_Model.FK__UserAccou__depar__1B0907CE" ManuallyRouted="false" />
         <AssociationConnector Association="EMPLONEXUS_Model.FK__UserAccou__gende__1CF15040" ManuallyRouted="false" />
         <AssociationConnector Association="EMPLONEXUS_Model.FK__UserAccou__posit__1BFD2C07" ManuallyRouted="false" />
         <AssociationConnector Association="EMPLONEXUS_Model.FK__UserAccou__roleI__1A14E395" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="EMPLONEXUS_Model.vw_all_employee" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="EMPLONEXUS_Model.vw_all_employee" Width="1.5" PointX="15.125" PointY="4.875" FillColor="0, 64, 64" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
