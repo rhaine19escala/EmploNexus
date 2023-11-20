@@ -117,7 +117,7 @@ ON ua.roleId = R.roleId
 CREATE VIEW vw_all_salary
 AS
 SELECT p.payroll_ID AS 'SALARY_ID', ua.emp_ID AS 'EMPLOYEE_ID', ua.name AS 'EMPLOYEE_NAME', p.payroll_PayDate AS 'PAY_DATE', p.payroll_Amount AS 'SALARY' FROM Payroll p
-LEFT JOIN UserAccounts ua 
+INNER JOIN UserAccounts ua 
 ON p.payroll_ID = ua.payrollId 
 
 ------STORED PROCEDURE NEW USER

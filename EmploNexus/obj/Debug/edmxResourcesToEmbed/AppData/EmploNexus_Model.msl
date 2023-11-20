@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="EMPLONEXUSu_uNEWModelStoreContainer" CdmEntityContainer="EMPLONEXUSu_u">
+  <EntityContainerMapping StorageEntityContainer="EMPLONEXUSu_uModelStoreContainer" CdmEntityContainer="EMPLONEXUSu_u">
     <EntitySetMapping Name="Departments">
-      <EntityTypeMapping TypeName="EMPLONEXUSu_uNEWModel.Department">
+      <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.Department">
         <MappingFragment StoreEntitySet="Departments">
           <ScalarProperty Name="departmentId" ColumnName="departmentId" />
           <ScalarProperty Name="departmentName" ColumnName="departmentName" />
@@ -11,7 +11,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Genders">
-      <EntityTypeMapping TypeName="EMPLONEXUSu_uNEWModel.Gender">
+      <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.Gender">
         <MappingFragment StoreEntitySet="Gender">
           <ScalarProperty Name="genderId" ColumnName="genderId" />
           <ScalarProperty Name="genderName" ColumnName="genderName" />
@@ -19,7 +19,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Payrolls">
-      <EntityTypeMapping TypeName="EMPLONEXUSu_uNEWModel.Payroll">
+      <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.Payroll">
         <MappingFragment StoreEntitySet="Payroll">
           <ScalarProperty Name="payroll_ID" ColumnName="payroll_ID" />
           <ScalarProperty Name="payroll_PayDate" ColumnName="payroll_PayDate" />
@@ -28,7 +28,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Positions">
-      <EntityTypeMapping TypeName="EMPLONEXUSu_uNEWModel.Position">
+      <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.Position">
         <MappingFragment StoreEntitySet="Positions">
           <ScalarProperty Name="positionId" ColumnName="positionId" />
           <ScalarProperty Name="positionName" ColumnName="positionName" />
@@ -37,7 +37,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Roles">
-      <EntityTypeMapping TypeName="EMPLONEXUSu_uNEWModel.Role">
+      <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.Role">
         <MappingFragment StoreEntitySet="Roles">
           <ScalarProperty Name="roleId" ColumnName="roleId" />
           <ScalarProperty Name="roleName" ColumnName="roleName" />
@@ -46,7 +46,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UserAccounts">
-      <EntityTypeMapping TypeName="EMPLONEXUSu_uNEWModel.UserAccount">
+      <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.UserAccount">
         <MappingFragment StoreEntitySet="UserAccounts">
           <ScalarProperty Name="userID" ColumnName="userID" />
           <ScalarProperty Name="emp_ID" ColumnName="emp_ID" />
@@ -64,7 +64,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="vw_all_employee">
-      <EntityTypeMapping TypeName="EMPLONEXUSu_uNEWModel.vw_all_employee">
+      <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.vw_all_employee">
         <MappingFragment StoreEntitySet="vw_all_employee">
           <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
           <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE_NAME" />
@@ -77,7 +77,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="vw_all_salary">
-      <EntityTypeMapping TypeName="EMPLONEXUSu_uNEWModel.vw_all_salary">
+      <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.vw_all_salary">
         <MappingFragment StoreEntitySet="vw_all_salary">
           <ScalarProperty Name="SALARY_ID" ColumnName="SALARY_ID" />
           <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
@@ -88,7 +88,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="vw_all_user_role">
-      <EntityTypeMapping TypeName="EMPLONEXUSu_uNEWModel.vw_all_user_role">
+      <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.vw_all_user_role">
         <MappingFragment StoreEntitySet="vw_all_user_role">
           <ScalarProperty Name="USER_ID" ColumnName="USER ID" />
           <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE NAME" />
@@ -98,6 +98,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_newUser" FunctionName="EMPLONEXUSu_uNEWModel.Store.sp_newUser" />
+    <FunctionImportMapping FunctionImportName="sp_newUser" FunctionName="EMPLONEXUSu_uModel.Store.sp_newUser" />
   </EntityContainerMapping>
 </Mapping>

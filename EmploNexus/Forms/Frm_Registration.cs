@@ -162,7 +162,6 @@ namespace EmploNexus.Forms
             nUserAccount.departmentId = (Int32)cmbBoxDepartment.SelectedValue;
             nUserAccount.positionId = (Int32)cmbBoxPosition.SelectedValue;
 
-
             username = txtuser_name.Text;
 
             db.UserAccounts.Add(nUserAccount);
