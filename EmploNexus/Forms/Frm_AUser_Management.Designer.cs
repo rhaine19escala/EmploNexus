@@ -46,6 +46,10 @@
             this.btnuserClear = new System.Windows.Forms.Button();
             this.btnuserUpdate = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtUserID = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtRole = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtuserUsername = new System.Windows.Forms.TextBox();
             this.txtuserPassword = new System.Windows.Forms.TextBox();
             this.txtuserName = new System.Windows.Forms.TextBox();
@@ -57,11 +61,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtuserSearch = new System.Windows.Forms.TextBox();
             this.dgv_AllUserWdetails = new System.Windows.Forms.DataGridView();
-            this.txtRole = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtUserID = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -217,6 +217,7 @@
             this.btnuserClear.TabIndex = 31;
             this.btnuserClear.Text = "CLEAR";
             this.btnuserClear.UseVisualStyleBackColor = false;
+            this.btnuserClear.Click += new System.EventHandler(this.btnuserClear_Click);
             // 
             // btnuserUpdate
             // 
@@ -250,6 +251,44 @@
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Account Details";
+            // 
+            // txtUserID
+            // 
+            this.txtUserID.Location = new System.Drawing.Point(179, 36);
+            this.txtUserID.Name = "txtUserID";
+            this.txtUserID.Size = new System.Drawing.Size(230, 33);
+            this.txtUserID.TabIndex = 35;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.LightBlue;
+            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label2.Location = new System.Drawing.Point(27, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 26);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "User ID";
+            // 
+            // txtRole
+            // 
+            this.txtRole.Location = new System.Drawing.Point(179, 192);
+            this.txtRole.Name = "txtRole";
+            this.txtRole.Size = new System.Drawing.Size(230, 33);
+            this.txtRole.TabIndex = 34;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.LightBlue;
+            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label6.Location = new System.Drawing.Point(27, 195);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 26);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "Role";
             // 
             // txtuserUsername
             // 
@@ -352,7 +391,7 @@
             // 
             // dgv_AllUserWdetails
             // 
-            this.dgv_AllUserWdetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_AllUserWdetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgv_AllUserWdetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv_AllUserWdetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_AllUserWdetails.GridColor = System.Drawing.Color.SteelBlue;
@@ -363,47 +402,9 @@
             this.dgv_AllUserWdetails.TabIndex = 9;
             this.dgv_AllUserWdetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_AllUserWdetails_CellClick);
             // 
-            // txtRole
-            // 
-            this.txtRole.Location = new System.Drawing.Point(179, 192);
-            this.txtRole.Name = "txtRole";
-            this.txtRole.Size = new System.Drawing.Size(230, 33);
-            this.txtRole.TabIndex = 34;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.LightBlue;
-            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label6.Location = new System.Drawing.Point(27, 195);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 26);
-            this.label6.TabIndex = 33;
-            this.label6.Text = "Role";
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // txtUserID
-            // 
-            this.txtUserID.Location = new System.Drawing.Point(179, 36);
-            this.txtUserID.Name = "txtUserID";
-            this.txtUserID.Size = new System.Drawing.Size(230, 33);
-            this.txtUserID.TabIndex = 35;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.LightBlue;
-            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label2.Location = new System.Drawing.Point(27, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 26);
-            this.label2.TabIndex = 36;
-            this.label2.Text = "User ID";
             // 
             // Frm_AUser_Management
             // 

@@ -137,42 +137,50 @@
             // 
             // btnempClear
             // 
+            this.btnempClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnempClear.ForeColor = System.Drawing.Color.LightBlue;
             this.btnempClear.Location = new System.Drawing.Point(307, 315);
             this.btnempClear.Name = "btnempClear";
             this.btnempClear.Size = new System.Drawing.Size(92, 32);
             this.btnempClear.TabIndex = 31;
             this.btnempClear.Text = "CLEAR";
-            this.btnempClear.UseVisualStyleBackColor = true;
+            this.btnempClear.UseVisualStyleBackColor = false;
             this.btnempClear.Click += new System.EventHandler(this.btnempClear_Click);
             // 
             // btnempDelete
             // 
+            this.btnempDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnempDelete.ForeColor = System.Drawing.Color.LightBlue;
             this.btnempDelete.Location = new System.Drawing.Point(209, 315);
             this.btnempDelete.Name = "btnempDelete";
             this.btnempDelete.Size = new System.Drawing.Size(92, 32);
             this.btnempDelete.TabIndex = 30;
             this.btnempDelete.Text = "DELETE";
-            this.btnempDelete.UseVisualStyleBackColor = true;
+            this.btnempDelete.UseVisualStyleBackColor = false;
             this.btnempDelete.Click += new System.EventHandler(this.btnempDelete_Click);
             // 
             // btnempUpdate
             // 
+            this.btnempUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnempUpdate.ForeColor = System.Drawing.Color.LightBlue;
             this.btnempUpdate.Location = new System.Drawing.Point(111, 315);
             this.btnempUpdate.Name = "btnempUpdate";
             this.btnempUpdate.Size = new System.Drawing.Size(92, 32);
             this.btnempUpdate.TabIndex = 29;
             this.btnempUpdate.Text = "UPDATE";
-            this.btnempUpdate.UseVisualStyleBackColor = true;
+            this.btnempUpdate.UseVisualStyleBackColor = false;
             this.btnempUpdate.Click += new System.EventHandler(this.btnempUpdate_Click);
             // 
             // btnempAdd
             // 
+            this.btnempAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnempAdd.ForeColor = System.Drawing.Color.LightBlue;
             this.btnempAdd.Location = new System.Drawing.Point(13, 315);
             this.btnempAdd.Name = "btnempAdd";
             this.btnempAdd.Size = new System.Drawing.Size(92, 32);
             this.btnempAdd.TabIndex = 28;
             this.btnempAdd.Text = "ADD";
-            this.btnempAdd.UseVisualStyleBackColor = true;
+            this.btnempAdd.UseVisualStyleBackColor = false;
             this.btnempAdd.Click += new System.EventHandler(this.btnempAdd_Click);
             // 
             // label8
@@ -331,7 +339,7 @@
             // 
             // dgv_AllEmployeesWdetails
             // 
-            this.dgv_AllEmployeesWdetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_AllEmployeesWdetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgv_AllEmployeesWdetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv_AllEmployeesWdetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_AllEmployeesWdetails.GridColor = System.Drawing.Color.SteelBlue;
@@ -341,6 +349,7 @@
             this.dgv_AllEmployeesWdetails.Size = new System.Drawing.Size(580, 298);
             this.dgv_AllEmployeesWdetails.TabIndex = 9;
             this.dgv_AllEmployeesWdetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_AllEmployeesWdetails_CellClick);
+            this.dgv_AllEmployeesWdetails.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_AllEmployeesWdetails_CellFormatting);
             // 
             // txtCurrentTime
             // 

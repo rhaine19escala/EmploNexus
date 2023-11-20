@@ -124,5 +124,10 @@ namespace EmploNexus.Forms
             txtuserPassword.Text = "";
             txtRole.Text = "";
         }
+
+        private void btnuserClear_Click(object sender, EventArgs e)
+        {
+            ClearInputFields();
+        }
     }
 }

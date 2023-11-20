@@ -5,10 +5,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace EmploNexus.Forms
 {
@@ -63,7 +66,8 @@ namespace EmploNexus.Forms
         {
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
-
+            
+            dgv_AllEmployeesWdetails.CellFormatting += dgv_AllEmployeesWdetails_CellFormatting;
 
             repo = new UserRepository();
             loadUser();
@@ -127,9 +131,102 @@ namespace EmploNexus.Forms
             txtempSalary.Clear();
         }
 
+        private void dgv_AllEmployeesWdetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 3 && e.RowIndex >= 0 && e.Value != null)
+            {
+                string stringValue = e.Value.ToString();
+                int genderValue;
+                if (int.TryParse(stringValue, out genderValue))
+                {
+                    if (genderValue == 1)
+                    {
+                        e.Value = "Male";
+                    }
+                    else if (genderValue == 2)
+                    {
+                        e.Value = "Female";
+                    }
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.Value != null)
+            {
+                string stringValue = e.Value.ToString();
+                int departmentvalue;
+                if (int.TryParse(stringValue, out departmentvalue))
+                {
+                    if (departmentvalue == 1)
+                    {
+                        e.Value = "HR";
+                    }
+                    else if (departmentvalue == 2)
+                    {
+                        e.Value = "Finance";
+                    }
+                    else if (departmentvalue == 3)
+                    {
+                        e.Value = "IT";
+                    }
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (e.ColumnIndex == 5 && e.RowIndex >= 0 && e.Value != null)
+            {
+                string stringValue = e.Value.ToString();
+                int positionvalue;
+                if (int.TryParse(stringValue, out positionvalue))
+                {
+                    if (positionvalue == 1)
+                    {
+                        e.Value = "HR Manager";
+                    }
+                    else if (positionvalue == 2)
+                    {
+                        e.Value = "HR Generalist";
+                    }
+                    else if (positionvalue == 3)
+                    {
+                        e.Value = "Financial Controller";
+                    }
+                    else if (positionvalue == 4)
+                    {
+                        e.Value = "Accountant";
+                    }
+                    else if (positionvalue == 5)
+                    {
+                        e.Value = "IT Manager";
+                    }
+                    else if (positionvalue == 6)
+                    {
+                        e.Value = "Software Developer";
+                    }
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (e.ColumnIndex == 6 && e.RowIndex >= 0 && e.Value != null)
+            {
+                string money = e.Value.ToString();
+                decimal salary;
+                if (decimal.TryParse(money, out salary))
+                {
+                    CultureInfo peso = new CultureInfo("en-PH");
+                    e.Value = salary.ToString("C", peso);
+                    e.FormattingApplied = true;
+                }
+            }
+            else if (e.ColumnIndex == 6 && e.RowIndex >= 0)
+            {
+                e.Value = 0.00m.ToString("C", CultureInfo.GetCultureInfo("en-PH"));
+                e.FormattingApplied = true;
+            }
+        }
+
         private void dgv_AllEmployeesWdetails_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             try
             {
                 txtempID.Text = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[0].Value).ToString();
@@ -145,7 +242,9 @@ namespace EmploNexus.Forms
                 int position = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[5].Value);
                 cmbBox_empPosition.SelectedValue = position;
 
-                txtempSalary.Text = dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[6].Value as String;
+                decimal salary = Convert.ToDecimal(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[6].Value);
+                CultureInfo peso = new CultureInfo("en-PH");
+                txtempSalary.Text = salary.ToString("C", peso);
             }
             catch (Exception ex)
             {
