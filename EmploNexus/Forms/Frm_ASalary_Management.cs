@@ -53,6 +53,9 @@ namespace EmploNexus.Forms
         {
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
+
+            payrollDate.Format = DateTimePickerFormat.Custom;
+            payrollDate.CustomFormat = "MM/dd/yyyy";
         }
     }
 }
