@@ -59,7 +59,6 @@
           <ScalarProperty Name="departmentId" ColumnName="departmentId" />
           <ScalarProperty Name="positionId" ColumnName="positionId" />
           <ScalarProperty Name="genderId" ColumnName="genderId" />
-          <ScalarProperty Name="payrollId" ColumnName="payrollId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -79,8 +78,8 @@
     <EntitySetMapping Name="vw_all_salary">
       <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.vw_all_salary">
         <MappingFragment StoreEntitySet="vw_all_salary">
-          <ScalarProperty Name="SALARY_ID" ColumnName="SALARY_ID" />
           <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="SALARY_ID" ColumnName="SALARY_ID" />
           <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE_NAME" />
           <ScalarProperty Name="PAY_DATE" ColumnName="PAY_DATE" />
           <ScalarProperty Name="SALARY" ColumnName="SALARY" />

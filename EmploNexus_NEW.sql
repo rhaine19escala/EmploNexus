@@ -91,8 +91,6 @@ CREATE TABLE UserAccounts (
     departmentId INT NOT NULL,
 	positionId INT NOT NULL,
 	genderId INT NOT NULL,
-	payrollId INT,
-	FOREIGN KEY(payrollId) REFERENCES Payroll(payroll_ID),
     FOREIGN KEY(roleId) REFERENCES Roles(roleId),
     FOREIGN KEY(departmentId) REFERENCES Departments(departmentId),
 	FOREIGN KEY(positionId) REFERENCES Positions(positionId),
@@ -116,9 +114,9 @@ ON ua.roleId = R.roleId
 ------VIEW ALL USER SALARY
 CREATE VIEW vw_all_salary
 AS
-SELECT p.payroll_ID AS 'SALARY_ID', ua.emp_ID AS 'EMPLOYEE_ID', ua.name AS 'EMPLOYEE_NAME', p.payroll_PayDate AS 'PAY_DATE', p.payroll_Amount AS 'SALARY' FROM Payroll p
+SELECT p.payroll_ID AS 'SALARY_ID', ua.emp_ID AS 'EMPLOYEE_ID',ua.name AS 'EMPLOYEE_NAME', p.payroll_PayDate AS 'PAY_DATE', p.payroll_Amount AS 'SALARY' FROM Payroll p
 INNER JOIN UserAccounts ua 
-ON p.payroll_ID = ua.payrollId 
+ON p.payroll_ID = ua.userID
 
 ------STORED PROCEDURE NEW USER
 CREATE PROCEDURE sp_newUser @userId int, @empId int, @name nvarchar(50), @email nvarchar(255), @userName nvarchar(50), @userPassword nvarchar(50), @roleId int 

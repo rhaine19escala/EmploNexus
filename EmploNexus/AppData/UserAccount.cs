@@ -25,7 +25,6 @@ namespace EmploNexus.AppData
         public int departmentId { get; set; }
         public int positionId { get; set; }
         public int genderId { get; set; }
-        public int payrollId { get; set; }
     
         public virtual Department Department { get; set; }
         public virtual Gender Gender { get; set; }

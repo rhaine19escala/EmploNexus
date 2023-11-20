@@ -150,25 +150,34 @@ namespace EmploNexus.Forms
 
             // find the user id
             // code input equal db. useraccoutn code
-            UserAccount nUserAccount = new UserAccount();
 
-            nUserAccount.emp_ID = Convert.ToInt32(txtEmployeeID.Text);
-            nUserAccount.name = txtempName.Text;
-            nUserAccount.email = txtEmail.Text;
-            nUserAccount.username = txtuser_name.Text;
-            nUserAccount.password = txtpass_word.Text;
-            nUserAccount.roleId = (Int32)cmbBoxRole.SelectedValue;
-            nUserAccount.genderId = (Int32)cmbBoxGender.SelectedValue;
-            nUserAccount.departmentId = (Int32)cmbBoxDepartment.SelectedValue;
-            nUserAccount.positionId = (Int32)cmbBoxPosition.SelectedValue;
+            //try
+            //{
+                UserAccount nUserAccount = new UserAccount();
 
-            username = txtuser_name.Text;
+                nUserAccount.emp_ID = Convert.ToInt32(txtEmployeeID.Text);
+                nUserAccount.name = txtempName.Text;
+                nUserAccount.email = txtEmail.Text;
+                nUserAccount.username = txtuser_name.Text;
+                nUserAccount.password = txtpass_word.Text;
+                nUserAccount.roleId = (Int32)cmbBoxRole.SelectedValue;
+                nUserAccount.genderId = (Int32)cmbBoxGender.SelectedValue;
+                nUserAccount.departmentId = (Int32)cmbBoxDepartment.SelectedValue;
+                nUserAccount.positionId = (Int32)cmbBoxPosition.SelectedValue;
 
-            db.UserAccounts.Add(nUserAccount);
-            db.SaveChanges();
+                username = txtuser_name.Text;
 
-            ClearInputFields();
-            MessageBox.Show("Registered!", "EmploNexus: Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                db.UserAccounts.Add(nUserAccount);
+                db.SaveChanges();
+
+                ClearInputFields();
+                MessageBox.Show("Registered!", "EmploNexus: Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error Encountered :" + ex.Message, "EmploNexus: Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            
         }
 
         private void txtempName_TextChanged(object sender, EventArgs e)
