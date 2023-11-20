@@ -59,7 +59,7 @@
     <Property Name="departmentId" Type="Int32" Nullable="false" />
     <Property Name="positionId" Type="Int32" Nullable="false" />
     <Property Name="genderId" Type="Int32" Nullable="false" />
-    <Property Name="payrollId" Type="Int32" Nullable="false" />
+    <Property Name="payrollId" Type="Int32" />
     <NavigationProperty Name="Department" Relationship="Self.FK__UserAccou__depar__1ED998B2" FromRole="UserAccounts" ToRole="Departments" />
     <NavigationProperty Name="Gender" Relationship="Self.FK__UserAccou__gende__20C1E124" FromRole="UserAccounts" ToRole="Gender" />
     <NavigationProperty Name="Payroll" Relationship="Self.FK__UserAccou__payro__1CF15040" FromRole="UserAccounts" ToRole="Payroll" />

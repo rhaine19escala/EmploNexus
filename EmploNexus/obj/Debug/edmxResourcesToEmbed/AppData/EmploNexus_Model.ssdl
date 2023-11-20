@@ -54,7 +54,7 @@
     <Property Name="departmentId" Type="int" Nullable="false" />
     <Property Name="positionId" Type="int" Nullable="false" />
     <Property Name="genderId" Type="int" Nullable="false" />
-    <Property Name="payrollId" Type="int" Nullable="false" />
+    <Property Name="payrollId" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -131,7 +131,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__UserAccou__payro__1CF15040">
-    <End Role="Payroll" Type="Self.Payroll" Multiplicity="1" />
+    <End Role="Payroll" Type="Self.Payroll" Multiplicity="0..1" />
     <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Payroll">

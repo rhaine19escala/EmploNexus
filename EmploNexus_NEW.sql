@@ -91,7 +91,7 @@ CREATE TABLE UserAccounts (
     departmentId INT NOT NULL,
 	positionId INT NOT NULL,
 	genderId INT NOT NULL,
-	payrollId INT NOT NULL,
+	payrollId INT,
 	FOREIGN KEY(payrollId) REFERENCES Payroll(payroll_ID),
     FOREIGN KEY(roleId) REFERENCES Roles(roleId),
     FOREIGN KEY(departmentId) REFERENCES Departments(departmentId),

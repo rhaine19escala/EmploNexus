@@ -59,7 +59,7 @@
           <Property Name="departmentId" Type="int" Nullable="false" />
           <Property Name="positionId" Type="int" Nullable="false" />
           <Property Name="genderId" Type="int" Nullable="false" />
-          <Property Name="payrollId" Type="int" Nullable="false" />
+          <Property Name="payrollId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -136,7 +136,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__UserAccou__payro__1CF15040">
-          <End Role="Payroll" Type="Self.Payroll" Multiplicity="1" />
+          <End Role="Payroll" Type="Self.Payroll" Multiplicity="0..1" />
           <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Payroll">
@@ -301,7 +301,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <Property Name="departmentId" Type="Int32" Nullable="false" />
           <Property Name="positionId" Type="Int32" Nullable="false" />
           <Property Name="genderId" Type="Int32" Nullable="false" />
-          <Property Name="payrollId" Type="Int32" Nullable="false" />
+          <Property Name="payrollId" Type="Int32" />
           <NavigationProperty Name="Department" Relationship="Self.FK__UserAccou__depar__1ED998B2" FromRole="UserAccounts" ToRole="Departments" />
           <NavigationProperty Name="Gender" Relationship="Self.FK__UserAccou__gende__20C1E124" FromRole="UserAccounts" ToRole="Gender" />
           <NavigationProperty Name="Payroll" Relationship="Self.FK__UserAccou__payro__1CF15040" FromRole="UserAccounts" ToRole="Payroll" />
@@ -377,7 +377,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__UserAccou__payro__1CF15040">
-          <End Role="Payroll" Type="Self.Payroll" Multiplicity="1" />
+          <End Role="Payroll" Type="Self.Payroll" Multiplicity="0..1" />
           <End Role="UserAccounts" Type="Self.UserAccount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Payroll">
@@ -412,7 +412,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EMPLONEXUS_" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EMPLONEXUST_T" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Genders" EntityType="Self.Gender" />
           <EntitySet Name="Payrolls" EntityType="Self.Payroll" />
@@ -457,7 +457,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EMPLONEXUS_ModelStoreContainer" CdmEntityContainer="EMPLONEXUS_">
+        <EntityContainerMapping StorageEntityContainer="EMPLONEXUS_ModelStoreContainer" CdmEntityContainer="EMPLONEXUST_T">
           <EntitySetMapping Name="Departments">
             <EntityTypeMapping TypeName="EMPLONEXUS_Model.Department">
               <MappingFragment StoreEntitySet="Departments">
