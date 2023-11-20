@@ -10,31 +10,33 @@ using System.Windows.Forms;
 
 namespace EmploNexus.Forms
 {
-    public partial class Frm_Manager_Dashboard : Form
+    public partial class Frm_MViewSalary : Form
     {
-        public Frm_Manager_Dashboard()
+        public Frm_MViewSalary()
         {
-            InitializeComponent();
+            
+            InitializeComponent();         
         }
 
-        private void Frm_Manager_Dashboard_Load(object sender, EventArgs e)
+        private void Frm_Employee_Dashboard_Load(object sender, EventArgs e)
         {
-            Frm_Login frm = new Frm_Login();
-            txtName_User.Text = frm.user_Name;
-
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (res == DialogResult.OK)
-            {
-                Frm_Login logout = new Frm_Login();
-                logout.Show();
-                this.Hide();
-            }
+            //Profile
+            Frm_EProfile eProfile = new Frm_EProfile();
+            eProfile.Show();
+            this.Hide();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Frm_Employee_Dashboard employee_Dashboard = new Frm_Employee_Dashboard();
+            employee_Dashboard.Show();
+            this.Hide();
         }
 
         private void logOutToolStripMenuItem2_Click(object sender, EventArgs e)
