@@ -85,21 +85,21 @@ namespace EmploNexus.Forms
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.logoutToolStripMenuItem.Text = "Profile";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem1
             // 
             this.logoutToolStripMenuItem1.Name = "logoutToolStripMenuItem1";
-            this.logoutToolStripMenuItem1.Size = new System.Drawing.Size(170, 26);
+            this.logoutToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
             this.logoutToolStripMenuItem1.Text = "View Salary";
             this.logoutToolStripMenuItem1.Click += new System.EventHandler(this.logoutToolStripMenuItem1_Click);
             // 
             // logOutToolStripMenuItem2
             // 
             this.logOutToolStripMenuItem2.Name = "logOutToolStripMenuItem2";
-            this.logOutToolStripMenuItem2.Size = new System.Drawing.Size(170, 26);
+            this.logOutToolStripMenuItem2.Size = new System.Drawing.Size(180, 26);
             this.logOutToolStripMenuItem2.Text = "Log out";
             // 
             // txtCurrentTime

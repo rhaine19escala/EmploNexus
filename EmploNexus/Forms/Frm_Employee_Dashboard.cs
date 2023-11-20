@@ -36,11 +36,16 @@ namespace EmploNexus.Forms
         private void logoutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //View Salary
+            Frm_EViewSalary eViewSalary = new Frm_EViewSalary();
+            eViewSalary.Show();
+            this.Hide();
         }
 
         private void btnSalary_Click(object sender, EventArgs e)
         {
-
+            Frm_EViewSalary eViewSalary = new Frm_EViewSalary();
+            eViewSalary.Show();
+            this.Hide();
         }
 
         private void btnProfile_Click(object sender, EventArgs e)

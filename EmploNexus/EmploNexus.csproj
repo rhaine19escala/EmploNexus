@@ -137,6 +137,12 @@
     <Compile Include="Forms\Frm_AUser_Management.Designer.cs">
       <DependentUpon>Frm_AUser_Management.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Frm_EViewSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_EViewSalary.Designer.cs">
+      <DependentUpon>Frm_EViewSalary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Frm_Employee_Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_AUser_Management.resx">
       <DependentUpon>Frm_AUser_Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_EViewSalary.resx">
+      <DependentUpon>Frm_EViewSalary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_Employee_Dashboard.resx">
       <DependentUpon>Frm_Employee_Dashboard.cs</DependentUpon>
