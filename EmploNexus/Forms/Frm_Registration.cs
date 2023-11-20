@@ -17,13 +17,13 @@ namespace EmploNexus.Forms
     public partial class Frm_Registration : Form
     {
         public string username = String.Empty;
-        EMPLONEXUSo_O db;
+        EMPLONEXUSu_u db;
 
         public Frm_Registration()
         {
             InitializeComponent();
             //
-            db = new    EMPLONEXUSo_O();
+            db = new    EMPLONEXUSu_u();
         }
 
         private void Frm_Register_Load(object sender, EventArgs e)

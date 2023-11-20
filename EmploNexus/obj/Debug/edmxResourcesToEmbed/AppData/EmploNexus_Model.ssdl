@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="EMPLONEXUS_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="EMPLONEXUSu_uModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Departments">
     <Key>
       <PropertyRef Name="departmentId" />
@@ -76,14 +76,19 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_employee' does not have 
     <Property Name="SALARY" Type="decimal" Precision="10" Scale="2" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6013: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_salary' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vw_all_salary">
-          <Property Name="SALARY_ID" Type="int" />
-          <Property Name="EMPLOYEE_ID" Type="int" />
-          <Property Name="EMPLOYEE_NAME" Type="nvarchar" MaxLength="255" />
-          <Property Name="PAY_DATE" Type="date" />
-          <Property Name="SALARY" Type="decimal" Precision="10" Scale="2" />
-        </EntityType>-->
+warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_salary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_all_salary">
+    <Key>
+      <PropertyRef Name="SALARY_ID" />
+      <PropertyRef Name="PAY_DATE" />
+      <PropertyRef Name="SALARY" />
+    </Key>
+    <Property Name="SALARY_ID" Type="int" Nullable="false" />
+    <Property Name="EMPLOYEE_ID" Type="int" />
+    <Property Name="EMPLOYEE_NAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="PAY_DATE" Type="date" Nullable="false" />
+    <Property Name="SALARY" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+  </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_all_user_role">
@@ -168,7 +173,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
     <Parameter Name="userPassword" Type="nvarchar" Mode="In" />
     <Parameter Name="roleId" Type="int" Mode="In" />
   </Function>
-  <EntityContainer Name="EMPLONEXUS_ModelStoreContainer">
+  <EntityContainer Name="EMPLONEXUSu_uModelStoreContainer">
     <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Payroll" EntityType="Self.Payroll" Schema="dbo" store:Type="Tables" />
@@ -185,6 +190,15 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
 [vw_all_employee].[JOB_POSITION] AS [JOB_POSITION], 
 [vw_all_employee].[SALARY] AS [SALARY]
 FROM [dbo].[vw_all_employee] AS [vw_all_employee]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_all_salary" EntityType="Self.vw_all_salary" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_all_salary].[SALARY_ID] AS [SALARY_ID], 
+[vw_all_salary].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
+[vw_all_salary].[EMPLOYEE_NAME] AS [EMPLOYEE_NAME], 
+[vw_all_salary].[PAY_DATE] AS [PAY_DATE], 
+[vw_all_salary].[SALARY] AS [SALARY]
+FROM [dbo].[vw_all_salary] AS [vw_all_salary]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

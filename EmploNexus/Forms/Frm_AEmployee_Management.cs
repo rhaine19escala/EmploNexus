@@ -19,13 +19,13 @@ namespace EmploNexus.Forms
     {
         //String strConnection = @"Data Source=.\sqlexpress;Initial Catalog=EMPLONEXUS_NEW;Integrated Security=True";
         UserRepository repo;
-        EMPLONEXUSo_O db;
+        EMPLONEXUSu_u db;
 
         public Frm_AEmployee_Management()
         {
             InitializeComponent();
             //
-            db = new EMPLONEXUSo_O();
+            db = new EMPLONEXUSu_u();
             loadCbBoxGender();
             loadCbBoxDepartment();
             loadCbBoxPosition();
