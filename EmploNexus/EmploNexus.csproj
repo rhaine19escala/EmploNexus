@@ -143,6 +143,24 @@
     <Compile Include="Forms\Frm_EProfile.Designer.cs">
       <DependentUpon>Frm_EProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Frm_MProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_MProfile.Designer.cs">
+      <DependentUpon>Frm_MProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_MViewEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_MViewEmployee.Designer.cs">
+      <DependentUpon>Frm_MViewEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_MViewSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_MViewSalary.Designer.cs">
+      <DependentUpon>Frm_MViewSalary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Frm_EViewSalary.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +220,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_EProfile.resx">
       <DependentUpon>Frm_EProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_MProfile.resx">
+      <DependentUpon>Frm_MProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_MViewEmployee.resx">
+      <DependentUpon>Frm_MViewEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_MViewSalary.resx">
+      <DependentUpon>Frm_MViewSalary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_EViewSalary.resx">
       <DependentUpon>Frm_EViewSalary.cs</DependentUpon>
