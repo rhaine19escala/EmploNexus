@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EMPLONEXUS_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="EMPLONEXUSu_uModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Departments">
           <Key>
             <PropertyRef Name="departmentId" />
@@ -85,14 +85,12 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_salary' does not have a 
         <EntityType Name="vw_all_salary">
           <Key>
             <PropertyRef Name="SALARY_ID" />
-            <PropertyRef Name="EMPLOYEE_ID" />
-            <PropertyRef Name="EMPLOYEE_NAME" />
             <PropertyRef Name="PAY_DATE" />
             <PropertyRef Name="SALARY" />
           </Key>
           <Property Name="SALARY_ID" Type="int" Nullable="false" />
-          <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
-          <Property Name="EMPLOYEE_NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="EMPLOYEE_ID" Type="int" />
+          <Property Name="EMPLOYEE_NAME" Type="nvarchar" MaxLength="255" />
           <Property Name="PAY_DATE" Type="date" Nullable="false" />
           <Property Name="SALARY" Type="decimal" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
@@ -180,7 +178,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
           <Parameter Name="userPassword" Type="nvarchar" Mode="In" />
           <Parameter Name="roleId" Type="int" Mode="In" />
         </Function>
-        <EntityContainer Name="EMPLONEXUS_ModelStoreContainer">
+        <EntityContainer Name="EMPLONEXUSu_uModelStoreContainer">
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payroll" EntityType="Self.Payroll" Schema="dbo" store:Type="Tables" />
@@ -241,7 +239,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="EMPLONEXUS_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="EMPLONEXUSu_uModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="departmentId" />
@@ -328,14 +326,12 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
         <EntityType Name="vw_all_salary">
           <Key>
             <PropertyRef Name="SALARY_ID" />
-            <PropertyRef Name="EMPLOYEE_ID" />
-            <PropertyRef Name="EMPLOYEE_NAME" />
             <PropertyRef Name="PAY_DATE" />
             <PropertyRef Name="SALARY" />
           </Key>
           <Property Name="SALARY_ID" Type="Int32" Nullable="false" />
-          <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
-          <Property Name="EMPLOYEE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMPLOYEE_ID" Type="Int32" />
+          <Property Name="EMPLOYEE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="PAY_DATE" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="SALARY" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
@@ -412,7 +408,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EMPLONEXUST_T" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EMPLONEXUSu_u" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Genders" EntityType="Self.Gender" />
           <EntitySet Name="Payrolls" EntityType="Self.Payroll" />
@@ -457,9 +453,9 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EMPLONEXUS_ModelStoreContainer" CdmEntityContainer="EMPLONEXUST_T">
+        <EntityContainerMapping StorageEntityContainer="EMPLONEXUSu_uModelStoreContainer" CdmEntityContainer="EMPLONEXUSu_u">
           <EntitySetMapping Name="Departments">
-            <EntityTypeMapping TypeName="EMPLONEXUS_Model.Department">
+            <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.Department">
               <MappingFragment StoreEntitySet="Departments">
                 <ScalarProperty Name="departmentId" ColumnName="departmentId" />
                 <ScalarProperty Name="departmentName" ColumnName="departmentName" />
@@ -468,7 +464,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Genders">
-            <EntityTypeMapping TypeName="EMPLONEXUS_Model.Gender">
+            <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.Gender">
               <MappingFragment StoreEntitySet="Gender">
                 <ScalarProperty Name="genderId" ColumnName="genderId" />
                 <ScalarProperty Name="genderName" ColumnName="genderName" />
@@ -476,7 +472,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Payrolls">
-            <EntityTypeMapping TypeName="EMPLONEXUS_Model.Payroll">
+            <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.Payroll">
               <MappingFragment StoreEntitySet="Payroll">
                 <ScalarProperty Name="payroll_ID" ColumnName="payroll_ID" />
                 <ScalarProperty Name="payroll_PayDate" ColumnName="payroll_PayDate" />
@@ -485,7 +481,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Positions">
-            <EntityTypeMapping TypeName="EMPLONEXUS_Model.Position">
+            <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.Position">
               <MappingFragment StoreEntitySet="Positions">
                 <ScalarProperty Name="positionId" ColumnName="positionId" />
                 <ScalarProperty Name="positionName" ColumnName="positionName" />
@@ -494,7 +490,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="EMPLONEXUS_Model.Role">
+            <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.Role">
               <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="roleId" ColumnName="roleId" />
                 <ScalarProperty Name="roleName" ColumnName="roleName" />
@@ -503,7 +499,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserAccounts">
-            <EntityTypeMapping TypeName="EMPLONEXUS_Model.UserAccount">
+            <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccounts">
                 <ScalarProperty Name="userID" ColumnName="userID" />
                 <ScalarProperty Name="emp_ID" ColumnName="emp_ID" />
@@ -521,7 +517,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vw_all_employee">
-            <EntityTypeMapping TypeName="EMPLONEXUS_Model.vw_all_employee">
+            <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.vw_all_employee">
               <MappingFragment StoreEntitySet="vw_all_employee">
                 <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
                 <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE_NAME" />
@@ -534,7 +530,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vw_all_salary">
-            <EntityTypeMapping TypeName="EMPLONEXUS_Model.vw_all_salary">
+            <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.vw_all_salary">
               <MappingFragment StoreEntitySet="vw_all_salary">
                 <ScalarProperty Name="SALARY_ID" ColumnName="SALARY_ID" />
                 <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
@@ -545,7 +541,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vw_all_user_role">
-            <EntityTypeMapping TypeName="EMPLONEXUS_Model.vw_all_user_role">
+            <EntityTypeMapping TypeName="EMPLONEXUSu_uModel.vw_all_user_role">
               <MappingFragment StoreEntitySet="vw_all_user_role">
                 <ScalarProperty Name="USER_ID" ColumnName="USER ID" />
                 <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE NAME" />
@@ -555,7 +551,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_newUser" FunctionName="EMPLONEXUS_Model.Store.sp_newUser" />
+          <FunctionImportMapping FunctionImportName="sp_newUser" FunctionName="EMPLONEXUSu_uModel.Store.sp_newUser" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

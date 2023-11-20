@@ -76,7 +76,7 @@ CREATE TABLE Payroll (
     payroll_ID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
     payroll_PayDate DATE NOT NULL,
     payroll_Amount DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
-)
+);
 
 -- Create a table for users
 CREATE TABLE UserAccounts (
@@ -117,7 +117,7 @@ ON ua.roleId = R.roleId
 CREATE VIEW vw_all_salary
 AS
 SELECT p.payroll_ID AS 'SALARY_ID', ua.emp_ID AS 'EMPLOYEE_ID', ua.name AS 'EMPLOYEE_NAME', p.payroll_PayDate AS 'PAY_DATE', p.payroll_Amount AS 'SALARY' FROM Payroll p
-INNER JOIN UserAccounts ua 
+LEFT JOIN UserAccounts ua 
 ON ua.payrollId = p.payroll_ID
 
 ------STORED PROCEDURE NEW USER

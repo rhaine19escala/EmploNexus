@@ -12,37 +12,37 @@ namespace EmploNexus
 {
     public class UserRepository
     {
-        private EMPLONEXUST_T emploNexusEntities;
+        private EMPLONEXUSo_O emploNexusEntities;
 
         public UserRepository()
         {
-            emploNexusEntities = new EMPLONEXUST_T();
+            emploNexusEntities = new EMPLONEXUSo_O();
         }
      
         public UserAccount GetUserByUsername(String username)
         {
             // re-initialize emploNexusEntities object because sometimes data in the list not updated
-            emploNexusEntities = new EMPLONEXUST_T();
+            emploNexusEntities = new EMPLONEXUSo_O();
             // SELECT TOP 1 * FROM USERACCOUNT WHERE username == username
             return emploNexusEntities.UserAccounts.Where(s => s.username == username).FirstOrDefault();
         }
 
         public List<vw_all_employee> GetEmployeeList()
         {
-            emploNexusEntities = new EMPLONEXUST_T();
+            emploNexusEntities = new EMPLONEXUSo_O();
             return emploNexusEntities.vw_all_employee.ToList();
         }
 
         public List<vw_all_user_role> AllUserRole()
         {
-            emploNexusEntities = new EMPLONEXUST_T();
+            emploNexusEntities = new EMPLONEXUSo_O();
 
             return emploNexusEntities.vw_all_user_role.ToList();
         }
 
         public List<vw_all_salary> GetEmployeeSalary()
         {
-            emploNexusEntities = new EMPLONEXUST_T();
+            emploNexusEntities = new EMPLONEXUSo_O();
 
             return emploNexusEntities.vw_all_salary.ToList();
         }
@@ -51,7 +51,7 @@ namespace EmploNexus
         {
             try
             {
-                using (var emploNexusEntities = new EMPLONEXUST_T())
+                using (var emploNexusEntities = new EMPLONEXUSo_O())
                 {
                     var newUser = new UserAccount();
                     newUser.username = username;

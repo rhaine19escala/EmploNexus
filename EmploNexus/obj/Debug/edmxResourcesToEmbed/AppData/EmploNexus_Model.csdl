@@ -83,20 +83,6 @@
     <Property Name="JOB_POSITION" Type="Int32" Nullable="false" />
     <Property Name="SALARY" Type="Decimal" Precision="10" Scale="2" />
   </EntityType>
-  <EntityType Name="vw_all_salary">
-    <Key>
-      <PropertyRef Name="SALARY_ID" />
-      <PropertyRef Name="EMPLOYEE_ID" />
-      <PropertyRef Name="EMPLOYEE_NAME" />
-      <PropertyRef Name="PAY_DATE" />
-      <PropertyRef Name="SALARY" />
-    </Key>
-    <Property Name="SALARY_ID" Type="Int32" Nullable="false" />
-    <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
-    <Property Name="EMPLOYEE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="PAY_DATE" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="SALARY" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-  </EntityType>
   <EntityType Name="vw_all_user_role">
     <Key>
       <PropertyRef Name="USER_ID" />
@@ -170,7 +156,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="EMPLONEXUST_T" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="EMPLONEXUSo_O" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Departments" EntityType="Self.Department" />
     <EntitySet Name="Genders" EntityType="Self.Gender" />
     <EntitySet Name="Payrolls" EntityType="Self.Payroll" />
@@ -178,7 +164,6 @@
     <EntitySet Name="Roles" EntityType="Self.Role" />
     <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
     <EntitySet Name="vw_all_employee" EntityType="Self.vw_all_employee" />
-    <EntitySet Name="vw_all_salary" EntityType="Self.vw_all_salary" />
     <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" />
     <AssociationSet Name="FK__UserAccou__depar__1ED998B2" Association="Self.FK__UserAccou__depar__1ED998B2">
       <End Role="Departments" EntitySet="Departments" />

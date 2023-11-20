@@ -76,21 +76,14 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_employee' does not have 
     <Property Name="SALARY" Type="decimal" Precision="10" Scale="2" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_salary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="vw_all_salary">
-    <Key>
-      <PropertyRef Name="SALARY_ID" />
-      <PropertyRef Name="EMPLOYEE_ID" />
-      <PropertyRef Name="EMPLOYEE_NAME" />
-      <PropertyRef Name="PAY_DATE" />
-      <PropertyRef Name="SALARY" />
-    </Key>
-    <Property Name="SALARY_ID" Type="int" Nullable="false" />
-    <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
-    <Property Name="EMPLOYEE_NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="PAY_DATE" Type="date" Nullable="false" />
-    <Property Name="SALARY" Type="decimal" Precision="10" Scale="2" Nullable="false" />
-  </EntityType>
+warning 6013: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_salary' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vw_all_salary">
+          <Property Name="SALARY_ID" Type="int" />
+          <Property Name="EMPLOYEE_ID" Type="int" />
+          <Property Name="EMPLOYEE_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="PAY_DATE" Type="date" />
+          <Property Name="SALARY" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>-->
   <!--Errors Found During Generation:
 warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_all_user_role">
@@ -192,15 +185,6 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
 [vw_all_employee].[JOB_POSITION] AS [JOB_POSITION], 
 [vw_all_employee].[SALARY] AS [SALARY]
 FROM [dbo].[vw_all_employee] AS [vw_all_employee]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="vw_all_salary" EntityType="Self.vw_all_salary" store:Type="Views" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-[vw_all_salary].[SALARY_ID] AS [SALARY_ID], 
-[vw_all_salary].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
-[vw_all_salary].[EMPLOYEE_NAME] AS [EMPLOYEE_NAME], 
-[vw_all_salary].[PAY_DATE] AS [PAY_DATE], 
-[vw_all_salary].[SALARY] AS [SALARY]
-FROM [dbo].[vw_all_salary] AS [vw_all_salary]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

@@ -15,7 +15,7 @@ namespace EmploNexus.AppData
     public partial class vw_all_salary
     {
         public int SALARY_ID { get; set; }
-        public int EMPLOYEE_ID { get; set; }
+        public Nullable<int> EMPLOYEE_ID { get; set; }
         public string EMPLOYEE_NAME { get; set; }
         public System.DateTime PAY_DATE { get; set; }
         public decimal SALARY { get; set; }

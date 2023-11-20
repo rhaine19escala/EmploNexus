@@ -16,10 +16,10 @@ namespace EmploNexus.AppData
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class EMPLONEXUST_T : DbContext
+    public partial class EMPLONEXUSu_u : DbContext
     {
-        public EMPLONEXUST_T()
-            : base("name=EMPLONEXUST_T")
+        public EMPLONEXUSu_u()
+            : base("name=EMPLONEXUSu_u")
         {
         }
     

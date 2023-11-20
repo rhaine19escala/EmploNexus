@@ -15,7 +15,7 @@ namespace EmploNexus.Forms
     public partial class Frm_AUser_Management : Form
     {
         UserRepository repo;
-        private EMPLONEXUST_T emploNexusEntities;
+        private EMPLONEXUSo_O emploNexusEntities;
 
         public Frm_AUser_Management()
         {
@@ -24,7 +24,7 @@ namespace EmploNexus.Forms
 
         private void Frm_AUser_Management_Load(object sender, EventArgs e)
         {
-            emploNexusEntities = new EMPLONEXUST_T();
+            emploNexusEntities = new EMPLONEXUSo_O();
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
 
