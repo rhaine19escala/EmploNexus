@@ -12,14 +12,12 @@ namespace EmploNexus.AppData
     using System;
     using System.Collections.Generic;
     
-    public partial class vw_all_employee
+    public partial class Payroll
     {
-        public int EMPLOYEE_ID { get; set; }
-        public string EMPLOYEE_NAME { get; set; }
-        public string E_MAIL { get; set; }
-        public int GENDER { get; set; }
-        public int DEPARTMENT { get; set; }
-        public int JOB_POSITION { get; set; }
-        public Nullable<decimal> SALARY { get; set; }
+        public int payroll_ID { get; set; }
+        public System.DateTime payroll_PayDate { get; set; }
+        public decimal payroll_Amount { get; set; }
+    
+        public virtual UserAccount UserAccount { get; set; }
     }
 }

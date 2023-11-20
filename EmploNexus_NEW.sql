@@ -113,9 +113,9 @@ CREATE TABLE UserAccounts (
 CREATE TABLE Payroll (
     payroll_ID INT IDENTITY(1,1) NOT NULL,
     payroll_PayDate DATE NOT NULL,
-    payroll_Amount DECIMAL(10, 2) NOT NULL,
+    payroll_Amount DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
 	--payroll_EmployeeID INT,
-    FOREIGN KEY(payroll_ID) REFERENCES UserAccounts(userID)
+    --FOREIGN KEY(payroll_ID) REFERENCES UserAccounts(userID)
 )
 
 ------VIEW ALL USER ROLE
@@ -125,13 +125,19 @@ SELECT ua.userID AS 'USER ID', ua.name AS 'EMPLOYEE NAME', ua.userName AS 'USERN
 INNER JOIN UserAccounts ua 
 ON ua.roleId = R.roleId
 
-------VIEW ALL USER ROLE
+------VIEW ALL USER EMPLOYEE
 CREATE VIEW vw_all_employee
 AS
-SELECT ua.emp_ID AS 'EMPLOYEE ID', ua.name AS 'EMPLOYEE NAME', ua.email AS 'E-MAIL', ua.genderId AS 'GENDER', ua.departmentId AS 'DEPARTMENT', ua.positionId AS 'JOB POSITION', ua.emp_Salary FROM Roles R
+SELECT ua.emp_ID AS 'EMPLOYEE ID', ua.name AS 'EMPLOYEE NAME', ua.email AS 'E-MAIL', ua.genderId AS 'GENDER', ua.departmentId AS 'DEPARTMENT', ua.positionId AS 'JOB POSITION', ua.emp_Salary AS 'SALARY' FROM Roles R
 INNER JOIN UserAccounts ua 
 ON ua.roleId = R.roleId
 
+------VIEW ALL USER SALARY
+CREATE VIEW vw_all_salary
+AS
+SELECT  FROM Payroll p
+INNER JOIN UserAccounts ua 
+ON ua.roleId = 
 
 ------STORED PROCEDURE NEW USER
 CREATE PROCEDURE sp_newUser @userId int, @name nvarchar(50), @userName nvarchar(50), @userPassword nvarchar(50), @roleId int 
