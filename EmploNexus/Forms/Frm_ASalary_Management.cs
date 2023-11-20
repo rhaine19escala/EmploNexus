@@ -59,9 +59,21 @@ namespace EmploNexus.Forms
 
             repo = new UserRepository();
             loadUser();
+            payrollDate.Validating += payrollDate_Validating;
 
             payrollDate.Format = DateTimePickerFormat.Custom;
             payrollDate.CustomFormat = "MM/dd/yyyy";
+
+        }
+        private void payrollDate_Validating(object sender, CancelEventArgs e)
+        {
+            DateTimePicker dtp = (DateTimePicker)sender;
+
+            if (dtp.Value < DateTime.Today)
+            {
+                MessageBox.Show("Please select a date on or after the present date.", "EmploNexus: Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dtp.Value = DateTime.Today;
+            }
         }
 
         private void loadUser()
@@ -93,6 +105,26 @@ namespace EmploNexus.Forms
             catch (Exception ex)
             {
                 MessageBox.Show("Error Encountered :" + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgv_AllSalaryWdetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.Value != null)
+            {
+                string money = e.Value.ToString();
+                decimal salary;
+                if (decimal.TryParse(money, out salary))
+                {
+                    CultureInfo peso = new CultureInfo("en-PH");
+                    e.Value = salary.ToString("C", peso);
+                    e.FormattingApplied = true;
+                }
+            }
+            else if (e.ColumnIndex == 6 && e.RowIndex >= 0)
+            {
+                e.Value = 0.00m.ToString("C", CultureInfo.GetCultureInfo("en-PH"));
+                e.FormattingApplied = true;
             }
         }
     }

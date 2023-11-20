@@ -221,6 +221,7 @@
             this.payrollDate.Name = "payrollDate";
             this.payrollDate.Size = new System.Drawing.Size(230, 29);
             this.payrollDate.TabIndex = 32;
+            this.payrollDate.Validating += new System.ComponentModel.CancelEventHandler(this.payrollDate_Validating);
             // 
             // btnClear
             // 
@@ -357,6 +358,7 @@
             this.dgv_AllSalaryWdetails.Size = new System.Drawing.Size(478, 298);
             this.dgv_AllSalaryWdetails.TabIndex = 9;
             this.dgv_AllSalaryWdetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_AllSalaryWdetails_CellClick);
+            this.dgv_AllSalaryWdetails.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_AllSalaryWdetails_CellFormatting);
             // 
             // txtCurrentTime
             // 
