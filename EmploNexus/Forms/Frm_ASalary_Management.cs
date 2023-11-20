@@ -63,7 +63,6 @@ namespace EmploNexus.Forms
 
             payrollDate.Format = DateTimePickerFormat.Custom;
             payrollDate.CustomFormat = "MM/dd/yyyy";
-
         }
         private void payrollDate_Validating(object sender, CancelEventArgs e)
         {
