@@ -16,7 +16,7 @@ namespace EmploNexus.AppData
     {
         public int EMPLOYEE_ID { get; set; }
         public string EMPLOYEE_NAME { get; set; }
-        public string E_MAIL { get; set; }
+        public string EMAIL { get; set; }
         public int GENDER { get; set; }
         public int DEPARTMENT { get; set; }
         public int JOB_POSITION { get; set; }

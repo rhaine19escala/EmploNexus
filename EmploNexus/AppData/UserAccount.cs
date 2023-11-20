@@ -14,11 +14,6 @@ namespace EmploNexus.AppData
     
     public partial class UserAccount
     {
-        public UserAccount()
-        {
-            this.Payrolls = new HashSet<Payroll>();
-        }
-    
         public int userID { get; set; }
         public int emp_ID { get; set; }
         public Nullable<decimal> emp_Salary { get; set; }
@@ -30,11 +25,12 @@ namespace EmploNexus.AppData
         public int departmentId { get; set; }
         public int positionId { get; set; }
         public int genderId { get; set; }
+        public int payrollId { get; set; }
     
         public virtual Department Department { get; set; }
         public virtual Gender Gender { get; set; }
+        public virtual Payroll Payroll { get; set; }
         public virtual Position Position { get; set; }
         public virtual Role Role { get; set; }
-        public virtual ICollection<Payroll> Payrolls { get; set; }
     }
 }

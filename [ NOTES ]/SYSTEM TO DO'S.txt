@@ -14,3 +14,22 @@ NEEDED TO BE DONE:
 			USER PROFILE, ETC.)		► NEEDED(?)
 		╚USERNAME||EMPLOYEE_NAME 		► NEEDED FOR CONNECTION!!!!
 			PASSING BETWEEN FORMS
+
+
+CODES:
+
+---- Create a table for employees
+--CREATE TABLE Employee (
+--    emp_ID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+--    emp_Name NVARCHAR(255) NOT NULL,
+--    emp_Email NVARCHAR(255) NOT NULL UNIQUE,
+--    emp_Salary DECIMAL(10, 2) DEFAULT 0.00,
+--    emp_UserID INT,
+--	emp_GenderId INT NOT NULL,
+--	emp_DepartmentId INT NOT NULL,
+--	emp_PositionId INT NOT NULL,
+--    FOREIGN KEY(emp_UserID) REFERENCES UserAccounts(userID),
+--    FOREIGN KEY(emp_GenderId) REFERENCES Gender(genderId),
+--    FOREIGN KEY(emp_DepartmentId) REFERENCES Departments(departmentId),
+--	FOREIGN KEY(emp_PositionId) REFERENCES Positions(positionId)
+--);

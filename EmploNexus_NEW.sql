@@ -19,7 +19,6 @@ INSERT [dbo].[Roles] ([roleId], [roleName], [roleDescription]) VALUES (3, N'Admi
 SET IDENTITY_INSERT [dbo].[Roles] OFF
 
 -- Create a table for Department
--- Department Table
 CREATE TABLE [dbo].[Departments](
     [departmentId] [int] IDENTITY(1,1) NOT NULL,
     [departmentName] [nvarchar](50) NULL,
@@ -38,7 +37,6 @@ SET IDENTITY_INSERT [dbo].[Departments] OFF;
 
 
 -- Create a table for Job Positions
--- Position Table
 CREATE TABLE [dbo].[Positions](
     [positionId] [int] IDENTITY(1,1) NOT NULL,
     [positionName] [nvarchar](50) NULL,
@@ -47,7 +45,6 @@ CREATE TABLE [dbo].[Positions](
  ([positionId] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
--- Inserting data into Position Table
 USE [EMPLONEXUS_NEW]
 GO
 SET IDENTITY_INSERT [dbo].[Positions] ON;
@@ -74,6 +71,13 @@ INSERT [dbo].[Gender] ([genderId], [genderName]) VALUES (1, N'Male');
 INSERT [dbo].[Gender] ([genderId], [genderName]) VALUES (2, N'Female');
 SET IDENTITY_INSERT [dbo].[Gender] OFF;
 
+-- Create a table for payroll
+CREATE TABLE Payroll (
+    payroll_ID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    payroll_PayDate DATE NOT NULL,
+    payroll_Amount DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
+)
+
 -- Create a table for users
 CREATE TABLE UserAccounts (
     userID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
@@ -87,36 +91,13 @@ CREATE TABLE UserAccounts (
     departmentId INT NOT NULL,
 	positionId INT NOT NULL,
 	genderId INT NOT NULL,
+	payrollId INT NOT NULL,
+	FOREIGN KEY(payrollId) REFERENCES Payroll(payroll_ID),
     FOREIGN KEY(roleId) REFERENCES Roles(roleId),
     FOREIGN KEY(departmentId) REFERENCES Departments(departmentId),
 	FOREIGN KEY(positionId) REFERENCES Positions(positionId),
     FOREIGN KEY(genderId) REFERENCES Gender(genderId)
 );
-
----- Create a table for employees
---CREATE TABLE Employee (
---    emp_ID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
---    emp_Name NVARCHAR(255) NOT NULL,
---    emp_Email NVARCHAR(255) NOT NULL UNIQUE,
---    emp_Salary DECIMAL(10, 2) DEFAULT 0.00,
---    emp_UserID INT,
---	emp_GenderId INT NOT NULL,
---	emp_DepartmentId INT NOT NULL,
---	emp_PositionId INT NOT NULL,
---    FOREIGN KEY(emp_UserID) REFERENCES UserAccounts(userID),
---    FOREIGN KEY(emp_GenderId) REFERENCES Gender(genderId),
---    FOREIGN KEY(emp_DepartmentId) REFERENCES Departments(departmentId),
---	FOREIGN KEY(emp_PositionId) REFERENCES Positions(positionId)
---);
-
--- Create a table for payroll
-CREATE TABLE Payroll (
-    payroll_ID INT IDENTITY(1,1) NOT NULL,
-    payroll_PayDate DATE NOT NULL,
-    payroll_Amount DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
-	--payroll_EmployeeID INT,
-    --FOREIGN KEY(payroll_ID) REFERENCES UserAccounts(userID)
-)
 
 ------VIEW ALL USER ROLE
 CREATE VIEW vw_all_user_role
@@ -128,19 +109,19 @@ ON ua.roleId = R.roleId
 ------VIEW ALL USER EMPLOYEE
 CREATE VIEW vw_all_employee
 AS
-SELECT ua.emp_ID AS 'EMPLOYEE ID', ua.name AS 'EMPLOYEE NAME', ua.email AS 'E-MAIL', ua.genderId AS 'GENDER', ua.departmentId AS 'DEPARTMENT', ua.positionId AS 'JOB POSITION', ua.emp_Salary AS 'SALARY' FROM Roles R
+SELECT ua.emp_ID AS 'EMPLOYEE_ID', ua.name AS 'EMPLOYEE_NAME', ua.email AS 'EMAIL', ua.genderId AS 'GENDER', ua.departmentId AS 'DEPARTMENT', ua.positionId AS 'JOB_POSITION', ua.emp_Salary AS 'SALARY' FROM Roles R
 INNER JOIN UserAccounts ua 
 ON ua.roleId = R.roleId
 
 ------VIEW ALL USER SALARY
 CREATE VIEW vw_all_salary
 AS
-SELECT  FROM Payroll p
+SELECT p.payroll_ID AS 'SALARY_ID', ua.emp_ID AS 'EMPLOYEE_ID', ua.name AS 'EMPLOYEE_NAME', p.payroll_PayDate AS 'PAY_DATE', p.payroll_Amount AS 'SALARY' FROM Payroll p
 INNER JOIN UserAccounts ua 
-ON ua.roleId = 
+ON ua.payrollId = p.payroll_ID
 
 ------STORED PROCEDURE NEW USER
-CREATE PROCEDURE sp_newUser @userId int, @name nvarchar(50), @userName nvarchar(50), @userPassword nvarchar(50), @roleId int 
+CREATE PROCEDURE sp_newUser @userId int, @empId int, @name nvarchar(50), @email nvarchar(255), @userName nvarchar(50), @userPassword nvarchar(50), @roleId int 
 AS
-INSERT INTO UserAccounts(userID,name,username, password, roleId) 
-	values (@userId , @name, @userName, @userPassword, @roleId)
+INSERT INTO UserAccounts(userID, emp_ID, name, email, username, password, roleId) 
+	values (@userId, @empId, @name, @email, @userName, @userPassword, @roleId)

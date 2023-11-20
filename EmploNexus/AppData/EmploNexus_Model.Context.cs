@@ -30,22 +30,31 @@ namespace EmploNexus.AppData
     
         public DbSet<Department> Departments { get; set; }
         public DbSet<Gender> Genders { get; set; }
+        public DbSet<Payroll> Payrolls { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserAccount> UserAccounts { get; set; }
-        public DbSet<Payroll> Payrolls { get; set; }
         public DbSet<vw_all_employee> vw_all_employee { get; set; }
+        public DbSet<vw_all_salary> vw_all_salary { get; set; }
         public DbSet<vw_all_user_role> vw_all_user_role { get; set; }
     
-        public virtual int sp_newUser(Nullable<int> userId, string name, string userName, string userPassword, Nullable<int> roleId)
+        public virtual int sp_newUser(Nullable<int> userId, Nullable<int> empId, string name, string email, string userName, string userPassword, Nullable<int> roleId)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(int));
     
+            var empIdParameter = empId.HasValue ?
+                new ObjectParameter("empId", empId) :
+                new ObjectParameter("empId", typeof(int));
+    
             var nameParameter = name != null ?
                 new ObjectParameter("name", name) :
                 new ObjectParameter("name", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
     
             var userNameParameter = userName != null ?
                 new ObjectParameter("userName", userName) :
@@ -59,7 +68,7 @@ namespace EmploNexus.AppData
                 new ObjectParameter("roleId", roleId) :
                 new ObjectParameter("roleId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_newUser", userIdParameter, nameParameter, userNameParameter, userPasswordParameter, roleIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_newUser", userIdParameter, empIdParameter, nameParameter, emailParameter, userNameParameter, userPasswordParameter, roleIdParameter);
         }
     }
 }
