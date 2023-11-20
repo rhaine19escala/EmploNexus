@@ -31,6 +31,9 @@ namespace EmploNexus.Forms
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Profile
+            Frm_EProfile eProfile = new Frm_EProfile();
+            eProfile.Show();
+            this.Hide();
         }
 
         private void logoutToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -50,7 +53,32 @@ namespace EmploNexus.Forms
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
+            //Profile
+            Frm_EProfile eProfile = new Frm_EProfile();
+            eProfile.Show();
+            this.Hide();
+        }
 
+        private void logOutToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (res == DialogResult.OK)
+            {
+                Frm_Login logout = new Frm_Login();
+                logout.Show();
+                this.Hide();
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (res == DialogResult.OK)
+            {
+                Frm_Login logout = new Frm_Login();
+                logout.Show();
+                this.Hide();
+            }
         }
     }
 }

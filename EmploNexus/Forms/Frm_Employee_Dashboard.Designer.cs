@@ -101,6 +101,7 @@ namespace EmploNexus.Forms
             this.logOutToolStripMenuItem2.Name = "logOutToolStripMenuItem2";
             this.logOutToolStripMenuItem2.Size = new System.Drawing.Size(180, 26);
             this.logOutToolStripMenuItem2.Text = "Log out";
+            this.logOutToolStripMenuItem2.Click += new System.EventHandler(this.logOutToolStripMenuItem2_Click);
             // 
             // txtCurrentTime
             // 
@@ -124,7 +125,7 @@ namespace EmploNexus.Forms
             this.grpBox_Menus.ForeColor = System.Drawing.Color.LightBlue;
             this.grpBox_Menus.Location = new System.Drawing.Point(239, 109);
             this.grpBox_Menus.Name = "grpBox_Menus";
-            this.grpBox_Menus.Size = new System.Drawing.Size(427, 252);
+            this.grpBox_Menus.Size = new System.Drawing.Size(427, 248);
             this.grpBox_Menus.TabIndex = 14;
             this.grpBox_Menus.TabStop = false;
             this.grpBox_Menus.Text = "MENU";
@@ -267,6 +268,7 @@ namespace EmploNexus.Forms
             this.btnLogout.TabIndex = 8;
             this.btnLogout.Text = "LOG OUT";
             this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // label1
             // 

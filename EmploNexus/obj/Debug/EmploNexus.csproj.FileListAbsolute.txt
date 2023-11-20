@@ -23,3 +23,4 @@ C:\Users\User\source\repos\EmploNexus\EmploNexus\obj\Debug\EmploNexus.Forms.Frm_
 C:\Users\User\source\repos\EmploNexus\EmploNexus\obj\Debug\EmploNexus.Forms.Frm_AUser_Management.resources
 C:\Users\User\source\repos\EmploNexus\EmploNexus\obj\Debug\EmploNexus.Forms.Frm_AEmployee_Management.resources
 C:\Users\User\source\repos\EmploNexus\EmploNexus\obj\Debug\EmploNexus.Forms.Frm_EViewSalary.resources
+C:\Users\User\source\repos\EmploNexus\EmploNexus\obj\Debug\EmploNexus.Forms.Frm_EProfile.resources

@@ -20,32 +20,16 @@ namespace EmploNexus.Forms
 
         private void Frm_Employee_Dashboard_Load(object sender, EventArgs e)
         {
-            Frm_Login frm = new Frm_Login();
-            txtName_User.Text = frm.user_Name;
-
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
-            txtCurrentDate.Text = currentTime.ToString("MM-d-yyyy");
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Profile
-        }
-
-        private void logoutToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            //View Salary
-        }
-
-        private void btnSalary_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnProfile_Click(object sender, EventArgs e)
-        {
-
+            Frm_EProfile eProfile = new Frm_EProfile();
+            eProfile.Show();
+            this.Hide();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -53,6 +37,17 @@ namespace EmploNexus.Forms
             Frm_Employee_Dashboard employee_Dashboard = new Frm_Employee_Dashboard();
             employee_Dashboard.Show();
             this.Hide();
+        }
+
+        private void logOutToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (res == DialogResult.OK)
+            {
+                Frm_Login logout = new Frm_Login();
+                logout.Show();
+                this.Hide();
+            }
         }
     }
 }
