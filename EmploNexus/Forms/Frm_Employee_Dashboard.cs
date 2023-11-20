@@ -22,10 +22,30 @@ namespace EmploNexus.Forms
         {
             Frm_Login frm = new Frm_Login();
             txtName_User.Text = frm.user_Name;
+
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
+            txtCurrentDate.Text = currentTime.ToString("MM-d-yyyy");
         }
 
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Profile
+        }
 
+        private void logoutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //View Salary
+        }
+
+        private void btnSalary_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnProfile_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
