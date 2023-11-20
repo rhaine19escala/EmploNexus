@@ -98,6 +98,9 @@
     <Compile Include="AppData\Gender.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="AppData\Payroll.cs">
+      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="AppData\Position.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
@@ -108,6 +111,9 @@
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\vw_all_employee.cs">
+      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\vw_all_salary.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\vw_all_user_role.cs">

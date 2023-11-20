@@ -15,6 +15,14 @@
     <Property Name="genderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="genderName" Type="nvarchar" MaxLength="10" />
   </EntityType>
+  <EntityType Name="Payroll">
+    <Key>
+      <PropertyRef Name="payroll_ID" />
+    </Key>
+    <Property Name="payroll_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="payroll_PayDate" Type="date" Nullable="false" />
+    <Property Name="payroll_Amount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+  </EntityType>
   <EntityType Name="Positions">
     <Key>
       <PropertyRef Name="positionId" />
@@ -46,25 +54,42 @@
     <Property Name="departmentId" Type="int" Nullable="false" />
     <Property Name="positionId" Type="int" Nullable="false" />
     <Property Name="genderId" Type="int" Nullable="false" />
+    <Property Name="payrollId" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_all_employee">
     <Key>
-      <PropertyRef Name="EMPLOYEE ID" />
-      <PropertyRef Name="EMPLOYEE NAME" />
-      <PropertyRef Name="E-MAIL" />
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="EMPLOYEE_NAME" />
+      <PropertyRef Name="EMAIL" />
       <PropertyRef Name="GENDER" />
       <PropertyRef Name="DEPARTMENT" />
-      <PropertyRef Name="JOB POSITION" />
+      <PropertyRef Name="JOB_POSITION" />
     </Key>
-    <Property Name="EMPLOYEE ID" Type="int" Nullable="false" />
-    <Property Name="EMPLOYEE NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="E-MAIL" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
+    <Property Name="EMPLOYEE_NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="GENDER" Type="int" Nullable="false" />
     <Property Name="DEPARTMENT" Type="int" Nullable="false" />
-    <Property Name="JOB POSITION" Type="int" Nullable="false" />
-    <Property Name="emp_Salary" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="JOB_POSITION" Type="int" Nullable="false" />
+    <Property Name="SALARY" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_salary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_all_salary">
+    <Key>
+      <PropertyRef Name="SALARY_ID" />
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="EMPLOYEE_NAME" />
+      <PropertyRef Name="PAY_DATE" />
+      <PropertyRef Name="SALARY" />
+    </Key>
+    <Property Name="SALARY_ID" Type="int" Nullable="false" />
+    <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
+    <Property Name="EMPLOYEE_NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="PAY_DATE" Type="date" Nullable="false" />
+    <Property Name="SALARY" Type="decimal" Precision="10" Scale="2" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -81,7 +106,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
     <Property Name="PASSWORD" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="ROLE" Type="nvarchar" MaxLength="50" />
   </EntityType>
-  <Association Name="FK__UserAccou__depar__1B0907CE">
+  <Association Name="FK__UserAccou__depar__1ED998B2">
     <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
     <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -93,7 +118,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserAccou__gende__1CF15040">
+  <Association Name="FK__UserAccou__gende__20C1E124">
     <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
     <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -105,7 +130,19 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserAccou__posit__1BFD2C07">
+  <Association Name="FK__UserAccou__payro__1CF15040">
+    <End Role="Payroll" Type="Self.Payroll" Multiplicity="1" />
+    <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payroll">
+        <PropertyRef Name="payroll_ID" />
+      </Principal>
+      <Dependent Role="UserAccounts">
+        <PropertyRef Name="payrollId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserAccou__posit__1FCDBCEB">
     <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
     <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -117,7 +154,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserAccou__roleI__1A14E395">
+  <Association Name="FK__UserAccou__roleI__1DE57479">
     <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
     <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -131,7 +168,9 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
   </Association>
   <Function Name="sp_newUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="empId" Type="int" Mode="In" />
     <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
     <Parameter Name="userName" Type="nvarchar" Mode="In" />
     <Parameter Name="userPassword" Type="nvarchar" Mode="In" />
     <Parameter Name="roleId" Type="int" Mode="In" />
@@ -139,19 +178,29 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
   <EntityContainer Name="EMPLONEXUS_ModelStoreContainer">
     <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payroll" EntityType="Self.Payroll" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAccounts" EntityType="Self.UserAccounts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vw_all_employee" EntityType="Self.vw_all_employee" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-[vw_all_employee].[EMPLOYEE ID] AS [EMPLOYEE ID], 
-[vw_all_employee].[EMPLOYEE NAME] AS [EMPLOYEE NAME], 
-[vw_all_employee].[E-MAIL] AS [E-MAIL], 
+[vw_all_employee].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
+[vw_all_employee].[EMPLOYEE_NAME] AS [EMPLOYEE_NAME], 
+[vw_all_employee].[EMAIL] AS [EMAIL], 
 [vw_all_employee].[GENDER] AS [GENDER], 
 [vw_all_employee].[DEPARTMENT] AS [DEPARTMENT], 
-[vw_all_employee].[JOB POSITION] AS [JOB POSITION], 
-[vw_all_employee].[emp_Salary] AS [emp_Salary]
+[vw_all_employee].[JOB_POSITION] AS [JOB_POSITION], 
+[vw_all_employee].[SALARY] AS [SALARY]
 FROM [dbo].[vw_all_employee] AS [vw_all_employee]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_all_salary" EntityType="Self.vw_all_salary" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_all_salary].[SALARY_ID] AS [SALARY_ID], 
+[vw_all_salary].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
+[vw_all_salary].[EMPLOYEE_NAME] AS [EMPLOYEE_NAME], 
+[vw_all_salary].[PAY_DATE] AS [PAY_DATE], 
+[vw_all_salary].[SALARY] AS [SALARY]
+FROM [dbo].[vw_all_salary] AS [vw_all_salary]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -162,19 +211,23 @@ FROM [dbo].[vw_all_employee] AS [vw_all_employee]</DefiningQuery>
 [vw_all_user_role].[ROLE] AS [ROLE]
 FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK__UserAccou__depar__1B0907CE" Association="Self.FK__UserAccou__depar__1B0907CE">
+    <AssociationSet Name="FK__UserAccou__depar__1ED998B2" Association="Self.FK__UserAccou__depar__1ED998B2">
       <End Role="Departments" EntitySet="Departments" />
       <End Role="UserAccounts" EntitySet="UserAccounts" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserAccou__gende__1CF15040" Association="Self.FK__UserAccou__gende__1CF15040">
+    <AssociationSet Name="FK__UserAccou__gende__20C1E124" Association="Self.FK__UserAccou__gende__20C1E124">
       <End Role="Gender" EntitySet="Gender" />
       <End Role="UserAccounts" EntitySet="UserAccounts" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserAccou__posit__1BFD2C07" Association="Self.FK__UserAccou__posit__1BFD2C07">
+    <AssociationSet Name="FK__UserAccou__payro__1CF15040" Association="Self.FK__UserAccou__payro__1CF15040">
+      <End Role="Payroll" EntitySet="Payroll" />
+      <End Role="UserAccounts" EntitySet="UserAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserAccou__posit__1FCDBCEB" Association="Self.FK__UserAccou__posit__1FCDBCEB">
       <End Role="Positions" EntitySet="Positions" />
       <End Role="UserAccounts" EntitySet="UserAccounts" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserAccou__roleI__1A14E395" Association="Self.FK__UserAccou__roleI__1A14E395">
+    <AssociationSet Name="FK__UserAccou__roleI__1DE57479" Association="Self.FK__UserAccou__roleI__1DE57479">
       <End Role="Roles" EntitySet="Roles" />
       <End Role="UserAccounts" EntitySet="UserAccounts" />
     </AssociationSet>

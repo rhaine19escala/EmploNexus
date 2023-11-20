@@ -356,6 +356,7 @@
             this.dgv_AllSalaryWdetails.Name = "dgv_AllSalaryWdetails";
             this.dgv_AllSalaryWdetails.Size = new System.Drawing.Size(478, 298);
             this.dgv_AllSalaryWdetails.TabIndex = 9;
+            this.dgv_AllSalaryWdetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_AllSalaryWdetails_CellClick);
             // 
             // txtCurrentTime
             // 

@@ -40,6 +40,13 @@ namespace EmploNexus
             return emploNexusEntities.vw_all_user_role.ToList();
         }
 
+        public List<vw_all_salary> GetEmployeeSalary()
+        {
+            emploNexusEntities = new EMPLONEXUS_();
+
+            return emploNexusEntities.vw_all_salary.ToList();
+        }
+
         public ErrorCode Register(String username, String password)
         {
             try
