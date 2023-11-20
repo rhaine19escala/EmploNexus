@@ -1,7 +1,7 @@
 ﻿
 namespace EmploNexus.Forms
 {
-    partial class Frm_MViewSalary
+    partial class Frm_MProfile
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace EmploNexus.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_MViewSalary));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_MProfile));
             this.label1 = new System.Windows.Forms.Label();
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -50,9 +50,9 @@ namespace EmploNexus.Forms
             this.label1.ForeColor = System.Drawing.Color.LightBlue;
             this.label1.Location = new System.Drawing.Point(12, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(349, 41);
+            this.label1.Size = new System.Drawing.Size(359, 41);
             this.label1.TabIndex = 16;
-            this.label1.Text = "EmploNexus: Salary";
+            this.label1.Text = "EmploNexus: Profile";
             // 
             // txtCurrentTime
             // 
@@ -99,6 +99,7 @@ namespace EmploNexus.Forms
             // 
             // logoutToolStripMenuItem
             // 
+            this.logoutToolStripMenuItem.Enabled = false;
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
             this.logoutToolStripMenuItem.Text = "Profile";
@@ -113,10 +114,10 @@ namespace EmploNexus.Forms
             // 
             // logoutToolStripMenuItem1
             // 
-            this.logoutToolStripMenuItem1.Enabled = false;
             this.logoutToolStripMenuItem1.Name = "logoutToolStripMenuItem1";
             this.logoutToolStripMenuItem1.Size = new System.Drawing.Size(197, 26);
             this.logoutToolStripMenuItem1.Text = "View Salary";
+            this.logoutToolStripMenuItem1.Click += new System.EventHandler(this.logoutToolStripMenuItem1_Click);
             // 
             // logOutToolStripMenuItem2
             // 
@@ -125,7 +126,7 @@ namespace EmploNexus.Forms
             this.logOutToolStripMenuItem2.Text = "Log out";
             this.logOutToolStripMenuItem2.Click += new System.EventHandler(this.logOutToolStripMenuItem2_Click_1);
             // 
-            // Frm_MViewSalary
+            // Frm_MProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -140,10 +141,10 @@ namespace EmploNexus.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "Frm_MViewSalary";
+            this.Name = "Frm_MProfile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EmploNexus: Salary";
-            this.Load += new System.EventHandler(this.Frm_MViewSalary_Load);
+            this.Text = "EmploNexus: Employee";
+            this.Load += new System.EventHandler(this.Frm_MViewEmployee_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

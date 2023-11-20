@@ -18,28 +18,21 @@ namespace EmploNexus.Forms
             InitializeComponent();         
         }
 
-        private void Frm_Employee_Dashboard_Load(object sender, EventArgs e)
+
+        private void Frm_MViewSalary_Load(object sender, EventArgs e)
         {
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
         }
 
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            //Profile
-            Frm_EProfile eProfile = new Frm_EProfile();
-            eProfile.Show();
+            Frm_Manager_Dashboard manager_Dashboard = new Frm_Manager_Dashboard();
+            manager_Dashboard.Show();
             this.Hide();
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Frm_Employee_Dashboard employee_Dashboard = new Frm_Employee_Dashboard();
-            employee_Dashboard.Show();
-            this.Hide();
-        }
-
-        private void logOutToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void logOutToolStripMenuItem2_Click_1(object sender, EventArgs e)
         {
             DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (res == DialogResult.OK)
@@ -48,6 +41,22 @@ namespace EmploNexus.Forms
                 logout.Show();
                 this.Hide();
             }
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            //View Employee
+            Frm_MViewEmployee mViewEmployee = new Frm_MViewEmployee();
+            mViewEmployee.Show();
+            this.Hide();
+        }
+
+        private void logoutToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            //Profile
+            Frm_MProfile mProfile = new Frm_MProfile();
+            mProfile.Show();
+            this.Hide();
         }
     }
 }

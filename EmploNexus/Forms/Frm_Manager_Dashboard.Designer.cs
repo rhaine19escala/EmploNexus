@@ -103,18 +103,21 @@ namespace EmploNexus.Forms
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
             this.logoutToolStripMenuItem.Text = "Profile";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(197, 26);
             this.toolStripMenuItem2.Text = "View Employee";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // logoutToolStripMenuItem1
             // 
             this.logoutToolStripMenuItem1.Name = "logoutToolStripMenuItem1";
             this.logoutToolStripMenuItem1.Size = new System.Drawing.Size(197, 26);
             this.logoutToolStripMenuItem1.Text = "View Salary";
+            this.logoutToolStripMenuItem1.Click += new System.EventHandler(this.logoutToolStripMenuItem1_Click);
             // 
             // logOutToolStripMenuItem2
             // 
@@ -287,6 +290,7 @@ namespace EmploNexus.Forms
             this.btnSalary.TabIndex = 11;
             this.btnSalary.Text = "VIEW SALARY";
             this.btnSalary.UseVisualStyleBackColor = false;
+            this.btnSalary.Click += new System.EventHandler(this.btnSalary_Click);
             // 
             // btnEmployee
             // 
@@ -301,6 +305,7 @@ namespace EmploNexus.Forms
             this.btnEmployee.TabIndex = 10;
             this.btnEmployee.Text = "VIEW EMPLOYEE";
             this.btnEmployee.UseVisualStyleBackColor = false;
+            this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
             // 
             // btnProfile
             // 
@@ -315,6 +320,7 @@ namespace EmploNexus.Forms
             this.btnProfile.TabIndex = 12;
             this.btnProfile.Text = "PROFILE";
             this.btnProfile.UseVisualStyleBackColor = false;
+            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
             // 
             // Frm_Manager_Dashboard
             // 
