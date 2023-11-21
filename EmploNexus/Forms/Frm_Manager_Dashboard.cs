@@ -24,6 +24,7 @@ namespace EmploNexus.Forms
 
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
+            txtCurrentDate.Text = currentTime.ToString("MM-d-yyyy");
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

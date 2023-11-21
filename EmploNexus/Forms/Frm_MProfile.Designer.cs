@@ -143,7 +143,7 @@ namespace EmploNexus.Forms
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Frm_MProfile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EmploNexus: Employee";
+            this.Text = "EmploNexus: Profile";
             this.Load += new System.EventHandler(this.Frm_MViewEmployee_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

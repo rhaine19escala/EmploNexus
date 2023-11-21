@@ -17,7 +17,7 @@ namespace EmploNexus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_Employee_Dashboard());
+            Application.Run(new Frm_Manager_Dashboard());
         }
     }
 }
