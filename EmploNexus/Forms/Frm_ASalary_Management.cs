@@ -85,10 +85,10 @@ namespace EmploNexus.Forms
             try
             {
                 txtpayrollID.Text = Convert.ToInt32(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[0].Value).ToString();
-                txtempID.Text = Convert.ToInt32(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[1].Value).ToString();
-                txtempName.Text = dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[2].Value as String;
+                txtempID.Text = Convert.ToInt32(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[4].Value).ToString();
+                txtempName.Text = dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[1].Value as String;
 
-                if (DateTime.TryParse(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[3].Value.ToString(), out DateTime selectedDate))
+                if (DateTime.TryParse(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[2].Value.ToString(), out DateTime selectedDate))
                 {
                     payrollDate.Value = selectedDate;
                 }
@@ -97,7 +97,7 @@ namespace EmploNexus.Forms
                     payrollDate.Value = DateTime.Now;
                 }
 
-                decimal salary = Convert.ToDecimal(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[4].Value);
+                decimal salary = Convert.ToDecimal(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[3].Value);
                 CultureInfo peso = new CultureInfo("en-PH");
                 txtempSalary.Text = salary.ToString("C", peso);
             }
