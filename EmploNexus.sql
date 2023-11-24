@@ -152,15 +152,158 @@ SELECT A.AttendanceNo AS 'ATTENDANCE NO.', A.AttendanceEmp_ID AS 'EMPLOYEE_ID', 
 FROM Attendance A
 INNER JOIN UserAccounts ua ON A.AttendanceEmp_ID = ua.user_empID;
 
-
-------STORED PROCEDURE NEW USER
-CREATE PROCEDURE sp_newUser
-    @empId INT,
-    @name NVARCHAR(255),
-    @email NVARCHAR(255),
-    @userName NVARCHAR(255),
-    @userPassword NVARCHAR(255),
-    @roleId INT
+------STORED PROCEDURE ADD USER
+CREATE PROCEDURE sp_addUser
+    @user_empID INT,
+    @username NVARCHAR(255),
+    @password NVARCHAR(255),
+    @roleId INT,
+    @departmentId INT,
+    @positionId INT,
+    @genderId INT
 AS
-INSERT INTO UserAccounts (emp_ID, [name], email, username, [password], roleId)
-VALUES (@empId, @name, @email, @userName, @userPassword, @roleId);
+BEGIN
+    INSERT INTO UserAccounts (user_empID, username, [password], roleId, departmentId, positionId, genderId)
+    VALUES (@user_empID, @username, @password, @roleId, @departmentId, @positionId, @genderId);
+END;
+
+------STORED PROCEDURE UPDATE USER
+CREATE PROCEDURE sp_updateUser
+    @user_empID INT,
+    @username NVARCHAR(255),
+    @password NVARCHAR(255),
+    @roleId INT,
+    @departmentId INT,
+    @positionId INT,
+    @genderId INT
+AS
+BEGIN
+    UPDATE UserAccounts
+    SET username = @username,
+        [password] = @password,
+        roleId = @roleId,
+        departmentId = @departmentId,
+        positionId = @positionId,
+        genderId = @genderId
+    WHERE user_empID = @user_empID;
+END;
+
+------STORED PROCEDURE DELETE USER
+CREATE PROCEDURE sp_deleteUser
+    @user_empID INT
+AS
+BEGIN
+    DELETE FROM UserAccounts
+    WHERE user_empID = @user_empID;
+END;
+
+------STORED PROCEDURE ADD EMPLOYEE
+CREATE PROCEDURE sp_addEmployee
+    @emp_ID INT,
+    @emp_name NVARCHAR(255),
+    @emp_genderId INT,
+    @emp_DOB DATE,
+    @emp_email NVARCHAR(255),
+    @emp_departmentId INT,
+    @emp_positionId INT
+AS
+BEGIN
+    INSERT INTO Employees (emp_ID, emp_name, emp_genderId, emp_DOB, emp_email, emp_departmentId, emp_positionId)
+    VALUES (@emp_ID, @emp_name, @emp_genderId, @emp_DOB, @emp_email, @emp_departmentId, @emp_positionId);
+END;
+
+------STORED PROCEDURE UPDATE EMPLOYEE
+CREATE PROCEDURE sp_updateEmployee
+    @emp_ID INT,
+    @emp_name NVARCHAR(255),
+    @emp_genderId INT,
+    @emp_DOB DATE,
+    @emp_email NVARCHAR(255),
+    @emp_departmentId INT,
+    @emp_positionId INT
+AS
+BEGIN
+    UPDATE Employees
+    SET emp_name = @emp_name,
+        emp_genderId = @emp_genderId,
+        emp_DOB = @emp_DOB,
+        emp_email = @emp_email,
+        emp_departmentId = @emp_departmentId,
+        emp_positionId = @emp_positionId
+    WHERE emp_ID = @emp_ID;
+END;
+
+------STORED PROCEDURE DELETE EMPLOYEE
+CREATE PROCEDURE sp_deleteEmployee
+    @emp_ID INT
+AS
+BEGIN
+    DELETE FROM Employees
+    WHERE emp_ID = @emp_ID;
+END;
+
+------STORED PROCEDURE ADD SALARY
+CREATE PROCEDURE sp_addSalary
+    @Salaryemp_ID INT,
+    @salary_Amount DECIMAL(10, 2),
+    @salary_PayDate DATE
+AS
+BEGIN
+    INSERT INTO Salary (Salaryemp_ID, salary_Amount, salary_PayDate)
+    VALUES (@Salaryemp_ID, @salary_Amount, @salary_PayDate);
+END;
+
+------STORED PROCEDURE UPDATE SALARY
+CREATE PROCEDURE sp_updateSalary
+    @salary_ID INT,
+    @salary_Amount DECIMAL(10, 2),
+    @salary_PayDate DATE
+AS
+BEGIN
+    UPDATE Salary
+    SET salary_Amount = @salary_Amount,
+        salary_PayDate = @salary_PayDate
+    WHERE salary_ID = @salary_ID;
+END;
+
+------STORED PROCEDURE DELETE SALARY
+CREATE PROCEDURE sp_deleteSalary
+    @salary_ID INT
+AS
+BEGIN
+    DELETE FROM Salary
+    WHERE salary_ID = @salary_ID;
+END;
+
+------STORED PROCEDURE ADD ATTENDANCE
+CREATE PROCEDURE sp_addAttendance
+    @AttendanceEmp_ID INT,
+    @AttendanceDate DATE,
+    @AttendanceStatus VARCHAR(20)
+AS
+BEGIN
+    INSERT INTO Attendance (AttendanceEmp_ID, AttendanceDate, AttendanceStatus)
+    VALUES (@AttendanceEmp_ID, @AttendanceDate, @AttendanceStatus);
+END;
+
+------STORED PROCEDURE UPDATE ATTENDANCE
+CREATE PROCEDURE sp_updateAttendance
+    @AttendanceNo INT,
+    @AttendanceDate DATE,
+    @AttendanceStatus VARCHAR(20)
+AS
+BEGIN
+    UPDATE Attendance
+    SET AttendanceDate = @AttendanceDate,
+        AttendanceStatus = @AttendanceStatus
+    WHERE AttendanceNo = @AttendanceNo;
+END;
+
+------STORED PROCEDURE DELETE ATTENDANCE
+CREATE PROCEDURE sp_deleteAttendance
+    @AttendanceNo INT
+AS
+BEGIN
+    DELETE FROM Attendance
+    WHERE AttendanceNo = @AttendanceNo;
+END;
