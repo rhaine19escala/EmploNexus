@@ -1,6 +1,6 @@
-CREATE DATABASE EMPLONEXUS_NEW
+CREATE DATABASE EmploNexus
 
-USE EMPLONEXUS_NEW
+USE EmploNexus
 
 -- Create a table for Role
 CREATE TABLE [dbo].[Roles](
@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[Roles](
  ([roleId] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-USE [EMPLONEXUS_NEW]
+USE [EmploNexus]
 GO
 SET IDENTITY_INSERT [dbo].[Roles] ON 
 INSERT [dbo].[Roles] ([roleId], [roleName], [roleDescription]) VALUES (1, N'Employee', N'Employee ')
@@ -28,7 +28,7 @@ CREATE TABLE [dbo].[Departments](
  ([departmentId] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-USE [EMPLONEXUS_NEW]
+USE [EmploNexus]
 GO
 SET IDENTITY_INSERT [dbo].[Departments] ON;
 INSERT [dbo].[Departments] ([departmentId], [departmentName], [departmentDescription]) VALUES (1, N'HR', N'Human Resources');
@@ -45,7 +45,7 @@ CREATE TABLE [dbo].[Positions](
  ([positionId] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-USE [EMPLONEXUS_NEW]
+USE [EmploNexus]
 GO
 SET IDENTITY_INSERT [dbo].[Positions] ON;
 INSERT [dbo].[Positions] ([positionId], [positionName], [positionDescription]) VALUES (1, N'HR_Manager', N'Human Resources Manager');
@@ -64,7 +64,7 @@ CREATE TABLE [dbo].[Gender](
  ([genderId] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-USE [EMPLONEXUS_NEW]
+USE [EmploNexus]
 GO
 SET IDENTITY_INSERT [dbo].[Gender] ON;
 INSERT [dbo].[Gender] ([genderId], [genderName]) VALUES (1, N'Male');
@@ -73,11 +73,8 @@ SET IDENTITY_INSERT [dbo].[Gender] OFF;
 
 -- Create a table for users
 CREATE TABLE UserAccounts (
-    userID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-	emp_ID INT NOT NULL UNIQUE,
-	emp_Salary DECIMAL(10, 2) DEFAULT 0.00,
-    name NVARCHAR(255) NOT NULL,
-    email NVARCHAR(255) NOT NULL,
+    userNo INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	user_empID INT NOT NULL UNIQUE,
     username NVARCHAR(255) NOT NULL UNIQUE,
     [password] NVARCHAR(255) NOT NULL,
     roleId INT NOT NULL,
@@ -87,8 +84,41 @@ CREATE TABLE UserAccounts (
     FOREIGN KEY(roleId) REFERENCES Roles(roleId),
     FOREIGN KEY(departmentId) REFERENCES Departments(departmentId),
 	FOREIGN KEY(positionId) REFERENCES Positions(positionId),
-    FOREIGN KEY(genderId) REFERENCES Gender(genderId)
+	FOREIGN KEY(genderId) REFERENCES Gender(genderId)
 );
+
+------VIEW ALL USER ROLE
+CREATE VIEW vw_all_user_role
+AS
+SELECT ua.userNo AS 'USER NO.', ua.user_empID AS 'EMPLOYEE ID', ua.userName AS 'USERNAME', ua.password AS 'PASSWORD', R.roleName AS 'ROLE' 
+FROM Roles R
+INNER JOIN UserAccounts ua ON ua.roleId = R.roleId
+
+-- Create a table for Employees
+CREATE TABLE Employees (
+	emp_No INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	emp_ID INT NOT NULL UNIQUE,
+	emp_name NVARCHAR(255) NOT NULL,
+	emp_genderId INT NOT NULL,
+	emp_DOB DATE DEFAULT GETDATE() NOT NULL,
+    emp_email NVARCHAR(255) NOT NULL,
+	emp_departmentId INT NOT NULL,
+	emp_positionId INT NOT NULL,	
+	FOREIGN KEY(emp_ID) REFERENCES UserAccounts(user_empID),
+	FOREIGN KEY(emp_genderId) REFERENCES Gender(genderId),
+	FOREIGN KEY(emp_departmentId) REFERENCES Departments(departmentId),
+	FOREIGN KEY(emp_positionId) REFERENCES Positions(positionId)
+);
+
+------VIEW ALL USER EMPLOYEE
+CREATE VIEW vw_all_employee
+AS
+SELECT e.emp_No AS 'EMPLOYEE NO.',e.emp_ID AS 'EMPLOYEE_ID', e.emp_name AS 'EMPLOYEE_NAME', e.emp_genderId AS 'GENDER', e.emp_DOB AS 'BIRTHDATE', e.emp_email AS 'EMAIL', ua.departmentId AS 'DEPARTMENT', ua.positionId AS 'JOB_POSITION'
+FROM Employees e
+INNER JOIN UserAccounts ua ON e.emp_ID = ua.user_empID
+INNER JOIN Gender G ON e.emp_genderId = G.genderId
+INNER JOIN Departments D ON e.emp_departmentId = D.departmentId
+INNER JOIN Positions P ON e.emp_positionId = P.positionId
 
 -- Create a table for Salary
 CREATE TABLE Salary (
@@ -96,51 +126,32 @@ CREATE TABLE Salary (
 	salary_Amount DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
     salary_PayDate DATE NOT NULL,
 	Salaryemp_ID INT NOT NULL
-	FOREIGN KEY(Salaryemp_ID) REFERENCES UserAccounts(emp_ID)
+	FOREIGN KEY(Salaryemp_ID) REFERENCES UserAccounts(user_empID)
 );
+
+------VIEW ALL EMPLOYEE SALARY
+CREATE VIEW vw_all_salary
+AS
+SELECT S.salary_ID AS 'SALARY NO.', S.Salaryemp_ID AS 'EMPLOYEE_ID', S.salary_PayDate AS 'PAY_DATE', S.salary_Amount AS 'SALARY'
+FROM Salary S
+INNER JOIN UserAccounts ua ON s.Salaryemp_ID = ua.user_empID;
 
 -- Create a table for Attendance
 CREATE TABLE Attendance (
-    AttendanceID INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    AttendanceNo INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
     AttendanceDate DATE DEFAULT GETDATE() NOT NULL,
-    Status VARCHAR(20) DEFAULT 'Present' NOT NULL,
+    AttendanceStatus VARCHAR(20) DEFAULT 'Present' NOT NULL,
     AttendanceEmp_ID INT NOT NULL,
-    FOREIGN KEY (AttendanceEmp_ID) REFERENCES UserAccounts(emp_ID)
+    FOREIGN KEY (AttendanceEmp_ID) REFERENCES UserAccounts(user_empID)
 );
 
-------VIEW ALL USER ROLE
-CREATE VIEW vw_all_user_role
+------VIEW ALL EMPLOYEE ATTENDANCE
+CREATE VIEW vw_all_attendance
 AS
-SELECT ua.userID AS 'USER ID', ua.name AS 'EMPLOYEE NAME', ua.userName AS 'USERNAME', ua.password AS 'PASSWORD', R.roleName AS 'ROLE' 
-FROM Roles R
-INNER JOIN UserAccounts ua 
-ON ua.roleId = R.roleId
+SELECT A.AttendanceNo AS 'ATTENDANCE NO.', A.AttendanceEmp_ID AS 'EMPLOYEE_ID', A.AttendanceDate AS 'DATE', A.AttendanceStatus AS 'STATUS'
+FROM Attendance A
+INNER JOIN UserAccounts ua ON A.AttendanceEmp_ID = ua.user_empID;
 
-------VIEW ALL USER EMPLOYEE
-CREATE VIEW vw_all_employee
-AS
-SELECT ua.emp_ID AS 'EMPLOYEE_ID', ua.name AS 'EMPLOYEE_NAME', ua.email AS 'EMAIL', ua.genderId AS 'GENDER', ua.departmentId AS 'DEPARTMENT', ua.positionId AS 'JOB_POSITION', ua.emp_Salary AS 'SALARY' FROM Roles R
-INNER JOIN UserAccounts ua 
-ON ua.roleId = R.roleId
-
---------VIEW ALL USER EMPLOYEE---(OTHER OPTION)
---CREATE VIEW vw_all_employee
---AS
---SELECT ua.emp_ID AS 'EMPLOYEE_ID', ua.name AS 'EMPLOYEE_NAME', ua.email AS 'EMAIL', G.genderName AS 'GENDER',
---       D.departmentName AS 'DEPARTMENT', P.positionName AS 'JOB_POSITION', ua.emp_Salary AS 'SALARY'
---FROM UserAccounts ua
---INNER JOIN Roles R ON ua.roleId = R.roleId
---INNER JOIN Gender G ON ua.genderId = G.genderId
---INNER JOIN Departments D ON ua.departmentId = D.departmentId
---INNER JOIN Positions P ON ua.positionId = P.positionId;
-
-------VIEW ALL USER SALARY
-CREATE VIEW vw_all_salary
-AS
-SELECT s.salary_ID AS 'SALARY_ID', ua.emp_ID AS 'EMPLOYEE_ID', ua.name AS 'EMPLOYEE_NAME', s.salary_PayDate AS 'PAY_DATE', s.salary_Amount AS 'SALARY'
-FROM Salary s
-INNER JOIN UserAccounts ua 
-ON s.Salaryemp_ID = ua.emp_ID;
 
 ------STORED PROCEDURE NEW USER
 CREATE PROCEDURE sp_newUser
