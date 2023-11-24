@@ -95,7 +95,7 @@ CREATE TABLE Salary (
     salary_ID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,	
 	salary_Amount DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
     salary_PayDate DATE NOT NULL,
-	Salaryemp_ID INT NOT NULL --,
+	Salaryemp_ID INT NOT NULL
 	FOREIGN KEY(Salaryemp_ID) REFERENCES UserAccounts(emp_ID)
 );
 
