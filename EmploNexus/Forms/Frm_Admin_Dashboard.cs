@@ -89,5 +89,22 @@ namespace EmploNexus.Forms
             aUser_Management.Show();
             this.Hide();
         }
+        private void btnAttendance_Click(object sender, EventArgs e)
+        {
+            //Attendance
+
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //Attendance
+
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            //Profile
+
+        }
     }
 }

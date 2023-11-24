@@ -17,13 +17,13 @@ namespace EmploNexus.Forms
     public partial class Frm_Registration : Form
     {
         public string username = String.Empty;
-        EMPLONEXUSu_u db;
+        EmploNexus_oEntity db;
 
         public Frm_Registration()
         {
             InitializeComponent();
             //
-            db = new    EMPLONEXUSu_u();
+            db = new EmploNexus_oEntity();
         }
 
         private void Frm_Register_Load(object sender, EventArgs e)
@@ -87,8 +87,6 @@ namespace EmploNexus.Forms
             txtpass_word.Clear();
             txtConfirmPassword.Clear();
             txtuser_name.Clear();
-            txtempName.Clear();
-            txtEmail.Clear();
         }
 
         private bool IsValidEmail(string email)
@@ -105,18 +103,6 @@ namespace EmploNexus.Forms
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtEmployeeID, "Empty field");
-                return;
-            }
-            if (String.IsNullOrEmpty(txtempName.Text))
-            {
-                errorProvider1.Clear();
-                errorProvider1.SetError(txtempName, "Empty field");
-                return;
-            }
-            if (String.IsNullOrEmpty(txtEmail.Text) || !IsValidEmail(txtEmail.Text))
-            {
-                errorProvider1.Clear();
-                errorProvider1.SetError(txtEmail, "Invalid email");
                 return;
             }
             if (String.IsNullOrEmpty(txtuser_name.Text))
@@ -144,20 +130,9 @@ namespace EmploNexus.Forms
                 errorProvider1.SetError(txtConfirmPassword, "Password not match");
                 return;
             }
-            // int code = 123;
-            // send email verificode (code)
-            // send sms otp (code)
-
-            // find the user id
-            // code input equal db. useraccoutn code
-
-            //try
-            //{
                 UserAccount nUserAccount = new UserAccount();
 
-                nUserAccount.emp_ID = Convert.ToInt32(txtEmployeeID.Text);
-                nUserAccount.name = txtempName.Text;
-                nUserAccount.email = txtEmail.Text;
+                nUserAccount.user_empID = Convert.ToInt32(txtEmployeeID.Text);
                 nUserAccount.username = txtuser_name.Text;
                 nUserAccount.password = txtpass_word.Text;
                 nUserAccount.roleId = (Int32)cmbBoxRole.SelectedValue;
@@ -171,26 +146,11 @@ namespace EmploNexus.Forms
                 db.SaveChanges();
 
                 ClearInputFields();
-                MessageBox.Show("Registered!", "EmploNexus: Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error Encountered :" + ex.Message, "EmploNexus: Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-            
-        }
-
-        private void txtempName_TextChanged(object sender, EventArgs e)
-        {
-
+            MessageBox.Show("Registered Successfully!", "EmploNexus: Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Hide();
         }
 
         private void cmbBoxGender_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtEmail_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -14,11 +14,8 @@ namespace EmploNexus.AppData
     
     public partial class UserAccount
     {
-        public int userID { get; set; }
-        public int emp_ID { get; set; }
-        public Nullable<decimal> emp_Salary { get; set; }
-        public string name { get; set; }
-        public string email { get; set; }
+        public int userNo { get; set; }
+        public int user_empID { get; set; }
         public string username { get; set; }
         public string password { get; set; }
         public int roleId { get; set; }
@@ -28,7 +25,6 @@ namespace EmploNexus.AppData
     
         public virtual Department Department { get; set; }
         public virtual Gender Gender { get; set; }
-        public virtual Payroll Payroll { get; set; }
         public virtual Position Position { get; set; }
         public virtual Role Role { get; set; }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -12,46 +13,82 @@ namespace EmploNexus
 {
     public class UserRepository
     {
-        private EMPLONEXUSu_u emploNexusEntities;
+        private EmploNexus_oEntity emploNexusEntities;
 
         public UserRepository()
         {
-            emploNexusEntities = new EMPLONEXUSu_u();
+            emploNexusEntities = new EmploNexus_oEntity();
         }
      
         public UserAccount GetUserByUsername(String username)
         {
             // re-initialize emploNexusEntities object because sometimes data in the list not updated
-            emploNexusEntities = new EMPLONEXUSu_u();
+            emploNexusEntities = new EmploNexus_oEntity();
             // SELECT TOP 1 * FROM USERACCOUNT WHERE username == username
             return emploNexusEntities.UserAccounts.Where(s => s.username == username).FirstOrDefault();
         }
 
         public List<vw_all_employee> GetEmployeeList()
         {
-            emploNexusEntities = new EMPLONEXUSu_u();
+            emploNexusEntities = new EmploNexus_oEntity();
             return emploNexusEntities.vw_all_employee.ToList();
         }
 
         public List<vw_all_user_role> AllUserRole()
         {
-            emploNexusEntities = new EMPLONEXUSu_u();
+            emploNexusEntities = new EmploNexus_oEntity();
 
             return emploNexusEntities.vw_all_user_role.ToList();
         }
 
         public List<vw_all_salary> GetEmployeeSalary()
         {
-            emploNexusEntities = new EMPLONEXUSu_u();
+            emploNexusEntities = new EmploNexus_oEntity();
 
             return emploNexusEntities.vw_all_salary.ToList();
+        }
+
+        public ErrorCode AddUser(int userEmpID, string username, string password, int roleId, int departmentId, int positionId, int genderId, ref string outMessage)
+        {
+            ErrorCode retValue = ErrorCode.Error;
+            try
+            {
+                using (var connection = new SqlConnection("data source=.\\sqlexpress;initial catalog=EmploNexus;integrated security=True"))
+                {
+                    connection.Open();
+
+                    using (var command = new SqlCommand("sp_addUser", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@user_empID", userEmpID);
+                        command.Parameters.AddWithValue("@username", username);
+                        command.Parameters.AddWithValue("@password", password);
+                        command.Parameters.AddWithValue("@roleId", roleId);
+                        command.Parameters.AddWithValue("@departmentId", departmentId);
+                        command.Parameters.AddWithValue("@positionId", positionId);
+                        command.Parameters.AddWithValue("@genderId", genderId);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                outMessage = "Inserted";
+                retValue = ErrorCode.Success;
+            }
+            catch (Exception ex)
+            {
+                outMessage = ex.Message;
+                MessageBox.Show(ex.Message);
+            }
+            return retValue;
         }
 
         public ErrorCode Register(String username, String password)
         {
             try
             {
-                using (var emploNexusEntities = new EMPLONEXUSu_u())
+                using (var emploNexusEntities = new EmploNexus_oEntity())
                 {
                     var newUser = new UserAccount();
                     newUser.username = username;
@@ -95,7 +132,7 @@ namespace EmploNexus
             try
             {
                 // Find the user with id
-                UserAccount user = emploNexusEntities.UserAccounts.Where(m => m.userID == userId).FirstOrDefault();
+                UserAccount user = emploNexusEntities.UserAccounts.Where(m => m.userNo == userId).FirstOrDefault();
                 // Update the value of the retrieved user
                 user.username = aUserAccount.username;
                 user.password = aUserAccount.password;
@@ -119,7 +156,7 @@ namespace EmploNexus
             ErrorCode retValue = ErrorCode.Error;
             try
             {
-                UserAccount user = emploNexusEntities.UserAccounts.Where(m => m.userID == userId).FirstOrDefault();
+                UserAccount user = emploNexusEntities.UserAccounts.Where(m => m.userNo == userId).FirstOrDefault();
                 // Remove the user
                 emploNexusEntities.UserAccounts.Remove(user);
                 emploNexusEntities.SaveChanges();       // Execute the update

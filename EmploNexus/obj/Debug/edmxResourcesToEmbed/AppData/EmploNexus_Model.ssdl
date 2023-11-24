@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="EMPLONEXUSu_uModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="EmploNexusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Attendance">
+    <Key>
+      <PropertyRef Name="AttendanceNo" />
+    </Key>
+    <Property Name="AttendanceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttendanceDate" Type="date" Nullable="false" />
+    <Property Name="AttendanceStatus" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="AttendanceEmp_ID" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Departments">
     <Key>
       <PropertyRef Name="departmentId" />
@@ -8,20 +17,25 @@
     <Property Name="departmentName" Type="nvarchar" MaxLength="50" />
     <Property Name="departmentDescription" Type="nvarchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="emp_No" />
+    </Key>
+    <Property Name="emp_No" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emp_ID" Type="int" Nullable="false" />
+    <Property Name="emp_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="emp_genderId" Type="int" Nullable="false" />
+    <Property Name="emp_DOB" Type="date" Nullable="false" />
+    <Property Name="emp_email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="emp_departmentId" Type="int" Nullable="false" />
+    <Property Name="emp_positionId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Gender">
     <Key>
       <PropertyRef Name="genderId" />
     </Key>
     <Property Name="genderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="genderName" Type="nvarchar" MaxLength="10" />
-  </EntityType>
-  <EntityType Name="Payroll">
-    <Key>
-      <PropertyRef Name="payroll_ID" />
-    </Key>
-    <Property Name="payroll_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="payroll_PayDate" Type="date" Nullable="false" />
-    <Property Name="payroll_Amount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
   </EntityType>
   <EntityType Name="Positions">
     <Key>
@@ -39,15 +53,21 @@
     <Property Name="roleName" Type="nvarchar" MaxLength="50" />
     <Property Name="roleDescription" Type="nvarchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="Salary">
+    <Key>
+      <PropertyRef Name="salary_ID" />
+    </Key>
+    <Property Name="salary_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="salary_Amount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="salary_PayDate" Type="date" Nullable="false" />
+    <Property Name="Salaryemp_ID" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="UserAccounts">
     <Key>
-      <PropertyRef Name="userID" />
+      <PropertyRef Name="userNo" />
     </Key>
-    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="emp_ID" Type="int" Nullable="false" />
-    <Property Name="emp_Salary" Type="decimal" Precision="10" Scale="2" />
-    <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="email" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="userNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_empID" Type="int" Nullable="false" />
     <Property Name="username" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="roleId" Type="int" Nullable="false" />
@@ -56,56 +76,116 @@
     <Property Name="genderId" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'EmploNexus.dbo.vw_all_attendance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_all_attendance">
+    <Key>
+      <PropertyRef Name="ATTENDANCE NO." />
+      <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="DATE" />
+      <PropertyRef Name="STATUS" />
+    </Key>
+    <Property Name="ATTENDANCE NO." Type="int" Nullable="false" />
+    <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
+    <Property Name="DATE" Type="date" Nullable="false" />
+    <Property Name="STATUS" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EmploNexus.dbo.vw_all_employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_all_employee">
     <Key>
+      <PropertyRef Name="EMPLOYEE NO." />
       <PropertyRef Name="EMPLOYEE_ID" />
       <PropertyRef Name="EMPLOYEE_NAME" />
-      <PropertyRef Name="EMAIL" />
       <PropertyRef Name="GENDER" />
+      <PropertyRef Name="BIRTHDATE" />
+      <PropertyRef Name="EMAIL" />
       <PropertyRef Name="DEPARTMENT" />
       <PropertyRef Name="JOB_POSITION" />
     </Key>
+    <Property Name="EMPLOYEE NO." Type="int" Nullable="false" />
     <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
     <Property Name="EMPLOYEE_NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="EMAIL" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="GENDER" Type="int" Nullable="false" />
+    <Property Name="BIRTHDATE" Type="date" Nullable="false" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="DEPARTMENT" Type="int" Nullable="false" />
     <Property Name="JOB_POSITION" Type="int" Nullable="false" />
-    <Property Name="SALARY" Type="decimal" Precision="10" Scale="2" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_salary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'EmploNexus.dbo.vw_all_salary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_all_salary">
     <Key>
-      <PropertyRef Name="SALARY_ID" />
+      <PropertyRef Name="SALARY NO." />
       <PropertyRef Name="EMPLOYEE_ID" />
-      <PropertyRef Name="EMPLOYEE_NAME" />
       <PropertyRef Name="PAY_DATE" />
       <PropertyRef Name="SALARY" />
     </Key>
-    <Property Name="SALARY_ID" Type="int" Nullable="false" />
+    <Property Name="SALARY NO." Type="int" Nullable="false" />
     <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
-    <Property Name="EMPLOYEE_NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="PAY_DATE" Type="date" Nullable="false" />
     <Property Name="SALARY" Type="decimal" Precision="10" Scale="2" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'EmploNexus.dbo.vw_all_user_role' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vw_all_user_role">
     <Key>
-      <PropertyRef Name="USER ID" />
-      <PropertyRef Name="EMPLOYEE NAME" />
+      <PropertyRef Name="USER NO." />
+      <PropertyRef Name="EMPLOYEE ID" />
       <PropertyRef Name="USERNAME" />
       <PropertyRef Name="PASSWORD" />
     </Key>
-    <Property Name="USER ID" Type="int" Nullable="false" />
-    <Property Name="EMPLOYEE NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="USER NO." Type="int" Nullable="false" />
+    <Property Name="EMPLOYEE ID" Type="int" Nullable="false" />
     <Property Name="USERNAME" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="PASSWORD" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="ROLE" Type="nvarchar" MaxLength="50" />
   </EntityType>
-  <Association Name="FK__UserAccou__depar__2E1BDC42">
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__Attendanc__Atten__300424B4' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Attendanc__Atten__300424B4" />-->
+  <Association Name="FK__Employees__emp_d__24927208">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="departmentId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="emp_departmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employees__emp_g__239E4DCF">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="genderId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="emp_genderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__Employees__emp_I__22AA2996' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Employees__emp_I__22AA2996" />-->
+  <Association Name="FK__Employees__emp_p__25869641">
+    <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Positions">
+        <PropertyRef Name="positionId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="emp_positionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__Salary__Salaryem__2A4B4B5E' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Salary__Salaryem__2A4B4B5E" />-->
+  <Association Name="FK__UserAccou__depar__1B0907CE">
     <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
     <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -117,7 +197,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserAccou__gende__300424B4">
+  <Association Name="FK__UserAccou__gende__1CF15040">
     <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
     <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -129,7 +209,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserAccou__posit__2F10007B">
+  <Association Name="FK__UserAccou__posit__1BFD2C07">
     <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
     <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -141,7 +221,7 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserAccou__roleI__2D27B809">
+  <Association Name="FK__UserAccou__roleI__1A14E395">
     <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
     <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -153,64 +233,145 @@ warning 6002: The table/view 'EMPLONEXUS_NEW.dbo.vw_all_user_role' does not have
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="sp_newUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="userId" Type="int" Mode="In" />
-    <Parameter Name="empId" Type="int" Mode="In" />
-    <Parameter Name="name" Type="nvarchar" Mode="In" />
-    <Parameter Name="email" Type="nvarchar" Mode="In" />
-    <Parameter Name="userName" Type="nvarchar" Mode="In" />
-    <Parameter Name="userPassword" Type="nvarchar" Mode="In" />
-    <Parameter Name="roleId" Type="int" Mode="In" />
+  <Function Name="sp_addAttendance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AttendanceEmp_ID" Type="int" Mode="In" />
+    <Parameter Name="AttendanceDate" Type="date" Mode="In" />
+    <Parameter Name="AttendanceStatus" Type="varchar" Mode="In" />
   </Function>
-  <EntityContainer Name="EMPLONEXUSu_uModelStoreContainer">
+  <Function Name="sp_addEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="emp_ID" Type="int" Mode="In" />
+    <Parameter Name="emp_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="emp_genderId" Type="int" Mode="In" />
+    <Parameter Name="emp_DOB" Type="date" Mode="In" />
+    <Parameter Name="emp_email" Type="nvarchar" Mode="In" />
+    <Parameter Name="emp_departmentId" Type="int" Mode="In" />
+    <Parameter Name="emp_positionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_addSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Salaryemp_ID" Type="int" Mode="In" />
+    <Parameter Name="salary_Amount" Type="decimal" Mode="In" />
+    <Parameter Name="salary_PayDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_addUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_empID" Type="int" Mode="In" />
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
+    <Parameter Name="roleId" Type="int" Mode="In" />
+    <Parameter Name="departmentId" Type="int" Mode="In" />
+    <Parameter Name="positionId" Type="int" Mode="In" />
+    <Parameter Name="genderId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_deleteAttendance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AttendanceNo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_deleteEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="emp_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_deleteSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="salary_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_deleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_empID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_updateAttendance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AttendanceNo" Type="int" Mode="In" />
+    <Parameter Name="AttendanceDate" Type="date" Mode="In" />
+    <Parameter Name="AttendanceStatus" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_updateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="emp_ID" Type="int" Mode="In" />
+    <Parameter Name="emp_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="emp_genderId" Type="int" Mode="In" />
+    <Parameter Name="emp_DOB" Type="date" Mode="In" />
+    <Parameter Name="emp_email" Type="nvarchar" Mode="In" />
+    <Parameter Name="emp_departmentId" Type="int" Mode="In" />
+    <Parameter Name="emp_positionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_updateSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="salary_ID" Type="int" Mode="In" />
+    <Parameter Name="salary_Amount" Type="decimal" Mode="In" />
+    <Parameter Name="salary_PayDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_updateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_empID" Type="int" Mode="In" />
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
+    <Parameter Name="roleId" Type="int" Mode="In" />
+    <Parameter Name="departmentId" Type="int" Mode="In" />
+    <Parameter Name="positionId" Type="int" Mode="In" />
+    <Parameter Name="genderId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="EmploNexusModelStoreContainer">
+    <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Payroll" EntityType="Self.Payroll" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Salary" EntityType="Self.Salary" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAccounts" EntityType="Self.UserAccounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_all_attendance" EntityType="Self.vw_all_attendance" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_all_attendance].[ATTENDANCE NO.] AS [ATTENDANCE NO.], 
+[vw_all_attendance].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
+[vw_all_attendance].[DATE] AS [DATE], 
+[vw_all_attendance].[STATUS] AS [STATUS]
+FROM [dbo].[vw_all_attendance] AS [vw_all_attendance]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="vw_all_employee" EntityType="Self.vw_all_employee" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
+[vw_all_employee].[EMPLOYEE NO.] AS [EMPLOYEE NO.], 
 [vw_all_employee].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
 [vw_all_employee].[EMPLOYEE_NAME] AS [EMPLOYEE_NAME], 
-[vw_all_employee].[EMAIL] AS [EMAIL], 
 [vw_all_employee].[GENDER] AS [GENDER], 
+[vw_all_employee].[BIRTHDATE] AS [BIRTHDATE], 
+[vw_all_employee].[EMAIL] AS [EMAIL], 
 [vw_all_employee].[DEPARTMENT] AS [DEPARTMENT], 
-[vw_all_employee].[JOB_POSITION] AS [JOB_POSITION], 
-[vw_all_employee].[SALARY] AS [SALARY]
+[vw_all_employee].[JOB_POSITION] AS [JOB_POSITION]
 FROM [dbo].[vw_all_employee] AS [vw_all_employee]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="vw_all_salary" EntityType="Self.vw_all_salary" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-[vw_all_salary].[SALARY_ID] AS [SALARY_ID], 
+[vw_all_salary].[SALARY NO.] AS [SALARY NO.], 
 [vw_all_salary].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
-[vw_all_salary].[EMPLOYEE_NAME] AS [EMPLOYEE_NAME], 
 [vw_all_salary].[PAY_DATE] AS [PAY_DATE], 
 [vw_all_salary].[SALARY] AS [SALARY]
 FROM [dbo].[vw_all_salary] AS [vw_all_salary]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-[vw_all_user_role].[USER ID] AS [USER ID], 
-[vw_all_user_role].[EMPLOYEE NAME] AS [EMPLOYEE NAME], 
+[vw_all_user_role].[USER NO.] AS [USER NO.], 
+[vw_all_user_role].[EMPLOYEE ID] AS [EMPLOYEE ID], 
 [vw_all_user_role].[USERNAME] AS [USERNAME], 
 [vw_all_user_role].[PASSWORD] AS [PASSWORD], 
 [vw_all_user_role].[ROLE] AS [ROLE]
 FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK__UserAccou__depar__2E1BDC42" Association="Self.FK__UserAccou__depar__2E1BDC42">
+    <AssociationSet Name="FK__Employees__emp_d__24927208" Association="Self.FK__Employees__emp_d__24927208">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employees__emp_g__239E4DCF" Association="Self.FK__Employees__emp_g__239E4DCF">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employees__emp_p__25869641" Association="Self.FK__Employees__emp_p__25869641">
+      <End Role="Positions" EntitySet="Positions" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserAccou__depar__1B0907CE" Association="Self.FK__UserAccou__depar__1B0907CE">
       <End Role="Departments" EntitySet="Departments" />
       <End Role="UserAccounts" EntitySet="UserAccounts" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserAccou__gende__300424B4" Association="Self.FK__UserAccou__gende__300424B4">
+    <AssociationSet Name="FK__UserAccou__gende__1CF15040" Association="Self.FK__UserAccou__gende__1CF15040">
       <End Role="Gender" EntitySet="Gender" />
       <End Role="UserAccounts" EntitySet="UserAccounts" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserAccou__posit__2F10007B" Association="Self.FK__UserAccou__posit__2F10007B">
+    <AssociationSet Name="FK__UserAccou__posit__1BFD2C07" Association="Self.FK__UserAccou__posit__1BFD2C07">
       <End Role="Positions" EntitySet="Positions" />
       <End Role="UserAccounts" EntitySet="UserAccounts" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserAccou__roleI__2D27B809" Association="Self.FK__UserAccou__roleI__2D27B809">
+    <AssociationSet Name="FK__UserAccou__roleI__1A14E395" Association="Self.FK__UserAccou__roleI__1A14E395">
       <End Role="Roles" EntitySet="Roles" />
       <End Role="UserAccounts" EntitySet="UserAccounts" />
     </AssociationSet>

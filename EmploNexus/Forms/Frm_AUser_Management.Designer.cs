@@ -46,13 +46,13 @@
             this.btnuserClear = new System.Windows.Forms.Button();
             this.btnuserUpdate = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbBoxRole = new System.Windows.Forms.ComboBox();
             this.txtUserID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtRole = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtuserUsername = new System.Windows.Forms.TextBox();
             this.txtuserPassword = new System.Windows.Forms.TextBox();
-            this.txtuserName = new System.Windows.Forms.TextBox();
+            this.txtuser_empID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -166,7 +166,7 @@
             this.panel1.Controls.Add(this.dgv_AllUserWdetails);
             this.panel1.Location = new System.Drawing.Point(12, 103);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1061, 380);
+            this.panel1.Size = new System.Drawing.Size(1061, 388);
             this.panel1.TabIndex = 19;
             // 
             // groupBox2
@@ -178,7 +178,7 @@
             this.groupBox2.Controls.Add(this.btnuserUpdate);
             this.groupBox2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.LightBlue;
-            this.groupBox2.Location = new System.Drawing.Point(15, 283);
+            this.groupBox2.Location = new System.Drawing.Point(15, 292);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(424, 83);
             this.groupBox2.TabIndex = 34;
@@ -233,13 +233,13 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.cmbBoxRole);
             this.groupBox1.Controls.Add(this.txtUserID);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtRole);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtuserUsername);
             this.groupBox1.Controls.Add(this.txtuserPassword);
-            this.groupBox1.Controls.Add(this.txtuserName);
+            this.groupBox1.Controls.Add(this.txtuser_empID);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
@@ -247,13 +247,24 @@
             this.groupBox1.ForeColor = System.Drawing.Color.LightBlue;
             this.groupBox1.Location = new System.Drawing.Point(15, 49);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(424, 235);
+            this.groupBox1.Size = new System.Drawing.Size(424, 243);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Account Details";
             // 
+            // cmbBoxRole
+            // 
+            this.cmbBoxRole.BackColor = System.Drawing.Color.LightCyan;
+            this.cmbBoxRole.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBoxRole.FormattingEnabled = true;
+            this.cmbBoxRole.Location = new System.Drawing.Point(179, 192);
+            this.cmbBoxRole.Name = "cmbBoxRole";
+            this.cmbBoxRole.Size = new System.Drawing.Size(230, 34);
+            this.cmbBoxRole.TabIndex = 37;
+            // 
             // txtUserID
             // 
+            this.txtUserID.BackColor = System.Drawing.Color.LightCyan;
             this.txtUserID.Location = new System.Drawing.Point(179, 36);
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.Size = new System.Drawing.Size(230, 33);
@@ -271,13 +282,6 @@
             this.label2.TabIndex = 36;
             this.label2.Text = "User ID";
             // 
-            // txtRole
-            // 
-            this.txtRole.Location = new System.Drawing.Point(179, 192);
-            this.txtRole.Name = "txtRole";
-            this.txtRole.Size = new System.Drawing.Size(230, 33);
-            this.txtRole.TabIndex = 34;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -292,6 +296,7 @@
             // 
             // txtuserUsername
             // 
+            this.txtuserUsername.BackColor = System.Drawing.Color.LightCyan;
             this.txtuserUsername.Location = new System.Drawing.Point(179, 114);
             this.txtuserUsername.Name = "txtuserUsername";
             this.txtuserUsername.Size = new System.Drawing.Size(230, 33);
@@ -299,17 +304,19 @@
             // 
             // txtuserPassword
             // 
+            this.txtuserPassword.BackColor = System.Drawing.Color.LightCyan;
             this.txtuserPassword.Location = new System.Drawing.Point(179, 153);
             this.txtuserPassword.Name = "txtuserPassword";
             this.txtuserPassword.Size = new System.Drawing.Size(230, 33);
             this.txtuserPassword.TabIndex = 32;
             // 
-            // txtuserName
+            // txtuser_empID
             // 
-            this.txtuserName.Location = new System.Drawing.Point(179, 75);
-            this.txtuserName.Name = "txtuserName";
-            this.txtuserName.Size = new System.Drawing.Size(230, 33);
-            this.txtuserName.TabIndex = 16;
+            this.txtuser_empID.BackColor = System.Drawing.Color.LightCyan;
+            this.txtuser_empID.Location = new System.Drawing.Point(179, 75);
+            this.txtuser_empID.Name = "txtuser_empID";
+            this.txtuser_empID.Size = new System.Drawing.Size(230, 33);
+            this.txtuser_empID.TabIndex = 16;
             // 
             // label3
             // 
@@ -384,6 +391,7 @@
             // 
             // txtuserSearch
             // 
+            this.txtuserSearch.BackColor = System.Drawing.Color.LightCyan;
             this.txtuserSearch.Location = new System.Drawing.Point(551, 14);
             this.txtuserSearch.Name = "txtuserSearch";
             this.txtuserSearch.Size = new System.Drawing.Size(453, 29);
@@ -398,7 +406,7 @@
             this.dgv_AllUserWdetails.Location = new System.Drawing.Point(457, 51);
             this.dgv_AllUserWdetails.Name = "dgv_AllUserWdetails";
             this.dgv_AllUserWdetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_AllUserWdetails.Size = new System.Drawing.Size(582, 313);
+            this.dgv_AllUserWdetails.Size = new System.Drawing.Size(582, 324);
             this.dgv_AllUserWdetails.TabIndex = 9;
             this.dgv_AllUserWdetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_AllUserWdetails_CellClick);
             // 
@@ -412,7 +420,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::EmploNexus.Properties.Resources.alexandr_podvalny_n_Jb_d8O43Q_unsplash;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1085, 499);
+            this.ClientSize = new System.Drawing.Size(1085, 503);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtCurrentTime);
             this.Controls.Add(this.label1);
@@ -459,7 +467,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtuserUsername;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtuserName;
+        private System.Windows.Forms.TextBox txtuser_empID;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Button btnSearch;
@@ -468,10 +476,10 @@
         private System.Windows.Forms.TextBox txtuserPassword;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtRole;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.TextBox txtUserID;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbBoxRole;
     }
 }

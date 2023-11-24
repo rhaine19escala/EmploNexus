@@ -16,10 +16,10 @@ namespace EmploNexus.AppData
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class EMPLONEXUSu_u : DbContext
+    public partial class EmploNexus_oEntity : DbContext
     {
-        public EMPLONEXUSu_u()
-            : base("name=EMPLONEXUSu_u")
+        public EmploNexus_oEntity()
+            : base("name=EmploNexus_oEntity")
         {
         }
     
@@ -28,47 +28,253 @@ namespace EmploNexus.AppData
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<Attendance> Attendances { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Employee> Employees { get; set; }
         public DbSet<Gender> Genders { get; set; }
-        public DbSet<Payroll> Payrolls { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Salary> Salaries { get; set; }
         public DbSet<UserAccount> UserAccounts { get; set; }
+        public DbSet<vw_all_attendance> vw_all_attendance { get; set; }
         public DbSet<vw_all_employee> vw_all_employee { get; set; }
         public DbSet<vw_all_salary> vw_all_salary { get; set; }
         public DbSet<vw_all_user_role> vw_all_user_role { get; set; }
     
-        public virtual int sp_newUser(Nullable<int> userId, Nullable<int> empId, string name, string email, string userName, string userPassword, Nullable<int> roleId)
+        public virtual int sp_addAttendance(Nullable<int> attendanceEmp_ID, Nullable<System.DateTime> attendanceDate, string attendanceStatus)
         {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("userId", userId) :
-                new ObjectParameter("userId", typeof(int));
+            var attendanceEmp_IDParameter = attendanceEmp_ID.HasValue ?
+                new ObjectParameter("AttendanceEmp_ID", attendanceEmp_ID) :
+                new ObjectParameter("AttendanceEmp_ID", typeof(int));
     
-            var empIdParameter = empId.HasValue ?
-                new ObjectParameter("empId", empId) :
-                new ObjectParameter("empId", typeof(int));
+            var attendanceDateParameter = attendanceDate.HasValue ?
+                new ObjectParameter("AttendanceDate", attendanceDate) :
+                new ObjectParameter("AttendanceDate", typeof(System.DateTime));
     
-            var nameParameter = name != null ?
-                new ObjectParameter("name", name) :
-                new ObjectParameter("name", typeof(string));
+            var attendanceStatusParameter = attendanceStatus != null ?
+                new ObjectParameter("AttendanceStatus", attendanceStatus) :
+                new ObjectParameter("AttendanceStatus", typeof(string));
     
-            var emailParameter = email != null ?
-                new ObjectParameter("email", email) :
-                new ObjectParameter("email", typeof(string));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_addAttendance", attendanceEmp_IDParameter, attendanceDateParameter, attendanceStatusParameter);
+        }
     
-            var userNameParameter = userName != null ?
-                new ObjectParameter("userName", userName) :
-                new ObjectParameter("userName", typeof(string));
+        public virtual int sp_addEmployee(Nullable<int> emp_ID, string emp_name, Nullable<int> emp_genderId, Nullable<System.DateTime> emp_DOB, string emp_email, Nullable<int> emp_departmentId, Nullable<int> emp_positionId)
+        {
+            var emp_IDParameter = emp_ID.HasValue ?
+                new ObjectParameter("emp_ID", emp_ID) :
+                new ObjectParameter("emp_ID", typeof(int));
     
-            var userPasswordParameter = userPassword != null ?
-                new ObjectParameter("userPassword", userPassword) :
-                new ObjectParameter("userPassword", typeof(string));
+            var emp_nameParameter = emp_name != null ?
+                new ObjectParameter("emp_name", emp_name) :
+                new ObjectParameter("emp_name", typeof(string));
+    
+            var emp_genderIdParameter = emp_genderId.HasValue ?
+                new ObjectParameter("emp_genderId", emp_genderId) :
+                new ObjectParameter("emp_genderId", typeof(int));
+    
+            var emp_DOBParameter = emp_DOB.HasValue ?
+                new ObjectParameter("emp_DOB", emp_DOB) :
+                new ObjectParameter("emp_DOB", typeof(System.DateTime));
+    
+            var emp_emailParameter = emp_email != null ?
+                new ObjectParameter("emp_email", emp_email) :
+                new ObjectParameter("emp_email", typeof(string));
+    
+            var emp_departmentIdParameter = emp_departmentId.HasValue ?
+                new ObjectParameter("emp_departmentId", emp_departmentId) :
+                new ObjectParameter("emp_departmentId", typeof(int));
+    
+            var emp_positionIdParameter = emp_positionId.HasValue ?
+                new ObjectParameter("emp_positionId", emp_positionId) :
+                new ObjectParameter("emp_positionId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_addEmployee", emp_IDParameter, emp_nameParameter, emp_genderIdParameter, emp_DOBParameter, emp_emailParameter, emp_departmentIdParameter, emp_positionIdParameter);
+        }
+    
+        public virtual int sp_addSalary(Nullable<int> salaryemp_ID, Nullable<decimal> salary_Amount, Nullable<System.DateTime> salary_PayDate)
+        {
+            var salaryemp_IDParameter = salaryemp_ID.HasValue ?
+                new ObjectParameter("Salaryemp_ID", salaryemp_ID) :
+                new ObjectParameter("Salaryemp_ID", typeof(int));
+    
+            var salary_AmountParameter = salary_Amount.HasValue ?
+                new ObjectParameter("salary_Amount", salary_Amount) :
+                new ObjectParameter("salary_Amount", typeof(decimal));
+    
+            var salary_PayDateParameter = salary_PayDate.HasValue ?
+                new ObjectParameter("salary_PayDate", salary_PayDate) :
+                new ObjectParameter("salary_PayDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_addSalary", salaryemp_IDParameter, salary_AmountParameter, salary_PayDateParameter);
+        }
+    
+        public virtual int sp_addUser(Nullable<int> user_empID, string username, string password, Nullable<int> roleId, Nullable<int> departmentId, Nullable<int> positionId, Nullable<int> genderId)
+        {
+            var user_empIDParameter = user_empID.HasValue ?
+                new ObjectParameter("user_empID", user_empID) :
+                new ObjectParameter("user_empID", typeof(int));
+    
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
     
             var roleIdParameter = roleId.HasValue ?
                 new ObjectParameter("roleId", roleId) :
                 new ObjectParameter("roleId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_newUser", userIdParameter, empIdParameter, nameParameter, emailParameter, userNameParameter, userPasswordParameter, roleIdParameter);
+            var departmentIdParameter = departmentId.HasValue ?
+                new ObjectParameter("departmentId", departmentId) :
+                new ObjectParameter("departmentId", typeof(int));
+    
+            var positionIdParameter = positionId.HasValue ?
+                new ObjectParameter("positionId", positionId) :
+                new ObjectParameter("positionId", typeof(int));
+    
+            var genderIdParameter = genderId.HasValue ?
+                new ObjectParameter("genderId", genderId) :
+                new ObjectParameter("genderId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_addUser", user_empIDParameter, usernameParameter, passwordParameter, roleIdParameter, departmentIdParameter, positionIdParameter, genderIdParameter);
+        }
+    
+        public virtual int sp_deleteAttendance(Nullable<int> attendanceNo)
+        {
+            var attendanceNoParameter = attendanceNo.HasValue ?
+                new ObjectParameter("AttendanceNo", attendanceNo) :
+                new ObjectParameter("AttendanceNo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_deleteAttendance", attendanceNoParameter);
+        }
+    
+        public virtual int sp_deleteEmployee(Nullable<int> emp_ID)
+        {
+            var emp_IDParameter = emp_ID.HasValue ?
+                new ObjectParameter("emp_ID", emp_ID) :
+                new ObjectParameter("emp_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_deleteEmployee", emp_IDParameter);
+        }
+    
+        public virtual int sp_deleteSalary(Nullable<int> salary_ID)
+        {
+            var salary_IDParameter = salary_ID.HasValue ?
+                new ObjectParameter("salary_ID", salary_ID) :
+                new ObjectParameter("salary_ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_deleteSalary", salary_IDParameter);
+        }
+    
+        public virtual int sp_deleteUser(Nullable<int> user_empID)
+        {
+            var user_empIDParameter = user_empID.HasValue ?
+                new ObjectParameter("user_empID", user_empID) :
+                new ObjectParameter("user_empID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_deleteUser", user_empIDParameter);
+        }
+    
+        public virtual int sp_updateAttendance(Nullable<int> attendanceNo, Nullable<System.DateTime> attendanceDate, string attendanceStatus)
+        {
+            var attendanceNoParameter = attendanceNo.HasValue ?
+                new ObjectParameter("AttendanceNo", attendanceNo) :
+                new ObjectParameter("AttendanceNo", typeof(int));
+    
+            var attendanceDateParameter = attendanceDate.HasValue ?
+                new ObjectParameter("AttendanceDate", attendanceDate) :
+                new ObjectParameter("AttendanceDate", typeof(System.DateTime));
+    
+            var attendanceStatusParameter = attendanceStatus != null ?
+                new ObjectParameter("AttendanceStatus", attendanceStatus) :
+                new ObjectParameter("AttendanceStatus", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_updateAttendance", attendanceNoParameter, attendanceDateParameter, attendanceStatusParameter);
+        }
+    
+        public virtual int sp_updateEmployee(Nullable<int> emp_ID, string emp_name, Nullable<int> emp_genderId, Nullable<System.DateTime> emp_DOB, string emp_email, Nullable<int> emp_departmentId, Nullable<int> emp_positionId)
+        {
+            var emp_IDParameter = emp_ID.HasValue ?
+                new ObjectParameter("emp_ID", emp_ID) :
+                new ObjectParameter("emp_ID", typeof(int));
+    
+            var emp_nameParameter = emp_name != null ?
+                new ObjectParameter("emp_name", emp_name) :
+                new ObjectParameter("emp_name", typeof(string));
+    
+            var emp_genderIdParameter = emp_genderId.HasValue ?
+                new ObjectParameter("emp_genderId", emp_genderId) :
+                new ObjectParameter("emp_genderId", typeof(int));
+    
+            var emp_DOBParameter = emp_DOB.HasValue ?
+                new ObjectParameter("emp_DOB", emp_DOB) :
+                new ObjectParameter("emp_DOB", typeof(System.DateTime));
+    
+            var emp_emailParameter = emp_email != null ?
+                new ObjectParameter("emp_email", emp_email) :
+                new ObjectParameter("emp_email", typeof(string));
+    
+            var emp_departmentIdParameter = emp_departmentId.HasValue ?
+                new ObjectParameter("emp_departmentId", emp_departmentId) :
+                new ObjectParameter("emp_departmentId", typeof(int));
+    
+            var emp_positionIdParameter = emp_positionId.HasValue ?
+                new ObjectParameter("emp_positionId", emp_positionId) :
+                new ObjectParameter("emp_positionId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_updateEmployee", emp_IDParameter, emp_nameParameter, emp_genderIdParameter, emp_DOBParameter, emp_emailParameter, emp_departmentIdParameter, emp_positionIdParameter);
+        }
+    
+        public virtual int sp_updateSalary(Nullable<int> salary_ID, Nullable<decimal> salary_Amount, Nullable<System.DateTime> salary_PayDate)
+        {
+            var salary_IDParameter = salary_ID.HasValue ?
+                new ObjectParameter("salary_ID", salary_ID) :
+                new ObjectParameter("salary_ID", typeof(int));
+    
+            var salary_AmountParameter = salary_Amount.HasValue ?
+                new ObjectParameter("salary_Amount", salary_Amount) :
+                new ObjectParameter("salary_Amount", typeof(decimal));
+    
+            var salary_PayDateParameter = salary_PayDate.HasValue ?
+                new ObjectParameter("salary_PayDate", salary_PayDate) :
+                new ObjectParameter("salary_PayDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_updateSalary", salary_IDParameter, salary_AmountParameter, salary_PayDateParameter);
+        }
+    
+        public virtual int sp_updateUser(Nullable<int> user_empID, string username, string password, Nullable<int> roleId, Nullable<int> departmentId, Nullable<int> positionId, Nullable<int> genderId)
+        {
+            var user_empIDParameter = user_empID.HasValue ?
+                new ObjectParameter("user_empID", user_empID) :
+                new ObjectParameter("user_empID", typeof(int));
+    
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            var roleIdParameter = roleId.HasValue ?
+                new ObjectParameter("roleId", roleId) :
+                new ObjectParameter("roleId", typeof(int));
+    
+            var departmentIdParameter = departmentId.HasValue ?
+                new ObjectParameter("departmentId", departmentId) :
+                new ObjectParameter("departmentId", typeof(int));
+    
+            var positionIdParameter = positionId.HasValue ?
+                new ObjectParameter("positionId", positionId) :
+                new ObjectParameter("positionId", typeof(int));
+    
+            var genderIdParameter = genderId.HasValue ?
+                new ObjectParameter("genderId", genderId) :
+                new ObjectParameter("genderId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_updateUser", user_empIDParameter, usernameParameter, passwordParameter, roleIdParameter, departmentIdParameter, positionIdParameter, genderIdParameter);
         }
     }
 }

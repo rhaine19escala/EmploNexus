@@ -16,6 +16,7 @@ namespace EmploNexus.AppData
     {
         public Department()
         {
+            this.Employees = new HashSet<Employee>();
             this.UserAccounts = new HashSet<UserAccount>();
         }
     
@@ -23,6 +24,7 @@ namespace EmploNexus.AppData
         public string departmentName { get; set; }
         public string departmentDescription { get; set; }
     
+        public virtual ICollection<Employee> Employees { get; set; }
         public virtual ICollection<UserAccount> UserAccounts { get; set; }
     }
 }

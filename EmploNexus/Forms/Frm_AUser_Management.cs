@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,21 +16,33 @@ namespace EmploNexus.Forms
     public partial class Frm_AUser_Management : Form
     {
         UserRepository repo;
-        private EMPLONEXUSu_u emploNexusEntities;
+        private EmploNexus_oEntity emploNexusEntities;
 
         public Frm_AUser_Management()
         {
             InitializeComponent();
+            emploNexusEntities = new EmploNexus_oEntity();
+
         }
 
         private void Frm_AUser_Management_Load(object sender, EventArgs e)
         {
-            emploNexusEntities = new EMPLONEXUSu_u();
+            emploNexusEntities = new EmploNexus_oEntity();
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
-
             repo = new UserRepository();
             loadUser();
+            loadCbBoxRole();
+        }
+
+        public void loadCbBoxRole()
+        {
+            // SELECT * FROM ROLE
+            var roles = emploNexusEntities.Roles.ToList();
+
+            cmbBoxRole.ValueMember = "roleId";
+            cmbBoxRole.DisplayMember = "roleName";
+            cmbBoxRole.DataSource = roles;
         }
 
         private void loadUser()
@@ -72,29 +85,29 @@ namespace EmploNexus.Forms
         {
             try
             {
-                txtUserID.Text = Convert.ToInt32(dgv_AllUserWdetails.Rows[e.RowIndex].Cells[0].Value).ToString();
-                txtuserName.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[1].Value as String;
-                txtuserUsername.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[2].Value as String;
-                txtuserPassword.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[3].Value as String;
-                txtRole.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[3].Value as String;
+                txtUserID.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[0].Value?.ToString();
+                txtuser_empID.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[1].Value?.ToString();
+                txtuserUsername.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[2].Value?.ToString();
+                txtuserPassword.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[3].Value?.ToString();
+                string role = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[4].Value?.ToString();
+                cmbBoxRole.Text = role;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Encountered :" + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error Encountered: " + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnuserAdd_Click(object sender, EventArgs e)
         {
-            String name = txtuserName.Text;
+            String empid = txtuser_empID.Text;
             String username = txtuserUsername.Text;
             String password = txtuserPassword.Text;
-            String roleDescription = txtRole.Text;
 
-            if(String.IsNullOrEmpty(name))
+            if (String.IsNullOrEmpty(empid))
             {
                 errorProvider1.Clear();
-                errorProvider1.SetError(txtuserName, "Empty Field!");
+                errorProvider1.SetError(txtuser_empID, "Empty Field!");
                 return;
             }
             if (String.IsNullOrEmpty(username))
@@ -109,20 +122,26 @@ namespace EmploNexus.Forms
                 errorProvider1.SetError(txtuserPassword, "Empty Field!");
                 return;
             }
-            if (String.IsNullOrEmpty(roleDescription))
+
+            using (var db = new EmploNexus_oEntity())
             {
-                errorProvider1.Clear();
-                errorProvider1.SetError(txtRole, "Empty Field!");
-                return;
+                UserAccount nUserAccount = new UserAccount
+                {
+                    user_empID = Convert.ToInt32(txtuser_empID.Text),
+                    username = txtuserUsername.Text,
+                    password = txtuserPassword.Text,
+                    roleId = (Int32)cmbBoxRole.SelectedValue,
+                };
+                db.UserAccounts.Add(nUserAccount);
+                db.SaveChanges();
             }
         }
 
         private void ClearInputFields()
         {
-            txtuserName.Text = "";
+            txtuser_empID.Text = "";
             txtuserUsername.Text = "";
             txtuserPassword.Text = "";
-            txtRole.Text = "";
         }
 
         private void btnuserClear_Click(object sender, EventArgs e)

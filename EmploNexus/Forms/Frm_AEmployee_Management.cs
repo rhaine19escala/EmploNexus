@@ -19,16 +19,32 @@ namespace EmploNexus.Forms
     {
         //String strConnection = @"Data Source=.\sqlexpress;Initial Catalog=EMPLONEXUS_NEW;Integrated Security=True";
         UserRepository repo;
-        EMPLONEXUSu_u db;
+        EmploNexus_oEntity db;
 
         public Frm_AEmployee_Management()
         {
             InitializeComponent();
             //
-            db = new EMPLONEXUSu_u();
+            db = new EmploNexus_oEntity();
+        }
+
+        private void Frm_Employee_Management_Load(object sender, EventArgs e)
+        {
+            DateTime currentTime = DateTime.Now;
+            txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
+            
+            dgv_AllEmployeesWdetails.CellFormatting += dgv_AllEmployeesWdetails_CellFormatting;
+
+            repo = new UserRepository();
+            loadUser();
             loadCbBoxGender();
             loadCbBoxDepartment();
             loadCbBoxPosition();
+        }
+
+        private void loadUser()
+        {
+            dgv_AllEmployeesWdetails.DataSource = repo.GetEmployeeList();
         }
 
         public void loadCbBoxGender()
@@ -61,21 +77,6 @@ namespace EmploNexus.Forms
             cmbBox_empPosition.DataSource = positions;
         }
 
-
-        private void Frm_Employee_Management_Load(object sender, EventArgs e)
-        {
-            DateTime currentTime = DateTime.Now;
-            txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
-            
-            dgv_AllEmployeesWdetails.CellFormatting += dgv_AllEmployeesWdetails_CellFormatting;
-
-            repo = new UserRepository();
-            loadUser();
-        }
-        private void loadUser()
-        {
-            dgv_AllEmployeesWdetails.DataSource = repo.GetEmployeeList();
-        }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {

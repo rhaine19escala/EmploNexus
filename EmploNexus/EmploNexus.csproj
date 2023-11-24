@@ -77,6 +77,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppData\Attendance.cs">
+      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="AppData\Department.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
@@ -95,10 +98,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmploNexus_Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="AppData\Gender.cs">
+    <Compile Include="AppData\Employee.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\Payroll.cs">
+    <Compile Include="AppData\Gender.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\Position.cs">
@@ -107,7 +110,13 @@
     <Compile Include="AppData\Role.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="AppData\Salary.cs">
+      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="AppData\UserAccount.cs">
+      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\vw_all_attendance.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\vw_all_employee.cs">
@@ -309,6 +318,9 @@
       <LastGenOutput>EmploNexus_Model.cs</LastGenOutput>
     </Content>
     <Content Include="employee_account_business_time_clock_icon_124657.ico" />
+    <None Include="Resources\manager.png" />
+    <None Include="Resources\salary.png" />
+    <None Include="Resources\immigration.png" />
     <None Include="Resources\magnifying-glass.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\alexandr-podvalny-n_Jb_d8O43Q-unsplash.jpg" />
