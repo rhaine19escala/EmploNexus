@@ -55,11 +55,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.lblSearch = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtuserSearch = new System.Windows.Forms.TextBox();
             this.dgv_AllUserWdetails = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblSearch = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -155,6 +156,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.lblTitle);
@@ -344,36 +346,25 @@
             this.lblTitle.TabIndex = 13;
             this.lblTitle.Text = "User Details :";
             // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.BackColor = System.Drawing.Color.LightBlue;
-            this.lblSearch.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.lblSearch.Location = new System.Drawing.Point(457, 16);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(82, 26);
-            this.lblSearch.TabIndex = 12;
-            this.lblSearch.Text = "Search :";
-            // 
             // btnSearch
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(47)))), ((int)(((byte)(62)))));
-            this.btnSearch.BackgroundImage = global::EmploNexus.Properties.Resources.magnifying_glass;
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
             this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSearch.Location = new System.Drawing.Point(1010, 16);
+            this.btnSearch.ForeColor = System.Drawing.Color.AliceBlue;
+            this.btnSearch.Location = new System.Drawing.Point(944, 40);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(29, 29);
+            this.btnSearch.Size = new System.Drawing.Size(93, 31);
             this.btnSearch.TabIndex = 11;
+            this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtuserSearch
             // 
             this.txtuserSearch.BackColor = System.Drawing.Color.LightCyan;
-            this.txtuserSearch.Location = new System.Drawing.Point(551, 14);
+            this.txtuserSearch.Location = new System.Drawing.Point(593, 41);
             this.txtuserSearch.Name = "txtuserSearch";
-            this.txtuserSearch.Size = new System.Drawing.Size(453, 29);
+            this.txtuserSearch.Size = new System.Drawing.Size(345, 29);
             this.txtuserSearch.TabIndex = 10;
             // 
             // dgv_AllUserWdetails
@@ -382,17 +373,44 @@
             this.dgv_AllUserWdetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv_AllUserWdetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_AllUserWdetails.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgv_AllUserWdetails.Location = new System.Drawing.Point(457, 51);
+            this.dgv_AllUserWdetails.Location = new System.Drawing.Point(457, 77);
             this.dgv_AllUserWdetails.Name = "dgv_AllUserWdetails";
             this.dgv_AllUserWdetails.ReadOnly = true;
             this.dgv_AllUserWdetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_AllUserWdetails.Size = new System.Drawing.Size(582, 303);
+            this.dgv_AllUserWdetails.Size = new System.Drawing.Size(580, 277);
             this.dgv_AllUserWdetails.TabIndex = 9;
             this.dgv_AllUserWdetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_AllUserWdetails_CellClick);
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.LightBlue;
+            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label2.Location = new System.Drawing.Point(457, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(130, 26);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "Employee ID";
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.lblSearch.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblSearch.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearch.ForeColor = System.Drawing.Color.SkyBlue;
+            this.lblSearch.Location = new System.Drawing.Point(438, 7);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(84, 28);
+            this.lblSearch.TabIndex = 12;
+            this.lblSearch.Text = "Search :";
+            this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Frm_AUser_Management
             // 
@@ -449,7 +467,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtuser_empID;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtuserSearch;
         private System.Windows.Forms.DataGridView dgv_AllUserWdetails;
@@ -459,5 +476,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ComboBox cmbBoxRole;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblSearch;
     }
 }

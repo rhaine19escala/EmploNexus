@@ -28,10 +28,10 @@ namespace EmploNexus.Forms
         private void Frm_AUser_Management_Load(object sender, EventArgs e)
         {
             emploNexusEntities = new EmploNexusO_oEntities();
-            dgv_AllUserWdetails.Refresh();
+            repo = new UserRepository();
+
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
-            repo = new UserRepository();
             loadUser();
             loadCbBoxRole();
         }
@@ -243,32 +243,66 @@ namespace EmploNexus.Forms
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            try
+            using (var db = new EmploNexusO_oEntities())
             {
-                string searchEmpID = txtuser_empID.Text.Trim();
-                string searchUsername = txtuserUsername.Text.Trim();
-                string searchPassword = txtuserPassword.Text.Trim();
-
-                using (var db = new EmploNexusO_oEntities())
+                try
                 {
-                    int? empID = !string.IsNullOrEmpty(searchEmpID) ? (int?)Convert.ToInt32(searchEmpID) : null;
-
-                    var filteredUsers = db.UserAccounts
-                        .Where(u =>
-                            (empID == null || u.user_empID == empID) &&
-                            (string.IsNullOrEmpty(searchUsername) || u.username.Contains(searchUsername)) &&
-                            (string.IsNullOrEmpty(searchPassword) || u.password.Contains(searchPassword)))
-                        .ToList();
-
-                    dgv_AllUserWdetails.DataSource = filteredUsers;
+                    if (string.IsNullOrWhiteSpace(txtuserSearch.Text))
+                    {
+                        loadUser();
+                        MessageBox.Show("Please enter a valid Employee ID.", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        int user_empIDToSearch = Convert.ToInt32(txtuserSearch.Text);
+                        UserAccount existingUser = db.UserAccounts.FirstOrDefault(u => u.user_empID == user_empIDToSearch);
+                        if (existingUser != null)
+                        {
+                            List<vw_all_user_role> foundUserList = new List<vw_all_user_role>
+                        {
+                            new vw_all_user_role
+                            {
+                                USER_NO_ = existingUser.userNo,
+                                EMPLOYEE_ID = existingUser.user_empID,
+                                USERNAME = existingUser.username,
+                                PASSWORD = existingUser.password,
+                                ROLE = GetRoleString(existingUser.roleId)
+                            }
+                        };                           
+                            dgv_AllUserWdetails.DataSource = foundUserList;
+                            MessageBox.Show("Employee ID Found!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtuserSearch.Text = "";
+                        }
+                        else
+                        {
+                            loadUser();
+                            txtuserSearch.Text = "";
+                            MessageBox.Show("Employee ID not found!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
                     loadUser();
+                    txtuserSearch.Text = "";
+                    MessageBox.Show("Error searching for Employee ID. \nError: " + ex.Message, "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception ex)
+        }
+
+        private string GetRoleString(int roleId)
+        {
+            switch (roleId)
             {
-                MessageBox.Show("User not Found! Please try Again. \nError :" + ex.Message, "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                case 1:
+                    return "Employee";
+                case 2:
+                    return "Manager";
+                case 3:
+                    return "Admin";
+                default:
+                    return "Employee";
             }
-            
         }
     }
 }

@@ -48,42 +48,6 @@ namespace EmploNexus
             return emploNexusEntities.vw_all_salary.ToList();
         }
 
-        public ErrorCode AddUser(int userEmpID, string username, string password, int roleId, int departmentId, int positionId, int genderId, ref string outMessage)
-        {
-            ErrorCode retValue = ErrorCode.Error;
-            try
-            {
-                using (var connection = new SqlConnection("data source=.\\sqlexpress;initial catalog=EmploNexus;integrated security=True"))
-                {
-                    connection.Open();
-
-                    using (var command = new SqlCommand("sp_addUser", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@user_empID", userEmpID);
-                        command.Parameters.AddWithValue("@username", username);
-                        command.Parameters.AddWithValue("@password", password);
-                        command.Parameters.AddWithValue("@roleId", roleId);
-                        command.Parameters.AddWithValue("@departmentId", departmentId);
-                        command.Parameters.AddWithValue("@positionId", positionId);
-                        command.Parameters.AddWithValue("@genderId", genderId);
-
-                        command.ExecuteNonQuery();
-                    }
-                }
-
-                outMessage = "Inserted";
-                retValue = ErrorCode.Success;
-            }
-            catch (Exception ex)
-            {
-                outMessage = ex.Message;
-                MessageBox.Show(ex.Message);
-            }
-            return retValue;
-        }
-
         public ErrorCode Register(String username, String password)
         {
             try
