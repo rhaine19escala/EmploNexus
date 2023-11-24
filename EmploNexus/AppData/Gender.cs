@@ -17,13 +17,11 @@ namespace EmploNexus.AppData
         public Gender()
         {
             this.Employees = new HashSet<Employee>();
-            this.UserAccounts = new HashSet<UserAccount>();
         }
     
         public int genderId { get; set; }
         public string genderName { get; set; }
     
         public virtual ICollection<Employee> Employees { get; set; }
-        public virtual ICollection<UserAccount> UserAccounts { get; set; }
     }
 }

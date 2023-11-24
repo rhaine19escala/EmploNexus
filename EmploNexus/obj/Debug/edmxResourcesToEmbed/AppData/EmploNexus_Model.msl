@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="EmploNexusModelStoreContainer" CdmEntityContainer="EmploNexus_oEntity">
+  <EntityContainerMapping StorageEntityContainer="EmploNexusModelStoreContainer" CdmEntityContainer="EmploNexusO_oEntities">
     <EntitySetMapping Name="Attendances">
       <EntityTypeMapping TypeName="EmploNexusModel.Attendance">
         <MappingFragment StoreEntitySet="Attendance">
@@ -78,9 +78,6 @@
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="roleId" ColumnName="roleId" />
-          <ScalarProperty Name="departmentId" ColumnName="departmentId" />
-          <ScalarProperty Name="positionId" ColumnName="positionId" />
-          <ScalarProperty Name="genderId" ColumnName="genderId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

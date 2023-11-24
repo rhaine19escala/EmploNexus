@@ -71,9 +71,6 @@
     <Property Name="username" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="roleId" Type="int" Nullable="false" />
-    <Property Name="departmentId" Type="int" Nullable="false" />
-    <Property Name="positionId" Type="int" Nullable="false" />
-    <Property Name="genderId" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'EmploNexus.dbo.vw_all_attendance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -141,9 +138,9 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_user_role' does not have a p
     <Property Name="ROLE" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Attendanc__Atten__300424B4' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Attendanc__Atten__300424B4" />-->
-  <Association Name="FK__Employees__emp_d__24927208">
+warning 6035: The relationship 'FK__Attendanc__Atten__30F848ED' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Attendanc__Atten__30F848ED" />-->
+  <Association Name="FK__Employees__emp_d__25869641">
     <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
     <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
     <ReferentialConstraint>
@@ -155,7 +152,7 @@ warning 6035: The relationship 'FK__Attendanc__Atten__300424B4' has columns that
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Employees__emp_g__239E4DCF">
+  <Association Name="FK__Employees__emp_g__24927208">
     <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
     <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
     <ReferentialConstraint>
@@ -168,9 +165,9 @@ warning 6035: The relationship 'FK__Attendanc__Atten__300424B4' has columns that
     </ReferentialConstraint>
   </Association>
   <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Employees__emp_I__22AA2996' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Employees__emp_I__22AA2996" />-->
-  <Association Name="FK__Employees__emp_p__25869641">
+warning 6035: The relationship 'FK__Employees__emp_I__239E4DCF' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Employees__emp_I__239E4DCF" />-->
+  <Association Name="FK__Employees__emp_p__267ABA7A">
     <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
     <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
     <ReferentialConstraint>
@@ -183,44 +180,8 @@ warning 6035: The relationship 'FK__Employees__emp_I__22AA2996' has columns that
     </ReferentialConstraint>
   </Association>
   <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Salary__Salaryem__2A4B4B5E' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Salary__Salaryem__2A4B4B5E" />-->
-  <Association Name="FK__UserAccou__depar__1B0907CE">
-    <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
-    <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Departments">
-        <PropertyRef Name="departmentId" />
-      </Principal>
-      <Dependent Role="UserAccounts">
-        <PropertyRef Name="departmentId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__UserAccou__gende__1CF15040">
-    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
-    <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Gender">
-        <PropertyRef Name="genderId" />
-      </Principal>
-      <Dependent Role="UserAccounts">
-        <PropertyRef Name="genderId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__UserAccou__posit__1BFD2C07">
-    <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
-    <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Positions">
-        <PropertyRef Name="positionId" />
-      </Principal>
-      <Dependent Role="UserAccounts">
-        <PropertyRef Name="positionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+warning 6035: The relationship 'FK__Salary__Salaryem__2B3F6F97' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Salary__Salaryem__2B3F6F97" />-->
   <Association Name="FK__UserAccou__roleI__1A14E395">
     <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
     <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
@@ -257,9 +218,6 @@ warning 6035: The relationship 'FK__Salary__Salaryem__2A4B4B5E' has columns that
     <Parameter Name="username" Type="nvarchar" Mode="In" />
     <Parameter Name="password" Type="nvarchar" Mode="In" />
     <Parameter Name="roleId" Type="int" Mode="In" />
-    <Parameter Name="departmentId" Type="int" Mode="In" />
-    <Parameter Name="positionId" Type="int" Mode="In" />
-    <Parameter Name="genderId" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_deleteAttendance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="AttendanceNo" Type="int" Mode="In" />
@@ -297,9 +255,6 @@ warning 6035: The relationship 'FK__Salary__Salaryem__2A4B4B5E' has columns that
     <Parameter Name="username" Type="nvarchar" Mode="In" />
     <Parameter Name="password" Type="nvarchar" Mode="In" />
     <Parameter Name="roleId" Type="int" Mode="In" />
-    <Parameter Name="departmentId" Type="int" Mode="In" />
-    <Parameter Name="positionId" Type="int" Mode="In" />
-    <Parameter Name="genderId" Type="int" Mode="In" />
   </Function>
   <EntityContainer Name="EmploNexusModelStoreContainer">
     <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
@@ -347,29 +302,17 @@ FROM [dbo].[vw_all_salary] AS [vw_all_salary]</DefiningQuery>
 [vw_all_user_role].[ROLE] AS [ROLE]
 FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK__Employees__emp_d__24927208" Association="Self.FK__Employees__emp_d__24927208">
+    <AssociationSet Name="FK__Employees__emp_d__25869641" Association="Self.FK__Employees__emp_d__25869641">
       <End Role="Departments" EntitySet="Departments" />
       <End Role="Employees" EntitySet="Employees" />
     </AssociationSet>
-    <AssociationSet Name="FK__Employees__emp_g__239E4DCF" Association="Self.FK__Employees__emp_g__239E4DCF">
+    <AssociationSet Name="FK__Employees__emp_g__24927208" Association="Self.FK__Employees__emp_g__24927208">
       <End Role="Gender" EntitySet="Gender" />
       <End Role="Employees" EntitySet="Employees" />
     </AssociationSet>
-    <AssociationSet Name="FK__Employees__emp_p__25869641" Association="Self.FK__Employees__emp_p__25869641">
+    <AssociationSet Name="FK__Employees__emp_p__267ABA7A" Association="Self.FK__Employees__emp_p__267ABA7A">
       <End Role="Positions" EntitySet="Positions" />
       <End Role="Employees" EntitySet="Employees" />
-    </AssociationSet>
-    <AssociationSet Name="FK__UserAccou__depar__1B0907CE" Association="Self.FK__UserAccou__depar__1B0907CE">
-      <End Role="Departments" EntitySet="Departments" />
-      <End Role="UserAccounts" EntitySet="UserAccounts" />
-    </AssociationSet>
-    <AssociationSet Name="FK__UserAccou__gende__1CF15040" Association="Self.FK__UserAccou__gende__1CF15040">
-      <End Role="Gender" EntitySet="Gender" />
-      <End Role="UserAccounts" EntitySet="UserAccounts" />
-    </AssociationSet>
-    <AssociationSet Name="FK__UserAccou__posit__1BFD2C07" Association="Self.FK__UserAccou__posit__1BFD2C07">
-      <End Role="Positions" EntitySet="Positions" />
-      <End Role="UserAccounts" EntitySet="UserAccounts" />
     </AssociationSet>
     <AssociationSet Name="FK__UserAccou__roleI__1A14E395" Association="Self.FK__UserAccou__roleI__1A14E395">
       <End Role="Roles" EntitySet="Roles" />

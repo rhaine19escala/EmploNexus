@@ -19,13 +19,7 @@ namespace EmploNexus.AppData
         public string username { get; set; }
         public string password { get; set; }
         public int roleId { get; set; }
-        public int departmentId { get; set; }
-        public int positionId { get; set; }
-        public int genderId { get; set; }
     
-        public virtual Department Department { get; set; }
-        public virtual Gender Gender { get; set; }
-        public virtual Position Position { get; set; }
         public virtual Role Role { get; set; }
     }
 }

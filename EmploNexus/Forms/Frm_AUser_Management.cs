@@ -16,18 +16,19 @@ namespace EmploNexus.Forms
     public partial class Frm_AUser_Management : Form
     {
         UserRepository repo;
-        private EmploNexus_oEntity emploNexusEntities;
+        private EmploNexusO_oEntities emploNexusEntities;
 
         public Frm_AUser_Management()
         {
             InitializeComponent();
-            emploNexusEntities = new EmploNexus_oEntity();
+            emploNexusEntities = new EmploNexusO_oEntities();
 
         }
 
         private void Frm_AUser_Management_Load(object sender, EventArgs e)
         {
-            emploNexusEntities = new EmploNexus_oEntity();
+            emploNexusEntities = new EmploNexusO_oEntities();
+            dgv_AllUserWdetails.Refresh();
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
             repo = new UserRepository();
@@ -85,7 +86,6 @@ namespace EmploNexus.Forms
         {
             try
             {
-                txtUserID.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[0].Value?.ToString();
                 txtuser_empID.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[1].Value?.ToString();
                 txtuserUsername.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[2].Value?.ToString();
                 txtuserPassword.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[3].Value?.ToString();
@@ -96,6 +96,18 @@ namespace EmploNexus.Forms
             {
                 MessageBox.Show("Error Encountered: " + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ClearInputFields()
+        {
+            txtuser_empID.Text = "";
+            txtuserUsername.Text = "";
+            txtuserPassword.Text = "";
+        }
+
+        private void btnuserClear_Click(object sender, EventArgs e)
+        {
+            ClearInputFields();
         }
 
         private void btnuserAdd_Click(object sender, EventArgs e)
@@ -123,30 +135,140 @@ namespace EmploNexus.Forms
                 return;
             }
 
-            using (var db = new EmploNexus_oEntity())
+            try
             {
-                UserAccount nUserAccount = new UserAccount
+                using (var db = new EmploNexusO_oEntities())
                 {
-                    user_empID = Convert.ToInt32(txtuser_empID.Text),
-                    username = txtuserUsername.Text,
-                    password = txtuserPassword.Text,
-                    roleId = (Int32)cmbBoxRole.SelectedValue,
-                };
-                db.UserAccounts.Add(nUserAccount);
-                db.SaveChanges();
+                    UserAccount nUserAccount = new UserAccount
+                    {
+                        user_empID = Convert.ToInt32(txtuser_empID.Text),
+                        username = txtuserUsername.Text,
+                        password = txtuserPassword.Text,
+                        roleId = (Int32)cmbBoxRole.SelectedValue,
+                    };
+                    db.UserAccounts.Add(nUserAccount);
+                    db.SaveChanges();
+                    loadUser();
+                    MessageBox.Show("User Added Successfully!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("User not Added Successfully!. \nError :" + ex.Message, "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void ClearInputFields()
+        private void btnuserUpdate_Click(object sender, EventArgs e)
         {
-            txtuser_empID.Text = "";
-            txtuserUsername.Text = "";
-            txtuserPassword.Text = "";
+            String empid = txtuser_empID.Text;
+            String username = txtuserUsername.Text;
+            String password = txtuserPassword.Text;
+
+            if (String.IsNullOrEmpty(empid))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtuser_empID, "Empty Field!");
+                return;
+            }
+            if (String.IsNullOrEmpty(username))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtuserUsername, "Empty Field!");
+                return;
+            }
+            if (String.IsNullOrEmpty(password))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtuserPassword, "Empty Field!");
+                return;
+            }
+
+            using (var db = new EmploNexusO_oEntities())
+            {
+                int user_empIDToUpdate = Convert.ToInt32(txtuser_empID.Text);
+
+                UserAccount existingUser = db.UserAccounts.FirstOrDefault(u => u.user_empID == user_empIDToUpdate);
+                try
+                {
+                    if (existingUser != null)
+                    {
+                        existingUser.username = txtuserUsername.Text;
+                        existingUser.password = txtuserPassword.Text;
+                        existingUser.roleId = (Int32)cmbBoxRole.SelectedValue;
+
+                        db.SaveChanges();
+                        loadUser();
+                        MessageBox.Show("User Updated Successfully!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("User not found!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("User not Updated Successfully!. \nError :" + ex.Message, "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }            
+            }
         }
 
-        private void btnuserClear_Click(object sender, EventArgs e)
+        private void btnuserDelete_Click(object sender, EventArgs e)
         {
-            ClearInputFields();
+            try
+            {
+                using (var db = new EmploNexusO_oEntities())
+                {
+                    int user_empIDToDelete = Convert.ToInt32(txtuser_empID.Text);
+
+                    UserAccount userToDelete = db.UserAccounts.FirstOrDefault(u => u.user_empID == user_empIDToDelete);
+
+                    if (userToDelete != null)
+                    {
+                        db.UserAccounts.Remove(userToDelete);
+                        db.SaveChanges();
+                        loadUser();
+                        MessageBox.Show("User Deleted Successfully!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("User not found!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("User not Deleted Successfully!. \nError :" + ex.Message, "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string searchEmpID = txtuser_empID.Text.Trim();
+                string searchUsername = txtuserUsername.Text.Trim();
+                string searchPassword = txtuserPassword.Text.Trim();
+
+                using (var db = new EmploNexusO_oEntities())
+                {
+                    int? empID = !string.IsNullOrEmpty(searchEmpID) ? (int?)Convert.ToInt32(searchEmpID) : null;
+
+                    var filteredUsers = db.UserAccounts
+                        .Where(u =>
+                            (empID == null || u.user_empID == empID) &&
+                            (string.IsNullOrEmpty(searchUsername) || u.username.Contains(searchUsername)) &&
+                            (string.IsNullOrEmpty(searchPassword) || u.password.Contains(searchPassword)))
+                        .ToList();
+
+                    dgv_AllUserWdetails.DataSource = filteredUsers;
+                    loadUser();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("User not Found! Please try Again. \nError :" + ex.Message, "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }

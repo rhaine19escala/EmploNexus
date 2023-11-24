@@ -78,16 +78,11 @@ CREATE TABLE UserAccounts (
     username NVARCHAR(255) NOT NULL UNIQUE,
     [password] NVARCHAR(255) NOT NULL,
     roleId INT NOT NULL,
-    departmentId INT NOT NULL,
-	positionId INT NOT NULL,
-	genderId INT NOT NULL,
     FOREIGN KEY(roleId) REFERENCES Roles(roleId),
-    FOREIGN KEY(departmentId) REFERENCES Departments(departmentId),
-	FOREIGN KEY(positionId) REFERENCES Positions(positionId),
-	FOREIGN KEY(genderId) REFERENCES Gender(genderId)
 );
 
 ------VIEW ALL USER ROLE
+SELECT * FROM UserAccounts
 CREATE VIEW vw_all_user_role
 AS
 SELECT ua.userNo AS 'USER NO.', ua.user_empID AS 'EMPLOYEE ID', ua.userName AS 'USERNAME', ua.password AS 'PASSWORD', R.roleName AS 'ROLE' 
@@ -111,9 +106,10 @@ CREATE TABLE Employees (
 );
 
 ------VIEW ALL USER EMPLOYEE
+SELECT * FROM Employees
 CREATE VIEW vw_all_employee
 AS
-SELECT e.emp_No AS 'EMPLOYEE NO.',e.emp_ID AS 'EMPLOYEE_ID', e.emp_name AS 'EMPLOYEE_NAME', e.emp_genderId AS 'GENDER', e.emp_DOB AS 'BIRTHDATE', e.emp_email AS 'EMAIL', ua.departmentId AS 'DEPARTMENT', ua.positionId AS 'JOB_POSITION'
+SELECT e.emp_No AS 'EMPLOYEE NO.',e.emp_ID AS 'EMPLOYEE_ID', e.emp_name AS 'EMPLOYEE_NAME', e.emp_genderId AS 'GENDER', e.emp_DOB AS 'BIRTHDATE', e.emp_email AS 'EMAIL', e.emp_departmentId AS 'DEPARTMENT', e.emp_positionId AS 'JOB_POSITION'
 FROM Employees e
 INNER JOIN UserAccounts ua ON e.emp_ID = ua.user_empID
 INNER JOIN Gender G ON e.emp_genderId = G.genderId
@@ -130,6 +126,7 @@ CREATE TABLE Salary (
 );
 
 ------VIEW ALL EMPLOYEE SALARY
+SELECT * FROM Salary
 CREATE VIEW vw_all_salary
 AS
 SELECT S.salary_ID AS 'SALARY NO.', S.Salaryemp_ID AS 'EMPLOYEE_ID', S.salary_PayDate AS 'PAY_DATE', S.salary_Amount AS 'SALARY'
@@ -137,6 +134,7 @@ FROM Salary S
 INNER JOIN UserAccounts ua ON s.Salaryemp_ID = ua.user_empID;
 
 -- Create a table for Attendance
+SELECT * FROM Attendance
 CREATE TABLE Attendance (
     AttendanceNo INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
     AttendanceDate DATE DEFAULT GETDATE() NOT NULL,
@@ -157,14 +155,11 @@ CREATE PROCEDURE sp_addUser
     @user_empID INT,
     @username NVARCHAR(255),
     @password NVARCHAR(255),
-    @roleId INT,
-    @departmentId INT,
-    @positionId INT,
-    @genderId INT
+    @roleId INT
 AS
 BEGIN
-    INSERT INTO UserAccounts (user_empID, username, [password], roleId, departmentId, positionId, genderId)
-    VALUES (@user_empID, @username, @password, @roleId, @departmentId, @positionId, @genderId);
+    INSERT INTO UserAccounts (user_empID, username, [password], roleId)
+    VALUES (@user_empID, @username, @password, @roleId);
 END;
 
 ------STORED PROCEDURE UPDATE USER
@@ -172,19 +167,13 @@ CREATE PROCEDURE sp_updateUser
     @user_empID INT,
     @username NVARCHAR(255),
     @password NVARCHAR(255),
-    @roleId INT,
-    @departmentId INT,
-    @positionId INT,
-    @genderId INT
+    @roleId INT
 AS
 BEGIN
     UPDATE UserAccounts
     SET username = @username,
         [password] = @password,
-        roleId = @roleId,
-        departmentId = @departmentId,
-        positionId = @positionId,
-        genderId = @genderId
+        roleId = @roleId
     WHERE user_empID = @user_empID;
 END;
 

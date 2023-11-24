@@ -17,28 +17,20 @@ namespace EmploNexus.Forms
     public partial class Frm_Registration : Form
     {
         public string username = String.Empty;
-        EmploNexus_oEntity db;
+        EmploNexusO_oEntities db;
 
         public Frm_Registration()
         {
             InitializeComponent();
             //
-            db = new EmploNexus_oEntity();
+            db = new EmploNexusO_oEntities();
         }
 
         private void Frm_Register_Load(object sender, EventArgs e)
         {
-            loadCbBoxGender();
-            loadCbBoxDepartment();
-            loadCbBoxPosition();
             loadCbBoxRole();
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
-        }
-
-        private void cbBoxRole_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         public void loadCbBoxRole()
@@ -49,36 +41,6 @@ namespace EmploNexus.Forms
             cmbBoxRole.ValueMember = "roleId";
             cmbBoxRole.DisplayMember = "roleName";
             cmbBoxRole.DataSource = roles;
-        }
-
-        public void loadCbBoxDepartment()
-        {
-            // SELECT * FROM DEPARTMENT
-            var department = db.Departments.ToList();
-
-            cmbBoxDepartment.ValueMember = "departmentId";
-            cmbBoxDepartment.DisplayMember = "departmentDescription";
-            cmbBoxDepartment.DataSource = department;
-        }
-
-        public void loadCbBoxPosition()
-        {
-            // SELECT * FROM POSITION
-            var positions = db.Positions.ToList();
-
-            cmbBoxPosition.ValueMember = "positionId";
-            cmbBoxPosition.DisplayMember = "positionDescription";
-            cmbBoxPosition.DataSource = positions;
-        }
-
-        public void loadCbBoxGender()
-        {
-            // SELECT * FROM GENDER
-            var gender = db.Genders.ToList();
-
-            cmbBoxGender.ValueMember = "genderId";
-            cmbBoxGender.DisplayMember = "genderName";
-            cmbBoxGender.DataSource = gender;
         }
 
         private void ClearInputFields()
@@ -130,24 +92,21 @@ namespace EmploNexus.Forms
                 errorProvider1.SetError(txtConfirmPassword, "Password not match");
                 return;
             }
-                UserAccount nUserAccount = new UserAccount();
+            
+            UserAccount nUserAccount = new UserAccount();
 
-                nUserAccount.user_empID = Convert.ToInt32(txtEmployeeID.Text);
-                nUserAccount.username = txtuser_name.Text;
-                nUserAccount.password = txtpass_word.Text;
-                nUserAccount.roleId = (Int32)cmbBoxRole.SelectedValue;
-                nUserAccount.genderId = (Int32)cmbBoxGender.SelectedValue;
-                nUserAccount.departmentId = (Int32)cmbBoxDepartment.SelectedValue;
-                nUserAccount.positionId = (Int32)cmbBoxPosition.SelectedValue;
+            nUserAccount.user_empID = Convert.ToInt32(txtEmployeeID.Text);
+            nUserAccount.username = txtuser_name.Text;
+            nUserAccount.password = txtpass_word.Text;
+            nUserAccount.roleId = (Int32)cmbBoxRole.SelectedValue;
 
-                username = txtuser_name.Text;
+            username = txtuser_name.Text;
 
-                db.UserAccounts.Add(nUserAccount);
-                db.SaveChanges();
+            db.UserAccounts.Add(nUserAccount);
+            db.SaveChanges();
 
-                ClearInputFields();
+            ClearInputFields();
             MessageBox.Show("Registered Successfully!", "EmploNexus: Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Hide();
         }
 
         private void cmbBoxGender_SelectedIndexChanged(object sender, EventArgs e)

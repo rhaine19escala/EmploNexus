@@ -16,10 +16,10 @@ namespace EmploNexus.AppData
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class EmploNexus_oEntity : DbContext
+    public partial class EmploNexusO_oEntities : DbContext
     {
-        public EmploNexus_oEntity()
-            : base("name=EmploNexus_oEntity")
+        public EmploNexusO_oEntities()
+            : base("name=EmploNexusO_oEntities")
         {
         }
     
@@ -108,7 +108,7 @@ namespace EmploNexus.AppData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_addSalary", salaryemp_IDParameter, salary_AmountParameter, salary_PayDateParameter);
         }
     
-        public virtual int sp_addUser(Nullable<int> user_empID, string username, string password, Nullable<int> roleId, Nullable<int> departmentId, Nullable<int> positionId, Nullable<int> genderId)
+        public virtual int sp_addUser(Nullable<int> user_empID, string username, string password, Nullable<int> roleId)
         {
             var user_empIDParameter = user_empID.HasValue ?
                 new ObjectParameter("user_empID", user_empID) :
@@ -126,19 +126,7 @@ namespace EmploNexus.AppData
                 new ObjectParameter("roleId", roleId) :
                 new ObjectParameter("roleId", typeof(int));
     
-            var departmentIdParameter = departmentId.HasValue ?
-                new ObjectParameter("departmentId", departmentId) :
-                new ObjectParameter("departmentId", typeof(int));
-    
-            var positionIdParameter = positionId.HasValue ?
-                new ObjectParameter("positionId", positionId) :
-                new ObjectParameter("positionId", typeof(int));
-    
-            var genderIdParameter = genderId.HasValue ?
-                new ObjectParameter("genderId", genderId) :
-                new ObjectParameter("genderId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_addUser", user_empIDParameter, usernameParameter, passwordParameter, roleIdParameter, departmentIdParameter, positionIdParameter, genderIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_addUser", user_empIDParameter, usernameParameter, passwordParameter, roleIdParameter);
         }
     
         public virtual int sp_deleteAttendance(Nullable<int> attendanceNo)
@@ -244,7 +232,7 @@ namespace EmploNexus.AppData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_updateSalary", salary_IDParameter, salary_AmountParameter, salary_PayDateParameter);
         }
     
-        public virtual int sp_updateUser(Nullable<int> user_empID, string username, string password, Nullable<int> roleId, Nullable<int> departmentId, Nullable<int> positionId, Nullable<int> genderId)
+        public virtual int sp_updateUser(Nullable<int> user_empID, string username, string password, Nullable<int> roleId)
         {
             var user_empIDParameter = user_empID.HasValue ?
                 new ObjectParameter("user_empID", user_empID) :
@@ -262,19 +250,7 @@ namespace EmploNexus.AppData
                 new ObjectParameter("roleId", roleId) :
                 new ObjectParameter("roleId", typeof(int));
     
-            var departmentIdParameter = departmentId.HasValue ?
-                new ObjectParameter("departmentId", departmentId) :
-                new ObjectParameter("departmentId", typeof(int));
-    
-            var positionIdParameter = positionId.HasValue ?
-                new ObjectParameter("positionId", positionId) :
-                new ObjectParameter("positionId", typeof(int));
-    
-            var genderIdParameter = genderId.HasValue ?
-                new ObjectParameter("genderId", genderId) :
-                new ObjectParameter("genderId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_updateUser", user_empIDParameter, usernameParameter, passwordParameter, roleIdParameter, departmentIdParameter, positionIdParameter, genderIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_updateUser", user_empIDParameter, usernameParameter, passwordParameter, roleIdParameter);
         }
     }
 }
