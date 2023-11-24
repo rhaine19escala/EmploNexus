@@ -92,13 +92,17 @@ namespace EmploNexus.Forms
         private void btnAttendance_Click(object sender, EventArgs e)
         {
             //Attendance
-
+            Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
+            attendance_Management.Show();
+            this.Hide();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //Attendance
-
+            Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
+            attendance_Management.Show();
+            this.Hide();
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
