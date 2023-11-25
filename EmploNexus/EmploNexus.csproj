@@ -330,6 +330,7 @@
       <LastGenOutput>EmploNexus_Model.cs</LastGenOutput>
     </Content>
     <Content Include="employee_account_business_time_clock_icon_124657.ico" />
+    <None Include="Resources\refresh.png" />
     <None Include="Resources\manager.png" />
     <None Include="Resources\salary.png" />
     <None Include="Resources\immigration.png" />

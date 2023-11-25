@@ -51,13 +51,6 @@ namespace EmploNexus.Forms
             txtuser_name.Clear();
         }
 
-        private bool IsValidEmail(string email)
-        {
-            string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-            bool isValid = Regex.IsMatch(email, emailPattern);
-            return isValid;
-        }
-
         private void btnRegister_Click(object sender, EventArgs e)
         {
             //String cbResultSelected = cbBoxRole.SelectedValue.ToString();

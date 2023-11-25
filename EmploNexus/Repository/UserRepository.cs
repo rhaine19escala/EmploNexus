@@ -28,31 +28,38 @@ namespace EmploNexus
             return emploNexusEntities.UserAccounts.Where(s => s.username == username).FirstOrDefault();
         }
 
+        public List<vw_all_user_role> GetAllUserRole()
+        {
+            emploNexusEntities = new EmploNexusu_uEntities();
+
+            return emploNexusEntities.vw_all_user_role.OrderBy(e => e.USER_NO_).ToList();
+        }
+
         public List<vw_all_employee> GetEmployeeList()
         {
             emploNexusEntities = new EmploNexusu_uEntities();
-            return emploNexusEntities.vw_all_employee.ToList();
-        }
-
-        public List<vw_all_user_role> AllUserRole()
-        {
-            emploNexusEntities = new EmploNexusu_uEntities();
-
-            return emploNexusEntities.vw_all_user_role.ToList();
+            return emploNexusEntities.vw_all_employee.OrderBy(e => e.EMPLOYEE_NO_).ToList();
         }
 
         public List<vw_all_salary> GetEmployeeSalary()
         {
             emploNexusEntities = new EmploNexusu_uEntities();
 
-            return emploNexusEntities.vw_all_salary.ToList();
+            return emploNexusEntities.vw_all_salary.OrderBy(e => e.SALARY_NO_).ToList();
+        }
+
+        public List<vw_all_attendance> GetAllAttendance()
+        {
+            emploNexusEntities = new EmploNexusu_uEntities();
+
+            return emploNexusEntities.vw_all_attendance.OrderBy(e => e.ATTENDANCE_NO_).ToList();
         }
 
         public List<vw_all_empID> AllEmployeeID()
         {
             emploNexusEntities = new EmploNexusu_uEntities();
 
-            return emploNexusEntities.vw_all_empID.ToList();
+            return emploNexusEntities.vw_all_empID.OrderBy(e => e.USER_NO_).ToList();
         }
 
         public ErrorCode Register(String username, String password)

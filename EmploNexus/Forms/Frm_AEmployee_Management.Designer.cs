@@ -28,30 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_AEmployee_Management));
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cmbBox_empPosition = new System.Windows.Forms.ComboBox();
-            this.cmbBox_empDepartment = new System.Windows.Forms.ComboBox();
-            this.cmbBox_empGender = new System.Windows.Forms.ComboBox();
-            this.btnempClear = new System.Windows.Forms.Button();
-            this.btnempDelete = new System.Windows.Forms.Button();
-            this.btnempUpdate = new System.Windows.Forms.Button();
-            this.btnempAdd = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtempSalary = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtempEmail = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtempName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtempID = new System.Windows.Forms.TextBox();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.lblSearch = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dgv_AllEmpID = new System.Windows.Forms.DataGridView();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.grpButtons = new System.Windows.Forms.GroupBox();
+            this.btnempClear = new System.Windows.Forms.Button();
+            this.btnempAdd = new System.Windows.Forms.Button();
+            this.btnempUpdate = new System.Windows.Forms.Button();
+            this.btnempDelete = new System.Windows.Forms.Button();
+            this.grpEmployee = new System.Windows.Forms.GroupBox();
+            this.txtempID = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbBox_empPosition = new System.Windows.Forms.ComboBox();
+            this.txtempName = new System.Windows.Forms.TextBox();
+            this.DOB_date = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbBox_empDepartment = new System.Windows.Forms.ComboBox();
+            this.txtempEmail = new System.Windows.Forms.TextBox();
+            this.cmbBox_empGender = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.txtempSearch = new System.Windows.Forms.TextBox();
             this.dgv_AllEmployeesWdetails = new System.Windows.Forms.DataGridView();
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
@@ -62,9 +69,14 @@
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_AllEmpID)).BeginInit();
+            this.grpButtons.SuspendLayout();
+            this.grpEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_AllEmployeesWdetails)).BeginInit();
             this.menuStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -83,105 +95,72 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.cmbBox_empPosition);
-            this.panel1.Controls.Add(this.cmbBox_empDepartment);
-            this.panel1.Controls.Add(this.cmbBox_empGender);
-            this.panel1.Controls.Add(this.btnempClear);
-            this.panel1.Controls.Add(this.btnempDelete);
-            this.panel1.Controls.Add(this.btnempUpdate);
-            this.panel1.Controls.Add(this.btnempAdd);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.txtempSalary);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.txtempEmail);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtempName);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtempID);
-            this.panel1.Controls.Add(this.lblTitle);
-            this.panel1.Controls.Add(this.lblSearch);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.dgv_AllEmpID);
             this.panel1.Controls.Add(this.btnSearch);
+            this.panel1.Controls.Add(this.btnRefresh);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.grpButtons);
+            this.panel1.Controls.Add(this.grpEmployee);
+            this.panel1.Controls.Add(this.lblTitle);
             this.panel1.Controls.Add(this.txtempSearch);
             this.panel1.Controls.Add(this.dgv_AllEmployeesWdetails);
             this.panel1.Location = new System.Drawing.Point(20, 104);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1013, 367);
+            this.panel1.Size = new System.Drawing.Size(1013, 460);
             this.panel1.TabIndex = 12;
             // 
-            // cmbBox_empPosition
+            // label11
             // 
-            this.cmbBox_empPosition.FormattingEnabled = true;
-            this.cmbBox_empPosition.Location = new System.Drawing.Point(165, 235);
-            this.cmbBox_empPosition.Name = "cmbBox_empPosition";
-            this.cmbBox_empPosition.Size = new System.Drawing.Size(230, 30);
-            this.cmbBox_empPosition.TabIndex = 34;
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.LightBlue;
+            this.label11.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label11.Location = new System.Drawing.Point(456, 23);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(152, 26);
+            this.label11.TabIndex = 42;
+            this.label11.Text = "Employee ID\'s :";
             // 
-            // cmbBox_empDepartment
+            // dgv_AllEmpID
             // 
-            this.cmbBox_empDepartment.FormattingEnabled = true;
-            this.cmbBox_empDepartment.Location = new System.Drawing.Point(165, 199);
-            this.cmbBox_empDepartment.Name = "cmbBox_empDepartment";
-            this.cmbBox_empDepartment.Size = new System.Drawing.Size(230, 30);
-            this.cmbBox_empDepartment.TabIndex = 33;
+            this.dgv_AllEmpID.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_AllEmpID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgv_AllEmpID.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_AllEmpID.GridColor = System.Drawing.Color.SteelBlue;
+            this.dgv_AllEmpID.Location = new System.Drawing.Point(456, 57);
+            this.dgv_AllEmpID.Name = "dgv_AllEmpID";
+            this.dgv_AllEmpID.ReadOnly = true;
+            this.dgv_AllEmpID.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_AllEmpID.Size = new System.Drawing.Size(536, 129);
+            this.dgv_AllEmpID.TabIndex = 41;
+            this.dgv_AllEmpID.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_AllEmpID_CellClick);
             // 
-            // cmbBox_empGender
+            // btnSearch
             // 
-            this.cmbBox_empGender.FormattingEnabled = true;
-            this.cmbBox_empGender.Location = new System.Drawing.Point(165, 163);
-            this.cmbBox_empGender.Name = "cmbBox_empGender";
-            this.cmbBox_empGender.Size = new System.Drawing.Size(230, 30);
-            this.cmbBox_empGender.TabIndex = 32;
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnSearch.BackgroundImage = global::EmploNexus.Properties.Resources.magnifying_glass;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.ForeColor = System.Drawing.Color.AliceBlue;
+            this.btnSearch.Location = new System.Drawing.Point(929, 226);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(31, 31);
+            this.btnSearch.TabIndex = 40;
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
-            // btnempClear
+            // btnRefresh
             // 
-            this.btnempClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
-            this.btnempClear.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnempClear.Location = new System.Drawing.Point(307, 315);
-            this.btnempClear.Name = "btnempClear";
-            this.btnempClear.Size = new System.Drawing.Size(92, 32);
-            this.btnempClear.TabIndex = 31;
-            this.btnempClear.Text = "CLEAR";
-            this.btnempClear.UseVisualStyleBackColor = false;
-            this.btnempClear.Click += new System.EventHandler(this.btnempClear_Click);
-            // 
-            // btnempDelete
-            // 
-            this.btnempDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
-            this.btnempDelete.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnempDelete.Location = new System.Drawing.Point(209, 315);
-            this.btnempDelete.Name = "btnempDelete";
-            this.btnempDelete.Size = new System.Drawing.Size(92, 32);
-            this.btnempDelete.TabIndex = 30;
-            this.btnempDelete.Text = "DELETE";
-            this.btnempDelete.UseVisualStyleBackColor = false;
-            this.btnempDelete.Click += new System.EventHandler(this.btnempDelete_Click);
-            // 
-            // btnempUpdate
-            // 
-            this.btnempUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
-            this.btnempUpdate.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnempUpdate.Location = new System.Drawing.Point(111, 315);
-            this.btnempUpdate.Name = "btnempUpdate";
-            this.btnempUpdate.Size = new System.Drawing.Size(92, 32);
-            this.btnempUpdate.TabIndex = 29;
-            this.btnempUpdate.Text = "UPDATE";
-            this.btnempUpdate.UseVisualStyleBackColor = false;
-            this.btnempUpdate.Click += new System.EventHandler(this.btnempUpdate_Click);
-            // 
-            // btnempAdd
-            // 
-            this.btnempAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
-            this.btnempAdd.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnempAdd.Location = new System.Drawing.Point(13, 315);
-            this.btnempAdd.Name = "btnempAdd";
-            this.btnempAdd.Size = new System.Drawing.Size(92, 32);
-            this.btnempAdd.TabIndex = 28;
-            this.btnempAdd.Text = "ADD";
-            this.btnempAdd.UseVisualStyleBackColor = false;
-            this.btnempAdd.Click += new System.EventHandler(this.btnempAdd_Click);
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnRefresh.BackgroundImage = global::EmploNexus.Properties.Resources.refresh;
+            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRefresh.ForeColor = System.Drawing.Color.AliceBlue;
+            this.btnRefresh.Location = new System.Drawing.Point(962, 226);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(31, 31);
+            this.btnRefresh.TabIndex = 39;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // label8
             // 
@@ -189,92 +168,139 @@
             this.label8.BackColor = System.Drawing.Color.LightBlue;
             this.label8.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label8.Location = new System.Drawing.Point(13, 271);
+            this.label8.Location = new System.Drawing.Point(475, 228);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 26);
-            this.label8.TabIndex = 27;
-            this.label8.Text = "Salary";
+            this.label8.Size = new System.Drawing.Size(130, 26);
+            this.label8.TabIndex = 38;
+            this.label8.Text = "Employee ID";
             // 
-            // txtempSalary
+            // label10
             // 
-            this.txtempSalary.Location = new System.Drawing.Point(165, 271);
-            this.txtempSalary.Name = "txtempSalary";
-            this.txtempSalary.Size = new System.Drawing.Size(230, 29);
-            this.txtempSalary.TabIndex = 26;
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label10.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.SkyBlue;
+            this.label10.Location = new System.Drawing.Point(456, 193);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(84, 28);
+            this.label10.TabIndex = 37;
+            this.label10.Text = "Search :";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label7
+            // grpButtons
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.LightBlue;
-            this.label7.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label7.Location = new System.Drawing.Point(13, 235);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(120, 26);
-            this.label7.TabIndex = 25;
-            this.label7.Text = "Job Position";
+            this.grpButtons.BackColor = System.Drawing.Color.Transparent;
+            this.grpButtons.Controls.Add(this.btnempClear);
+            this.grpButtons.Controls.Add(this.btnempAdd);
+            this.grpButtons.Controls.Add(this.btnempUpdate);
+            this.grpButtons.Controls.Add(this.btnempDelete);
+            this.grpButtons.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpButtons.ForeColor = System.Drawing.Color.LightBlue;
+            this.grpButtons.Location = new System.Drawing.Point(13, 352);
+            this.grpButtons.Name = "grpButtons";
+            this.grpButtons.Size = new System.Drawing.Size(424, 85);
+            this.grpButtons.TabIndex = 36;
+            this.grpButtons.TabStop = false;
             // 
-            // label6
+            // btnempClear
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.LightBlue;
-            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label6.Location = new System.Drawing.Point(13, 199);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 26);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "Department";
+            this.btnempClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnempClear.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnempClear.ForeColor = System.Drawing.Color.LightBlue;
+            this.btnempClear.Location = new System.Drawing.Point(313, 30);
+            this.btnempClear.Name = "btnempClear";
+            this.btnempClear.Size = new System.Drawing.Size(92, 32);
+            this.btnempClear.TabIndex = 31;
+            this.btnempClear.Text = "CLEAR";
+            this.btnempClear.UseVisualStyleBackColor = false;
+            this.btnempClear.Click += new System.EventHandler(this.btnempClear_Click);
             // 
-            // label5
+            // btnempAdd
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.LightBlue;
-            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label5.Location = new System.Drawing.Point(13, 163);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 26);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Gender";
+            this.btnempAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnempAdd.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnempAdd.ForeColor = System.Drawing.Color.LightBlue;
+            this.btnempAdd.Location = new System.Drawing.Point(19, 30);
+            this.btnempAdd.Name = "btnempAdd";
+            this.btnempAdd.Size = new System.Drawing.Size(92, 32);
+            this.btnempAdd.TabIndex = 28;
+            this.btnempAdd.Text = "ADD";
+            this.btnempAdd.UseVisualStyleBackColor = false;
+            this.btnempAdd.Click += new System.EventHandler(this.btnempAdd_Click);
             // 
-            // label4
+            // btnempUpdate
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.LightBlue;
-            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label4.Location = new System.Drawing.Point(13, 128);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 26);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "E-mail";
+            this.btnempUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnempUpdate.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnempUpdate.ForeColor = System.Drawing.Color.LightBlue;
+            this.btnempUpdate.Location = new System.Drawing.Point(117, 30);
+            this.btnempUpdate.Name = "btnempUpdate";
+            this.btnempUpdate.Size = new System.Drawing.Size(92, 32);
+            this.btnempUpdate.TabIndex = 29;
+            this.btnempUpdate.Text = "UPDATE";
+            this.btnempUpdate.UseVisualStyleBackColor = false;
+            this.btnempUpdate.Click += new System.EventHandler(this.btnempUpdate_Click);
             // 
-            // txtempEmail
+            // btnempDelete
             // 
-            this.txtempEmail.Location = new System.Drawing.Point(165, 128);
-            this.txtempEmail.Name = "txtempEmail";
-            this.txtempEmail.Size = new System.Drawing.Size(230, 29);
-            this.txtempEmail.TabIndex = 18;
+            this.btnempDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnempDelete.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnempDelete.ForeColor = System.Drawing.Color.LightBlue;
+            this.btnempDelete.Location = new System.Drawing.Point(215, 30);
+            this.btnempDelete.Name = "btnempDelete";
+            this.btnempDelete.Size = new System.Drawing.Size(92, 32);
+            this.btnempDelete.TabIndex = 30;
+            this.btnempDelete.Text = "DELETE";
+            this.btnempDelete.UseVisualStyleBackColor = false;
+            this.btnempDelete.Click += new System.EventHandler(this.btnempDelete_Click);
             // 
-            // label3
+            // grpEmployee
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.LightBlue;
-            this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label3.Location = new System.Drawing.Point(13, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 26);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "Name";
+            this.grpEmployee.BackColor = System.Drawing.Color.Transparent;
+            this.grpEmployee.Controls.Add(this.txtempID);
+            this.grpEmployee.Controls.Add(this.label9);
+            this.grpEmployee.Controls.Add(this.label2);
+            this.grpEmployee.Controls.Add(this.cmbBox_empPosition);
+            this.grpEmployee.Controls.Add(this.txtempName);
+            this.grpEmployee.Controls.Add(this.DOB_date);
+            this.grpEmployee.Controls.Add(this.label3);
+            this.grpEmployee.Controls.Add(this.cmbBox_empDepartment);
+            this.grpEmployee.Controls.Add(this.txtempEmail);
+            this.grpEmployee.Controls.Add(this.cmbBox_empGender);
+            this.grpEmployee.Controls.Add(this.label4);
+            this.grpEmployee.Controls.Add(this.label5);
+            this.grpEmployee.Controls.Add(this.label6);
+            this.grpEmployee.Controls.Add(this.label7);
+            this.grpEmployee.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpEmployee.ForeColor = System.Drawing.Color.LightBlue;
+            this.grpEmployee.Location = new System.Drawing.Point(13, 57);
+            this.grpEmployee.Name = "grpEmployee";
+            this.grpEmployee.Size = new System.Drawing.Size(424, 290);
+            this.grpEmployee.TabIndex = 34;
+            this.grpEmployee.TabStop = false;
+            this.grpEmployee.Text = "Employee Details";
             // 
-            // txtempName
+            // txtempID
             // 
-            this.txtempName.Location = new System.Drawing.Point(165, 93);
-            this.txtempName.Name = "txtempName";
-            this.txtempName.Size = new System.Drawing.Size(230, 29);
-            this.txtempName.TabIndex = 16;
+            this.txtempID.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtempID.Location = new System.Drawing.Point(172, 32);
+            this.txtempID.Name = "txtempID";
+            this.txtempID.Size = new System.Drawing.Size(230, 29);
+            this.txtempID.TabIndex = 14;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.LightBlue;
+            this.label9.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label9.Location = new System.Drawing.Point(26, 139);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(97, 26);
+            this.label9.TabIndex = 35;
+            this.label9.Text = "Birthdate";
             // 
             // label2
             // 
@@ -282,18 +308,124 @@
             this.label2.BackColor = System.Drawing.Color.LightBlue;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label2.Location = new System.Drawing.Point(13, 58);
+            this.label2.Location = new System.Drawing.Point(26, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(130, 26);
             this.label2.TabIndex = 15;
             this.label2.Text = "Employee ID";
             // 
-            // txtempID
+            // cmbBox_empPosition
             // 
-            this.txtempID.Location = new System.Drawing.Point(165, 58);
-            this.txtempID.Name = "txtempID";
-            this.txtempID.Size = new System.Drawing.Size(230, 29);
-            this.txtempID.TabIndex = 14;
+            this.cmbBox_empPosition.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBox_empPosition.FormattingEnabled = true;
+            this.cmbBox_empPosition.Location = new System.Drawing.Point(172, 244);
+            this.cmbBox_empPosition.Name = "cmbBox_empPosition";
+            this.cmbBox_empPosition.Size = new System.Drawing.Size(230, 30);
+            this.cmbBox_empPosition.TabIndex = 34;
+            // 
+            // txtempName
+            // 
+            this.txtempName.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtempName.Location = new System.Drawing.Point(172, 67);
+            this.txtempName.Name = "txtempName";
+            this.txtempName.Size = new System.Drawing.Size(230, 29);
+            this.txtempName.TabIndex = 16;
+            // 
+            // DOB_date
+            // 
+            this.DOB_date.CustomFormat = "";
+            this.DOB_date.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DOB_date.Location = new System.Drawing.Point(172, 138);
+            this.DOB_date.MinDate = new System.DateTime(2023, 11, 19, 0, 0, 0, 0);
+            this.DOB_date.Name = "DOB_date";
+            this.DOB_date.Size = new System.Drawing.Size(230, 29);
+            this.DOB_date.TabIndex = 34;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.LightBlue;
+            this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label3.Location = new System.Drawing.Point(26, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 26);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Name";
+            // 
+            // cmbBox_empDepartment
+            // 
+            this.cmbBox_empDepartment.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBox_empDepartment.FormattingEnabled = true;
+            this.cmbBox_empDepartment.Location = new System.Drawing.Point(172, 208);
+            this.cmbBox_empDepartment.Name = "cmbBox_empDepartment";
+            this.cmbBox_empDepartment.Size = new System.Drawing.Size(230, 30);
+            this.cmbBox_empDepartment.TabIndex = 33;
+            // 
+            // txtempEmail
+            // 
+            this.txtempEmail.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtempEmail.Location = new System.Drawing.Point(172, 173);
+            this.txtempEmail.Name = "txtempEmail";
+            this.txtempEmail.Size = new System.Drawing.Size(230, 29);
+            this.txtempEmail.TabIndex = 18;
+            // 
+            // cmbBox_empGender
+            // 
+            this.cmbBox_empGender.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBox_empGender.FormattingEnabled = true;
+            this.cmbBox_empGender.Location = new System.Drawing.Point(172, 102);
+            this.cmbBox_empGender.Name = "cmbBox_empGender";
+            this.cmbBox_empGender.Size = new System.Drawing.Size(230, 30);
+            this.cmbBox_empGender.TabIndex = 32;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.LightBlue;
+            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label4.Location = new System.Drawing.Point(26, 173);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 26);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "E-mail";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.LightBlue;
+            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label5.Location = new System.Drawing.Point(26, 103);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 26);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Gender";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.LightBlue;
+            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label6.Location = new System.Drawing.Point(26, 208);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(122, 26);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Department";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.LightBlue;
+            this.label7.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label7.Location = new System.Drawing.Point(26, 244);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(120, 26);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Job Position";
             // 
             // lblTitle
             // 
@@ -307,34 +439,11 @@
             this.lblTitle.TabIndex = 13;
             this.lblTitle.Text = "Employee Details :";
             // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.BackColor = System.Drawing.Color.LightBlue;
-            this.lblSearch.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.lblSearch.Location = new System.Drawing.Point(413, 13);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(82, 26);
-            this.lblSearch.TabIndex = 12;
-            this.lblSearch.Text = "Search :";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(47)))), ((int)(((byte)(62)))));
-            this.btnSearch.BackgroundImage = global::EmploNexus.Properties.Resources.magnifying_glass;
-            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSearch.Location = new System.Drawing.Point(963, 12);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(29, 29);
-            this.btnSearch.TabIndex = 11;
-            this.btnSearch.UseVisualStyleBackColor = false;
-            // 
             // txtempSearch
             // 
-            this.txtempSearch.Location = new System.Drawing.Point(504, 12);
+            this.txtempSearch.Location = new System.Drawing.Point(611, 227);
             this.txtempSearch.Name = "txtempSearch";
-            this.txtempSearch.Size = new System.Drawing.Size(453, 29);
+            this.txtempSearch.Size = new System.Drawing.Size(312, 29);
             this.txtempSearch.TabIndex = 10;
             // 
             // dgv_AllEmployeesWdetails
@@ -343,10 +452,11 @@
             this.dgv_AllEmployeesWdetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv_AllEmployeesWdetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_AllEmployeesWdetails.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgv_AllEmployeesWdetails.Location = new System.Drawing.Point(412, 49);
+            this.dgv_AllEmployeesWdetails.Location = new System.Drawing.Point(456, 265);
             this.dgv_AllEmployeesWdetails.Name = "dgv_AllEmployeesWdetails";
+            this.dgv_AllEmployeesWdetails.ReadOnly = true;
             this.dgv_AllEmployeesWdetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_AllEmployeesWdetails.Size = new System.Drawing.Size(580, 298);
+            this.dgv_AllEmployeesWdetails.Size = new System.Drawing.Size(536, 177);
             this.dgv_AllEmployeesWdetails.TabIndex = 9;
             this.dgv_AllEmployeesWdetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_AllEmployeesWdetails_CellClick);
             this.dgv_AllEmployeesWdetails.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_AllEmployeesWdetails_CellFormatting);
@@ -422,13 +532,16 @@
             this.toolStripMenuItem7.Text = "Log out";
             this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // Frm_AEmployee_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::EmploNexus.Properties.Resources.alexandr_podvalny_n_Jb_d8O43Q_unsplash;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1045, 488);
+            this.ClientSize = new System.Drawing.Size(1045, 576);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCurrentTime);
             this.Controls.Add(this.menuStrip2);
@@ -443,9 +556,14 @@
             this.Load += new System.EventHandler(this.Frm_Employee_Management_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_AllEmpID)).EndInit();
+            this.grpButtons.ResumeLayout(false);
+            this.grpEmployee.ResumeLayout(false);
+            this.grpEmployee.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_AllEmployeesWdetails)).EndInit();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,15 +582,11 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.TextBox txtempSearch;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txtempID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtempName;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtempSalary;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -485,5 +599,16 @@
         private System.Windows.Forms.ComboBox cmbBox_empPosition;
         private System.Windows.Forms.ComboBox cmbBox_empDepartment;
         private System.Windows.Forms.ComboBox cmbBox_empGender;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DateTimePicker DOB_date;
+        private System.Windows.Forms.GroupBox grpEmployee;
+        private System.Windows.Forms.GroupBox grpButtons;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.DataGridView dgv_AllEmpID;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

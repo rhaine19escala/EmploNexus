@@ -40,6 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnuserDelete = new System.Windows.Forms.Button();
             this.btnuserAdd = new System.Windows.Forms.Button();
@@ -55,12 +57,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.lblSearch = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtuserSearch = new System.Windows.Forms.TextBox();
             this.dgv_AllUserWdetails = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblSearch = new System.Windows.Forms.Label();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -156,6 +157,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
@@ -168,6 +170,31 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1061, 376);
             this.panel1.TabIndex = 19;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnRefresh.BackgroundImage = global::EmploNexus.Properties.Resources.refresh;
+            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRefresh.ForeColor = System.Drawing.Color.AliceBlue;
+            this.btnRefresh.Location = new System.Drawing.Point(1006, 40);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(31, 31);
+            this.btnRefresh.TabIndex = 36;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.LightBlue;
+            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label2.Location = new System.Drawing.Point(457, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(130, 26);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "Employee ID";
             // 
             // groupBox2
             // 
@@ -346,16 +373,31 @@
             this.lblTitle.TabIndex = 13;
             this.lblTitle.Text = "User Details :";
             // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.lblSearch.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblSearch.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearch.ForeColor = System.Drawing.Color.SkyBlue;
+            this.lblSearch.Location = new System.Drawing.Point(438, 7);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(84, 28);
+            this.lblSearch.TabIndex = 12;
+            this.lblSearch.Text = "Search :";
+            this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnSearch.BackgroundImage = global::EmploNexus.Properties.Resources.magnifying_glass;
             this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSearch.ForeColor = System.Drawing.Color.AliceBlue;
-            this.btnSearch.Location = new System.Drawing.Point(944, 40);
+            this.btnSearch.Location = new System.Drawing.Point(970, 40);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(93, 31);
+            this.btnSearch.Size = new System.Drawing.Size(31, 31);
             this.btnSearch.TabIndex = 11;
-            this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -364,7 +406,7 @@
             this.txtuserSearch.BackColor = System.Drawing.Color.LightCyan;
             this.txtuserSearch.Location = new System.Drawing.Point(593, 41);
             this.txtuserSearch.Name = "txtuserSearch";
-            this.txtuserSearch.Size = new System.Drawing.Size(345, 29);
+            this.txtuserSearch.Size = new System.Drawing.Size(370, 29);
             this.txtuserSearch.TabIndex = 10;
             // 
             // dgv_AllUserWdetails
@@ -384,33 +426,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.LightBlue;
-            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label2.Location = new System.Drawing.Point(457, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 26);
-            this.label2.TabIndex = 35;
-            this.label2.Text = "Employee ID";
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
-            this.lblSearch.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lblSearch.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.ForeColor = System.Drawing.Color.SkyBlue;
-            this.lblSearch.Location = new System.Drawing.Point(438, 7);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(84, 28);
-            this.lblSearch.TabIndex = 12;
-            this.lblSearch.Text = "Search :";
-            this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Frm_AUser_Management
             // 
@@ -478,5 +493,6 @@
         private System.Windows.Forms.ComboBox cmbBoxRole;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

@@ -48,7 +48,7 @@ namespace EmploNexus.Forms
 
         private void loadUser()
         {
-            dgv_AllUserWdetails.DataSource = repo.AllUserRole();
+            dgv_AllUserWdetails.DataSource = repo.GetAllUserRole();
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
@@ -103,11 +103,44 @@ namespace EmploNexus.Forms
             txtuser_empID.Text = "";
             txtuserUsername.Text = "";
             txtuserPassword.Text = "";
+            cmbBoxRole.SelectedIndex = 0;
         }
 
         private void btnuserClear_Click(object sender, EventArgs e)
         {
             ClearInputFields();
+        }
+
+        private bool UserEmpIDExists(int userEmpID, DataGridView userAccountsTable)
+        {
+            foreach (DataGridViewRow row in userAccountsTable.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    int otherUserEmpID = Convert.ToInt32(row.Cells["EMPLOYEE_ID"].Value);
+                    if (otherUserEmpID == userEmpID)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private bool UsernameExists(string username, DataGridView userTable)
+        {
+            foreach (DataGridViewRow row in userTable.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    string otherUsername = row.Cells["USERNAME"].Value as string;
+                    if (string.Equals(otherUsername, username, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         private void btnuserAdd_Click(object sender, EventArgs e)
@@ -132,6 +165,21 @@ namespace EmploNexus.Forms
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtuserPassword, "Empty Field!");
+                return;
+            }
+
+            if (UsernameExists(username, dgv_AllUserWdetails))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtuserUsername, $"Username '{username}' already exists!");
+                return;
+            }
+
+            int userEmpID = Convert.ToInt32(empid);
+            if (UserEmpIDExists(userEmpID, dgv_AllUserWdetails))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtuser_empID, $"Employee with ID {userEmpID} is already added!");
                 return;
             }
 
@@ -249,7 +297,6 @@ namespace EmploNexus.Forms
                 {
                     if (string.IsNullOrWhiteSpace(txtuserSearch.Text))
                     {
-                        loadUser();
                         MessageBox.Show("Please enter a valid Employee ID.", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
@@ -303,6 +350,12 @@ namespace EmploNexus.Forms
                 default:
                     return "Employee";
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            txtuserSearch.Text = "";
+            loadUser();
         }
     }
 }

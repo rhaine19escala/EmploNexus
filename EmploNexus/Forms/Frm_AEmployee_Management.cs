@@ -9,6 +9,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
@@ -32,7 +33,10 @@ namespace EmploNexus.Forms
         {
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
-            
+
+            DOB_date.Format = DateTimePickerFormat.Custom;
+            DOB_date.CustomFormat = "MM/dd/yyyy";
+
             dgv_AllEmployeesWdetails.CellFormatting += dgv_AllEmployeesWdetails_CellFormatting;
 
             repo = new UserRepository();
@@ -45,6 +49,7 @@ namespace EmploNexus.Forms
         private void loadUser()
         {
             dgv_AllEmployeesWdetails.DataSource = repo.GetEmployeeList();
+            dgv_AllEmpID.DataSource = repo.AllEmployeeID();
         }
 
         public void loadCbBoxGender()
@@ -109,27 +114,11 @@ namespace EmploNexus.Forms
             this.Hide();
         }
 
-        private void btnempAdd_Click(object sender, EventArgs e)
+        private bool IsValidEmail(string email)
         {
-
-        }
-
-        private void btnempUpdate_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnempDelete_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnempClear_Click(object sender, EventArgs e)
-        {
-            txtempID.Clear();
-            txtempName.Clear();
-            txtempEmail.Clear();
-            txtempSalary.Clear();
+            string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            bool isValid = Regex.IsMatch(email, emailPattern);
+            return isValid;
         }
 
         private void dgv_AllEmployeesWdetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -207,50 +196,164 @@ namespace EmploNexus.Forms
                     e.FormattingApplied = true;
                 }
             }
-
-            if (e.ColumnIndex == 6 && e.RowIndex >= 0 && e.Value != null)
-            {
-                string money = e.Value.ToString();
-                decimal salary;
-                if (decimal.TryParse(money, out salary))
-                {
-                    CultureInfo peso = new CultureInfo("en-PH");
-                    e.Value = salary.ToString("C", peso);
-                    e.FormattingApplied = true;
-                }
-            }
-            else if (e.ColumnIndex == 6 && e.RowIndex >= 0)
-            {
-                e.Value = 0.00m.ToString("C", CultureInfo.GetCultureInfo("en-PH"));
-                e.FormattingApplied = true;
-            }
         }
 
         private void dgv_AllEmployeesWdetails_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                txtempID.Text = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[0].Value).ToString();
-                txtempName.Text = dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[1].Value as String;
-                txtempEmail.Text = dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[2].Value as String;
+                txtempID.Text = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[1].Value).ToString();
+                txtempName.Text = dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[2].Value as String;
 
                 int genderID = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[3].Value);
                 cmbBox_empGender.SelectedValue = genderID;
 
-                int department = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[4].Value);
+                if (dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[4].Value is DateTime selectedDate)
+                {
+                    DOB_date.Value = selectedDate;
+                }
+
+                txtempEmail.Text = dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[5].Value as String;
+
+                int department = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[6].Value);
                 cmbBox_empDepartment.SelectedValue = department;
 
-                int position = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[5].Value);
+                int position = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[7].Value);
                 cmbBox_empPosition.SelectedValue = position;
-
-                decimal salary = Convert.ToDecimal(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[6].Value);
-                CultureInfo peso = new CultureInfo("en-PH");
-                txtempSalary.Text = salary.ToString("C", peso);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Encountered :" + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private bool EmpIDExistsInOtherTable(int empID, DataGridView otherTable)
+        {
+            foreach (DataGridViewRow row in otherTable.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    int otherEmpID = Convert.ToInt32(row.Cells["EMPLOYEE_ID"].Value);
+                    if (otherEmpID == empID)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private void dgv_AllEmpID_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                txtempID.Text = Convert.ToInt32(dgv_AllEmpID.Rows[e.RowIndex].Cells[1].Value).ToString();
+                txtempName.Clear();
+                txtempEmail.Clear();
+                cmbBox_empGender.SelectedIndex = 0;
+                cmbBox_empDepartment.SelectedIndex = 0;
+                cmbBox_empPosition.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Encountered :" + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnempAdd_Click(object sender, EventArgs e)
+        {
+            String emp_id = txtempID.Text;
+            String emp_name = txtempName.Text;
+            String emp_email = txtempEmail.Text;
+
+            if (String.IsNullOrEmpty(emp_id))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, "Empty Field!");
+                return;
+            }
+            if (String.IsNullOrEmpty(emp_name))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempName, "Empty Field!");
+                return;
+            }
+            if (String.IsNullOrEmpty(emp_email))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempEmail, "Empty Field!");
+                return;
+            }
+            if (!IsValidEmail(emp_email))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempEmail, "Invalid Email Format!");
+                return;
+            }
+
+            int empID = Convert.ToInt32(emp_id);
+            if (EmpIDExistsInOtherTable(empID, dgv_AllEmpID))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, $"Employee with ID {empID} is already added!");
+                return;
+            }
+
+            try
+            {
+                using (var db = new EmploNexusu_uEntities())
+                {
+                    Employee emp = new Employee
+                    {
+                        emp_ID = Convert.ToInt32(txtempID.Text),
+                        emp_name = txtempName.Text,
+                        emp_genderId = (Int32)cmbBox_empGender.SelectedValue,
+                        emp_DOB = DOB_date.Value,
+                        emp_email = txtempEmail.Text,
+                        emp_departmentId = (Int32)cmbBox_empDepartment.SelectedValue,
+                        emp_positionId = (Int32)cmbBox_empPosition.SelectedValue
+                    };
+
+                    db.Employees.Add(emp);
+                    db.SaveChanges();
+                    loadUser();
+                    MessageBox.Show("Employee Info Added Successfully!", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Employee Info not Added Successfully!. \nError :" + ex.Message, "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnempUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnempDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClearInputFields()
+        {
+            txtempID.Clear();
+            txtempName.Clear();
+            txtempEmail.Clear();
+            cmbBox_empGender.SelectedIndex = 0;
+            cmbBox_empDepartment.SelectedIndex = 0;
+            cmbBox_empPosition.SelectedIndex = 0;
+        }
+
+        private void btnempClear_Click(object sender, EventArgs e)
+        {
+            ClearInputFields();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            loadUser();
         }
     }
 }
