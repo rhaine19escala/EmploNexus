@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="EmploNexusModelStoreContainer" CdmEntityContainer="EmploNexusO_oEntities">
+  <EntityContainerMapping StorageEntityContainer="EmploNexusModelStoreContainer" CdmEntityContainer="EmploNexusu_uEntities">
     <EntitySetMapping Name="Attendances">
       <EntityTypeMapping TypeName="EmploNexusModel.Attendance">
         <MappingFragment StoreEntitySet="Attendance">
@@ -88,6 +88,14 @@
           <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
           <ScalarProperty Name="DATE" ColumnName="DATE" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_all_empID">
+      <EntityTypeMapping TypeName="EmploNexusModel.vw_all_empID">
+        <MappingFragment StoreEntitySet="vw_all_empID">
+          <ScalarProperty Name="USER_NO_" ColumnName="USER NO." />
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

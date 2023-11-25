@@ -16,10 +16,10 @@ namespace EmploNexus.AppData
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class EmploNexusO_oEntities : DbContext
+    public partial class EmploNexusu_uEntities : DbContext
     {
-        public EmploNexusO_oEntities()
-            : base("name=EmploNexusO_oEntities")
+        public EmploNexusu_uEntities()
+            : base("name=EmploNexusu_uEntities")
         {
         }
     
@@ -37,6 +37,7 @@ namespace EmploNexus.AppData
         public DbSet<Salary> Salaries { get; set; }
         public DbSet<UserAccount> UserAccounts { get; set; }
         public DbSet<vw_all_attendance> vw_all_attendance { get; set; }
+        public DbSet<vw_all_empID> vw_all_empID { get; set; }
         public DbSet<vw_all_employee> vw_all_employee { get; set; }
         public DbSet<vw_all_salary> vw_all_salary { get; set; }
         public DbSet<vw_all_user_role> vw_all_user_role { get; set; }

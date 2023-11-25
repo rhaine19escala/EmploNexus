@@ -13,46 +13,53 @@ namespace EmploNexus
 {
     public class UserRepository
     {
-        private EmploNexusO_oEntities emploNexusEntities;
+        private EmploNexusu_uEntities emploNexusEntities;
 
         public UserRepository()
         {
-            emploNexusEntities = new EmploNexusO_oEntities();
+            emploNexusEntities = new EmploNexusu_uEntities();
         }
      
         public UserAccount GetUserByUsername(String username)
         {
             // re-initialize emploNexusEntities object because sometimes data in the list not updated
-            emploNexusEntities = new EmploNexusO_oEntities();
+            emploNexusEntities = new EmploNexusu_uEntities();
             // SELECT TOP 1 * FROM USERACCOUNT WHERE username == username
             return emploNexusEntities.UserAccounts.Where(s => s.username == username).FirstOrDefault();
         }
 
         public List<vw_all_employee> GetEmployeeList()
         {
-            emploNexusEntities = new EmploNexusO_oEntities();
+            emploNexusEntities = new EmploNexusu_uEntities();
             return emploNexusEntities.vw_all_employee.ToList();
         }
 
         public List<vw_all_user_role> AllUserRole()
         {
-            emploNexusEntities = new EmploNexusO_oEntities();
+            emploNexusEntities = new EmploNexusu_uEntities();
 
             return emploNexusEntities.vw_all_user_role.ToList();
         }
 
         public List<vw_all_salary> GetEmployeeSalary()
         {
-            emploNexusEntities = new EmploNexusO_oEntities();
+            emploNexusEntities = new EmploNexusu_uEntities();
 
             return emploNexusEntities.vw_all_salary.ToList();
+        }
+
+        public List<vw_all_empID> AllEmployeeID()
+        {
+            emploNexusEntities = new EmploNexusu_uEntities();
+
+            return emploNexusEntities.vw_all_empID.ToList();
         }
 
         public ErrorCode Register(String username, String password)
         {
             try
             {
-                using (var emploNexusEntities = new EmploNexusO_oEntities())
+                using (var emploNexusEntities = new EmploNexusu_uEntities())
                 {
                     var newUser = new UserAccount();
                     newUser.username = username;

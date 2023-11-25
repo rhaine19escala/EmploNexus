@@ -119,6 +119,9 @@
     <Compile Include="AppData\vw_all_attendance.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="AppData\vw_all_empID.cs">
+      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="AppData\vw_all_employee.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>

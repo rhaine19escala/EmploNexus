@@ -16,18 +16,18 @@ namespace EmploNexus.Forms
     public partial class Frm_AUser_Management : Form
     {
         UserRepository repo;
-        private EmploNexusO_oEntities emploNexusEntities;
+        private EmploNexusu_uEntities emploNexusEntities;
 
         public Frm_AUser_Management()
         {
             InitializeComponent();
-            emploNexusEntities = new EmploNexusO_oEntities();
+            emploNexusEntities = new EmploNexusu_uEntities();
 
         }
 
         private void Frm_AUser_Management_Load(object sender, EventArgs e)
         {
-            emploNexusEntities = new EmploNexusO_oEntities();
+            emploNexusEntities = new EmploNexusu_uEntities();
             repo = new UserRepository();
 
             DateTime currentTime = DateTime.Now;
@@ -137,7 +137,7 @@ namespace EmploNexus.Forms
 
             try
             {
-                using (var db = new EmploNexusO_oEntities())
+                using (var db = new EmploNexusu_uEntities())
                 {
                     UserAccount nUserAccount = new UserAccount
                     {
@@ -183,7 +183,7 @@ namespace EmploNexus.Forms
                 return;
             }
 
-            using (var db = new EmploNexusO_oEntities())
+            using (var db = new EmploNexusu_uEntities())
             {
                 int user_empIDToUpdate = Convert.ToInt32(txtuser_empID.Text);
 
@@ -216,7 +216,7 @@ namespace EmploNexus.Forms
         {
             try
             {
-                using (var db = new EmploNexusO_oEntities())
+                using (var db = new EmploNexusu_uEntities())
                 {
                     int user_empIDToDelete = Convert.ToInt32(txtuser_empID.Text);
 
@@ -243,7 +243,7 @@ namespace EmploNexus.Forms
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            using (var db = new EmploNexusO_oEntities())
+            using (var db = new EmploNexusu_uEntities())
             {
                 try
                 {

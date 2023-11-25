@@ -92,6 +92,16 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_attendance' does not have a 
           <Property Name="STATUS" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'EmploNexus.dbo.vw_all_empID' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_all_empID">
+          <Key>
+            <PropertyRef Name="USER NO." />
+            <PropertyRef Name="EMPLOYEE_ID" />
+          </Key>
+          <Property Name="USER NO." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'EmploNexus.dbo.vw_all_employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_all_employee">
           <Key>
@@ -143,9 +153,9 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_user_role' does not have a p
           <Property Name="ROLE" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Attendanc__Atten__30F848ED' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Attendanc__Atten__30F848ED" />-->
-        <Association Name="FK__Employees__emp_d__25869641">
+warning 6035: The relationship 'FK__Attendanc__Atten__2D27B809' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Attendanc__Atten__2D27B809" />-->
+        <Association Name="FK__Employees__emp_d__20C1E124">
           <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
           <ReferentialConstraint>
@@ -157,7 +167,7 @@ warning 6035: The relationship 'FK__Attendanc__Atten__30F848ED' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employees__emp_g__24927208">
+        <Association Name="FK__Employees__emp_g__1FCDBCEB">
           <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
           <ReferentialConstraint>
@@ -170,9 +180,9 @@ warning 6035: The relationship 'FK__Attendanc__Atten__30F848ED' has columns that
           </ReferentialConstraint>
         </Association>
         <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Employees__emp_I__239E4DCF' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Employees__emp_I__239E4DCF" />-->
-        <Association Name="FK__Employees__emp_p__267ABA7A">
+warning 6035: The relationship 'FK__Employees__emp_I__1ED998B2' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Employees__emp_I__1ED998B2" />-->
+        <Association Name="FK__Employees__emp_p__21B6055D">
           <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
           <ReferentialConstraint>
@@ -185,8 +195,8 @@ warning 6035: The relationship 'FK__Employees__emp_I__239E4DCF' has columns that
           </ReferentialConstraint>
         </Association>
         <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Salary__Salaryem__2B3F6F97' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Salary__Salaryem__2B3F6F97" />-->
+warning 6035: The relationship 'FK__Salary__Salaryem__25869641' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Salary__Salaryem__25869641" />-->
         <Association Name="FK__UserAccou__roleI__1A14E395">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
@@ -278,6 +288,12 @@ warning 6035: The relationship 'FK__Salary__Salaryem__2B3F6F97' has columns that
 [vw_all_attendance].[STATUS] AS [STATUS]
 FROM [dbo].[vw_all_attendance] AS [vw_all_attendance]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vw_all_empID" EntityType="Self.vw_all_empID" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_all_empID].[USER NO.] AS [USER NO.], 
+[vw_all_empID].[EMPLOYEE_ID] AS [EMPLOYEE_ID]
+FROM [dbo].[vw_all_empID] AS [vw_all_empID]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vw_all_employee" EntityType="Self.vw_all_employee" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [vw_all_employee].[EMPLOYEE NO.] AS [EMPLOYEE NO.], 
@@ -307,15 +323,15 @@ FROM [dbo].[vw_all_salary] AS [vw_all_salary]</DefiningQuery>
 [vw_all_user_role].[ROLE] AS [ROLE]
 FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Employees__emp_d__25869641" Association="Self.FK__Employees__emp_d__25869641">
+          <AssociationSet Name="FK__Employees__emp_d__20C1E124" Association="Self.FK__Employees__emp_d__20C1E124">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employees__emp_g__24927208" Association="Self.FK__Employees__emp_g__24927208">
+          <AssociationSet Name="FK__Employees__emp_g__1FCDBCEB" Association="Self.FK__Employees__emp_g__1FCDBCEB">
             <End Role="Gender" EntitySet="Gender" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employees__emp_p__267ABA7A" Association="Self.FK__Employees__emp_p__267ABA7A">
+          <AssociationSet Name="FK__Employees__emp_p__21B6055D" Association="Self.FK__Employees__emp_p__21B6055D">
             <End Role="Positions" EntitySet="Positions" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
@@ -345,7 +361,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <Property Name="departmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="departmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="departmentDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__emp_d__25869641" FromRole="Departments" ToRole="Employees" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__emp_d__20C1E124" FromRole="Departments" ToRole="Employees" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -359,9 +375,9 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <Property Name="emp_email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="emp_departmentId" Type="Int32" Nullable="false" />
           <Property Name="emp_positionId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Department" Relationship="Self.FK__Employees__emp_d__25869641" FromRole="Employees" ToRole="Departments" />
-          <NavigationProperty Name="Gender" Relationship="Self.FK__Employees__emp_g__24927208" FromRole="Employees" ToRole="Gender" />
-          <NavigationProperty Name="Position" Relationship="Self.FK__Employees__emp_p__267ABA7A" FromRole="Employees" ToRole="Positions" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Employees__emp_d__20C1E124" FromRole="Employees" ToRole="Departments" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK__Employees__emp_g__1FCDBCEB" FromRole="Employees" ToRole="Gender" />
+          <NavigationProperty Name="Position" Relationship="Self.FK__Employees__emp_p__21B6055D" FromRole="Employees" ToRole="Positions" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -369,7 +385,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           </Key>
           <Property Name="genderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="genderName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__emp_g__24927208" FromRole="Gender" ToRole="Employees" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__emp_g__1FCDBCEB" FromRole="Gender" ToRole="Employees" />
         </EntityType>
         <EntityType Name="Position">
           <Key>
@@ -378,7 +394,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <Property Name="positionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="positionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="positionDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__emp_p__267ABA7A" FromRole="Positions" ToRole="Employees" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__emp_p__21B6055D" FromRole="Positions" ToRole="Employees" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -420,6 +436,14 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
           <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_all_empID">
+          <Key>
+            <PropertyRef Name="USER_NO_" />
+            <PropertyRef Name="EMPLOYEE_ID" />
+          </Key>
+          <Property Name="USER_NO_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="vw_all_employee">
           <Key>
@@ -466,7 +490,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <Property Name="PASSWORD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ROLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK__Employees__emp_d__25869641">
+        <Association Name="FK__Employees__emp_d__20C1E124">
           <End Role="Departments" Type="Self.Department" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -478,7 +502,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employees__emp_g__24927208">
+        <Association Name="FK__Employees__emp_g__1FCDBCEB">
           <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -490,7 +514,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employees__emp_p__267ABA7A">
+        <Association Name="FK__Employees__emp_p__21B6055D">
           <End Role="Positions" Type="Self.Position" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -514,7 +538,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EmploNexusO_oEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EmploNexusu_uEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Attendances" EntityType="Self.Attendance" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
@@ -524,18 +548,19 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <EntitySet Name="Salaries" EntityType="Self.Salary" />
           <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
           <EntitySet Name="vw_all_attendance" EntityType="Self.vw_all_attendance" />
+          <EntitySet Name="vw_all_empID" EntityType="Self.vw_all_empID" />
           <EntitySet Name="vw_all_employee" EntityType="Self.vw_all_employee" />
           <EntitySet Name="vw_all_salary" EntityType="Self.vw_all_salary" />
           <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" />
-          <AssociationSet Name="FK__Employees__emp_d__25869641" Association="Self.FK__Employees__emp_d__25869641">
+          <AssociationSet Name="FK__Employees__emp_d__20C1E124" Association="Self.FK__Employees__emp_d__20C1E124">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employees__emp_g__24927208" Association="Self.FK__Employees__emp_g__24927208">
+          <AssociationSet Name="FK__Employees__emp_g__1FCDBCEB" Association="Self.FK__Employees__emp_g__1FCDBCEB">
             <End Role="Gender" EntitySet="Genders" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employees__emp_p__267ABA7A" Association="Self.FK__Employees__emp_p__267ABA7A">
+          <AssociationSet Name="FK__Employees__emp_p__21B6055D" Association="Self.FK__Employees__emp_p__21B6055D">
             <End Role="Positions" EntitySet="Positions" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
@@ -611,7 +636,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EmploNexusModelStoreContainer" CdmEntityContainer="EmploNexusO_oEntities">
+        <EntityContainerMapping StorageEntityContainer="EmploNexusModelStoreContainer" CdmEntityContainer="EmploNexusu_uEntities">
           <EntitySetMapping Name="Attendances">
             <EntityTypeMapping TypeName="EmploNexusModel.Attendance">
               <MappingFragment StoreEntitySet="Attendance">
@@ -699,6 +724,14 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
                 <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
                 <ScalarProperty Name="DATE" ColumnName="DATE" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_all_empID">
+            <EntityTypeMapping TypeName="EmploNexusModel.vw_all_empID">
+              <MappingFragment StoreEntitySet="vw_all_empID">
+                <ScalarProperty Name="USER_NO_" ColumnName="USER NO." />
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
