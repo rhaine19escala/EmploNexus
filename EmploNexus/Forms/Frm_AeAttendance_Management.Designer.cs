@@ -54,6 +54,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtempSearch = new System.Windows.Forms.TextBox();
             this.dgv_AllAttendanceWdetails = new System.Windows.Forms.DataGridView();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -103,6 +104,7 @@
             this.toolStripMenuItem4,
             this.toolStripMenuItem5,
             this.toolStripMenuItem6,
+            this.toolStripMenuItem1,
             this.toolStripMenuItem7});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(49, 26);
@@ -113,31 +115,35 @@
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(280, 26);
             this.toolStripMenuItem3.Text = "Back";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(280, 26);
             this.toolStripMenuItem4.Text = "User Account Management";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(280, 26);
             this.toolStripMenuItem5.Text = "Employee Management";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
             // toolStripMenuItem6
             // 
-            this.toolStripMenuItem6.Enabled = false;
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
             this.toolStripMenuItem6.Size = new System.Drawing.Size(280, 26);
             this.toolStripMenuItem6.Text = "Salary Management";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
             this.toolStripMenuItem7.Size = new System.Drawing.Size(280, 26);
             this.toolStripMenuItem7.Text = "Log out";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
             // 
             // panel1
             // 
@@ -174,7 +180,7 @@
             this.groupBox1.Size = new System.Drawing.Size(424, 298);
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Employee Details";
+            this.groupBox1.Text = "Attendance Details";
             // 
             // txtempName
             // 
@@ -339,6 +345,13 @@
             this.dgv_AllAttendanceWdetails.Size = new System.Drawing.Size(435, 179);
             this.dgv_AllAttendanceWdetails.TabIndex = 9;
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Enabled = false;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(280, 26);
+            this.toolStripMenuItem1.Text = "Attendance Management";
+            // 
             // Frm_AeAttendance_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -394,5 +407,6 @@
         private System.Windows.Forms.TextBox txtempSearch;
         private System.Windows.Forms.DataGridView dgv_AllAttendanceWdetails;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

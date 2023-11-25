@@ -365,5 +365,12 @@ namespace EmploNexus.Forms
             txtuserSearch.Text = "";
             loadUser();
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
+            attendance_Management.Show();
+            this.Hide();
+        }
     }
 }

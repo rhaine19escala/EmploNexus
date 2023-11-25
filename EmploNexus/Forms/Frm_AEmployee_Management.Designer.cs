@@ -70,6 +70,7 @@
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_AllEmpID)).BeginInit();
             this.grpButtons.SuspendLayout();
@@ -492,6 +493,7 @@
             this.toolStripMenuItem4,
             this.toolStripMenuItem5,
             this.toolStripMenuItem6,
+            this.toolStripMenuItem1,
             this.toolStripMenuItem7});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(49, 26);
@@ -535,6 +537,13 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(280, 26);
+            this.toolStripMenuItem1.Text = "Attendance Management";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // Frm_AEmployee_Management
             // 
@@ -610,5 +619,6 @@
         private System.Windows.Forms.DataGridView dgv_AllEmpID;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

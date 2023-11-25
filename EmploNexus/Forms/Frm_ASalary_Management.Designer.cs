@@ -58,6 +58,7 @@
             this.txtpayrollID = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_AllSalaryWdetails)).BeginInit();
             this.panel1.SuspendLayout();
@@ -83,6 +84,7 @@
             this.toolStripMenuItem4,
             this.toolStripMenuItem5,
             this.toolStripMenuItem6,
+            this.toolStripMenuItem1,
             this.toolStripMenuItem7});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(49, 26);
@@ -371,6 +373,13 @@
             this.panel1.Size = new System.Drawing.Size(911, 367);
             this.panel1.TabIndex = 18;
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(280, 26);
+            this.toolStripMenuItem1.Text = "Attendance Management";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
             // Frm_ASalary_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -431,5 +440,6 @@
         private System.Windows.Forms.TextBox txtpayrollID;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
