@@ -232,25 +232,28 @@ namespace EmploNexus.Forms
             }
 
             using (var db = new EmploNexusu_uEntities())
-            {
-                int user_empIDToUpdate = Convert.ToInt32(txtuser_empID.Text);
-
-                UserAccount existingUser = db.UserAccounts.FirstOrDefault(u => u.user_empID == user_empIDToUpdate);
+            {              
                 try
                 {
-                    if (existingUser != null)
+                    DialogResult result = MessageBox.Show("Are you sure you want to Update this user Account?", "EmploNexus: User Management", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (result == DialogResult.OK)
                     {
-                        existingUser.username = txtuserUsername.Text;
-                        existingUser.password = txtuserPassword.Text;
-                        existingUser.roleId = (Int32)cmbBoxRole.SelectedValue;
+                        int user_empIDToUpdate = Convert.ToInt32(txtuser_empID.Text);
+                        UserAccount existingUser = db.UserAccounts.FirstOrDefault(u => u.user_empID == user_empIDToUpdate);
+                        if (existingUser != null)
+                        {
+                            existingUser.username = txtuserUsername.Text;
+                            existingUser.password = txtuserPassword.Text;
+                            existingUser.roleId = (Int32)cmbBoxRole.SelectedValue;
 
-                        db.SaveChanges();
-                        loadUser();
-                        MessageBox.Show("User Updated Successfully!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("User not found!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            db.SaveChanges();
+                            loadUser();
+                            MessageBox.Show("User Updated Successfully!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("User not found!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -264,22 +267,27 @@ namespace EmploNexus.Forms
         {
             try
             {
-                using (var db = new EmploNexusu_uEntities())
+                DialogResult result = MessageBox.Show("Are you sure you want to Delete this user Account?", "EmploNexus: User Management", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.OK)
                 {
-                    int user_empIDToDelete = Convert.ToInt32(txtuser_empID.Text);
-
-                    UserAccount userToDelete = db.UserAccounts.FirstOrDefault(u => u.user_empID == user_empIDToDelete);
-
-                    if (userToDelete != null)
+                    using (var db = new EmploNexusu_uEntities())
                     {
-                        db.UserAccounts.Remove(userToDelete);
-                        db.SaveChanges();
-                        loadUser();
-                        MessageBox.Show("User Deleted Successfully!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("User not found!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        int user_empIDToDelete = Convert.ToInt32(txtuser_empID.Text);
+
+                        UserAccount userToDelete = db.UserAccounts.FirstOrDefault(u => u.user_empID == user_empIDToDelete);
+
+                        if (userToDelete != null)
+                        {
+                            db.UserAccounts.Remove(userToDelete);
+                            db.SaveChanges();
+                            loadUser();
+                            MessageBox.Show("User Deleted Successfully!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("User not found!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
                     }
                 }
             }
@@ -324,7 +332,7 @@ namespace EmploNexus.Forms
                         {
                             loadUser();
                             txtuserSearch.Text = "";
-                            MessageBox.Show("Employee ID not found!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Employee ID not found!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
                 }

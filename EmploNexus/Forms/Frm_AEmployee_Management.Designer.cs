@@ -336,7 +336,6 @@
             this.DOB_date.CustomFormat = "";
             this.DOB_date.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DOB_date.Location = new System.Drawing.Point(172, 138);
-            this.DOB_date.MinDate = new System.DateTime(2023, 11, 19, 0, 0, 0, 0);
             this.DOB_date.Name = "DOB_date";
             this.DOB_date.Size = new System.Drawing.Size(230, 29);
             this.DOB_date.TabIndex = 34;

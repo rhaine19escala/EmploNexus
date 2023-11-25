@@ -141,7 +141,7 @@ namespace EmploNexus.Forms
                 }
             }
 
-            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.Value != null)
+            if (e.ColumnIndex == 6 && e.RowIndex >= 0 && e.Value != null)
             {
                 string stringValue = e.Value.ToString();
                 int departmentvalue;
@@ -163,7 +163,7 @@ namespace EmploNexus.Forms
                 }
             }
 
-            if (e.ColumnIndex == 5 && e.RowIndex >= 0 && e.Value != null)
+            if (e.ColumnIndex == 7 && e.RowIndex >= 0 && e.Value != null)
             {
                 string stringValue = e.Value.ToString();
                 int positionvalue;
@@ -292,7 +292,7 @@ namespace EmploNexus.Forms
             }
 
             int empID = Convert.ToInt32(emp_id);
-            if (EmpIDExistsInOtherTable(empID, dgv_AllEmpID))
+            if (EmpIDExistsInOtherTable(empID, dgv_AllEmployeesWdetails))
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtempID, $"Employee with ID {empID} is already added!");
@@ -328,12 +328,109 @@ namespace EmploNexus.Forms
 
         private void btnempUpdate_Click(object sender, EventArgs e)
         {
+            String emp_id = txtempID.Text;
+            String emp_name = txtempName.Text;
+            String emp_email = txtempEmail.Text;
 
+            if (String.IsNullOrEmpty(emp_id))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, "Empty Field!");
+                return;
+            }
+            if (String.IsNullOrEmpty(emp_name))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempName, "Empty Field!");
+                return;
+            }
+            if (String.IsNullOrEmpty(emp_email))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempEmail, "Empty Field!");
+                return;
+            }
+            if (!IsValidEmail(emp_email))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempEmail, "Invalid Email Format!");
+                return;
+            }
+
+            int empID = Convert.ToInt32(emp_id);
+            if (EmpIDExistsInOtherTable(empID, dgv_AllEmployeesWdetails))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, $"Employee with ID {empID} is already added!");
+                return;
+            }
+
+            using (var db = new EmploNexusu_uEntities())
+            {               
+                try
+                {
+                    DialogResult result = MessageBox.Show("Are you sure you want to Update this Employee Information?", "EmploNexus: Employee Information Management", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (result == DialogResult.OK)
+                    {
+                        int user_empIDToUpdate = Convert.ToInt32(txtempID.Text);
+                        Employee existingUser = db.Employees.FirstOrDefault(u => u.emp_ID == user_empIDToUpdate);
+                        if (existingUser != null)
+                        {
+                            existingUser.emp_name = txtempName.Text;
+                            existingUser.emp_genderId = (Int32)cmbBox_empGender.SelectedValue;
+                            existingUser.emp_DOB = DOB_date.Value;
+                            existingUser.emp_email = txtempEmail.Text;
+                            existingUser.emp_departmentId = (Int32)cmbBox_empDepartment.SelectedValue;
+                            existingUser.emp_positionId = (Int32)cmbBox_empPosition.SelectedValue;
+
+                            db.SaveChanges();
+                            loadUser();
+                            MessageBox.Show("Employee Info Updated Successfully!", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Employee Info not found!", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }                  
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Employee Info not Updated Successfully!. \nError :" + ex.Message, "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void btnempDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to Delete this Employee Information?", "EmploNexus: Employee Information Management", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if(result == DialogResult.OK)
+                {
+                    using (var db = new EmploNexusu_uEntities())
+                    {
+                        int user_empIDToDelete = Convert.ToInt32(txtempID.Text);
 
+                        Employee userToDelete = db.Employees.FirstOrDefault(u => u.emp_ID == user_empIDToDelete);
+
+                        if (userToDelete != null)
+                        {
+                            db.Employees.Remove(userToDelete);
+                            db.SaveChanges();
+                            loadUser();
+                            MessageBox.Show("Employee Info Deleted Successfully!", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Employeee Info not found!", "EmploNexus:  Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(" Employee Info not Deleted Successfully!. \nError :" + ex.Message, "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ClearInputFields()
