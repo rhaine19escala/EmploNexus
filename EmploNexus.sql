@@ -107,7 +107,6 @@ CREATE TABLE Salary (
 );
 
 -- Create a table for Attendance
-SELECT * FROM Attendance
 CREATE TABLE Attendance (
     AttendanceNo INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
     AttendanceDate DATE DEFAULT GETDATE() NOT NULL,
@@ -117,7 +116,6 @@ CREATE TABLE Attendance (
 );
 
 ------VIEW ALL USER ROLE
-SELECT * FROM UserAccounts
 CREATE VIEW vw_all_user_role
 AS
 SELECT ua.userNo AS 'USER NO.', ua.user_empID AS 'EMPLOYEE ID', ua.userName AS 'USERNAME', ua.password AS 'PASSWORD', R.roleName AS 'ROLE' 
@@ -125,7 +123,6 @@ FROM Roles R
 INNER JOIN UserAccounts ua ON ua.roleId = R.roleId 
 
 ------VIEW ALL USER EMPLOYEE
-SELECT * FROM Employees
 CREATE VIEW vw_all_employee
 AS
 SELECT e.emp_No AS 'EMPLOYEE NO.',e.emp_ID AS 'EMPLOYEE_ID', e.emp_name AS 'EMPLOYEE_NAME', e.emp_genderId AS 'GENDER', e.emp_DOB AS 'BIRTHDATE', e.emp_email AS 'EMAIL', e.emp_departmentId AS 'DEPARTMENT', e.emp_positionId AS 'JOB_POSITION'
@@ -136,7 +133,6 @@ INNER JOIN Departments D ON e.emp_departmentId = D.departmentId
 INNER JOIN Positions P ON e.emp_positionId = P.positionId
 
 ------VIEW ALL USER SALARY
-SELECT * FROM Salary
 CREATE VIEW vw_all_salary
 AS
 SELECT S.salary_ID AS 'SALARY NO.', S.Salaryemp_ID AS 'EMPLOYEE_ID', S.salary_PayDate AS 'PAY_DATE', S.salary_Amount AS 'SALARY'
@@ -144,18 +140,24 @@ FROM Salary S
 INNER JOIN UserAccounts ua ON s.Salaryemp_ID = ua.user_empID;
 
 ------VIEW ALL USER ATTENDANCE
-SELECT * FROM Attendance
 CREATE VIEW vw_all_attendance
 AS
 SELECT A.AttendanceNo AS 'ATTENDANCE NO.', A.AttendanceEmp_ID AS 'EMPLOYEE_ID', A.AttendanceDate AS 'DATE', A.AttendanceStatus AS 'STATUS'
 FROM Attendance A
 INNER JOIN UserAccounts ua ON A.AttendanceEmp_ID = ua.user_empID;
 
-------VIEW ALL USER EMP ID
-SELECT * FROM UserAccounts
+------VIEW ALL USER EMPLOYEE ID
 CREATE VIEW vw_all_empID
 AS
-SELECT UA.userNo AS 'USER NO.', UA.user_empID AS 'EMPLOYEE_ID' FROM UserAccounts UA
+SELECT UA.userNo AS 'USER NO.', UA.user_empID AS 'EMPLOYEE_ID', R.roleDescription 
+FROM UserAccounts UA
+INNER JOIN Roles R ON UA.roleId = R.roleId
+
+------VIEW ALL EMPLOYEE INFO
+CREATE VIEW vw_all_empInfo
+AS
+SELECT E.emp_No AS 'EMPLOYEE NO.', E.emp_ID AS 'EMPLOYEE NAME', E.emp_email AS 'EMAIL', E.emp_departmentId AS 'DEPARTMENT', E.emp_positionId AS 'JOB POSITION' 
+FROM Employees E
 
 ------STORED PROCEDURE ADD USER
 CREATE PROCEDURE sp_addUser
