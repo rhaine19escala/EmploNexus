@@ -318,11 +318,13 @@ namespace EmploNexus.Forms
                     db.SaveChanges();
                     loadUser();
                     MessageBox.Show("Employee Info Added Successfully!", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearInputFields();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Employee Info not Added Successfully!. \nError :" + ex.Message, "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ClearInputFields();
             }
         }
 
@@ -386,6 +388,7 @@ namespace EmploNexus.Forms
                             db.SaveChanges();
                             loadUser();
                             MessageBox.Show("Employee Info Updated Successfully!", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ClearInputFields();
                         }
                         else
                         {
@@ -396,6 +399,7 @@ namespace EmploNexus.Forms
                 catch (Exception ex)
                 {
                     MessageBox.Show("Employee Info not Updated Successfully!. \nError :" + ex.Message, "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ClearInputFields();
                 }
             }
         }

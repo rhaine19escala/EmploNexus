@@ -100,7 +100,7 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_empID' does not have a prima
           </Key>
           <Property Name="USER NO." Type="int" Nullable="false" />
           <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
-          <Property Name="roleDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="ROLE" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'EmploNexus.dbo.vw_all_empInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -170,8 +170,8 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_user_role' does not have a p
           <Property Name="ROLE" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Attendanc__Atten__2D27B809' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Attendanc__Atten__2D27B809" />-->
+warning 6035: The relationship 'FK__Attendanc__Atten__2A4B4B5E' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Attendanc__Atten__2A4B4B5E" />-->
         <Association Name="FK__Employees__emp_d__20C1E124">
           <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
@@ -309,7 +309,7 @@ FROM [dbo].[vw_all_attendance] AS [vw_all_attendance]</DefiningQuery>
             <DefiningQuery>SELECT 
 [vw_all_empID].[USER NO.] AS [USER NO.], 
 [vw_all_empID].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
-[vw_all_empID].[roleDescription] AS [roleDescription]
+[vw_all_empID].[ROLE] AS [ROLE]
 FROM [dbo].[vw_all_empID] AS [vw_all_empID]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vw_all_empInfo" EntityType="Self.vw_all_empInfo" store:Type="Views" store:Schema="dbo">
@@ -471,7 +471,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           </Key>
           <Property Name="USER_NO_" Type="Int32" Nullable="false" />
           <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
-          <Property Name="roleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ROLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="vw_all_empInfo">
           <Key>
@@ -775,7 +775,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
               <MappingFragment StoreEntitySet="vw_all_empID">
                 <ScalarProperty Name="USER_NO_" ColumnName="USER NO." />
                 <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
-                <ScalarProperty Name="roleDescription" ColumnName="roleDescription" />
+                <ScalarProperty Name="ROLE" ColumnName="ROLE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

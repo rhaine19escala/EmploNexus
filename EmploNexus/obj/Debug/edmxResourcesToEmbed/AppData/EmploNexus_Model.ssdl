@@ -93,8 +93,25 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_empID' does not have a prima
       <PropertyRef Name="USER NO." />
       <PropertyRef Name="EMPLOYEE_ID" />
     </Key>
-    <Property Name="USER NO." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USER NO." Type="int" Nullable="false" />
     <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
+    <Property Name="ROLE" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EmploNexus.dbo.vw_all_empInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_all_empInfo">
+    <Key>
+      <PropertyRef Name="EMPLOYEE NO." />
+      <PropertyRef Name="EMPLOYEE NAME" />
+      <PropertyRef Name="EMAIL" />
+      <PropertyRef Name="DEPARTMENT" />
+      <PropertyRef Name="JOB POSITION" />
+    </Key>
+    <Property Name="EMPLOYEE NO." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EMPLOYEE NAME" Type="int" Nullable="false" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="DEPARTMENT" Type="int" Nullable="false" />
+    <Property Name="JOB POSITION" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'EmploNexus.dbo.vw_all_employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -148,8 +165,8 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_user_role' does not have a p
     <Property Name="ROLE" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Attendanc__Atten__2D27B809' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Attendanc__Atten__2D27B809" />-->
+warning 6035: The relationship 'FK__Attendanc__Atten__2A4B4B5E' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Attendanc__Atten__2A4B4B5E" />-->
   <Association Name="FK__Employees__emp_d__20C1E124">
     <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
     <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
@@ -286,8 +303,18 @@ FROM [dbo].[vw_all_attendance] AS [vw_all_attendance]</DefiningQuery>
     <EntitySet Name="vw_all_empID" EntityType="Self.vw_all_empID" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [vw_all_empID].[USER NO.] AS [USER NO.], 
-[vw_all_empID].[EMPLOYEE_ID] AS [EMPLOYEE_ID]
+[vw_all_empID].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
+[vw_all_empID].[ROLE] AS [ROLE]
 FROM [dbo].[vw_all_empID] AS [vw_all_empID]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_all_empInfo" EntityType="Self.vw_all_empInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_all_empInfo].[EMPLOYEE NO.] AS [EMPLOYEE NO.], 
+[vw_all_empInfo].[EMPLOYEE NAME] AS [EMPLOYEE NAME], 
+[vw_all_empInfo].[EMAIL] AS [EMAIL], 
+[vw_all_empInfo].[DEPARTMENT] AS [DEPARTMENT], 
+[vw_all_empInfo].[JOB POSITION] AS [JOB POSITION]
+FROM [dbo].[vw_all_empInfo] AS [vw_all_empInfo]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="vw_all_employee" EntityType="Self.vw_all_employee" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

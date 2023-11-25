@@ -68,9 +68,9 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_AllEmpID)).BeginInit();
             this.grpButtons.SuspendLayout();
@@ -277,9 +277,9 @@
             this.grpEmployee.Controls.Add(this.label7);
             this.grpEmployee.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpEmployee.ForeColor = System.Drawing.Color.LightBlue;
-            this.grpEmployee.Location = new System.Drawing.Point(13, 57);
+            this.grpEmployee.Location = new System.Drawing.Point(13, 46);
             this.grpEmployee.Name = "grpEmployee";
-            this.grpEmployee.Size = new System.Drawing.Size(424, 290);
+            this.grpEmployee.Size = new System.Drawing.Size(424, 305);
             this.grpEmployee.TabIndex = 34;
             this.grpEmployee.TabStop = false;
             this.grpEmployee.Text = "Employee Details";
@@ -287,7 +287,7 @@
             // txtempID
             // 
             this.txtempID.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtempID.Location = new System.Drawing.Point(172, 32);
+            this.txtempID.Location = new System.Drawing.Point(172, 42);
             this.txtempID.Name = "txtempID";
             this.txtempID.Size = new System.Drawing.Size(230, 29);
             this.txtempID.TabIndex = 14;
@@ -298,7 +298,7 @@
             this.label9.BackColor = System.Drawing.Color.LightBlue;
             this.label9.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label9.Location = new System.Drawing.Point(26, 139);
+            this.label9.Location = new System.Drawing.Point(26, 149);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(97, 26);
             this.label9.TabIndex = 35;
@@ -310,7 +310,7 @@
             this.label2.BackColor = System.Drawing.Color.LightBlue;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label2.Location = new System.Drawing.Point(26, 32);
+            this.label2.Location = new System.Drawing.Point(26, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(130, 26);
             this.label2.TabIndex = 15;
@@ -320,7 +320,7 @@
             // 
             this.cmbBox_empPosition.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBox_empPosition.FormattingEnabled = true;
-            this.cmbBox_empPosition.Location = new System.Drawing.Point(172, 244);
+            this.cmbBox_empPosition.Location = new System.Drawing.Point(172, 254);
             this.cmbBox_empPosition.Name = "cmbBox_empPosition";
             this.cmbBox_empPosition.Size = new System.Drawing.Size(230, 30);
             this.cmbBox_empPosition.TabIndex = 34;
@@ -328,7 +328,7 @@
             // txtempName
             // 
             this.txtempName.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtempName.Location = new System.Drawing.Point(172, 67);
+            this.txtempName.Location = new System.Drawing.Point(172, 77);
             this.txtempName.Name = "txtempName";
             this.txtempName.Size = new System.Drawing.Size(230, 29);
             this.txtempName.TabIndex = 16;
@@ -337,7 +337,7 @@
             // 
             this.DOB_date.CustomFormat = "";
             this.DOB_date.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DOB_date.Location = new System.Drawing.Point(172, 138);
+            this.DOB_date.Location = new System.Drawing.Point(172, 148);
             this.DOB_date.Name = "DOB_date";
             this.DOB_date.Size = new System.Drawing.Size(230, 29);
             this.DOB_date.TabIndex = 34;
@@ -348,7 +348,7 @@
             this.label3.BackColor = System.Drawing.Color.LightBlue;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label3.Location = new System.Drawing.Point(26, 67);
+            this.label3.Location = new System.Drawing.Point(26, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 26);
             this.label3.TabIndex = 17;
@@ -358,7 +358,7 @@
             // 
             this.cmbBox_empDepartment.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBox_empDepartment.FormattingEnabled = true;
-            this.cmbBox_empDepartment.Location = new System.Drawing.Point(172, 208);
+            this.cmbBox_empDepartment.Location = new System.Drawing.Point(172, 218);
             this.cmbBox_empDepartment.Name = "cmbBox_empDepartment";
             this.cmbBox_empDepartment.Size = new System.Drawing.Size(230, 30);
             this.cmbBox_empDepartment.TabIndex = 33;
@@ -366,7 +366,7 @@
             // txtempEmail
             // 
             this.txtempEmail.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtempEmail.Location = new System.Drawing.Point(172, 173);
+            this.txtempEmail.Location = new System.Drawing.Point(172, 183);
             this.txtempEmail.Name = "txtempEmail";
             this.txtempEmail.Size = new System.Drawing.Size(230, 29);
             this.txtempEmail.TabIndex = 18;
@@ -375,7 +375,7 @@
             // 
             this.cmbBox_empGender.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBox_empGender.FormattingEnabled = true;
-            this.cmbBox_empGender.Location = new System.Drawing.Point(172, 102);
+            this.cmbBox_empGender.Location = new System.Drawing.Point(172, 112);
             this.cmbBox_empGender.Name = "cmbBox_empGender";
             this.cmbBox_empGender.Size = new System.Drawing.Size(230, 30);
             this.cmbBox_empGender.TabIndex = 32;
@@ -386,7 +386,7 @@
             this.label4.BackColor = System.Drawing.Color.LightBlue;
             this.label4.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label4.Location = new System.Drawing.Point(26, 173);
+            this.label4.Location = new System.Drawing.Point(26, 183);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 26);
             this.label4.TabIndex = 19;
@@ -398,7 +398,7 @@
             this.label5.BackColor = System.Drawing.Color.LightBlue;
             this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label5.Location = new System.Drawing.Point(26, 103);
+            this.label5.Location = new System.Drawing.Point(26, 113);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 26);
             this.label5.TabIndex = 21;
@@ -410,7 +410,7 @@
             this.label6.BackColor = System.Drawing.Color.LightBlue;
             this.label6.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label6.Location = new System.Drawing.Point(26, 208);
+            this.label6.Location = new System.Drawing.Point(26, 218);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(122, 26);
             this.label6.TabIndex = 23;
@@ -422,7 +422,7 @@
             this.label7.BackColor = System.Drawing.Color.LightBlue;
             this.label7.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label7.Location = new System.Drawing.Point(26, 244);
+            this.label7.Location = new System.Drawing.Point(26, 254);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 26);
             this.label7.TabIndex = 25;
@@ -436,9 +436,9 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
             this.lblTitle.Location = new System.Drawing.Point(12, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(216, 32);
+            this.lblTitle.Size = new System.Drawing.Size(264, 32);
             this.lblTitle.TabIndex = 13;
-            this.lblTitle.Text = "Employee Details :";
+            this.lblTitle.Text = "Employee Information:";
             // 
             // txtempSearch
             // 
@@ -527,6 +527,13 @@
             this.toolStripMenuItem6.Text = "Salary Management";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(280, 26);
+            this.toolStripMenuItem1.Text = "Attendance Management";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
@@ -538,17 +545,11 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(280, 26);
-            this.toolStripMenuItem1.Text = "Attendance Management";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
             // Frm_AEmployee_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::EmploNexus.Properties.Resources.alexandr_podvalny_n_Jb_d8O43Q_unsplash;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1045, 576);
             this.Controls.Add(this.label1);

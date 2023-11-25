@@ -198,6 +198,7 @@ namespace EmploNexus.Forms
                     db.SaveChanges();
                     loadUser();
                     MessageBox.Show("User Added Successfully!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearInputFields();
                 }
             }
             catch (Exception ex)
@@ -249,6 +250,7 @@ namespace EmploNexus.Forms
                             db.SaveChanges();
                             loadUser();
                             MessageBox.Show("User Updated Successfully!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ClearInputFields();
                         }
                         else
                         {

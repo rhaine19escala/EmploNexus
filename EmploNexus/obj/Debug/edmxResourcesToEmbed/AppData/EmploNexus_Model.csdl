@@ -97,8 +97,23 @@
       <PropertyRef Name="USER_NO_" />
       <PropertyRef Name="EMPLOYEE_ID" />
     </Key>
-    <Property Name="USER_NO_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USER_NO_" Type="Int32" Nullable="false" />
     <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
+    <Property Name="ROLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vw_all_empInfo">
+    <Key>
+      <PropertyRef Name="EMPLOYEE_NO_" />
+      <PropertyRef Name="EMPLOYEE_NAME" />
+      <PropertyRef Name="EMAIL" />
+      <PropertyRef Name="DEPARTMENT" />
+      <PropertyRef Name="JOB_POSITION" />
+    </Key>
+    <Property Name="EMPLOYEE_NO_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EMPLOYEE_NAME" Type="Int32" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DEPARTMENT" Type="Int32" Nullable="false" />
+    <Property Name="JOB_POSITION" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="vw_all_employee">
     <Key>
@@ -204,6 +219,7 @@
     <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
     <EntitySet Name="vw_all_attendance" EntityType="Self.vw_all_attendance" />
     <EntitySet Name="vw_all_empID" EntityType="Self.vw_all_empID" />
+    <EntitySet Name="vw_all_empInfo" EntityType="Self.vw_all_empInfo" />
     <EntitySet Name="vw_all_employee" EntityType="Self.vw_all_employee" />
     <EntitySet Name="vw_all_salary" EntityType="Self.vw_all_salary" />
     <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" />

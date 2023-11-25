@@ -96,6 +96,18 @@
         <MappingFragment StoreEntitySet="vw_all_empID">
           <ScalarProperty Name="USER_NO_" ColumnName="USER NO." />
           <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_all_empInfo">
+      <EntityTypeMapping TypeName="EmploNexusModel.vw_all_empInfo">
+        <MappingFragment StoreEntitySet="vw_all_empInfo">
+          <ScalarProperty Name="EMPLOYEE_NO_" ColumnName="EMPLOYEE NO." />
+          <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE NAME" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+          <ScalarProperty Name="JOB_POSITION" ColumnName="JOB POSITION" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

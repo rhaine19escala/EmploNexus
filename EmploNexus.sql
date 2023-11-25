@@ -149,7 +149,7 @@ INNER JOIN UserAccounts ua ON A.AttendanceEmp_ID = ua.user_empID;
 ------VIEW ALL USER EMPLOYEE ID
 CREATE VIEW vw_all_empID
 AS
-SELECT UA.userNo AS 'USER NO.', UA.user_empID AS 'EMPLOYEE_ID', R.roleDescription 
+SELECT UA.userNo AS 'USER NO.', UA.user_empID AS 'EMPLOYEE_ID', R.roleDescription AS 'ROLE'
 FROM UserAccounts UA
 INNER JOIN Roles R ON UA.roleId = R.roleId
 
