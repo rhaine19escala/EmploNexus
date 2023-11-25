@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -38,6 +39,13 @@ namespace EmploNexus.Forms
         {
             Frm_AEmployee_Management aEmployee_Management = new Frm_AEmployee_Management();
             aEmployee_Management.Show();
+            this.Hide();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
+            attendance_Management.Show();
             this.Hide();
         }
 
@@ -86,7 +94,7 @@ namespace EmploNexus.Forms
         {
             try
             {
-                txtempID.Text = Convert.ToInt32(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[4].Value).ToString();
+                txtempID.Text = Convert.ToInt32(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[1].Value).ToString();
 
                 if (DateTime.TryParse(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[2].Value.ToString(), out DateTime selectedDate))
                 {
@@ -109,7 +117,7 @@ namespace EmploNexus.Forms
 
         private void dgv_AllSalaryWdetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.Value != null)
+            if (e.ColumnIndex == 3 && e.RowIndex >= 0 && e.Value != null)
             {
                 string money = e.Value.ToString();
                 decimal salary;
@@ -120,22 +128,90 @@ namespace EmploNexus.Forms
                     e.FormattingApplied = true;
                 }
             }
-            else if (e.ColumnIndex == 6 && e.RowIndex >= 0)
+            else if (e.ColumnIndex == 3 && e.RowIndex >= 0)
             {
                 e.Value = 0.00m.ToString("C", CultureInfo.GetCultureInfo("en-PH"));
                 e.FormattingApplied = true;
             }
         }
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
-            attendance_Management.Show();
-            this.Hide();
-        }
 
         private void dgv_allempInfo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
+                txtempID.Text = Convert.ToInt32(dgv_allempInfo.Rows[e.RowIndex].Cells[1].Value).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Encountered :" + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
+        private bool IsValidEmpID(string employeeID)
+        {
+            // Use \d to match digits, and {8} to specify the length as 8
+            string employeeIDPattern = @"^\d{8}$";
+            bool isValid = Regex.IsMatch(employeeID, employeeIDPattern);
+            return isValid;
+        }
+
+        private void dgv_allempInfo_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 3 && e.RowIndex >= 0 && e.Value != null)
+            {
+                string stringValue = e.Value.ToString();
+                int departmentvalue;
+                if (int.TryParse(stringValue, out departmentvalue))
+                {
+                    if (departmentvalue == 1)
+                    {
+                        e.Value = "HR";
+                    }
+                    else if (departmentvalue == 2)
+                    {
+                        e.Value = "Finance";
+                    }
+                    else if (departmentvalue == 3)
+                    {
+                        e.Value = "IT";
+                    }
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.Value != null)
+            {
+                string stringValue = e.Value.ToString();
+                int positionvalue;
+                if (int.TryParse(stringValue, out positionvalue))
+                {
+                    if (positionvalue == 1)
+                    {
+                        e.Value = "HR Manager";
+                    }
+                    else if (positionvalue == 2)
+                    {
+                        e.Value = "HR Generalist";
+                    }
+                    else if (positionvalue == 3)
+                    {
+                        e.Value = "Financial Controller";
+                    }
+                    else if (positionvalue == 4)
+                    {
+                        e.Value = "Accountant";
+                    }
+                    else if (positionvalue == 5)
+                    {
+                        e.Value = "IT Manager";
+                    }
+                    else if (positionvalue == 6)
+                    {
+                        e.Value = "Software Developer";
+                    }
+                    e.FormattingApplied = true;
+                }
+            }
         }
     }
 }

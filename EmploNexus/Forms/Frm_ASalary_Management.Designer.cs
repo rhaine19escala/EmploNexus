@@ -151,7 +151,7 @@
             // 
             this.txtCurrentTime.BackColor = System.Drawing.Color.LightCyan;
             this.txtCurrentTime.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrentTime.Location = new System.Drawing.Point(787, 12);
+            this.txtCurrentTime.Location = new System.Drawing.Point(916, 12);
             this.txtCurrentTime.Name = "txtCurrentTime";
             this.txtCurrentTime.ReadOnly = true;
             this.txtCurrentTime.Size = new System.Drawing.Size(163, 29);
@@ -160,7 +160,7 @@
             // 
             // dgv_AllSalaryWdetails
             // 
-            this.dgv_AllSalaryWdetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgv_AllSalaryWdetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_AllSalaryWdetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv_AllSalaryWdetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_AllSalaryWdetails.GridColor = System.Drawing.Color.SteelBlue;
@@ -340,6 +340,7 @@
             this.dgv_allempInfo.Size = new System.Drawing.Size(568, 114);
             this.dgv_allempInfo.TabIndex = 46;
             this.dgv_allempInfo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_allempInfo_CellClick);
+            this.dgv_allempInfo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_allempInfo_CellFormatting);
             // 
             // button1
             // 
