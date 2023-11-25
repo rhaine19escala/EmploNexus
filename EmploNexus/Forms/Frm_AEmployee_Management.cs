@@ -432,6 +432,106 @@ namespace EmploNexus.Forms
                 MessageBox.Show(" Employee Info not Deleted Successfully!. \nError :" + ex.Message, "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            using (var db = new EmploNexusu_uEntities())
+            {
+                try
+                {
+                    if (string.IsNullOrWhiteSpace(txtempSearch.Text))
+                    {
+                        MessageBox.Show("Please enter a valid Employee ID.", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        int user_empIDToSearch = Convert.ToInt32(txtempSearch.Text);
+                        Employee existingUser = db.Employees.FirstOrDefault(u => u.emp_ID == user_empIDToSearch);
+                        if (existingUser != null)
+                        {
+                            var foundUserList = new List<vw_all_employee>
+                            {
+                                new vw_all_employee
+                                {
+                                    EMPLOYEE_NO_ = existingUser.emp_No,
+                                    EMPLOYEE_ID = existingUser.emp_ID,
+                                    EMPLOYEE_NAME = existingUser.emp_name,
+                                    GENDER = existingUser.emp_genderId,
+                                    BIRTHDATE = existingUser.emp_DOB,
+                                    EMAIL = existingUser.emp_email,
+                                    DEPARTMENT = existingUser.emp_departmentId,
+                                    JOB_POSITION = existingUser.emp_positionId
+                                }
+                            };
+
+                            dgv_AllEmployeesWdetails.DataSource = foundUserList;
+                            MessageBox.Show("Employee ID Found!", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtempSearch.Text = "";
+                        }
+                        else
+                        {
+                            loadUser();
+                            txtempSearch.Text = "";
+                            MessageBox.Show("Employee ID not found!", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    loadUser();
+                    txtempSearch.Text = "";
+                    MessageBox.Show($"Error searching for Employee ID. \nError: {ex.Message}", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        //private string GetGender(int emp_genderId)
+        //{
+        //    switch (emp_genderId)
+        //    {
+        //        case 1:
+        //            return "Male";
+        //        case 2:
+        //            return "Female";
+        //        default:
+        //            return "Male";
+        //    }
+        //}
+
+        //private string GetDepartment(int emp_departmentId)
+        //{
+        //    switch (emp_departmentId)
+        //    {
+        //        case 1:
+        //            return "HR";
+        //        case 2:
+        //            return "Finance";
+        //        case 3:
+        //            return "IT";
+        //        default:
+        //            return "HR";
+        //    }
+        //}
+
+        //private string GetPosition(int emp_positionId)
+        //{
+        //    switch (emp_positionId)
+        //    {
+        //        case 1:
+        //            return "HR Manager";
+        //        case 2:
+        //            return "HR Generalist";
+        //        case 3:
+        //            return "Financial Controller";
+        //        case 4:
+        //            return "Accountant";
+        //        case 5:
+        //            return "IT Manager";
+        //        case 6:
+        //            return "Software_Developer";
+        //        default:
+        //            return "HR Manager";
+        //    }
+        //}
 
         private void ClearInputFields()
         {

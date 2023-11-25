@@ -148,6 +148,7 @@
             this.btnSearch.Size = new System.Drawing.Size(31, 31);
             this.btnSearch.TabIndex = 40;
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnRefresh
             // 
