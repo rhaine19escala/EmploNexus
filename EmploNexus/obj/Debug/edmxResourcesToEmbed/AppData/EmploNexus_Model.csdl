@@ -104,14 +104,14 @@
   <EntityType Name="vw_all_empInfo">
     <Key>
       <PropertyRef Name="EMPLOYEE_NO_" />
+      <PropertyRef Name="EMPLOYEE_ID" />
       <PropertyRef Name="EMPLOYEE_NAME" />
-      <PropertyRef Name="EMAIL" />
       <PropertyRef Name="DEPARTMENT" />
       <PropertyRef Name="JOB_POSITION" />
     </Key>
     <Property Name="EMPLOYEE_NO_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="EMPLOYEE_NAME" Type="Int32" Nullable="false" />
-    <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
+    <Property Name="EMPLOYEE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DEPARTMENT" Type="Int32" Nullable="false" />
     <Property Name="JOB_POSITION" Type="Int32" Nullable="false" />
   </EntityType>

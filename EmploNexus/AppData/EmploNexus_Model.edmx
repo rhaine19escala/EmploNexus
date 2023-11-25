@@ -107,14 +107,14 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_empInfo' does not have a pri
         <EntityType Name="vw_all_empInfo">
           <Key>
             <PropertyRef Name="EMPLOYEE NO." />
+            <PropertyRef Name="EMPLOYEE ID" />
             <PropertyRef Name="EMPLOYEE NAME" />
-            <PropertyRef Name="EMAIL" />
             <PropertyRef Name="DEPARTMENT" />
             <PropertyRef Name="JOB POSITION" />
           </Key>
           <Property Name="EMPLOYEE NO." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EMPLOYEE NAME" Type="int" Nullable="false" />
-          <Property Name="EMAIL" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="EMPLOYEE ID" Type="int" Nullable="false" />
+          <Property Name="EMPLOYEE NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="DEPARTMENT" Type="int" Nullable="false" />
           <Property Name="JOB POSITION" Type="int" Nullable="false" />
         </EntityType>
@@ -315,8 +315,8 @@ FROM [dbo].[vw_all_empID] AS [vw_all_empID]</DefiningQuery>
           <EntitySet Name="vw_all_empInfo" EntityType="Self.vw_all_empInfo" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [vw_all_empInfo].[EMPLOYEE NO.] AS [EMPLOYEE NO.], 
+[vw_all_empInfo].[EMPLOYEE ID] AS [EMPLOYEE ID], 
 [vw_all_empInfo].[EMPLOYEE NAME] AS [EMPLOYEE NAME], 
-[vw_all_empInfo].[EMAIL] AS [EMAIL], 
 [vw_all_empInfo].[DEPARTMENT] AS [DEPARTMENT], 
 [vw_all_empInfo].[JOB POSITION] AS [JOB POSITION]
 FROM [dbo].[vw_all_empInfo] AS [vw_all_empInfo]</DefiningQuery>
@@ -476,14 +476,14 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
         <EntityType Name="vw_all_empInfo">
           <Key>
             <PropertyRef Name="EMPLOYEE_NO_" />
+            <PropertyRef Name="EMPLOYEE_ID" />
             <PropertyRef Name="EMPLOYEE_NAME" />
-            <PropertyRef Name="EMAIL" />
             <PropertyRef Name="DEPARTMENT" />
             <PropertyRef Name="JOB_POSITION" />
           </Key>
           <Property Name="EMPLOYEE_NO_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EMPLOYEE_NAME" Type="Int32" Nullable="false" />
-          <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
+          <Property Name="EMPLOYEE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DEPARTMENT" Type="Int32" Nullable="false" />
           <Property Name="JOB_POSITION" Type="Int32" Nullable="false" />
         </EntityType>
@@ -783,8 +783,8 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             <EntityTypeMapping TypeName="EmploNexusModel.vw_all_empInfo">
               <MappingFragment StoreEntitySet="vw_all_empInfo">
                 <ScalarProperty Name="EMPLOYEE_NO_" ColumnName="EMPLOYEE NO." />
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE ID" />
                 <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE NAME" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
                 <ScalarProperty Name="JOB_POSITION" ColumnName="JOB POSITION" />
               </MappingFragment>

@@ -121,6 +121,15 @@ namespace EmploNexus.Forms
             return isValid;
         }
 
+        private bool IsValidEmpID(string employeeID)
+        {
+            // Use \d to match digits, and {8} to specify the length as 8
+            string employeeIDPattern = @"^\d{8}$";
+            bool isValid = Regex.IsMatch(employeeID, employeeIDPattern);
+            return isValid;
+        }
+
+
         private void dgv_AllEmployeesWdetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.ColumnIndex == 3 && e.RowIndex >= 0 && e.Value != null)
@@ -272,6 +281,12 @@ namespace EmploNexus.Forms
                 errorProvider1.SetError(txtempID, "Empty Field!");
                 return;
             }
+            if (!IsValidEmpID(emp_id))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, "Invalid Employee ID Format!");
+                return;
+            }
             if (String.IsNullOrEmpty(emp_name))
             {
                 errorProvider1.Clear();
@@ -290,7 +305,6 @@ namespace EmploNexus.Forms
                 errorProvider1.SetError(txtempEmail, "Invalid Email Format!");
                 return;
             }
-
             int empID = Convert.ToInt32(emp_id);
             if (EmpIDExistsInOtherTable(empID, dgv_AllEmployeesWdetails))
             {
@@ -487,55 +501,6 @@ namespace EmploNexus.Forms
                 }
             }
         }
-
-        //private string GetGender(int emp_genderId)
-        //{
-        //    switch (emp_genderId)
-        //    {
-        //        case 1:
-        //            return "Male";
-        //        case 2:
-        //            return "Female";
-        //        default:
-        //            return "Male";
-        //    }
-        //}
-
-        //private string GetDepartment(int emp_departmentId)
-        //{
-        //    switch (emp_departmentId)
-        //    {
-        //        case 1:
-        //            return "HR";
-        //        case 2:
-        //            return "Finance";
-        //        case 3:
-        //            return "IT";
-        //        default:
-        //            return "HR";
-        //    }
-        //}
-
-        //private string GetPosition(int emp_positionId)
-        //{
-        //    switch (emp_positionId)
-        //    {
-        //        case 1:
-        //            return "HR Manager";
-        //        case 2:
-        //            return "HR Generalist";
-        //        case 3:
-        //            return "Financial Controller";
-        //        case 4:
-        //            return "Accountant";
-        //        case 5:
-        //            return "IT Manager";
-        //        case 6:
-        //            return "Software_Developer";
-        //        default:
-        //            return "HR Manager";
-        //    }
-        //}
 
         private void ClearInputFields()
         {
