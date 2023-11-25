@@ -38,6 +38,7 @@ namespace EmploNexus.AppData
         public DbSet<UserAccount> UserAccounts { get; set; }
         public DbSet<vw_all_attendance> vw_all_attendance { get; set; }
         public DbSet<vw_all_empID> vw_all_empID { get; set; }
+        public DbSet<vw_all_empInfo> vw_all_empInfo { get; set; }
         public DbSet<vw_all_employee> vw_all_employee { get; set; }
         public DbSet<vw_all_salary> vw_all_salary { get; set; }
         public DbSet<vw_all_user_role> vw_all_user_role { get; set; }

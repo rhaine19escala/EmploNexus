@@ -98,8 +98,25 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_empID' does not have a prima
             <PropertyRef Name="USER NO." />
             <PropertyRef Name="EMPLOYEE_ID" />
           </Key>
-          <Property Name="USER NO." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER NO." Type="int" Nullable="false" />
           <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
+          <Property Name="roleDescription" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EmploNexus.dbo.vw_all_empInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_all_empInfo">
+          <Key>
+            <PropertyRef Name="EMPLOYEE NO." />
+            <PropertyRef Name="EMPLOYEE NAME" />
+            <PropertyRef Name="EMAIL" />
+            <PropertyRef Name="DEPARTMENT" />
+            <PropertyRef Name="JOB POSITION" />
+          </Key>
+          <Property Name="EMPLOYEE NO." Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EMPLOYEE NAME" Type="int" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DEPARTMENT" Type="int" Nullable="false" />
+          <Property Name="JOB POSITION" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'EmploNexus.dbo.vw_all_employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -291,8 +308,18 @@ FROM [dbo].[vw_all_attendance] AS [vw_all_attendance]</DefiningQuery>
           <EntitySet Name="vw_all_empID" EntityType="Self.vw_all_empID" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [vw_all_empID].[USER NO.] AS [USER NO.], 
-[vw_all_empID].[EMPLOYEE_ID] AS [EMPLOYEE_ID]
+[vw_all_empID].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
+[vw_all_empID].[roleDescription] AS [roleDescription]
 FROM [dbo].[vw_all_empID] AS [vw_all_empID]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_all_empInfo" EntityType="Self.vw_all_empInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_all_empInfo].[EMPLOYEE NO.] AS [EMPLOYEE NO.], 
+[vw_all_empInfo].[EMPLOYEE NAME] AS [EMPLOYEE NAME], 
+[vw_all_empInfo].[EMAIL] AS [EMAIL], 
+[vw_all_empInfo].[DEPARTMENT] AS [DEPARTMENT], 
+[vw_all_empInfo].[JOB POSITION] AS [JOB POSITION]
+FROM [dbo].[vw_all_empInfo] AS [vw_all_empInfo]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vw_all_employee" EntityType="Self.vw_all_employee" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -442,8 +469,23 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
             <PropertyRef Name="USER_NO_" />
             <PropertyRef Name="EMPLOYEE_ID" />
           </Key>
-          <Property Name="USER_NO_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_NO_" Type="Int32" Nullable="false" />
           <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
+          <Property Name="roleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vw_all_empInfo">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_NO_" />
+            <PropertyRef Name="EMPLOYEE_NAME" />
+            <PropertyRef Name="EMAIL" />
+            <PropertyRef Name="DEPARTMENT" />
+            <PropertyRef Name="JOB_POSITION" />
+          </Key>
+          <Property Name="EMPLOYEE_NO_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EMPLOYEE_NAME" Type="Int32" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DEPARTMENT" Type="Int32" Nullable="false" />
+          <Property Name="JOB_POSITION" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="vw_all_employee">
           <Key>
@@ -549,6 +591,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
           <EntitySet Name="vw_all_attendance" EntityType="Self.vw_all_attendance" />
           <EntitySet Name="vw_all_empID" EntityType="Self.vw_all_empID" />
+          <EntitySet Name="vw_all_empInfo" EntityType="Self.vw_all_empInfo" />
           <EntitySet Name="vw_all_employee" EntityType="Self.vw_all_employee" />
           <EntitySet Name="vw_all_salary" EntityType="Self.vw_all_salary" />
           <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" />
@@ -732,6 +775,18 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
               <MappingFragment StoreEntitySet="vw_all_empID">
                 <ScalarProperty Name="USER_NO_" ColumnName="USER NO." />
                 <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+                <ScalarProperty Name="roleDescription" ColumnName="roleDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_all_empInfo">
+            <EntityTypeMapping TypeName="EmploNexusModel.vw_all_empInfo">
+              <MappingFragment StoreEntitySet="vw_all_empInfo">
+                <ScalarProperty Name="EMPLOYEE_NO_" ColumnName="EMPLOYEE NO." />
+                <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+                <ScalarProperty Name="JOB_POSITION" ColumnName="JOB POSITION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

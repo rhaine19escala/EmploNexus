@@ -16,5 +16,6 @@ namespace EmploNexus.AppData
     {
         public int USER_NO_ { get; set; }
         public int EMPLOYEE_ID { get; set; }
+        public string roleDescription { get; set; }
     }
 }
