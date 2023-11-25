@@ -156,7 +156,7 @@ INNER JOIN Roles R ON UA.roleId = R.roleId
 ------VIEW ALL EMPLOYEE INFO
 CREATE VIEW vw_all_empInfo
 AS
-SELECT E.emp_No AS 'EMPLOYEE NO.', E.emp_ID AS 'EMPLOYEE NAME', E.emp_email AS 'EMAIL', E.emp_departmentId AS 'DEPARTMENT', E.emp_positionId AS 'JOB POSITION' 
+SELECT E.emp_No AS 'EMPLOYEE NO.', E.emp_ID AS 'EMPLOYEE ID', E.emp_name AS 'EMPLOYEE NAME', E.emp_departmentId AS 'DEPARTMENT', E.emp_positionId AS 'JOB POSITION' 
 FROM Employees E
 
 ------STORED PROCEDURE ADD USER
