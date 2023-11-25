@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EmploNexus;
@@ -143,6 +144,14 @@ namespace EmploNexus.Forms
             return false;
         }
 
+        private bool IsValidEmpID(string employeeID)
+        {
+            // Use \d to match digits, and {8} to specify the length as 8
+            string employeeIDPattern = @"^\d{8}$";
+            bool isValid = Regex.IsMatch(employeeID, employeeIDPattern);
+            return isValid;
+        }
+
         private void btnuserAdd_Click(object sender, EventArgs e)
         {
             String empid = txtuser_empID.Text;
@@ -153,6 +162,12 @@ namespace EmploNexus.Forms
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtuser_empID, "Empty Field!");
+                return;
+            }
+            if (!IsValidEmpID(empid))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtuser_empID, "Invalid Employee ID Format!");
                 return;
             }
             if (String.IsNullOrEmpty(username))
@@ -217,6 +232,12 @@ namespace EmploNexus.Forms
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtuser_empID, "Empty Field!");
+                return;
+            }
+            if (!IsValidEmpID(empid))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtuser_empID, "Invalid Employee ID Format!");
                 return;
             }
             if (String.IsNullOrEmpty(username))

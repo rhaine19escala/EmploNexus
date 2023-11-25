@@ -18,7 +18,7 @@ namespace EmploNexus.Forms
 {
     public partial class Frm_AEmployee_Management : Form
     {
-        //String strConnection = @"Data Source=.\sqlexpress;Initial Catalog=EMPLONEXUS_NEW;Integrated Security=True";
+        //String strConnection = @"Data Source=.\sqlexpress;Initial Catalog=EmploNexus;Integrated Security=True";
         UserRepository repo;
         EmploNexusu_uEntities db;
 

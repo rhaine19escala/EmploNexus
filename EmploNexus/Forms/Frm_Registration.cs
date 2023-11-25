@@ -51,55 +51,115 @@ namespace EmploNexus.Forms
             txtuser_name.Clear();
         }
 
+        private bool IsValidEmpID(string employeeID)
+        {
+            // Use \d to match digits, and {8} to specify the length as 8
+            string employeeIDPattern = @"^\d{8}$";
+            bool isValid = Regex.IsMatch(employeeID, employeeIDPattern);
+            return isValid;
+        }
+
+        private bool EmpIDExistsInDatabase(string employeeID)
+        {
+            using (var db = new EmploNexusu_uEntities())
+            {
+                int empID = Convert.ToInt32(employeeID);
+                return db.Employees.Any(e => e.emp_ID == empID);
+            }
+        }
+
+        private bool UsernameExistsInDatabase(string username)
+        {
+            using (var db = new EmploNexusu_uEntities())
+            {
+                return db.UserAccounts.Any(u => u.username == username);
+            }
+        }
+
         private void btnRegister_Click(object sender, EventArgs e)
         {
             //String cbResultSelected = cbBoxRole.SelectedValue.ToString();
-            if (String.IsNullOrEmpty(txtEmployeeID.Text))
+            String empid = txtEmployeeID.Text;
+            String username = txtuser_name.Text;
+            String password = txtpass_word.Text;
+            String repassword = txtConfirmPassword.Text;
+
+            if (!IsValidEmpID(empid))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtEmployeeID, "Invalid Employee ID Format!");
+                return;
+            }
+            if (EmpIDExistsInDatabase(empid))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtEmployeeID, $"Employee ID '{empid}' already exists! Please enter a different Employee ID.");
+                return;
+            }
+            if (String.IsNullOrEmpty(empid))
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtEmployeeID, "Empty field");
                 return;
             }
-            if (String.IsNullOrEmpty(txtuser_name.Text))
+            if (UsernameExistsInDatabase(username))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtuser_name, $"Username '{username}' already exists!");
+                return;
+            }
+            if (String.IsNullOrEmpty(username))
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtuser_name, "Empty field");
                 return;
             }
-            if (String.IsNullOrEmpty(txtpass_word.Text))
+            if (String.IsNullOrEmpty(password))
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtpass_word, "Empty field");
                 return;
             }
-            if (String.IsNullOrEmpty(txtConfirmPassword.Text))
+            if (String.IsNullOrEmpty(repassword))
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtConfirmPassword, "Empty field");
                 return;
             }
 
-            if (!txtpass_word.Text.Equals(txtConfirmPassword.Text))
+            if (!password.Equals(repassword))
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtConfirmPassword, "Password not match");
                 return;
             }
-            
-            UserAccount nUserAccount = new UserAccount();
 
-            nUserAccount.user_empID = Convert.ToInt32(txtEmployeeID.Text);
-            nUserAccount.username = txtuser_name.Text;
-            nUserAccount.password = txtpass_word.Text;
-            nUserAccount.roleId = (Int32)cmbBoxRole.SelectedValue;
+            try
+            {
+                UserAccount nUserAccount = new UserAccount();
 
-            username = txtuser_name.Text;
+                nUserAccount.user_empID = Convert.ToInt32(txtEmployeeID.Text);
+                nUserAccount.username = txtuser_name.Text;
+                nUserAccount.password = txtpass_word.Text;
+                nUserAccount.roleId = (Int32)cmbBoxRole.SelectedValue;
 
-            db.UserAccounts.Add(nUserAccount);
-            db.SaveChanges();
+                username = txtuser_name.Text;
 
-            ClearInputFields();
-            MessageBox.Show("Registered Successfully!", "EmploNexus: Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                db.UserAccounts.Add(nUserAccount);
+                db.SaveChanges();
+
+                ClearInputFields();
+                DialogResult answer = MessageBox.Show("Registered Successfully! Proceed to Login?", "EmploNexus: Registration", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (answer == DialogResult.Yes)
+                {
+                    this.Hide();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Encountered : " + ex.Message, "EmploNexus: Registration", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }           
         }
 
         private void cmbBoxGender_SelectedIndexChanged(object sender, EventArgs e)
