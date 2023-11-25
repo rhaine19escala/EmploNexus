@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmploNexus.AppData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,10 +16,25 @@ namespace EmploNexus.Forms
     public partial class Frm_ASalary_Management : Form
     {
         UserRepository repo;
+        EmploNexusu_uEntities db;
 
         public Frm_ASalary_Management()
         {
             InitializeComponent();
+            db = new EmploNexusu_uEntities();
+        }
+
+        private void Frm_ASalary_Management_Load(object sender, EventArgs e)
+        {
+            DateTime currentTime = DateTime.Now;
+            txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
+
+            repo = new UserRepository();
+            loadUser();
+            payrollDate.Validating += payrollDate_Validating;
+
+            payrollDate.Format = DateTimePickerFormat.Custom;
+            payrollDate.CustomFormat = "MM/dd/yyyy";
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
@@ -60,19 +76,6 @@ namespace EmploNexus.Forms
             }
         }
 
-        private void Frm_ASalary_Management_Load(object sender, EventArgs e)
-        {
-            DateTime currentTime = DateTime.Now;
-            txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
-
-            repo = new UserRepository();
-            loadUser();
-            payrollDate.Validating += payrollDate_Validating;
-
-            payrollDate.Format = DateTimePickerFormat.Custom;
-            payrollDate.CustomFormat = "MM/dd/yyyy";
-        }
-
         private void payrollDate_Validating(object sender, CancelEventArgs e)
         {
             DateTimePicker dtp = (DateTimePicker)sender;
@@ -105,9 +108,16 @@ namespace EmploNexus.Forms
                     payrollDate.Value = DateTime.Now;
                 }
 
-                decimal salary = Convert.ToDecimal(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[3].Value);
-                CultureInfo peso = new CultureInfo("en-PH");
-                txtempSalary.Text = salary.ToString("C", peso);
+                object cellValue = dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[3].Value;
+
+                if (cellValue != null && decimal.TryParse(cellValue.ToString(), out decimal salary))
+                {
+                    txtempSalary.Text = salary.ToString();
+                }
+
+                //decimal salaryCon = Convert.ToDecimal(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[3].Value);
+                //CultureInfo peso = new CultureInfo("en-PH");
+                //txtempSalary.Text = salaryCon.ToString("C", peso);
             }
             catch (Exception ex)
             {
@@ -140,6 +150,8 @@ namespace EmploNexus.Forms
             try
             {
                 txtempID.Text = Convert.ToInt32(dgv_allempInfo.Rows[e.RowIndex].Cells[1].Value).ToString();
+                txtempSalary.Clear();
+                payrollDate.Value = DateTime.Today;
             }
             catch (Exception ex)
             {
@@ -212,6 +224,155 @@ namespace EmploNexus.Forms
                     e.FormattingApplied = true;
                 }
             }
+        }
+
+        private bool EmpIDExistsInOtherTable(int empID, DataGridView otherTable)
+        {
+            foreach (DataGridViewRow row in otherTable.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    int otherEmpID = Convert.ToInt32(row.Cells["EMPLOYEE_ID"].Value);
+                    if (otherEmpID == empID)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            String emp_id = txtempID.Text;
+            String salary = txtempSalary.Text;
+            errorProvider1.Clear();
+
+            if (String.IsNullOrEmpty(emp_id))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, "Empty Field!");
+                return;
+            }
+            if (!IsValidEmpID(emp_id))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, "Invalid Employee ID Format!");
+                return;
+            }         
+            int empID = Convert.ToInt32(emp_id);
+            if (EmpIDExistsInOtherTable(empID, dgv_AllSalaryWdetails))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, $"Employee with ID {empID} is already added!");
+                return;
+            }
+            if(String.IsNullOrEmpty(salary))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempSalary, "Empty Field!");
+                return;
+            }
+
+            try
+            {
+                using (var db = new EmploNexusu_uEntities())
+                {
+                    Salary sal = new Salary
+                    {
+                        Salaryemp_ID = Convert.ToInt32(txtempID.Text),
+                        salary_Amount = Convert.ToDecimal(txtempSalary.Text),
+                        salary_PayDate = payrollDate.Value
+                    };
+
+                    db.Salaries.Add(sal);
+                    db.SaveChanges();
+                    loadUser();
+                    MessageBox.Show("Salary Info Added Successfully!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearInputFields();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Salary Info not Added Successfully!. \nError :" + ex.Message, "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ClearInputFields();
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            String emp_id = txtempID.Text;
+            String salary = txtempSalary.Text;
+            errorProvider1.Clear();
+
+            if (String.IsNullOrEmpty(emp_id))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, "Empty Field!");
+                return;
+            }
+            if (!IsValidEmpID(emp_id))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, "Invalid Employee ID Format!");
+                return;
+            }
+            if (String.IsNullOrEmpty(salary))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempSalary, "Empty Field!");
+                return;
+            }
+
+            using (var db = new EmploNexusu_uEntities())
+            {
+                try
+                {
+                    DialogResult result = MessageBox.Show("Are you sure you want to Update this Salary Information?", "EmploNexus: Salary Information Management", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (result == DialogResult.OK)
+                    {
+                        int user_empIDToUpdate = Convert.ToInt32(txtempID.Text);
+                        Salary existingUser = db.Salaries.FirstOrDefault(u => u.Salaryemp_ID == user_empIDToUpdate);
+                        if (existingUser != null)
+                        {
+                            existingUser.Salaryemp_ID = Convert.ToInt32(txtempID.Text);
+                            existingUser.salary_Amount = Convert.ToDecimal(txtempSalary.Text);
+                            existingUser.salary_PayDate = payrollDate.Value;
+
+                            db.SaveChanges();
+                            loadUser();
+                            MessageBox.Show("Salary Info Updated Successfully!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ClearInputFields();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Salary Info not found!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Salary Info not Updated Successfully!. \nError :" + ex.Message, "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ClearInputFields();
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearInputFields();
+        }
+
+        public void ClearInputFields()
+        {
+            txtempID.Clear();
+            txtempSalary.Clear();
+            payrollDate.Value = DateTime.Today;
         }
     }
 }

@@ -373,14 +373,6 @@ namespace EmploNexus.Forms
                 return;
             }
 
-            int empID = Convert.ToInt32(emp_id);
-            if (EmpIDExistsInOtherTable(empID, dgv_AllEmployeesWdetails))
-            {
-                errorProvider1.Clear();
-                errorProvider1.SetError(txtempID, $"Employee with ID {empID} is already added!");
-                return;
-            }
-
             using (var db = new EmploNexusu_uEntities())
             {               
                 try
