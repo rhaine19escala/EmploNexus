@@ -79,15 +79,14 @@ namespace EmploNexus.Forms
         private void loadUser()
         {
             dgv_AllSalaryWdetails.DataSource = repo.GetEmployeeSalary();
+            dgv_allempInfo.DataSource = repo.AllEmployeeInfo();
         }
 
         private void dgv_AllSalaryWdetails_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                txtpayrollID.Text = Convert.ToInt32(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[0].Value).ToString();
                 txtempID.Text = Convert.ToInt32(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[4].Value).ToString();
-                txtempName.Text = dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[1].Value as String;
 
                 if (DateTime.TryParse(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[2].Value.ToString(), out DateTime selectedDate))
                 {

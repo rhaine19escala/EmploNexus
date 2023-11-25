@@ -62,6 +62,12 @@ namespace EmploNexus
             return emploNexusEntities.vw_all_empID.OrderBy(e => e.USER_NO_).ToList();
         }
 
+        public List<vw_all_empInfo> AllEmployeeInfo()
+        {
+            emploNexusEntities = new EmploNexusu_uEntities();
+            return emploNexusEntities.vw_all_empInfo.OrderBy(e => e.EMPLOYEE_NO_).ToList();
+        }
+
         public ErrorCode Register(String username, String password)
         {
             try
