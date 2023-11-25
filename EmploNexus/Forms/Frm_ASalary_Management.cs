@@ -132,5 +132,10 @@ namespace EmploNexus.Forms
             attendance_Management.Show();
             this.Hide();
         }
+
+        private void dgv_allempInfo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
