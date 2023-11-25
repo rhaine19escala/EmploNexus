@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_AeAttendance_Management));
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
@@ -36,6 +37,7 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -54,7 +56,6 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtempSearch = new System.Windows.Forms.TextBox();
             this.dgv_AllAttendanceWdetails = new System.Windows.Forms.DataGridView();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -137,6 +138,13 @@
             this.toolStripMenuItem6.Size = new System.Drawing.Size(280, 26);
             this.toolStripMenuItem6.Text = "Salary Management";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Enabled = false;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(280, 26);
+            this.toolStripMenuItem1.Text = "Attendance Management";
             // 
             // toolStripMenuItem7
             // 
@@ -345,13 +353,6 @@
             this.dgv_AllAttendanceWdetails.Size = new System.Drawing.Size(435, 179);
             this.dgv_AllAttendanceWdetails.TabIndex = 9;
             // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Enabled = false;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(280, 26);
-            this.toolStripMenuItem1.Text = "Attendance Management";
-            // 
             // Frm_AeAttendance_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -362,6 +363,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip2);
             this.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Frm_AeAttendance_Management";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
