@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -269,14 +270,144 @@ namespace EmploNexus.Forms
             }
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private bool EmpIDExistsInOtherTable(int empID, DataGridView otherTable)
         {
-            
+            foreach (DataGridViewRow row in otherTable.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    int otherEmpID = Convert.ToInt32(row.Cells["EMPLOYEE_ID"].Value);
+                    if (otherEmpID == empID)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private bool EmpNameExistsInOtherTable(string empname, DataGridView otherTable)
+        {
+            foreach (DataGridViewRow row in otherTable.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    string otherEmpName = row.Cells["EMPLOYEE_NAME"].Value?.ToString();
+                    if (otherEmpName == empname)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private bool IsValidEmpID(string employeeID)
+        {
+            // Use \d to match digits, and {8} to specify the length as 8
+            string employeeIDPattern = @"^\d{8}$";
+            bool isValid = Regex.IsMatch(employeeID, employeeIDPattern);
+            return isValid;
+        }
+
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            String emp_id = txtempID.Text;
+            String emp_name = txtempName.Text;
+            errorProvider1.Clear();
+
+            if (String.IsNullOrEmpty(emp_id))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, "Empty Field!");
+                return;
+            }
+            if (!IsValidEmpID(emp_id))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, "Invalid Employee ID Format!");
+                return;
+            }
+            int empID = Convert.ToInt32(emp_id);
+            if (EmpIDExistsInOtherTable(empID, dgv_AllAttendanceWdetails))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, $"Employee with ID {empID} is already added!");
+                return;
+            }
+            if (String.IsNullOrEmpty(emp_name))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempName, "Empty Field!");
+                return;
+            }
+            if (EmpNameExistsInOtherTable(emp_name, dgv_AllAttendanceWdetails))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, $"Employee with Name {emp_name} is already added!");
+                return;
+            }
+
+            try
+            {
+                using (var db = new EmploNexusu_uEntities())
+                {
+                    Attendance att = new Attendance
+                    {
+                        AttendanceEmp_ID = Convert.ToInt32(txtempID.Text),
+                        AttendanceEmp_Name = txtempName.Text,
+                        AttendanceStatusId = (Int32)cmbBox_status.SelectedValue,
+                        AttendanceDate = attendanceDate.Value
+                    };
+
+                    db.Attendances.Add(att);
+                    db.SaveChanges();
+                    loadUser();
+                    MessageBox.Show("Attendance Info Added Successfully!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearInputFields();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Salary Info not Added Successfully!. \nError :" + ex.Message, "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ClearInputFields();
+            }
+        }
+
+        public void ClearInputFields()
+        {
+            errorProvider1.Clear();
+            txtempID.Clear();
+            txtempName.Clear();
+            cmbBox_status.SelectedIndex = 0;
+            attendanceDate.Value = DateTime.Today;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            loadUser();
+        }
+
     }
 }
