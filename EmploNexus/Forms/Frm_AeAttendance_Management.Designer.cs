@@ -48,6 +48,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -55,11 +56,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtempID = new System.Windows.Forms.TextBox();
-            this.payrollDate = new System.Windows.Forms.DateTimePicker();
+            this.attendanceDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgv_AllAttendanceWdetails = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_allempInfo)).BeginInit();
@@ -273,7 +273,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.txtempID);
-            this.groupBox1.Controls.Add(this.payrollDate);
+            this.groupBox1.Controls.Add(this.attendanceDate);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.LightBlue;
@@ -283,6 +283,15 @@
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attendance Details";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(178, 118);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(230, 30);
+            this.comboBox1.TabIndex = 36;
             // 
             // btnClear
             // 
@@ -364,15 +373,15 @@
             this.txtempID.Size = new System.Drawing.Size(230, 29);
             this.txtempID.TabIndex = 34;
             // 
-            // payrollDate
+            // attendanceDate
             // 
-            this.payrollDate.CustomFormat = "";
-            this.payrollDate.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.payrollDate.Location = new System.Drawing.Point(178, 80);
-            this.payrollDate.MinDate = new System.DateTime(2023, 11, 19, 0, 0, 0, 0);
-            this.payrollDate.Name = "payrollDate";
-            this.payrollDate.Size = new System.Drawing.Size(230, 29);
-            this.payrollDate.TabIndex = 32;
+            this.attendanceDate.CustomFormat = "";
+            this.attendanceDate.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.attendanceDate.Location = new System.Drawing.Point(178, 80);
+            this.attendanceDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.attendanceDate.Name = "attendanceDate";
+            this.attendanceDate.Size = new System.Drawing.Size(230, 29);
+            this.attendanceDate.TabIndex = 32;
             // 
             // label2
             // 
@@ -408,15 +417,6 @@
             this.dgv_AllAttendanceWdetails.Name = "dgv_AllAttendanceWdetails";
             this.dgv_AllAttendanceWdetails.Size = new System.Drawing.Size(468, 147);
             this.dgv_AllAttendanceWdetails.TabIndex = 9;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(178, 118);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(230, 30);
-            this.comboBox1.TabIndex = 36;
             // 
             // Frm_AeAttendance_Management
             // 
@@ -462,7 +462,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtempID;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker payrollDate;
+        private System.Windows.Forms.DateTimePicker attendanceDate;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;

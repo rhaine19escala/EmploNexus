@@ -87,11 +87,18 @@ namespace EmploNexus.Forms
         {
             try
             {
-                txtuser_empID.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[1].Value?.ToString();
-                txtuserUsername.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[2].Value?.ToString();
-                txtuserPassword.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[3].Value?.ToString();
-                string role = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[4].Value?.ToString();
-                cmbBoxRole.Text = role;
+                if (e.RowIndex >= 0 && e.RowIndex < dgv_AllUserWdetails.Rows.Count)
+                {
+                    txtuser_empID.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[1].Value?.ToString();
+                    txtuserUsername.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[2].Value?.ToString();
+                    txtuserPassword.Text = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[3].Value?.ToString();
+                    string role = dgv_AllUserWdetails.Rows[e.RowIndex].Cells[4].Value?.ToString();
+                    cmbBoxRole.Text = role;
+                }
+                else
+                {
+                    MessageBox.Show("Invalid row index selected.", "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {

@@ -211,24 +211,31 @@ namespace EmploNexus.Forms
         {
             try
             {
-                txtempID.Text = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[1].Value).ToString();
-                txtempName.Text = dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[2].Value as String;
-
-                int genderID = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[3].Value);
-                cmbBox_empGender.SelectedValue = genderID;
-
-                if (dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[4].Value is DateTime selectedDate)
+                if (e.RowIndex >= 0 && e.RowIndex < dgv_AllEmployeesWdetails.Rows.Count)
                 {
-                    DOB_date.Value = selectedDate;
+                    txtempID.Text = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[1].Value).ToString();
+                    txtempName.Text = dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[2].Value as String;
+
+                    int genderID = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[3].Value);
+                    cmbBox_empGender.SelectedValue = genderID;
+
+                    if (dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[4].Value is DateTime selectedDate)
+                    {
+                        DOB_date.Value = selectedDate;
+                    }
+
+                    txtempEmail.Text = dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[5].Value as String;
+
+                    int department = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[6].Value);
+                    cmbBox_empDepartment.SelectedValue = department;
+
+                    int position = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[7].Value);
+                    cmbBox_empPosition.SelectedValue = position;
                 }
-
-                txtempEmail.Text = dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[5].Value as String;
-
-                int department = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[6].Value);
-                cmbBox_empDepartment.SelectedValue = department;
-
-                int position = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[7].Value);
-                cmbBox_empPosition.SelectedValue = position;
+                else
+                {
+                    MessageBox.Show("Invalid row index selected.", "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }             
             }
             catch (Exception ex)
             {
