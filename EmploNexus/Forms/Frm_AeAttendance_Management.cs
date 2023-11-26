@@ -115,9 +115,8 @@ namespace EmploNexus.Forms
                 if (e.RowIndex >= 0 && e.RowIndex < dgv_AllAttendanceWdetails.Rows.Count)
                 {
                     txtempID.Text = Convert.ToInt32(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[1].Value).ToString();
-                    txtempName.Text = dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[2].Value as String;
 
-                    if (DateTime.TryParse(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[3].Value?.ToString(), out DateTime selectedDate))
+                    if (DateTime.TryParse(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[2].Value?.ToString(), out DateTime selectedDate))
                     {
                         attendanceDate.Value = selectedDate;
                     }
@@ -126,7 +125,7 @@ namespace EmploNexus.Forms
                         attendanceDate.Value = DateTime.Today;
                     }
 
-                    int status = Convert.ToInt32(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[4].Value);
+                    int status = Convert.ToInt32(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[3].Value);
                     cmbBox_status.SelectedValue = status;
                 }
                 else
@@ -147,7 +146,6 @@ namespace EmploNexus.Forms
                 if (e.RowIndex >= 0 && e.RowIndex < dgv_allempInfo.Rows.Count)
                 {
                     txtempID.Text = Convert.ToInt32(dgv_allempInfo.Rows[e.RowIndex].Cells[1].Value).ToString();
-                    txtempName.Text = dgv_allempInfo.Rows[e.RowIndex].Cells[2].Value?.ToString();
                     cmbBox_status.SelectedIndex = 0;
                     attendanceDate.Value = DateTime.Today;
                 }
@@ -164,7 +162,7 @@ namespace EmploNexus.Forms
 
         private void dgv_AllAttendanceWdetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.Value != null)
+            if (e.ColumnIndex == 3 && e.RowIndex >= 0 && e.Value != null)
             {
                 string stringValue = e.Value.ToString();
                 int statusvalue;
@@ -286,22 +284,6 @@ namespace EmploNexus.Forms
             return false;
         }
 
-        private bool EmpNameExistsInOtherTable(string empname, DataGridView otherTable)
-        {
-            foreach (DataGridViewRow row in otherTable.Rows)
-            {
-                if (!row.IsNewRow)
-                {
-                    string otherEmpName = row.Cells["EMPLOYEE_NAME"].Value?.ToString();
-                    if (otherEmpName == empname)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
         private bool IsValidEmpID(string employeeID)
         {
             // Use \d to match digits, and {8} to specify the length as 8
@@ -310,11 +292,9 @@ namespace EmploNexus.Forms
             return isValid;
         }
 
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             String emp_id = txtempID.Text;
-            String emp_name = txtempName.Text;
             errorProvider1.Clear();
 
             if (String.IsNullOrEmpty(emp_id))
@@ -336,18 +316,6 @@ namespace EmploNexus.Forms
                 errorProvider1.SetError(txtempID, $"Employee with ID {empID} is already added!");
                 return;
             }
-            if (String.IsNullOrEmpty(emp_name))
-            {
-                errorProvider1.Clear();
-                errorProvider1.SetError(txtempName, "Empty Field!");
-                return;
-            }
-            if (EmpNameExistsInOtherTable(emp_name, dgv_AllAttendanceWdetails))
-            {
-                errorProvider1.Clear();
-                errorProvider1.SetError(txtempID, $"Employee with Name {emp_name} is already added!");
-                return;
-            }
 
             try
             {
@@ -356,7 +324,6 @@ namespace EmploNexus.Forms
                     Attendance att = new Attendance
                     {
                         AttendanceEmp_ID = Convert.ToInt32(txtempID.Text),
-                        AttendanceEmp_Name = txtempName.Text,
                         AttendanceStatusId = (Int32)cmbBox_status.SelectedValue,
                         AttendanceDate = attendanceDate.Value
                     };
@@ -375,33 +342,150 @@ namespace EmploNexus.Forms
             }
         }
 
-        public void ClearInputFields()
-        {
-            errorProvider1.Clear();
-            txtempID.Clear();
-            txtempName.Clear();
-            cmbBox_status.SelectedIndex = 0;
-            attendanceDate.Value = DateTime.Today;
-        }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            String emp_id = txtempID.Text;
+            errorProvider1.Clear();
 
+            if (String.IsNullOrEmpty(emp_id))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, "Empty Field!");
+                return;
+            }
+            if (!IsValidEmpID(emp_id))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempID, "Invalid Employee ID Format!");
+                return;
+            }
+
+            using (var db = new EmploNexusu_uEntities())
+            {
+                try
+                {
+                    DialogResult result = MessageBox.Show("Are you sure you want to Update this Attendance Information?", "EmploNexus: Attendance Information Management", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (result == DialogResult.OK)
+                    {
+                        int user_empIDToUpdate = Convert.ToInt32(txtempID.Text);
+                        Attendance existingUser = db.Attendances.FirstOrDefault(u => u.AttendanceEmp_ID == user_empIDToUpdate);
+                        if (existingUser != null)
+                        {
+                            existingUser.AttendanceEmp_ID = Convert.ToInt32(txtempID.Text);
+                            existingUser.AttendanceStatusId = (Int32)cmbBox_status.SelectedValue;
+                            existingUser.AttendanceDate = attendanceDate.Value;
+
+                            db.SaveChanges();
+                            loadUser();
+                            MessageBox.Show("Attendance Info Updated Successfully!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ClearInputFields();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Attendance Info not found!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Attendance Info not Updated Successfully!. \nError :" + ex.Message, "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ClearInputFields();
+                }
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to Delete this Attendance Information?", "EmploNexus: Attendance Information Management", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result == DialogResult.OK)
+                {
+                    using (var db = new EmploNexusu_uEntities())
+                    {
+                        int user_empIDToDelete = Convert.ToInt32(txtempID.Text);
 
+                        Attendance userToDelete = db.Attendances.FirstOrDefault(u => u.AttendanceEmp_ID == user_empIDToDelete);
+
+                        if (userToDelete != null)
+                        {
+                            db.Attendances.Remove(userToDelete);
+                            db.SaveChanges();
+                            loadUser();
+                            MessageBox.Show("Attendance Info Deleted Successfully!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Attendance Info not found!", "EmploNexus:  Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(" Attendance Info not Deleted Successfully!. \nError :" + ex.Message, "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            using (var db = new EmploNexusu_uEntities())
+            {
+                try
+                {
+                    if (string.IsNullOrWhiteSpace(txtempSearch.Text))
+                    {
+                        MessageBox.Show("Please enter a valid Employee ID.", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        int user_empIDToSearch = Convert.ToInt32(txtempSearch.Text);
+                        Attendance existingUser = db.Attendances.FirstOrDefault(u => u.AttendanceEmp_ID == user_empIDToSearch);
+                        if (existingUser != null)
+                        {
+                            var foundUserList = new List<vw_all_attendance>
+                            {
+                                new vw_all_attendance
+                                {
+                                    ATTENDANCE_NO_ = existingUser.AttendanceNo,
+                                    EMPLOYEE_ID = existingUser.AttendanceEmp_ID,
+                                    DATE = existingUser.AttendanceDate,
+                                    STATUS = existingUser.AttendanceStatusId
+                                }
+                            };
 
+                            dgv_AllAttendanceWdetails.DataSource = foundUserList;
+                            MessageBox.Show("Employee ID Found!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtempSearch.Clear();
+                        }
+                        else
+                        {
+                            loadUser();
+                            txtempSearch.Clear();
+                            MessageBox.Show("Employee ID not found!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    loadUser();
+                    txtempSearch.Text = "";
+                    MessageBox.Show($"Error searching for Employee ID. \nError: {ex.Message}", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void ClearInputFields()
+        {
+            errorProvider1.Clear();
+            txtempID.Clear();
+            cmbBox_status.SelectedIndex = 0;
+            attendanceDate.Value = DateTime.Today;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            
+            ClearInputFields();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

@@ -108,9 +108,10 @@ namespace EmploNexus.Forms
 
         private void ClearInputFields()
         {
-            txtuser_empID.Text = "";
-            txtuserUsername.Text = "";
-            txtuserPassword.Text = "";
+            errorProvider1.Clear();
+            txtuser_empID.Clear();
+            txtuserUsername.Clear();
+            txtuserPassword.Clear();
             cmbBoxRole.SelectedIndex = 0;
         }
 
@@ -189,19 +190,17 @@ namespace EmploNexus.Forms
                 errorProvider1.SetError(txtuserPassword, "Empty Field!");
                 return;
             }
-
-            if (UsernameExists(username, dgv_AllUserWdetails))
-            {
-                errorProvider1.Clear();
-                errorProvider1.SetError(txtuserUsername, $"Username '{username}' already exists!");
-                return;
-            }
-
             int userEmpID = Convert.ToInt32(empid);
             if (UserEmpIDExists(userEmpID, dgv_AllUserWdetails))
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtuser_empID, $"Employee with ID {userEmpID} is already added!");
+                return;
+            }
+            if (UsernameExists(username, dgv_AllUserWdetails))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtuserUsername, $"Username '{username}' already exists!");
                 return;
             }
 

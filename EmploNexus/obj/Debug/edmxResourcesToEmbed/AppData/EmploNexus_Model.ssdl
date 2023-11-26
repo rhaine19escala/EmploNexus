@@ -85,13 +85,11 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_attendance' does not have a 
     <Key>
       <PropertyRef Name="ATTENDANCE NO." />
       <PropertyRef Name="EMPLOYEE_ID" />
-      <PropertyRef Name="EMPLOYEE NAME" />
       <PropertyRef Name="DATE" />
       <PropertyRef Name="STATUS" />
     </Key>
     <Property Name="ATTENDANCE NO." Type="int" Nullable="false" />
     <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
-    <Property Name="EMPLOYEE NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="DATE" Type="date" Nullable="false" />
     <Property Name="STATUS" Type="int" Nullable="false" />
   </EntityType>
@@ -173,7 +171,7 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_user_role' does not have a p
     <Property Name="PASSWORD" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="ROLE" Type="nvarchar" MaxLength="50" />
   </EntityType>
-  <Association Name="FK__Attendanc__Atten__2C3393D0">
+  <Association Name="FK__Attendanc__Atten__2B3F6F97">
     <End Role="Status" Type="Self.Status" Multiplicity="1" />
     <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
     <ReferentialConstraint>
@@ -186,8 +184,8 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_user_role' does not have a p
     </ReferentialConstraint>
   </Association>
   <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Attendanc__Atten__2D27B809' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Attendanc__Atten__2D27B809" />-->
+warning 6035: The relationship 'FK__Attendanc__Atten__2C3393D0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Attendanc__Atten__2C3393D0" />-->
   <Association Name="FK__Employees__emp_d__22AA2996">
     <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
     <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
@@ -318,7 +316,6 @@ warning 6035: The relationship 'FK__Salary__Salaryem__276EDEB3' has columns that
       <DefiningQuery>SELECT 
 [vw_all_attendance].[ATTENDANCE NO.] AS [ATTENDANCE NO.], 
 [vw_all_attendance].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
-[vw_all_attendance].[EMPLOYEE NAME] AS [EMPLOYEE NAME], 
 [vw_all_attendance].[DATE] AS [DATE], 
 [vw_all_attendance].[STATUS] AS [STATUS]
 FROM [dbo].[vw_all_attendance] AS [vw_all_attendance]</DefiningQuery>
@@ -368,7 +365,7 @@ FROM [dbo].[vw_all_salary] AS [vw_all_salary]</DefiningQuery>
 [vw_all_user_role].[ROLE] AS [ROLE]
 FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK__Attendanc__Atten__2C3393D0" Association="Self.FK__Attendanc__Atten__2C3393D0">
+    <AssociationSet Name="FK__Attendanc__Atten__2B3F6F97" Association="Self.FK__Attendanc__Atten__2B3F6F97">
       <End Role="Status" EntitySet="Status" />
       <End Role="Attendance" EntitySet="Attendance" />
     </AssociationSet>

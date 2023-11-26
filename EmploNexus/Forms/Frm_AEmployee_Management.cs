@@ -213,6 +213,7 @@ namespace EmploNexus.Forms
             {
                 if (e.RowIndex >= 0 && e.RowIndex < dgv_AllEmployeesWdetails.Rows.Count)
                 {
+                    DOB_date.Value = DateTime.Today;
                     txtempID.Text = Convert.ToInt32(dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[1].Value).ToString();
                     txtempName.Text = dgv_AllEmployeesWdetails.Rows[e.RowIndex].Cells[2].Value as String;
 
@@ -263,6 +264,7 @@ namespace EmploNexus.Forms
         {
             try
             {
+                DOB_date.Value = DateTime.Today;
                 txtempID.Text = Convert.ToInt32(dgv_AllEmpID.Rows[e.RowIndex].Cells[1].Value).ToString();
                 txtempName.Clear();
                 txtempEmail.Clear();
@@ -489,7 +491,7 @@ namespace EmploNexus.Forms
                         else
                         {
                             loadUser();
-                            txtempSearch.Text = "";
+                            txtempSearch.Clear();
                             MessageBox.Show("Employee ID not found!", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
@@ -497,7 +499,7 @@ namespace EmploNexus.Forms
                 catch (Exception ex)
                 {
                     loadUser();
-                    txtempSearch.Text = "";
+                    txtempSearch.Clear();
                     MessageBox.Show($"Error searching for Employee ID. \nError: {ex.Message}", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -512,6 +514,7 @@ namespace EmploNexus.Forms
             cmbBox_empGender.SelectedIndex = 0;
             cmbBox_empDepartment.SelectedIndex = 0;
             cmbBox_empPosition.SelectedIndex = 0;
+            DOB_date.Value = DateTime.Today;
         }
 
         private void btnempClear_Click(object sender, EventArgs e)

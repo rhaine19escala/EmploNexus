@@ -47,10 +47,8 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtempSearch = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtempName = new System.Windows.Forms.TextBox();
             this.cmbBox_status = new System.Windows.Forms.ComboBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -173,7 +171,7 @@
             this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtempSearch);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.lblTitle);
             this.panel1.Controls.Add(this.dgv_AllAttendanceWdetails);
@@ -262,18 +260,16 @@
             this.label10.Text = "Search :";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox1
+            // txtempSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(617, 223);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(247, 29);
-            this.textBox1.TabIndex = 48;
+            this.txtempSearch.Location = new System.Drawing.Point(617, 223);
+            this.txtempSearch.Name = "txtempSearch";
+            this.txtempSearch.Size = new System.Drawing.Size(247, 29);
+            this.txtempSearch.TabIndex = 48;
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txtempName);
             this.groupBox1.Controls.Add(this.cmbBox_status);
             this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.btnDelete);
@@ -293,31 +289,11 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attendance Details";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.LightBlue;
-            this.label7.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label7.Location = new System.Drawing.Point(27, 81);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 26);
-            this.label7.TabIndex = 38;
-            this.label7.Text = "Name";
-            // 
-            // txtempName
-            // 
-            this.txtempName.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtempName.Location = new System.Drawing.Point(179, 81);
-            this.txtempName.Name = "txtempName";
-            this.txtempName.Size = new System.Drawing.Size(230, 29);
-            this.txtempName.TabIndex = 37;
-            // 
             // cmbBox_status
             // 
             this.cmbBox_status.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBox_status.FormattingEnabled = true;
-            this.cmbBox_status.Location = new System.Drawing.Point(179, 161);
+            this.cmbBox_status.Location = new System.Drawing.Point(178, 121);
             this.cmbBox_status.Name = "cmbBox_status";
             this.cmbBox_status.Size = new System.Drawing.Size(230, 30);
             this.cmbBox_status.TabIndex = 36;
@@ -379,7 +355,7 @@
             this.label3.BackColor = System.Drawing.Color.LightBlue;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label3.Location = new System.Drawing.Point(27, 165);
+            this.label3.Location = new System.Drawing.Point(26, 125);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 26);
             this.label3.TabIndex = 17;
@@ -410,7 +386,7 @@
             // 
             this.attendanceDate.CustomFormat = "";
             this.attendanceDate.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attendanceDate.Location = new System.Drawing.Point(179, 121);
+            this.attendanceDate.Location = new System.Drawing.Point(178, 81);
             this.attendanceDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.attendanceDate.Name = "attendanceDate";
             this.attendanceDate.Size = new System.Drawing.Size(230, 29);
@@ -423,7 +399,7 @@
             this.label2.BackColor = System.Drawing.Color.LightBlue;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label2.Location = new System.Drawing.Point(27, 124);
+            this.label2.Location = new System.Drawing.Point(26, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 26);
             this.label2.TabIndex = 33;
@@ -450,6 +426,7 @@
             this.dgv_AllAttendanceWdetails.Location = new System.Drawing.Point(464, 260);
             this.dgv_AllAttendanceWdetails.Name = "dgv_AllAttendanceWdetails";
             this.dgv_AllAttendanceWdetails.ReadOnly = true;
+            this.dgv_AllAttendanceWdetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_AllAttendanceWdetails.Size = new System.Drawing.Size(468, 147);
             this.dgv_AllAttendanceWdetails.TabIndex = 9;
             this.dgv_AllAttendanceWdetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_AllAttendanceWdetails_CellClick);
@@ -463,12 +440,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::EmploNexus.Properties.Resources.alexandr_podvalny_n_Jb_d8O43Q_unsplash;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(984, 535);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtCurrentTime);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip2);
             this.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Frm_AeAttendance_Management";
@@ -520,10 +500,8 @@
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtempSearch;
         private System.Windows.Forms.ComboBox cmbBox_status;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtempName;
         private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

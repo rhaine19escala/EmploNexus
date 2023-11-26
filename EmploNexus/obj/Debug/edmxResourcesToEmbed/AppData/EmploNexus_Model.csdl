@@ -8,7 +8,7 @@
     <Property Name="AttendanceDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="AttendanceStatusId" Type="Int32" Nullable="false" />
     <Property Name="AttendanceEmp_ID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Status" Relationship="Self.FK__Attendanc__Atten__2C3393D0" FromRole="Attendance" ToRole="Status" />
+    <NavigationProperty Name="Status" Relationship="Self.FK__Attendanc__Atten__2B3F6F97" FromRole="Attendance" ToRole="Status" />
   </EntityType>
   <EntityType Name="Department">
     <Key>
@@ -76,7 +76,7 @@
     </Key>
     <Property Name="statusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="statusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Attendances" Relationship="Self.FK__Attendanc__Atten__2C3393D0" FromRole="Status" ToRole="Attendance" />
+    <NavigationProperty Name="Attendances" Relationship="Self.FK__Attendanc__Atten__2B3F6F97" FromRole="Status" ToRole="Attendance" />
   </EntityType>
   <EntityType Name="UserAccount">
     <Key>
@@ -93,13 +93,11 @@
     <Key>
       <PropertyRef Name="ATTENDANCE_NO_" />
       <PropertyRef Name="EMPLOYEE_ID" />
-      <PropertyRef Name="EMPLOYEE_NAME" />
       <PropertyRef Name="DATE" />
       <PropertyRef Name="STATUS" />
     </Key>
     <Property Name="ATTENDANCE_NO_" Type="Int32" Nullable="false" />
     <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
-    <Property Name="EMPLOYEE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="STATUS" Type="Int32" Nullable="false" />
   </EntityType>
@@ -171,7 +169,7 @@
     <Property Name="PASSWORD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ROLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
-  <Association Name="FK__Attendanc__Atten__2C3393D0">
+  <Association Name="FK__Attendanc__Atten__2B3F6F97">
     <End Role="Status" Type="Self.Status" Multiplicity="1" />
     <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
     <ReferentialConstraint>
@@ -247,7 +245,7 @@
     <EntitySet Name="vw_all_employee" EntityType="Self.vw_all_employee" />
     <EntitySet Name="vw_all_salary" EntityType="Self.vw_all_salary" />
     <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" />
-    <AssociationSet Name="FK__Attendanc__Atten__2C3393D0" Association="Self.FK__Attendanc__Atten__2C3393D0">
+    <AssociationSet Name="FK__Attendanc__Atten__2B3F6F97" Association="Self.FK__Attendanc__Atten__2B3F6F97">
       <End Role="Status" EntitySet="Status" />
       <End Role="Attendance" EntitySet="Attendances" />
     </AssociationSet>

@@ -90,13 +90,11 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_attendance' does not have a 
           <Key>
             <PropertyRef Name="ATTENDANCE NO." />
             <PropertyRef Name="EMPLOYEE_ID" />
-            <PropertyRef Name="EMPLOYEE NAME" />
             <PropertyRef Name="DATE" />
             <PropertyRef Name="STATUS" />
           </Key>
           <Property Name="ATTENDANCE NO." Type="int" Nullable="false" />
           <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
-          <Property Name="EMPLOYEE NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="DATE" Type="date" Nullable="false" />
           <Property Name="STATUS" Type="int" Nullable="false" />
         </EntityType>
@@ -178,7 +176,7 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_user_role' does not have a p
           <Property Name="PASSWORD" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="ROLE" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK__Attendanc__Atten__2C3393D0">
+        <Association Name="FK__Attendanc__Atten__2B3F6F97">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
           <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -191,8 +189,8 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_user_role' does not have a p
           </ReferentialConstraint>
         </Association>
         <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Attendanc__Atten__2D27B809' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Attendanc__Atten__2D27B809" />-->
+warning 6035: The relationship 'FK__Attendanc__Atten__2C3393D0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Attendanc__Atten__2C3393D0" />-->
         <Association Name="FK__Employees__emp_d__22AA2996">
           <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
@@ -323,7 +321,6 @@ warning 6035: The relationship 'FK__Salary__Salaryem__276EDEB3' has columns that
             <DefiningQuery>SELECT 
 [vw_all_attendance].[ATTENDANCE NO.] AS [ATTENDANCE NO.], 
 [vw_all_attendance].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
-[vw_all_attendance].[EMPLOYEE NAME] AS [EMPLOYEE NAME], 
 [vw_all_attendance].[DATE] AS [DATE], 
 [vw_all_attendance].[STATUS] AS [STATUS]
 FROM [dbo].[vw_all_attendance] AS [vw_all_attendance]</DefiningQuery>
@@ -373,7 +370,7 @@ FROM [dbo].[vw_all_salary] AS [vw_all_salary]</DefiningQuery>
 [vw_all_user_role].[ROLE] AS [ROLE]
 FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Attendanc__Atten__2C3393D0" Association="Self.FK__Attendanc__Atten__2C3393D0">
+          <AssociationSet Name="FK__Attendanc__Atten__2B3F6F97" Association="Self.FK__Attendanc__Atten__2B3F6F97">
             <End Role="Status" EntitySet="Status" />
             <End Role="Attendance" EntitySet="Attendance" />
           </AssociationSet>
@@ -407,7 +404,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <Property Name="AttendanceDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="AttendanceStatusId" Type="Int32" Nullable="false" />
           <Property Name="AttendanceEmp_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Status" Relationship="Self.FK__Attendanc__Atten__2C3393D0" FromRole="Attendance" ToRole="Status" />
+          <NavigationProperty Name="Status" Relationship="Self.FK__Attendanc__Atten__2B3F6F97" FromRole="Attendance" ToRole="Status" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -475,7 +472,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           </Key>
           <Property Name="statusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="statusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Attendances" Relationship="Self.FK__Attendanc__Atten__2C3393D0" FromRole="Status" ToRole="Attendance" />
+          <NavigationProperty Name="Attendances" Relationship="Self.FK__Attendanc__Atten__2B3F6F97" FromRole="Status" ToRole="Attendance" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
@@ -492,13 +489,11 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <Key>
             <PropertyRef Name="ATTENDANCE_NO_" />
             <PropertyRef Name="EMPLOYEE_ID" />
-            <PropertyRef Name="EMPLOYEE_NAME" />
             <PropertyRef Name="DATE" />
             <PropertyRef Name="STATUS" />
           </Key>
           <Property Name="ATTENDANCE_NO_" Type="Int32" Nullable="false" />
           <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
-          <Property Name="EMPLOYEE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DATE" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="STATUS" Type="Int32" Nullable="false" />
         </EntityType>
@@ -570,7 +565,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <Property Name="PASSWORD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ROLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK__Attendanc__Atten__2C3393D0">
+        <Association Name="FK__Attendanc__Atten__2B3F6F97">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
           <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -646,7 +641,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <EntitySet Name="vw_all_employee" EntityType="Self.vw_all_employee" />
           <EntitySet Name="vw_all_salary" EntityType="Self.vw_all_salary" />
           <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" />
-          <AssociationSet Name="FK__Attendanc__Atten__2C3393D0" Association="Self.FK__Attendanc__Atten__2C3393D0">
+          <AssociationSet Name="FK__Attendanc__Atten__2B3F6F97" Association="Self.FK__Attendanc__Atten__2B3F6F97">
             <End Role="Status" EntitySet="Status" />
             <End Role="Attendance" EntitySet="Attendances" />
           </AssociationSet>
@@ -828,7 +823,6 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
               <MappingFragment StoreEntitySet="vw_all_attendance">
                 <ScalarProperty Name="ATTENDANCE_NO_" ColumnName="ATTENDANCE NO." />
                 <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
-                <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE NAME" />
                 <ScalarProperty Name="DATE" ColumnName="DATE" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
               </MappingFragment>

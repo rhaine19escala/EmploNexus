@@ -94,7 +94,6 @@
         <MappingFragment StoreEntitySet="vw_all_attendance">
           <ScalarProperty Name="ATTENDANCE_NO_" ColumnName="ATTENDANCE NO." />
           <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
-          <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE NAME" />
           <ScalarProperty Name="DATE" ColumnName="DATE" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
         </MappingFragment>
