@@ -104,25 +104,32 @@ namespace EmploNexus.Forms
         {
             try
             {
-                txtempID.Text = Convert.ToInt32(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[1].Value).ToString();
-
-                if (DateTime.TryParse(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[2].Value.ToString(), out DateTime selectedDate))
+                if (e.RowIndex >= 0 && e.RowIndex < dgv_AllSalaryWdetails.Rows.Count)
                 {
-                    payrollDate.Value = selectedDate;
+                    txtempID.Text = Convert.ToInt32(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[1].Value).ToString();
+
+                    if (DateTime.TryParse(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[2].Value?.ToString(), out DateTime selectedDate))
+                    {
+                        payrollDate.Value = selectedDate;
+                    }
+                    else
+                    {
+                        payrollDate.Value = DateTime.Today;
+                    }
+
+                    if (decimal.TryParse(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[3].Value?.ToString(), out decimal salary))
+                    {
+                        txtempSalary.Text = salary.ToString("N0");
+                    }
                 }
                 else
                 {
-                    payrollDate.Value = DateTime.Today;
-                }
-
-                if (decimal.TryParse(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[3].Value?.ToString(), out decimal salary))
-                {
-                    txtempSalary.Text = salary.ToString("N0");
+                    MessageBox.Show("Invalid row index selected.", "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Encountered :" + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error Encountered : " + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
