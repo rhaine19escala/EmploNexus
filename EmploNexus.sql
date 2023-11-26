@@ -176,7 +176,7 @@ INNER JOIN UserAccounts ua ON s.Salaryemp_ID = ua.user_empID;
 ------VIEW ALL USER ATTENDANCE
 CREATE VIEW vw_all_attendance
 AS
-SELECT A.AttendanceNo AS 'ATTENDANCE NO.', A.AttendanceEmp_ID AS 'EMPLOYEE_ID', E.emp_name AS 'EMPLOYEE NAME', A.AttendanceDate AS 'DATE', A.AttendanceStatusId AS 'STATUS'
+SELECT A.AttendanceNo AS 'ATTENDANCE NO.', A.AttendanceEmp_ID AS 'EMPLOYEE_ID', A.AttendanceDate AS 'DATE', A.AttendanceStatusId AS 'STATUS'
 FROM Attendance A
 INNER JOIN Employees E ON A.AttendanceEmp_ID = E.emp_ID;
 
