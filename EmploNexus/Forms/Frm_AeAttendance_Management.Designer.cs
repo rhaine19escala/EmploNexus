@@ -203,6 +203,8 @@
             this.dgv_allempInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_allempInfo.Size = new System.Drawing.Size(468, 134);
             this.dgv_allempInfo.TabIndex = 53;
+            this.dgv_allempInfo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_allempInfo_CellClick);
+            this.dgv_allempInfo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_allempInfo_CellFormatting);
             // 
             // btnSearch
             // 
@@ -444,6 +446,7 @@
             this.dgv_AllAttendanceWdetails.Size = new System.Drawing.Size(468, 147);
             this.dgv_AllAttendanceWdetails.TabIndex = 9;
             this.dgv_AllAttendanceWdetails.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_AllAttendanceWdetails_CellClick);
+            this.dgv_AllAttendanceWdetails.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_AllAttendanceWdetails_CellFormatting);
             // 
             // Frm_AeAttendance_Management
             // 

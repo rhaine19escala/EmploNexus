@@ -27,6 +27,7 @@ namespace EmploNexus.Forms
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
             loadUser();
+            loadStatus();
             ConfigureAttendanceDate();
         }
 
@@ -55,6 +56,16 @@ namespace EmploNexus.Forms
         {
             dgv_AllAttendanceWdetails.DataSource = repo.GetAllAttendance();
             dgv_allempInfo.DataSource = repo.AllEmployeeInfo();
+        }
+
+        public void loadStatus()
+        {
+            // SELECT * FROM STATUS
+            var status = db.Status.ToList();
+
+            cmbBox_status.ValueMember = "statusId";
+            cmbBox_status.DisplayMember = "statusName";
+            cmbBox_status.DataSource = status;
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
@@ -103,8 +114,9 @@ namespace EmploNexus.Forms
                 if (e.RowIndex >= 0 && e.RowIndex < dgv_AllAttendanceWdetails.Rows.Count)
                 {
                     txtempID.Text = Convert.ToInt32(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[1].Value).ToString();
+                    txtempName.Text = dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[2].Value as String;
 
-                    if (DateTime.TryParse(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[2].Value?.ToString(), out DateTime selectedDate))
+                    if (DateTime.TryParse(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[3].Value?.ToString(), out DateTime selectedDate))
                     {
                         attendanceDate.Value = selectedDate;
                     }
@@ -113,7 +125,8 @@ namespace EmploNexus.Forms
                         attendanceDate.Value = DateTime.Today;
                     }
 
-
+                    int status = Convert.ToInt32(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[4].Value);
+                    cmbBox_status.SelectedValue = status;
                 }
                 else
                 {
@@ -123,6 +136,136 @@ namespace EmploNexus.Forms
             catch (Exception ex)
             {
                 MessageBox.Show("Error Encountered : " + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgv_allempInfo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0 && e.RowIndex < dgv_allempInfo.Rows.Count)
+                {
+                    txtempID.Text = Convert.ToInt32(dgv_allempInfo.Rows[e.RowIndex].Cells[1].Value).ToString();
+                    txtempName.Text = dgv_allempInfo.Rows[e.RowIndex].Cells[2].Value?.ToString();
+                    cmbBox_status.SelectedIndex = 0;
+                    attendanceDate.Value = DateTime.Today;
+                }
+                else
+                {
+                    MessageBox.Show("Invalid row index selected.", "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Encountered : " + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgv_AllAttendanceWdetails_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.Value != null)
+            {
+                string stringValue = e.Value.ToString();
+                int statusvalue;
+                if (int.TryParse(stringValue, out statusvalue))
+                {
+                    if (statusvalue == 1)
+                    {
+                        e.Value = "Present";
+                    }
+                    else if (statusvalue == 2)
+                    {
+                        e.Value = "Absent";
+                    }
+                    else if (statusvalue == 3)
+                    {
+                        e.Value = "Late";
+                    }
+                    else if (statusvalue == 4)
+                    {
+                        e.Value = "Early Departure";
+                    }
+                    else if (statusvalue == 5)
+                    {
+                        e.Value = "Half Day";
+                    }
+                    else if (statusvalue == 6)
+                    {
+                        e.Value = "Remote";
+                    }
+                    else if (statusvalue == 7)
+                    {
+                        e.Value = "On Leave";
+                    }
+                    else if (statusvalue == 8)
+                    {
+                        e.Value = "Business Trip";
+                    }
+                    else if (statusvalue == 9)
+                    {
+                        e.Value = "Training";
+                    }
+                    e.FormattingApplied = true;
+                }
+            }
+        }
+
+        private void dgv_allempInfo_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 3 && e.RowIndex >= 0 && e.Value != null)
+            {
+                string stringValue = e.Value.ToString();
+                int departmentvalue;
+                if (int.TryParse(stringValue, out departmentvalue))
+                {
+                    if (departmentvalue == 1)
+                    {
+                        e.Value = "HR";
+                    }
+                    else if (departmentvalue == 2)
+                    {
+                        e.Value = "Finance";
+                    }
+                    else if (departmentvalue == 3)
+                    {
+                        e.Value = "IT";
+                    }
+                    e.FormattingApplied = true;
+                }
+            }
+
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.Value != null)
+            {
+                string stringValue = e.Value.ToString();
+                int positionvalue;
+                if (int.TryParse(stringValue, out positionvalue))
+                {
+                    if (positionvalue == 1)
+                    {
+                        e.Value = "HR Manager";
+                    }
+                    else if (positionvalue == 2)
+                    {
+                        e.Value = "HR Generalist";
+                    }
+                    else if (positionvalue == 3)
+                    {
+                        e.Value = "Financial Controller";
+                    }
+                    else if (positionvalue == 4)
+                    {
+                        e.Value = "Accountant";
+                    }
+                    else if (positionvalue == 5)
+                    {
+                        e.Value = "IT Manager";
+                    }
+                    else if (positionvalue == 6)
+                    {
+                        e.Value = "Software Developer";
+                    }
+                    e.FormattingApplied = true;
+                }
             }
         }
 

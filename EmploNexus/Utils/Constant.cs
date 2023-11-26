@@ -41,6 +41,19 @@ namespace EmploNexus
         Software_Developer = 6
     }
 
+    public enum Status
+    {
+        Present = 1,
+        Absent = 2,
+        Late = 3,
+        Early_Departure = 4,
+        Half_Day = 5,
+        Remote = 6,
+        On_Leave = 7,
+        Business_Trip = 8,
+        Training = 9
+    }
+
     public class Constant
     {
         
