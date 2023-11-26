@@ -265,7 +265,7 @@
             this.payrollDate.CustomFormat = "";
             this.payrollDate.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.payrollDate.Location = new System.Drawing.Point(189, 126);
-            this.payrollDate.MinDate = new System.DateTime(2023, 11, 19, 0, 0, 0, 0);
+            this.payrollDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.payrollDate.Name = "payrollDate";
             this.payrollDate.Size = new System.Drawing.Size(230, 29);
             this.payrollDate.TabIndex = 32;
@@ -437,6 +437,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::EmploNexus.Properties.Resources.alexandr_podvalny_n_Jb_d8O43Q_unsplash;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1091, 522);
             this.Controls.Add(this.txtCurrentTime);

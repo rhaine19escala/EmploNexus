@@ -35,6 +35,7 @@ namespace EmploNexus.Forms
 
             payrollDate.Format = DateTimePickerFormat.Custom;
             payrollDate.CustomFormat = "MM/dd/yyyy";
+            payrollDate.MinDate = DateTime.Today;
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
@@ -159,14 +160,6 @@ namespace EmploNexus.Forms
             }
         }
 
-        private bool IsValidEmpID(string employeeID)
-        {
-            // Use \d to match digits, and {8} to specify the length as 8
-            string employeeIDPattern = @"^\d{8}$";
-            bool isValid = Regex.IsMatch(employeeID, employeeIDPattern);
-            return isValid;
-        }
-
         private void dgv_allempInfo_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.ColumnIndex == 3 && e.RowIndex >= 0 && e.Value != null)
@@ -242,6 +235,21 @@ namespace EmploNexus.Forms
             return false;
         }
 
+        private bool IsValidEmpID(string employeeID)
+        {
+            // Use \d to match digits, and {8} to specify the length as 8
+            string employeeIDPattern = @"^\d{8}$";
+            bool isValid = Regex.IsMatch(employeeID, employeeIDPattern);
+            return isValid;
+        }
+
+        public bool IsValidSalary(string amount)
+        {
+            string amountPattern = @"^-?\d{1,3}(,\d{3})*(\.\d{1,2})?$";
+            bool isValid = Regex.IsMatch(amount, amountPattern);
+            return isValid;
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             String emp_id = txtempID.Text;
@@ -271,6 +279,12 @@ namespace EmploNexus.Forms
             {
                 errorProvider1.Clear();
                 errorProvider1.SetError(txtempSalary, "Empty Field!");
+                return;
+            }
+            if(!IsValidSalary(salary))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempSalary, "Invalid Salary!");
                 return;
             }
 
@@ -323,6 +337,12 @@ namespace EmploNexus.Forms
                 errorProvider1.SetError(txtempSalary, "Empty Field!");
                 return;
             }
+            if (!IsValidSalary(salary))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtempSalary, "Invalid Salary!");
+                return;
+            }
 
             using (var db = new EmploNexusu_uEntities())
             {
@@ -360,7 +380,35 @@ namespace EmploNexus.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to Delete this Salary Information?", "EmploNexus: Salary Information Management", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result == DialogResult.OK)
+                {
+                    using (var db = new EmploNexusu_uEntities())
+                    {
+                        int user_empIDToDelete = Convert.ToInt32(txtempID.Text);
 
+                        Salary userToDelete = db.Salaries.FirstOrDefault(u => u.Salaryemp_ID == user_empIDToDelete);
+
+                        if (userToDelete != null)
+                        {
+                            db.Salaries.Remove(userToDelete);
+                            db.SaveChanges();
+                            loadUser();
+                            MessageBox.Show("Salary Info Deleted Successfully!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Salary Info not found!", "EmploNexus:  Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(" Salary Info not Deleted Successfully!. \nError :" + ex.Message, "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
