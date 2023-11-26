@@ -6,7 +6,7 @@
     </Key>
     <Property Name="AttendanceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="AttendanceDate" Type="date" Nullable="false" />
-    <Property Name="AttendanceStatus" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="AttendanceStatusId" Type="int" Nullable="false" />
     <Property Name="AttendanceEmp_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Departments">
@@ -62,6 +62,13 @@
     <Property Name="salary_PayDate" Type="date" Nullable="false" />
     <Property Name="Salaryemp_ID" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="statusId" />
+    </Key>
+    <Property Name="statusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="statusName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="UserAccounts">
     <Key>
       <PropertyRef Name="userNo" />
@@ -78,13 +85,15 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_attendance' does not have a 
     <Key>
       <PropertyRef Name="ATTENDANCE NO." />
       <PropertyRef Name="EMPLOYEE_ID" />
+      <PropertyRef Name="EMPLOYEE NAME" />
       <PropertyRef Name="DATE" />
       <PropertyRef Name="STATUS" />
     </Key>
     <Property Name="ATTENDANCE NO." Type="int" Nullable="false" />
     <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
+    <Property Name="EMPLOYEE NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="DATE" Type="date" Nullable="false" />
-    <Property Name="STATUS" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="STATUS" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'EmploNexus.dbo.vw_all_empID' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -164,10 +173,22 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_user_role' does not have a p
     <Property Name="PASSWORD" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="ROLE" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <Association Name="FK__Attendanc__Atten__2C3393D0">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="statusId" />
+      </Principal>
+      <Dependent Role="Attendance">
+        <PropertyRef Name="AttendanceStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Attendanc__Atten__2A4B4B5E' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Attendanc__Atten__2A4B4B5E" />-->
-  <Association Name="FK__Employees__emp_d__20C1E124">
+warning 6035: The relationship 'FK__Attendanc__Atten__2D27B809' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Attendanc__Atten__2D27B809" />-->
+  <Association Name="FK__Employees__emp_d__22AA2996">
     <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
     <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
     <ReferentialConstraint>
@@ -179,7 +200,7 @@ warning 6035: The relationship 'FK__Attendanc__Atten__2A4B4B5E' has columns that
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Employees__emp_g__1FCDBCEB">
+  <Association Name="FK__Employees__emp_g__21B6055D">
     <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
     <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
     <ReferentialConstraint>
@@ -192,9 +213,9 @@ warning 6035: The relationship 'FK__Attendanc__Atten__2A4B4B5E' has columns that
     </ReferentialConstraint>
   </Association>
   <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Employees__emp_I__1ED998B2' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Employees__emp_I__1ED998B2" />-->
-  <Association Name="FK__Employees__emp_p__21B6055D">
+warning 6035: The relationship 'FK__Employees__emp_I__20C1E124' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Employees__emp_I__20C1E124" />-->
+  <Association Name="FK__Employees__emp_p__239E4DCF">
     <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
     <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
     <ReferentialConstraint>
@@ -207,9 +228,9 @@ warning 6035: The relationship 'FK__Employees__emp_I__1ED998B2' has columns that
     </ReferentialConstraint>
   </Association>
   <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Salary__Salaryem__25869641' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Salary__Salaryem__25869641" />-->
-  <Association Name="FK__UserAccou__roleI__1A14E395">
+warning 6035: The relationship 'FK__Salary__Salaryem__276EDEB3' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Salary__Salaryem__276EDEB3" />-->
+  <Association Name="FK__UserAccou__roleI__1BFD2C07">
     <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
     <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -224,7 +245,7 @@ warning 6035: The relationship 'FK__Salary__Salaryem__25869641' has columns that
   <Function Name="sp_addAttendance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="AttendanceEmp_ID" Type="int" Mode="In" />
     <Parameter Name="AttendanceDate" Type="date" Mode="In" />
-    <Parameter Name="AttendanceStatus" Type="varchar" Mode="In" />
+    <Parameter Name="AttendanceStatusId" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_addEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="emp_ID" Type="int" Mode="In" />
@@ -261,7 +282,7 @@ warning 6035: The relationship 'FK__Salary__Salaryem__25869641' has columns that
   <Function Name="sp_updateAttendance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="AttendanceNo" Type="int" Mode="In" />
     <Parameter Name="AttendanceDate" Type="date" Mode="In" />
-    <Parameter Name="AttendanceStatus" Type="varchar" Mode="In" />
+    <Parameter Name="AttendanceStatusId" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_updateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="emp_ID" Type="int" Mode="In" />
@@ -291,11 +312,13 @@ warning 6035: The relationship 'FK__Salary__Salaryem__25869641' has columns that
     <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Salary" EntityType="Self.Salary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAccounts" EntityType="Self.UserAccounts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vw_all_attendance" EntityType="Self.vw_all_attendance" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [vw_all_attendance].[ATTENDANCE NO.] AS [ATTENDANCE NO.], 
 [vw_all_attendance].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
+[vw_all_attendance].[EMPLOYEE NAME] AS [EMPLOYEE NAME], 
 [vw_all_attendance].[DATE] AS [DATE], 
 [vw_all_attendance].[STATUS] AS [STATUS]
 FROM [dbo].[vw_all_attendance] AS [vw_all_attendance]</DefiningQuery>
@@ -345,19 +368,23 @@ FROM [dbo].[vw_all_salary] AS [vw_all_salary]</DefiningQuery>
 [vw_all_user_role].[ROLE] AS [ROLE]
 FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK__Employees__emp_d__20C1E124" Association="Self.FK__Employees__emp_d__20C1E124">
+    <AssociationSet Name="FK__Attendanc__Atten__2C3393D0" Association="Self.FK__Attendanc__Atten__2C3393D0">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Attendance" EntitySet="Attendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employees__emp_d__22AA2996" Association="Self.FK__Employees__emp_d__22AA2996">
       <End Role="Departments" EntitySet="Departments" />
       <End Role="Employees" EntitySet="Employees" />
     </AssociationSet>
-    <AssociationSet Name="FK__Employees__emp_g__1FCDBCEB" Association="Self.FK__Employees__emp_g__1FCDBCEB">
+    <AssociationSet Name="FK__Employees__emp_g__21B6055D" Association="Self.FK__Employees__emp_g__21B6055D">
       <End Role="Gender" EntitySet="Gender" />
       <End Role="Employees" EntitySet="Employees" />
     </AssociationSet>
-    <AssociationSet Name="FK__Employees__emp_p__21B6055D" Association="Self.FK__Employees__emp_p__21B6055D">
+    <AssociationSet Name="FK__Employees__emp_p__239E4DCF" Association="Self.FK__Employees__emp_p__239E4DCF">
       <End Role="Positions" EntitySet="Positions" />
       <End Role="Employees" EntitySet="Employees" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserAccou__roleI__1A14E395" Association="Self.FK__UserAccou__roleI__1A14E395">
+    <AssociationSet Name="FK__UserAccou__roleI__1BFD2C07" Association="Self.FK__UserAccou__roleI__1BFD2C07">
       <End Role="Roles" EntitySet="Roles" />
       <End Role="UserAccounts" EntitySet="UserAccounts" />
     </AssociationSet>

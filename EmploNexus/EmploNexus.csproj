@@ -89,9 +89,9 @@
       <DependentUpon>EmploNexus_Model.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\EmploNexus_Model.cs">
-      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\EmploNexus_Model.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -111,6 +111,9 @@
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\Salary.cs">
+      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\Status.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\UserAccount.cs">
@@ -329,8 +332,8 @@
     </Content>
     <Content Include="AppData\EmploNexus_Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EmploNexus_Model.cs</LastGenOutput>
       <DependentUpon>EmploNexus_Model.edmx</DependentUpon>
+      <LastGenOutput>EmploNexus_Model.cs</LastGenOutput>
     </Content>
     <Content Include="employee_account_business_time_clock_icon_124657.ico" />
     <None Include="Resources\refresh.png" />

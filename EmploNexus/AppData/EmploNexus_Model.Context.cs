@@ -35,6 +35,7 @@ namespace EmploNexus.AppData
         public DbSet<Position> Positions { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Salary> Salaries { get; set; }
+        public DbSet<Status> Status { get; set; }
         public DbSet<UserAccount> UserAccounts { get; set; }
         public DbSet<vw_all_attendance> vw_all_attendance { get; set; }
         public DbSet<vw_all_empID> vw_all_empID { get; set; }
@@ -43,7 +44,7 @@ namespace EmploNexus.AppData
         public DbSet<vw_all_salary> vw_all_salary { get; set; }
         public DbSet<vw_all_user_role> vw_all_user_role { get; set; }
     
-        public virtual int sp_addAttendance(Nullable<int> attendanceEmp_ID, Nullable<System.DateTime> attendanceDate, string attendanceStatus)
+        public virtual int sp_addAttendance(Nullable<int> attendanceEmp_ID, Nullable<System.DateTime> attendanceDate, Nullable<int> attendanceStatusId)
         {
             var attendanceEmp_IDParameter = attendanceEmp_ID.HasValue ?
                 new ObjectParameter("AttendanceEmp_ID", attendanceEmp_ID) :
@@ -53,11 +54,11 @@ namespace EmploNexus.AppData
                 new ObjectParameter("AttendanceDate", attendanceDate) :
                 new ObjectParameter("AttendanceDate", typeof(System.DateTime));
     
-            var attendanceStatusParameter = attendanceStatus != null ?
-                new ObjectParameter("AttendanceStatus", attendanceStatus) :
-                new ObjectParameter("AttendanceStatus", typeof(string));
+            var attendanceStatusIdParameter = attendanceStatusId.HasValue ?
+                new ObjectParameter("AttendanceStatusId", attendanceStatusId) :
+                new ObjectParameter("AttendanceStatusId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_addAttendance", attendanceEmp_IDParameter, attendanceDateParameter, attendanceStatusParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_addAttendance", attendanceEmp_IDParameter, attendanceDateParameter, attendanceStatusIdParameter);
         }
     
         public virtual int sp_addEmployee(Nullable<int> emp_ID, string emp_name, Nullable<int> emp_genderId, Nullable<System.DateTime> emp_DOB, string emp_email, Nullable<int> emp_departmentId, Nullable<int> emp_positionId)
@@ -167,7 +168,7 @@ namespace EmploNexus.AppData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_deleteUser", user_empIDParameter);
         }
     
-        public virtual int sp_updateAttendance(Nullable<int> attendanceNo, Nullable<System.DateTime> attendanceDate, string attendanceStatus)
+        public virtual int sp_updateAttendance(Nullable<int> attendanceNo, Nullable<System.DateTime> attendanceDate, Nullable<int> attendanceStatusId)
         {
             var attendanceNoParameter = attendanceNo.HasValue ?
                 new ObjectParameter("AttendanceNo", attendanceNo) :
@@ -177,11 +178,11 @@ namespace EmploNexus.AppData
                 new ObjectParameter("AttendanceDate", attendanceDate) :
                 new ObjectParameter("AttendanceDate", typeof(System.DateTime));
     
-            var attendanceStatusParameter = attendanceStatus != null ?
-                new ObjectParameter("AttendanceStatus", attendanceStatus) :
-                new ObjectParameter("AttendanceStatus", typeof(string));
+            var attendanceStatusIdParameter = attendanceStatusId.HasValue ?
+                new ObjectParameter("AttendanceStatusId", attendanceStatusId) :
+                new ObjectParameter("AttendanceStatusId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_updateAttendance", attendanceNoParameter, attendanceDateParameter, attendanceStatusParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_updateAttendance", attendanceNoParameter, attendanceDateParameter, attendanceStatusIdParameter);
         }
     
         public virtual int sp_updateEmployee(Nullable<int> emp_ID, string emp_name, Nullable<int> emp_genderId, Nullable<System.DateTime> emp_DOB, string emp_email, Nullable<int> emp_departmentId, Nullable<int> emp_positionId)

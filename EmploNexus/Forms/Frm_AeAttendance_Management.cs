@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmploNexus.AppData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,15 +13,26 @@ namespace EmploNexus.Forms
 {
     public partial class Frm_AeAttendance_Management : Form
     {
+        UserRepository repo;
+        EmploNexusu_uEntities db;
         public Frm_AeAttendance_Management()
         {
             InitializeComponent();
+            repo = new UserRepository();
+            db = new EmploNexusu_uEntities();
         }
 
         private void Frm_AeAttendance_Management_Load(object sender, EventArgs e)
         {
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
+            loadUser();
+        }
+
+        private void loadUser()
+        {
+            dgv_AllAttendanceWdetails.DataSource = repo.GetAllAttendance();
+            dgv_allempInfo.DataSource = repo.AllEmployeeInfo();
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
@@ -60,6 +72,16 @@ namespace EmploNexus.Forms
                 logout.Show();
                 this.Hide();
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

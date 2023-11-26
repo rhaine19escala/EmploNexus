@@ -6,7 +6,7 @@
         <MappingFragment StoreEntitySet="Attendance">
           <ScalarProperty Name="AttendanceNo" ColumnName="AttendanceNo" />
           <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
-          <ScalarProperty Name="AttendanceStatus" ColumnName="AttendanceStatus" />
+          <ScalarProperty Name="AttendanceStatusId" ColumnName="AttendanceStatusId" />
           <ScalarProperty Name="AttendanceEmp_ID" ColumnName="AttendanceEmp_ID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -70,6 +70,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="EmploNexusModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="statusId" ColumnName="statusId" />
+          <ScalarProperty Name="statusName" ColumnName="statusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="UserAccounts">
       <EntityTypeMapping TypeName="EmploNexusModel.UserAccount">
         <MappingFragment StoreEntitySet="UserAccounts">
@@ -86,6 +94,7 @@
         <MappingFragment StoreEntitySet="vw_all_attendance">
           <ScalarProperty Name="ATTENDANCE_NO_" ColumnName="ATTENDANCE NO." />
           <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE NAME" />
           <ScalarProperty Name="DATE" ColumnName="DATE" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
         </MappingFragment>

@@ -271,6 +271,7 @@ namespace EmploNexus.Forms
 
         private void btnempAdd_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
             String emp_id = txtempID.Text;
             String emp_name = txtempName.Text;
             String emp_email = txtempEmail.Text;
@@ -344,6 +345,7 @@ namespace EmploNexus.Forms
 
         private void btnempUpdate_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
             String emp_id = txtempID.Text;
             String emp_name = txtempName.Text;
             String emp_email = txtempEmail.Text;
@@ -496,6 +498,7 @@ namespace EmploNexus.Forms
 
         private void ClearInputFields()
         {
+            errorProvider1.Clear();
             txtempID.Clear();
             txtempName.Clear();
             txtempEmail.Clear();

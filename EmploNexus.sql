@@ -71,6 +71,39 @@ INSERT [dbo].[Gender] ([genderId], [genderName]) VALUES (1, N'Male');
 INSERT [dbo].[Gender] ([genderId], [genderName]) VALUES (2, N'Female');
 SET IDENTITY_INSERT [dbo].[Gender] OFF;
 
+-- Create a table for Status
+CREATE TABLE [dbo].[Status] (
+	[statusId] [int] IDENTITY(1,1) NOT NULL,
+    [statusName] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Status] PRIMARY KEY CLUSTERED 
+ ([statusId] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+----STATUSES
+--Present/In
+--Absent/Out
+--Late
+--Early Departure
+--Half Day
+--Remote/Telecommuting
+--On Leave
+--Business Trip/Travel
+--Training/Workshop
+
+USE [EmploNexus]
+GO
+SET IDENTITY_INSERT [dbo].[Status] ON;
+INSERT [dbo].[Status] ([statusId], [statusName]) VALUES (1, N'Present');
+INSERT [dbo].[Status] ([statusId], [statusName]) VALUES (2, N'Absent');
+INSERT [dbo].[Status] ([statusId], [statusName]) VALUES (3, N'Late');
+INSERT [dbo].[Status] ([statusId], [statusName]) VALUES (4, N'Early Departure');
+INSERT [dbo].[Status] ([statusId], [statusName]) VALUES (5, N'Half Day');
+INSERT [dbo].[Status] ([statusId], [statusName]) VALUES (6, N'Remote');
+INSERT [dbo].[Status] ([statusId], [statusName]) VALUES (7, N'On Leave');
+INSERT [dbo].[Status] ([statusId], [statusName]) VALUES (8, N'Business Trip');
+INSERT [dbo].[Status] ([statusId], [statusName]) VALUES (9, N'Training');
+SET IDENTITY_INSERT [dbo].[Status] OFF;
+
 -- Create a table for users
 CREATE TABLE UserAccounts (
     userNo INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
@@ -110,8 +143,9 @@ CREATE TABLE Salary (
 CREATE TABLE Attendance (
     AttendanceNo INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
     AttendanceDate DATE DEFAULT GETDATE() NOT NULL,
-    AttendanceStatus VARCHAR(20) DEFAULT 'Present' NOT NULL,
+    AttendanceStatusId int NOT NULL,
     AttendanceEmp_ID INT NOT NULL,
+	FOREIGN KEY (AttendanceStatusId) REFERENCES [Status](statusId),
     FOREIGN KEY (AttendanceEmp_ID) REFERENCES UserAccounts(user_empID)
 );
 
@@ -142,9 +176,9 @@ INNER JOIN UserAccounts ua ON s.Salaryemp_ID = ua.user_empID;
 ------VIEW ALL USER ATTENDANCE
 CREATE VIEW vw_all_attendance
 AS
-SELECT A.AttendanceNo AS 'ATTENDANCE NO.', A.AttendanceEmp_ID AS 'EMPLOYEE_ID', A.AttendanceDate AS 'DATE', A.AttendanceStatus AS 'STATUS'
+SELECT A.AttendanceNo AS 'ATTENDANCE NO.', A.AttendanceEmp_ID AS 'EMPLOYEE_ID', E.emp_name AS 'EMPLOYEE NAME', A.AttendanceDate AS 'DATE', A.AttendanceStatusId AS 'STATUS'
 FROM Attendance A
-INNER JOIN UserAccounts ua ON A.AttendanceEmp_ID = ua.user_empID;
+INNER JOIN Employees E ON A.AttendanceEmp_ID = E.emp_ID;
 
 ------VIEW ALL USER EMPLOYEE ID
 CREATE VIEW vw_all_empID
@@ -277,23 +311,23 @@ END;
 CREATE PROCEDURE sp_addAttendance
     @AttendanceEmp_ID INT,
     @AttendanceDate DATE,
-    @AttendanceStatus VARCHAR(20)
+    @AttendanceStatusId INT
 AS
 BEGIN
-    INSERT INTO Attendance (AttendanceEmp_ID, AttendanceDate, AttendanceStatus)
-    VALUES (@AttendanceEmp_ID, @AttendanceDate, @AttendanceStatus);
+    INSERT INTO Attendance (AttendanceEmp_ID, AttendanceDate, AttendanceStatusId)
+    VALUES (@AttendanceEmp_ID, @AttendanceDate, @AttendanceStatusId);
 END;
 
 ------STORED PROCEDURE UPDATE ATTENDANCE
 CREATE PROCEDURE sp_updateAttendance
     @AttendanceNo INT,
     @AttendanceDate DATE,
-    @AttendanceStatus VARCHAR(20)
+    @AttendanceStatusId INT
 AS
 BEGIN
     UPDATE Attendance
     SET AttendanceDate = @AttendanceDate,
-        AttendanceStatus = @AttendanceStatus
+        AttendanceStatusId = @AttendanceStatusId
     WHERE AttendanceNo = @AttendanceNo;
 END;
 

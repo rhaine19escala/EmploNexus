@@ -4,25 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="aa926d24038f455a97ff248ee45c4f05" Name="Diagram1">
-        <EntityTypeShape EntityType="EmploNexusModel.Attendance" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+      <Diagram DiagramId="e342b2f2504a46eb84ef5356702867d1" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="EmploNexusModel.Attendance" Width="1.5" PointX="5" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EmploNexusModel.Department" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="EmploNexusModel.Employee" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="EmploNexusModel.Gender" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EmploNexusModel.Position" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="EmploNexusModel.Role" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="EmploNexusModel.Salary" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploNexusModel.Salary" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploNexusModel.Status" Width="1.5" PointX="5" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="EmploNexusModel.UserAccount" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EmploNexusModel.vw_all_attendance" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EmploNexusModel.vw_all_empID" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EmploNexusModel.vw_all_empInfo" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EmploNexusModel.vw_all_employee" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EmploNexusModel.vw_all_salary" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploNexusModel.vw_all_attendance" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploNexusModel.vw_all_empID" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploNexusModel.vw_all_empInfo" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploNexusModel.vw_all_employee" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmploNexusModel.vw_all_salary" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EmploNexusModel.vw_all_user_role" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="EmploNexusModel.FK__Employees__emp_d__20C1E124" ManuallyRouted="false" />
-        <AssociationConnector Association="EmploNexusModel.FK__Employees__emp_g__1FCDBCEB" ManuallyRouted="false" />
-        <AssociationConnector Association="EmploNexusModel.FK__Employees__emp_p__21B6055D" ManuallyRouted="false" />
-        <AssociationConnector Association="EmploNexusModel.FK__UserAccou__roleI__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploNexusModel.FK__Attendanc__Atten__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploNexusModel.FK__Employees__emp_d__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploNexusModel.FK__Employees__emp_g__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploNexusModel.FK__Employees__emp_p__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="EmploNexusModel.FK__UserAccou__roleI__1BFD2C07" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

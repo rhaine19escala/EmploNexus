@@ -16,7 +16,9 @@ namespace EmploNexus.AppData
     {
         public int AttendanceNo { get; set; }
         public System.DateTime AttendanceDate { get; set; }
-        public string AttendanceStatus { get; set; }
+        public int AttendanceStatusId { get; set; }
         public int AttendanceEmp_ID { get; set; }
+    
+        public virtual Status Status { get; set; }
     }
 }

@@ -425,9 +425,63 @@ namespace EmploNexus.Forms
 
         public void ClearInputFields()
         {
+            errorProvider1.Clear();
             txtempID.Clear();
             txtempSalary.Clear();
             payrollDate.Value = DateTime.Today;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            using (var db = new EmploNexusu_uEntities())
+            {
+                try
+                {
+                    if (string.IsNullOrWhiteSpace(txtempSearch.Text))
+                    {
+                        MessageBox.Show("Please enter a valid Employee ID.", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        int user_empIDToSearch = Convert.ToInt32(txtempSearch.Text);
+                        Salary existingUser = db.Salaries.FirstOrDefault(u => u.Salaryemp_ID == user_empIDToSearch);
+                        if (existingUser != null)
+                        {
+                            var foundUserList = new List<vw_all_salary>
+                            {
+                                new vw_all_salary
+                                {
+                                    SALARY_NO_ = existingUser.salary_ID,
+                                    EMPLOYEE_ID = existingUser.Salaryemp_ID,
+                                    SALARY = existingUser.salary_Amount,
+                                    PAY_DATE = existingUser.salary_PayDate
+                                }
+                            };
+
+                            dgv_AllSalaryWdetails.DataSource = foundUserList;
+                            MessageBox.Show("Employee ID Found!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtempSearch.Text = "";
+                        }
+                        else
+                        {
+                            loadUser();
+                            txtempSearch.Text = "";
+                            MessageBox.Show("Employee ID not found!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    loadUser();
+                    txtempSearch.Text = "";
+                    MessageBox.Show($"Error searching for Employee ID. \nError: {ex.Message}", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            loadUser();
         }
     }
 }
