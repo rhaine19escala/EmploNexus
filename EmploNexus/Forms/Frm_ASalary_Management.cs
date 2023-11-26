@@ -31,11 +31,22 @@ namespace EmploNexus.Forms
 
             repo = new UserRepository();
             loadUser();
+            ConfigurePayrollDate();
+        }
+
+        private void ConfigurePayrollDate()
+        {
             payrollDate.Validating += payrollDate_Validating;
 
             payrollDate.Format = DateTimePickerFormat.Custom;
             payrollDate.CustomFormat = "MM/dd/yyyy";
             payrollDate.MinDate = DateTime.Today;
+        }
+
+        private void loadUser()
+        {
+            dgv_AllSalaryWdetails.DataSource = repo.GetEmployeeSalary();
+            dgv_allempInfo.DataSource = repo.AllEmployeeInfo();
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
@@ -88,11 +99,6 @@ namespace EmploNexus.Forms
             }
         }
 
-        private void loadUser()
-        {
-            dgv_AllSalaryWdetails.DataSource = repo.GetEmployeeSalary();
-            dgv_allempInfo.DataSource = repo.AllEmployeeInfo();
-        }
 
         private void dgv_AllSalaryWdetails_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -106,19 +112,13 @@ namespace EmploNexus.Forms
                 }
                 else
                 {
-                    payrollDate.Value = DateTime.Now;
+                    payrollDate.Value = DateTime.Today;
                 }
 
-                object cellValue = dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[3].Value;
-
-                if (cellValue != null && decimal.TryParse(cellValue.ToString(), out decimal salary))
+                if (decimal.TryParse(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[3].Value?.ToString(), out decimal salary))
                 {
-                    txtempSalary.Text = salary.ToString();
+                    txtempSalary.Text = salary.ToString("N0");
                 }
-
-                //decimal salaryCon = Convert.ToDecimal(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[3].Value);
-                //CultureInfo peso = new CultureInfo("en-PH");
-                //txtempSalary.Text = salaryCon.ToString("C", peso);
             }
             catch (Exception ex)
             {
@@ -284,7 +284,7 @@ namespace EmploNexus.Forms
             if(!IsValidSalary(salary))
             {
                 errorProvider1.Clear();
-                errorProvider1.SetError(txtempSalary, "Invalid Salary!");
+                errorProvider1.SetError(txtempSalary, "Salary should be a valid numerical value");
                 return;
             }
 
@@ -340,7 +340,7 @@ namespace EmploNexus.Forms
             if (!IsValidSalary(salary))
             {
                 errorProvider1.Clear();
-                errorProvider1.SetError(txtempSalary, "Invalid Salary!");
+                errorProvider1.SetError(txtempSalary, "Salary should be a valid numerical value");
                 return;
             }
 
