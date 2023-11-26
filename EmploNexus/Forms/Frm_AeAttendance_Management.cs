@@ -27,6 +27,28 @@ namespace EmploNexus.Forms
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
             loadUser();
+            ConfigureAttendanceDate();
+        }
+
+        private void attendanceDate_Validating(object sender, CancelEventArgs e)
+        {
+            DateTime selectedDate = attendanceDate.Value.Date;
+
+            if (selectedDate != DateTime.Today)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Please select the current date for attendance.", "EmploNexus: Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                attendanceDate.Value = DateTime.Today;
+            }
+        }
+
+        private void ConfigureAttendanceDate()
+        {
+            attendanceDate.Validating += attendanceDate_Validating;
+
+            attendanceDate.Format = DateTimePickerFormat.Custom;
+            attendanceDate.CustomFormat = "MM/dd/yyyy";
+            attendanceDate.MinDate = DateTime.Today;
         }
 
         private void loadUser()
@@ -71,6 +93,36 @@ namespace EmploNexus.Forms
                 Frm_Login logout = new Frm_Login();
                 logout.Show();
                 this.Hide();
+            }
+        }
+
+        private void dgv_AllAttendanceWdetails_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0 && e.RowIndex < dgv_AllAttendanceWdetails.Rows.Count)
+                {
+                    txtempID.Text = Convert.ToInt32(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[1].Value).ToString();
+
+                    if (DateTime.TryParse(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[2].Value?.ToString(), out DateTime selectedDate))
+                    {
+                        attendanceDate.Value = selectedDate;
+                    }
+                    else
+                    {
+                        attendanceDate.Value = DateTime.Today;
+                    }
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Invalid row index selected.", "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Encountered : " + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
