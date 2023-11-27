@@ -63,9 +63,6 @@ namespace EmploNexus.Forms
                 txtuserUsername.Text = user.username;
                 txtuserPassword.Text = user.password;
 
-                // Set Role based on the role name
-                SetComboBoxSelectedValue(cmbBoxRole, repo.GetRoleNameById(user.roleId));
-
                 // Display Employee details
                 Employee employee = repo.GetEmployeeById(userEmpId);
 
@@ -112,17 +109,6 @@ namespace EmploNexus.Forms
             loadCbBoxGender();
             loadCbBoxDepartment();
             loadCbBoxPosition();
-            loadCbBoxRole();
-        }
-
-        public void loadCbBoxRole()
-        {
-            // SELECT * FROM ROLE
-            var roles = db.Roles.ToList();
-
-            cmbBoxRole.ValueMember = "roleId";
-            cmbBoxRole.DisplayMember = "roleName";
-            cmbBoxRole.DataSource = roles;
         }
 
         public void loadCbBoxGender()
@@ -168,7 +154,6 @@ namespace EmploNexus.Forms
             //User Account Details
             txtuserUsername.Enabled = false;
             txtuserPassword.Enabled = false;
-            cmbBoxRole.Enabled = false;
             //Save Button
             btnSAVE.Enabled = false;
         }
@@ -186,7 +171,6 @@ namespace EmploNexus.Forms
             //User Account Details
             txtuserUsername.Enabled = false;
             txtuserPassword.Enabled = false;
-            cmbBoxRole.Enabled = false;
             //Save Button
             btnSAVE.Enabled = false;
 
@@ -206,7 +190,6 @@ namespace EmploNexus.Forms
             //User Account Details
             txtuserUsername.Enabled = true;
             txtuserPassword.Enabled = true;
-            cmbBoxRole.Enabled = true;
             //Save Button
             btnSAVE.Enabled = true;
 
