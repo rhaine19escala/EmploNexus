@@ -70,17 +70,17 @@ namespace EmploNexus
                     await Task.Delay(15000);
                     timer1.Stop();
 
-                    switch ((Role)userLogged.roleId)
+                    switch ((Roles)userLogged.roleId)
                     {
-                        case Role.Employee:
+                        case Roles.Employee:
                             new Frm_Employee_Dashboard().Show();
                             this.Hide();
                             break;
-                        case Role.Manager:
+                        case Roles.Manager:
                             new Frm_Manager_Dashboard().Show();
                             this.Hide();
                             break;
-                        case Role.Admin:
+                        case Roles.Admin:
                             new Frm_Admin_Dashboard().Show();
                             this.Hide();
                             break;

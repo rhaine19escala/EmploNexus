@@ -74,6 +74,72 @@ namespace EmploNexus
             return emploNexusEntities.vw_all_empInfo.OrderBy(e => e.EMPLOYEE_NO_).ToList();
         }
 
+        public string GetRoleNameById(int roleId)
+        {
+            var roleMapping = new Dictionary<int, string>
+            {
+                { 1, "Employee" },
+                { 2, "Manager" },
+                { 3, "Admin" },
+            };
+
+            if (roleMapping.TryGetValue(roleId, out var roleName))
+            {
+                return roleName;
+            }
+            return "Employee";
+        }
+
+        public string GetGenderNameById(int genderId)
+        {
+            var genderMapping = new Dictionary<int, string>
+            {
+                { 1, "Male" },
+                { 2, "Female" },
+            };
+
+            if (genderMapping.TryGetValue(genderId, out var genderName))
+            {
+                return genderName;
+            }
+            return "Male";
+        }
+
+        public string GetDepartmentNameById(int departmentId)
+        {
+            var departmentMapping = new Dictionary<int, string>
+            {
+                { 1, "Human Resources" },
+                { 2, "Finance" },
+                { 2, "Information Technology" }
+            };
+
+            if (departmentMapping.TryGetValue(departmentId, out var departmentName))
+            {
+                return departmentName;
+            }
+            return "Human Resources";
+        }
+
+        public string GetPositionNameById(int positionId)
+        {
+            var positionMapping = new Dictionary<int, string>
+            {
+                { 1, "HR Manager" },
+                { 2, "HR Generalist" },
+                { 3, "Finance Controller" },
+                { 4, "Accountant" },
+                { 5, "IT Manager" },
+                { 6, "Software Developer" },
+            };
+
+            if (positionMapping.TryGetValue(positionId, out var positionName))
+            {
+                return positionName;
+            }
+            return "HR Manager";
+        }
+
         public ErrorCode Register(String username, String password)
         {
             try

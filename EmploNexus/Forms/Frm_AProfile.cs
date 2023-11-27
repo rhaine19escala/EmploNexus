@@ -62,7 +62,9 @@ namespace EmploNexus.Forms
                 // Display UserAccount details
                 txtuserUsername.Text = user.username;
                 txtuserPassword.Text = user.password;
-                cmbBoxRole.SelectedValue = user.roleId;
+
+                // Set Role based on the role name
+                SetComboBoxSelectedValue(cmbBoxRole, repo.GetRoleNameById(user.roleId));
 
                 // Display Employee details
                 Employee employee = repo.GetEmployeeById(userEmpId);
@@ -71,11 +73,18 @@ namespace EmploNexus.Forms
                 {
                     txtempID.Text = employee.emp_ID.ToString();
                     txtempName.Text = employee.emp_name;
-                    cmbBox_empGender.SelectedValue = employee.emp_genderId;
+
+                    // Set Gender based on the gender name
+                    SetComboBoxSelectedValue(cmbBox_empGender, repo.GetGenderNameById(employee.emp_genderId));
+
                     DOB_date.Value = employee.emp_DOB;
                     txtempEmail.Text = employee.emp_email;
-                    cmbBox_empDepartment.SelectedValue = employee.emp_departmentId;
-                    cmbBox_empPosition.SelectedValue = employee.emp_positionId;
+
+                    // Set Department based on the department description
+                    SetComboBoxSelectedValue(cmbBox_empDepartment, repo.GetDepartmentNameById(employee.emp_departmentId));
+
+                    // Set Position based on the position description
+                    SetComboBoxSelectedValue(cmbBox_empPosition, repo.GetPositionNameById(employee.emp_positionId));
                 }
                 else
                 {
@@ -87,6 +96,16 @@ namespace EmploNexus.Forms
                 MessageBox.Show("User details not found!", "EmploNexus: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void SetComboBoxSelectedValue(ComboBox comboBox, string value)
+        {
+            int index = comboBox.FindStringExact(value);
+            if (index != -1)
+            {
+                comboBox.SelectedIndex = index;
+            }
+        }
+
 
         public void loadUser()
         {
@@ -212,7 +231,7 @@ namespace EmploNexus.Forms
 
         }
 
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        private void back_Click(object sender, EventArgs e)
         {
             //Admin Dashboard
             Frm_Admin_Dashboard admin_Dashboard = new Frm_Admin_Dashboard();
@@ -220,7 +239,7 @@ namespace EmploNexus.Forms
             this.Hide();
         }
 
-        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        private void useraccount_Click(object sender, EventArgs e)
         {
             //User Management
             Frm_AUser_Management aUser_Management = new Frm_AUser_Management();
@@ -228,7 +247,7 @@ namespace EmploNexus.Forms
             this.Hide();
         }
 
-        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        private void employee_Click(object sender, EventArgs e)
         {
             //Employee Management
             Frm_AEmployee_Management employee_Management = new Frm_AEmployee_Management();
@@ -236,7 +255,7 @@ namespace EmploNexus.Forms
             this.Hide();
         }
 
-        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        private void salary_Click(object sender, EventArgs e)
         {
             //Salary Management
             Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
@@ -244,7 +263,7 @@ namespace EmploNexus.Forms
             this.Hide();
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void attendance_Click(object sender, EventArgs e)
         {
             //Attendance Management
             Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
@@ -252,9 +271,8 @@ namespace EmploNexus.Forms
             this.Hide();
         }
 
-        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        private void logout_Click(object sender, EventArgs e)
         {
-            //Log out
             DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (res == DialogResult.OK)
             {

@@ -57,9 +57,18 @@
             this.txtCurrentDate = new System.Windows.Forms.TextBox();
             this.btnSAVE = new System.Windows.Forms.Button();
             this.btnEDIT = new System.Windows.Forms.Button();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.back = new System.Windows.Forms.ToolStripMenuItem();
+            this.useraccount = new System.Windows.Forms.ToolStripMenuItem();
+            this.employee = new System.Windows.Forms.ToolStripMenuItem();
+            this.salary = new System.Windows.Forms.ToolStripMenuItem();
+            this.attendance = new System.Windows.Forms.ToolStripMenuItem();
+            this.logout = new System.Windows.Forms.ToolStripMenuItem();
             this.grpEmployee.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpButtons.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtCurrentTime
@@ -79,7 +88,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.LightBlue;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(319, 44);
             this.label1.TabIndex = 18;
@@ -392,6 +401,74 @@
             this.btnEDIT.UseVisualStyleBackColor = false;
             this.btnEDIT.Click += new System.EventHandler(this.btnEDIT_Click);
             // 
+            // menuStrip2
+            // 
+            this.menuStrip2.BackColor = System.Drawing.Color.SteelBlue;
+            this.menuStrip2.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.menuStrip2.Size = new System.Drawing.Size(894, 32);
+            this.menuStrip2.TabIndex = 38;
+            this.menuStrip2.Text = "menu_File";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.back,
+            this.useraccount,
+            this.employee,
+            this.salary,
+            this.attendance,
+            this.logout});
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(49, 26);
+            this.toolStripMenuItem2.Text = "File";
+            // 
+            // back
+            // 
+            this.back.Name = "back";
+            this.back.Size = new System.Drawing.Size(280, 26);
+            this.back.Text = "Back";
+            this.back.Click += new System.EventHandler(this.back_Click);
+            // 
+            // useraccount
+            // 
+            this.useraccount.Name = "useraccount";
+            this.useraccount.Size = new System.Drawing.Size(280, 26);
+            this.useraccount.Text = "User Account Management";
+            this.useraccount.Click += new System.EventHandler(this.useraccount_Click);
+            // 
+            // employee
+            // 
+            this.employee.Name = "employee";
+            this.employee.Size = new System.Drawing.Size(280, 26);
+            this.employee.Text = "Employee Management";
+            this.employee.Click += new System.EventHandler(this.employee_Click);
+            // 
+            // salary
+            // 
+            this.salary.Name = "salary";
+            this.salary.Size = new System.Drawing.Size(280, 26);
+            this.salary.Text = "Salary Management";
+            this.salary.Click += new System.EventHandler(this.salary_Click);
+            // 
+            // attendance
+            // 
+            this.attendance.Name = "attendance";
+            this.attendance.Size = new System.Drawing.Size(280, 26);
+            this.attendance.Text = "Attendance Management";
+            this.attendance.Click += new System.EventHandler(this.attendance_Click);
+            // 
+            // logout
+            // 
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(280, 26);
+            this.logout.Text = "Log out";
+            this.logout.Click += new System.EventHandler(this.logout_Click);
+            // 
             // Frm_AProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -399,11 +476,12 @@
             this.BackgroundImage = global::EmploNexus.Properties.Resources._6765093_3429734;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(894, 443);
+            this.Controls.Add(this.txtCurrentTime);
+            this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.grpButtons);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpEmployee);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtCurrentTime);
             this.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -419,6 +497,8 @@
             this.groupBox1.PerformLayout();
             this.grpButtons.ResumeLayout(false);
             this.grpButtons.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,5 +533,13 @@
         private System.Windows.Forms.Button btnSAVE;
         private System.Windows.Forms.Button btnEDIT;
         private System.Windows.Forms.TextBox txtCurrentDate;
+        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem back;
+        private System.Windows.Forms.ToolStripMenuItem useraccount;
+        private System.Windows.Forms.ToolStripMenuItem employee;
+        private System.Windows.Forms.ToolStripMenuItem salary;
+        private System.Windows.Forms.ToolStripMenuItem attendance;
+        private System.Windows.Forms.ToolStripMenuItem logout;
     }
 }

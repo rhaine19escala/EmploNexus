@@ -111,7 +111,7 @@ namespace EmploNexus.Forms
         {
             //Profile
            Frm_AProfile aProfile = new Frm_AProfile();
-            aProfile.ShowDialog();
+            aProfile.Show();
             this.Hide();
         }
     }

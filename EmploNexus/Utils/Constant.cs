@@ -11,20 +11,20 @@ namespace EmploNexus
         Success = 0,
         Error = 1
     }
-    public enum Role
+    public enum Roles
     {
         Employee = 1,
         Manager = 2,
         Admin = 3
     }
 
-    public enum Gender
+    public enum Genders
     {
         Male = 1,
         Female = 2
     }
 
-    public enum Department
+    public enum Departments
     {
         HR = 1,
         Finance = 2,
