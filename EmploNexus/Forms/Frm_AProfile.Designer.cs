@@ -29,14 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_AProfile));
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.grpEmployee = new System.Windows.Forms.GroupBox();
@@ -62,76 +54,13 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.grpButtons = new System.Windows.Forms.GroupBox();
+            this.txtCurrentDate = new System.Windows.Forms.TextBox();
             this.btnSAVE = new System.Windows.Forms.Button();
             this.btnEDIT = new System.Windows.Forms.Button();
-            this.txtCurrentDate = new System.Windows.Forms.TextBox();
-            this.menuStrip2.SuspendLayout();
             this.grpEmployee.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpButtons.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip2
-            // 
-            this.menuStrip2.BackColor = System.Drawing.Color.SteelBlue;
-            this.menuStrip2.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStrip2.Size = new System.Drawing.Size(894, 32);
-            this.menuStrip2.TabIndex = 16;
-            this.menuStrip2.Text = "menu_File";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem7});
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(49, 26);
-            this.toolStripMenuItem2.Text = "File";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(280, 26);
-            this.toolStripMenuItem3.Text = "Back";
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(280, 26);
-            this.toolStripMenuItem4.Text = "User Account Management";
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(280, 26);
-            this.toolStripMenuItem5.Text = "Employee Management";
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(280, 26);
-            this.toolStripMenuItem6.Text = "Salary Management";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(280, 26);
-            this.toolStripMenuItem1.Text = "Attendance Management";
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(280, 26);
-            this.toolStripMenuItem7.Text = "Log out";
             // 
             // txtCurrentTime
             // 
@@ -150,7 +79,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.LightBlue;
-            this.label1.Location = new System.Drawing.Point(12, 44);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(319, 44);
             this.label1.TabIndex = 18;
@@ -427,12 +356,22 @@
             this.grpButtons.TabIndex = 37;
             this.grpButtons.TabStop = false;
             // 
+            // txtCurrentDate
+            // 
+            this.txtCurrentDate.BackColor = System.Drawing.Color.LightCyan;
+            this.txtCurrentDate.Location = new System.Drawing.Point(35, 34);
+            this.txtCurrentDate.Name = "txtCurrentDate";
+            this.txtCurrentDate.ReadOnly = true;
+            this.txtCurrentDate.Size = new System.Drawing.Size(359, 33);
+            this.txtCurrentDate.TabIndex = 38;
+            this.txtCurrentDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // btnSAVE
             // 
             this.btnSAVE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
             this.btnSAVE.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSAVE.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnSAVE.Location = new System.Drawing.Point(29, 80);
+            this.btnSAVE.Location = new System.Drawing.Point(35, 80);
             this.btnSAVE.Name = "btnSAVE";
             this.btnSAVE.Size = new System.Drawing.Size(169, 32);
             this.btnSAVE.TabIndex = 28;
@@ -445,7 +384,7 @@
             this.btnEDIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
             this.btnEDIT.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEDIT.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnEDIT.Location = new System.Drawing.Point(219, 80);
+            this.btnEDIT.Location = new System.Drawing.Point(225, 80);
             this.btnEDIT.Name = "btnEDIT";
             this.btnEDIT.Size = new System.Drawing.Size(169, 32);
             this.btnEDIT.TabIndex = 29;
@@ -453,20 +392,11 @@
             this.btnEDIT.UseVisualStyleBackColor = false;
             this.btnEDIT.Click += new System.EventHandler(this.btnEDIT_Click);
             // 
-            // txtCurrentDate
-            // 
-            this.txtCurrentDate.BackColor = System.Drawing.Color.LightCyan;
-            this.txtCurrentDate.Location = new System.Drawing.Point(29, 34);
-            this.txtCurrentDate.Name = "txtCurrentDate";
-            this.txtCurrentDate.ReadOnly = true;
-            this.txtCurrentDate.Size = new System.Drawing.Size(359, 33);
-            this.txtCurrentDate.TabIndex = 38;
-            this.txtCurrentDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // Frm_AProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::EmploNexus.Properties.Resources._6765093_3429734;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(894, 443);
             this.Controls.Add(this.grpButtons);
@@ -474,19 +404,15 @@
             this.Controls.Add(this.grpEmployee);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCurrentTime);
-            this.Controls.Add(this.menuStrip2);
             this.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Frm_AProfile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EmploNexus: Profile ";
             this.Load += new System.EventHandler(this.Frm_AProfile_Load);
-            this.menuStrip2.ResumeLayout(false);
-            this.menuStrip2.PerformLayout();
             this.grpEmployee.ResumeLayout(false);
             this.grpEmployee.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -499,15 +425,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.TextBox txtCurrentTime;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox grpEmployee;

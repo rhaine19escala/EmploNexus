@@ -16,6 +16,7 @@ namespace EmploNexus.Forms
     {
         UserRepository repo;
         EmploNexusu_uEntities db;
+
         public Frm_AeAttendance_Management()
         {
             InitializeComponent();

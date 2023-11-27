@@ -28,6 +28,12 @@ namespace EmploNexus
             return emploNexusEntities.UserAccounts.Where(s => s.username == username).FirstOrDefault();
         }
 
+        public Employee GetEmployeeById(int userEmpId)
+        {
+            emploNexusEntities = new EmploNexusu_uEntities();
+            return emploNexusEntities.Employees.FirstOrDefault(e => e.emp_ID == userEmpId);
+        }
+
         public List<vw_all_user_role> GetAllUserRole()
         {
             emploNexusEntities = new EmploNexusu_uEntities();

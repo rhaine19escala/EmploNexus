@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmploNexus.AppData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,8 @@ namespace EmploNexus.Forms
         private void Frm_Admin_Dashboard_Load(object sender, EventArgs e)
         {
             Frm_Login frm = new Frm_Login();
-            txtName_User.Text = frm.user_Name;
+            txtName_User.Text = frm.LoggedInUsername;
+
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
             txtCurrentDate.Text = currentTime.ToString("MM-d-yyyy");
@@ -108,8 +110,8 @@ namespace EmploNexus.Forms
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             //Profile
-            Frm_AProfile aProfile = new Frm_AProfile();
-            aProfile.Show();
+           Frm_AProfile aProfile = new Frm_AProfile();
+            aProfile.ShowDialog();
             this.Hide();
         }
     }

@@ -57,8 +57,8 @@ namespace EmploNexus
             // txtusername
             // 
             this.txtusername.BackColor = System.Drawing.Color.LightCyan;
-            this.txtusername.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtusername.Location = new System.Drawing.Point(109, 37);
+            this.txtusername.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtusername.Location = new System.Drawing.Point(113, 37);
             this.txtusername.Multiline = true;
             this.txtusername.Name = "txtusername";
             this.txtusername.Size = new System.Drawing.Size(183, 29);
@@ -67,30 +67,30 @@ namespace EmploNexus
             // lblusername
             // 
             this.lblusername.AutoSize = true;
-            this.lblusername.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblusername.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblusername.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.lblusername.Location = new System.Drawing.Point(10, 38);
+            this.lblusername.Location = new System.Drawing.Point(8, 38);
             this.lblusername.Name = "lblusername";
-            this.lblusername.Size = new System.Drawing.Size(93, 24);
+            this.lblusername.Size = new System.Drawing.Size(103, 26);
             this.lblusername.TabIndex = 1;
             this.lblusername.Text = "Username";
             // 
             // lblpassword
             // 
             this.lblpassword.AutoSize = true;
-            this.lblpassword.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblpassword.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblpassword.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.lblpassword.Location = new System.Drawing.Point(14, 73);
+            this.lblpassword.Location = new System.Drawing.Point(12, 73);
             this.lblpassword.Name = "lblpassword";
-            this.lblpassword.Size = new System.Drawing.Size(89, 24);
+            this.lblpassword.Size = new System.Drawing.Size(96, 26);
             this.lblpassword.TabIndex = 3;
             this.lblpassword.Text = "Password";
             // 
             // txtpassword
             // 
             this.txtpassword.BackColor = System.Drawing.Color.LightCyan;
-            this.txtpassword.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpassword.Location = new System.Drawing.Point(109, 72);
+            this.txtpassword.Font = new System.Drawing.Font("Palatino Linotype", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpassword.Location = new System.Drawing.Point(113, 72);
             this.txtpassword.Multiline = true;
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.PasswordChar = '•';
@@ -147,6 +147,7 @@ namespace EmploNexus
             this.linklbl_register.ActiveLinkColor = System.Drawing.Color.DarkMagenta;
             this.linklbl_register.AutoSize = true;
             this.linklbl_register.BackColor = System.Drawing.Color.Transparent;
+            this.linklbl_register.DisabledLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.linklbl_register.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linklbl_register.ForeColor = System.Drawing.Color.Aqua;
             this.linklbl_register.LinkColor = System.Drawing.Color.MidnightBlue;
@@ -161,10 +162,10 @@ namespace EmploNexus
             // chckbox_showpass
             // 
             this.chckbox_showpass.AutoSize = true;
-            this.chckbox_showpass.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chckbox_showpass.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chckbox_showpass.Location = new System.Drawing.Point(109, 107);
             this.chckbox_showpass.Name = "chckbox_showpass";
-            this.chckbox_showpass.Size = new System.Drawing.Size(126, 22);
+            this.chckbox_showpass.Size = new System.Drawing.Size(147, 26);
             this.chckbox_showpass.TabIndex = 4;
             this.chckbox_showpass.Text = "Show Password";
             this.chckbox_showpass.UseVisualStyleBackColor = true;
@@ -266,7 +267,6 @@ namespace EmploNexus
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Frm_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EmploNexus";

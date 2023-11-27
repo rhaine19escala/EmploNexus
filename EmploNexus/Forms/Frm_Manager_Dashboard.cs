@@ -20,7 +20,7 @@ namespace EmploNexus.Forms
         private void Frm_Manager_Dashboard_Load(object sender, EventArgs e)
         {
             Frm_Login frm = new Frm_Login();
-            txtName_User.Text = frm.user_Name;
+            txtName_User.Text = frm.LoggedInUsername;
 
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");

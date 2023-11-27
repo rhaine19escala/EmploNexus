@@ -12,6 +12,10 @@ namespace EmploNexus
         private static UserLogged _instance;
 
         public UserAccount UserAccounts { get; set; }
+        public Employee Employee { get; set; }
+        public Salary Salary { get; set; }
+        public Attendance Attendance { get; set; } 
+
 
         private UserLogged()
         {

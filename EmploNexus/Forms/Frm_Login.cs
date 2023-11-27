@@ -18,7 +18,7 @@ namespace EmploNexus
 {
     public partial class Frm_Login : Form
     {
-        public String user_Name = String.Empty;
+        public String LoggedInUsername = String.Empty;
         UserRepository userRepo;
 
         public Frm_Login()
@@ -30,15 +30,13 @@ namespace EmploNexus
 
         private void Login_Load(object sender, EventArgs e)
         {
-            //EDIT THIS ONE(NEEDED TO BE PASS ONTO ANOTHER FORM (ASAP!!)
-            user_Name = txtusername.Text;
+            LoggedInUsername = txtusername.Text;
         }
 
         private void linklbl_register_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Frm_Registration frm = new Frm_Registration();
             frm.ShowDialog();
-
             txtusername.Text = frm.username;
         }
 
@@ -61,7 +59,7 @@ namespace EmploNexus
 
             var userLogged = userRepo.GetUserByUsername(txtusername.Text);
 
-            btnLogin.Enabled = false; // Disable the button during the login process
+            btnLogin.Enabled = false;
 
             if (userLogged != null)
             {
@@ -106,9 +104,6 @@ namespace EmploNexus
             }
             btnLogin.Enabled = true; 
         }
-
-
-
 
         private void chckbox_showpass_CheckedChanged(object sender, EventArgs e)
         {

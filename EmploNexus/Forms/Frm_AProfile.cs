@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EmploNexus;
 
 namespace EmploNexus.Forms
 {
@@ -16,12 +17,27 @@ namespace EmploNexus.Forms
         UserRepository repo;
         EmploNexusu_uEntities db;
         private bool isEditing = false;
+        private int loggedInempID;
+        private string loggedUsername;
 
         public Frm_AProfile()
         {
             InitializeComponent();
             repo = new UserRepository();
             db = new EmploNexusu_uEntities();
+
+            //
+            loggedInempID = UserLogged.GetInstance().UserAccounts.user_empID;
+            loggedUsername = UserLogged.GetInstance().UserAccounts.username;
+
+            try
+            {
+                DisplayEmployeeData(loggedInempID);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Frm_AProfile_Load(object sender, EventArgs e)
@@ -30,8 +46,46 @@ namespace EmploNexus.Forms
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
             txtCurrentDate.Text = currentTime.ToString("D");
 
+            DOB_date.Format = DateTimePickerFormat.Custom;
+            DOB_date.CustomFormat = "MM/dd/yyyy";
+
             DisableStartProfileState();
             loadUser();
+        }
+
+        private void DisplayEmployeeData(int userEmpId)
+        {
+            UserAccount user = repo.GetUserByUsername(loggedUsername);
+
+            if (user != null)
+            {
+                // Display UserAccount details
+                txtuserUsername.Text = user.username;
+                txtuserPassword.Text = user.password;
+                cmbBoxRole.SelectedValue = user.roleId;
+
+                // Display Employee details
+                Employee employee = repo.GetEmployeeById(userEmpId);
+
+                if (employee != null)
+                {
+                    txtempID.Text = employee.emp_ID.ToString();
+                    txtempName.Text = employee.emp_name;
+                    cmbBox_empGender.SelectedValue = employee.emp_genderId;
+                    DOB_date.Value = employee.emp_DOB;
+                    txtempEmail.Text = employee.emp_email;
+                    cmbBox_empDepartment.SelectedValue = employee.emp_departmentId;
+                    cmbBox_empPosition.SelectedValue = employee.emp_positionId;
+                }
+                else
+                {
+                    MessageBox.Show("Employee details not found!", "EmploNexus: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("User details not found!", "EmploNexus: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         public void loadUser()
@@ -152,9 +206,62 @@ namespace EmploNexus.Forms
             }
         }
 
+
         private void btnSAVE_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            //Admin Dashboard
+            Frm_Admin_Dashboard admin_Dashboard = new Frm_Admin_Dashboard();
+            admin_Dashboard.Show();
+            this.Hide();
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            //User Management
+            Frm_AUser_Management aUser_Management = new Frm_AUser_Management();
+            aUser_Management.Show();
+            this.Hide();
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            //Employee Management
+            Frm_AEmployee_Management employee_Management = new Frm_AEmployee_Management();
+            employee_Management.Show();
+            this.Hide();
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            //Salary Management
+            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
+            aSalary_Management.Show();
+            this.Hide();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //Attendance Management
+            Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
+            attendance_Management.Show();
+            this.Hide();
+        }
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            //Log out
+            DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (res == DialogResult.OK)
+            {
+                Frm_Login logout = new Frm_Login();
+                logout.Show();
+                this.Hide();
+            }
         }
     }
 }
