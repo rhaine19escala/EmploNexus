@@ -149,6 +149,12 @@
     <Compile Include="Forms\Frm_Admin_Dashboard.Designer.cs">
       <DependentUpon>Frm_Admin_Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Frm_AProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_AProfile.Designer.cs">
+      <DependentUpon>Frm_AProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Frm_ASalary_Management.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_Admin_Dashboard.resx">
       <DependentUpon>Frm_Admin_Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_AProfile.resx">
+      <DependentUpon>Frm_AProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_ASalary_Management.resx">
       <DependentUpon>Frm_ASalary_Management.cs</DependentUpon>

@@ -28,3 +28,4 @@ C:\Users\User\source\repos\EmploNexus\EmploNexus\obj\Debug\EmploNexus.Forms.Frm_
 C:\Users\User\source\repos\EmploNexus\EmploNexus\obj\Debug\EmploNexus.Forms.Frm_MViewEmployee.resources
 C:\Users\User\source\repos\EmploNexus\EmploNexus\obj\Debug\EmploNexus.Forms.Frm_MViewSalary.resources
 C:\Users\User\source\repos\EmploNexus\EmploNexus\obj\Debug\EmploNexus.Forms.Frm_AeAttendance_Management.resources
+C:\Users\User\source\repos\EmploNexus\EmploNexus\obj\Debug\EmploNexus.Forms.Frm_AProfile.resources

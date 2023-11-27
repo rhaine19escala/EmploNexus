@@ -108,7 +108,9 @@ namespace EmploNexus.Forms
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             //Profile
-
+            Frm_AProfile aProfile = new Frm_AProfile();
+            aProfile.Show();
+            this.Hide();
         }
     }
 }
