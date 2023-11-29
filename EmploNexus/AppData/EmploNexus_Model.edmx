@@ -176,6 +176,18 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_all_user_role' does not have a p
           <Property Name="PASSWORD" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="ROLE" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EmploNexus.dbo.vw_emp_salary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_emp_salary">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+            <PropertyRef Name="PAY_DATE" />
+            <PropertyRef Name="SALARY" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="int" Nullable="false" />
+          <Property Name="PAY_DATE" Type="date" Nullable="false" />
+          <Property Name="SALARY" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Attendanc__Atten__2B3F6F97">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
           <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
@@ -369,6 +381,13 @@ FROM [dbo].[vw_all_salary] AS [vw_all_salary]</DefiningQuery>
 [vw_all_user_role].[PASSWORD] AS [PASSWORD], 
 [vw_all_user_role].[ROLE] AS [ROLE]
 FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_emp_salary" EntityType="Self.vw_emp_salary" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_emp_salary].[EMPLOYEE_ID] AS [EMPLOYEE_ID], 
+[vw_emp_salary].[PAY_DATE] AS [PAY_DATE], 
+[vw_emp_salary].[SALARY] AS [SALARY]
+FROM [dbo].[vw_emp_salary] AS [vw_emp_salary]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__Attendanc__Atten__2B3F6F97" Association="Self.FK__Attendanc__Atten__2B3F6F97">
             <End Role="Status" EntitySet="Status" />
@@ -565,6 +584,16 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <Property Name="PASSWORD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ROLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="vw_emp_salary">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+            <PropertyRef Name="PAY_DATE" />
+            <PropertyRef Name="SALARY" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
+          <Property Name="PAY_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SALARY" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Attendanc__Atten__2B3F6F97">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
           <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
@@ -641,6 +670,7 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
           <EntitySet Name="vw_all_employee" EntityType="Self.vw_all_employee" />
           <EntitySet Name="vw_all_salary" EntityType="Self.vw_all_salary" />
           <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" />
+          <EntitySet Name="vw_emp_salary" EntityType="Self.vw_emp_salary" />
           <AssociationSet Name="FK__Attendanc__Atten__2B3F6F97" Association="Self.FK__Attendanc__Atten__2B3F6F97">
             <End Role="Status" EntitySet="Status" />
             <End Role="Attendance" EntitySet="Attendances" />
@@ -880,6 +910,15 @@ FROM [dbo].[vw_all_user_role] AS [vw_all_user_role]</DefiningQuery>
                 <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
                 <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
                 <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_emp_salary">
+            <EntityTypeMapping TypeName="EmploNexusModel.vw_emp_salary">
+              <MappingFragment StoreEntitySet="vw_emp_salary">
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+                <ScalarProperty Name="PAY_DATE" ColumnName="PAY_DATE" />
+                <ScalarProperty Name="SALARY" ColumnName="SALARY" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -173,6 +173,13 @@ SELECT S.salary_ID AS 'SALARY NO.', S.Salaryemp_ID AS 'EMPLOYEE_ID', S.salary_Pa
 FROM Salary S
 INNER JOIN UserAccounts ua ON s.Salaryemp_ID = ua.user_empID;
 
+------VIEW ALL USER SALARY
+CREATE VIEW vw_emp_salary
+AS
+SELECT S.Salaryemp_ID AS 'EMPLOYEE_ID', S.salary_PayDate AS 'PAY_DATE', S.salary_Amount AS 'SALARY'
+FROM Salary S
+INNER JOIN UserAccounts ua ON s.Salaryemp_ID = ua.user_empID;
+
 ------VIEW ALL USER ATTENDANCE
 CREATE VIEW vw_all_attendance
 AS
