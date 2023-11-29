@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -73,6 +74,49 @@ namespace EmploNexus
             emploNexusEntities = new EmploNexusu_uEntities();
             return emploNexusEntities.vw_all_empInfo.OrderBy(e => e.EMPLOYEE_NO_).ToList();
         }
+
+        public void UpdateEmployeeData(int empId, string empName, int genderId, DateTime dob, string empEmail, int departmentId, int positionId)
+        {
+            var employee = emploNexusEntities.Employees.FirstOrDefault(e => e.emp_ID == empId);
+
+            if (employee != null)
+            {
+                employee.emp_name = empName;
+                employee.emp_genderId = genderId;
+                employee.emp_DOB = dob;
+                employee.emp_email = empEmail;
+                employee.emp_departmentId = departmentId;
+                employee.emp_positionId = positionId;
+                emploNexusEntities.SaveChanges();
+            }
+            else
+            {
+                throw new InvalidOperationException("Employee not found");
+            }
+        }
+
+        public void UpdateUserData(int empId, string newUsername)
+        {
+            var user = emploNexusEntities.UserAccounts.FirstOrDefault(u => u.user_empID == empId);
+
+            if (user != null)
+            {
+                if (!string.IsNullOrEmpty(newUsername))
+                {
+                    user.username = newUsername;
+                    emploNexusEntities.SaveChanges();
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid new username");
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException("User not found");
+            }
+        }
+
 
         public string GetRoleNameById(int roleId)
         {

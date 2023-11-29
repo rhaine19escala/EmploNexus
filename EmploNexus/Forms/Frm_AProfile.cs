@@ -55,6 +55,7 @@ namespace EmploNexus.Forms
 
         private void DisplayEmployeeData(int userEmpId)
         {
+            //NOTE: COMBO BOX DATA STILL NOT DISPLAYING NEED ASAP ATTENTION!!
             try
             {
                 UserAccount user = repo.GetUserByUsername(loggedUsername);
@@ -222,8 +223,31 @@ namespace EmploNexus.Forms
 
         private void btnSAVE_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int empId = loggedInempID;
+                string newUsername = txtuserUsername.Text;
 
+                string empName = txtempName.Text;
+                int genderId = (int)cmbBox_empGender.SelectedValue;
+                DateTime dob = DOB_date.Value;
+                string empEmail = txtempEmail.Text;
+                int departmentId = (int)cmbBox_empDepartment.SelectedValue;
+                int positionId = (int)cmbBox_empPosition.SelectedValue;
+
+                repo.UpdateUserData(empId, newUsername);
+
+                repo.UpdateEmployeeData(empId, empName, genderId, dob, empEmail, departmentId, positionId);
+
+                MessageBox.Show("Employee Info updated successfully.", "EmploNexus: Profile", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DisableEditing();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating data: " + ex.Message, "EmploNexus: Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void back_Click(object sender, EventArgs e)
         {

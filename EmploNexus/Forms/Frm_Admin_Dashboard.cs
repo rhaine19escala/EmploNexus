@@ -13,15 +13,16 @@ namespace EmploNexus.Forms
 {
     public partial class Frm_Admin_Dashboard : Form
     {
+        UserRepository repo;
         public Frm_Admin_Dashboard()
         {
             InitializeComponent();
+            repo = new UserRepository();
         }
 
         private void Frm_Admin_Dashboard_Load(object sender, EventArgs e)
         {
-            Frm_Login frm = new Frm_Login();
-            txtName_User.Text = frm.LoggedInUsername;
+            txtName_User.Text = UserLogged.GetInstance().UserAccounts.username.ToUpper();
 
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
