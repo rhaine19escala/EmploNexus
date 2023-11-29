@@ -133,7 +133,7 @@ namespace EmploNexus.Forms
             // 
             // dgv_SalaryEmp
             // 
-            this.dgv_SalaryEmp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_SalaryEmp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgv_SalaryEmp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv_SalaryEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_SalaryEmp.GridColor = System.Drawing.Color.SteelBlue;

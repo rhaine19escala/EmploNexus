@@ -22,6 +22,7 @@ namespace EmploNexus.Forms
         {
             InitializeComponent();
             db = new EmploNexusu_uEntities();
+            repo = new UserRepository();
         }
 
         private void Frm_ASalary_Management_Load(object sender, EventArgs e)
@@ -29,7 +30,6 @@ namespace EmploNexus.Forms
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
 
-            repo = new UserRepository();
             loadUser();
             ConfigurePayrollDate();
         }
@@ -275,13 +275,13 @@ namespace EmploNexus.Forms
                 errorProvider1.SetError(txtempID, "Invalid Employee ID Format!");
                 return;
             }         
-            int empID = Convert.ToInt32(emp_id);
-            if (EmpIDExistsInOtherTable(empID, dgv_AllSalaryWdetails))
-            {
-                errorProvider1.Clear();
-                errorProvider1.SetError(txtempID, $"Employee with ID {empID} is already added!");
-                return;
-            }
+            //int empID = Convert.ToInt32(emp_id);
+            //if (EmpIDExistsInOtherTable(empID, dgv_AllSalaryWdetails))
+            //{
+            //    errorProvider1.Clear();
+            //    errorProvider1.SetError(txtempID, $"Employee with ID {empID} is already added!");
+            //    return;
+            //}
             if(String.IsNullOrEmpty(salary))
             {
                 errorProvider1.Clear();

@@ -310,13 +310,13 @@ namespace EmploNexus.Forms
                 errorProvider1.SetError(txtempID, "Invalid Employee ID Format!");
                 return;
             }
-            int empID = Convert.ToInt32(emp_id);
-            if (EmpIDExistsInOtherTable(empID, dgv_AllAttendanceWdetails))
-            {
-                errorProvider1.Clear();
-                errorProvider1.SetError(txtempID, $"Employee with ID {empID} is already added!");
-                return;
-            }
+            //int empID = Convert.ToInt32(emp_id);
+            //if (EmpIDExistsInOtherTable(empID, dgv_AllAttendanceWdetails))
+            //{
+            //    errorProvider1.Clear();
+            //    errorProvider1.SetError(txtempID, $"Employee with ID {empID} is already added!");
+            //    return;
+            //}
 
             try
             {

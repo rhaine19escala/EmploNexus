@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmploNexus.AppData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,15 @@ namespace EmploNexus.Forms
 {
     public partial class Frm_EViewSalary : Form
     {
+        UserRepository repo;
+        EmploNexusu_uEntities db;
+
         public Frm_EViewSalary()
         {
             
-            InitializeComponent();         
+            InitializeComponent();
+            db = new EmploNexusu_uEntities();
+            repo = new UserRepository();
         }
 
         private void Frm_Employee_Dashboard_Load(object sender, EventArgs e)
@@ -25,6 +31,14 @@ namespace EmploNexus.Forms
 
             payrollDate.Format = DateTimePickerFormat.Custom;
             payrollDate.CustomFormat = "MM/dd/yyyy";
+
+            loadUser();
+        }
+
+        private void loadUser()
+        {
+            int empId = UserLogged.GetInstance().UserAccounts.user_empID;
+            dgv_SalaryEmp.DataSource = repo.GetSalary(empId);
         }
 
         private void logoutToolStripMenuItem_Click_1(object sender, EventArgs e)

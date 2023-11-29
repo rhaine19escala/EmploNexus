@@ -117,6 +117,15 @@ namespace EmploNexus
             }
         }
 
+        public List<vw_all_salary> GetSalary(int employeeId)
+        {
+            emploNexusEntities = new EmploNexusu_uEntities();
+
+            return emploNexusEntities.vw_all_salary
+                .Where(e => e.EMPLOYEE_ID == employeeId)
+                .OrderBy(e => e.SALARY_NO_)
+                .ToList();
+        }
 
         public string GetRoleNameById(int roleId)
         {
