@@ -173,6 +173,12 @@
     <Compile Include="Forms\Frm_EProfile.Designer.cs">
       <DependentUpon>Frm_EProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Frm_EnAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_EnAttendance.Designer.cs">
+      <DependentUpon>Frm_EnAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Frm_MProfile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_EProfile.resx">
       <DependentUpon>Frm_EProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_EnAttendance.resx">
+      <DependentUpon>Frm_EnAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_MProfile.resx">
       <DependentUpon>Frm_MProfile.cs</DependentUpon>
@@ -345,6 +354,8 @@
       <LastGenOutput>EmploNexus_Model.cs</LastGenOutput>
     </Content>
     <Content Include="employee_account_business_time_clock_icon_124657.ico" />
+    <None Include="Resources\a_surreal_landscape_with_floating_island_by_babixya_dg87lyc-fullview.jpg" />
+    <None Include="Resources\57617307.jpg" />
     <None Include="Resources\refresh.png" />
     <None Include="Resources\manager.png" />
     <None Include="Resources\salary.png" />

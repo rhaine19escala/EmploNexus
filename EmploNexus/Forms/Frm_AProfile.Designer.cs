@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_AProfile));
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.grpEmployee = new System.Windows.Forms.GroupBox();
             this.txtempID = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -61,6 +60,7 @@
             this.salary = new System.Windows.Forms.ToolStripMenuItem();
             this.attendance = new System.Windows.Forms.ToolStripMenuItem();
             this.logout = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.grpEmployee.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpButtons.SuspendLayout();
@@ -77,18 +77,6 @@
             this.txtCurrentTime.Size = new System.Drawing.Size(163, 29);
             this.txtCurrentTime.TabIndex = 17;
             this.txtCurrentTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.LightBlue;
-            this.label1.Location = new System.Drawing.Point(12, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(319, 44);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "EmploNexus: Profile";
             // 
             // grpEmployee
             // 
@@ -284,9 +272,9 @@
             // txtuserUsername
             // 
             this.txtuserUsername.BackColor = System.Drawing.Color.LightCyan;
-            this.txtuserUsername.Location = new System.Drawing.Point(176, 40);
+            this.txtuserUsername.Location = new System.Drawing.Point(179, 37);
             this.txtuserUsername.Name = "txtuserUsername";
-            this.txtuserUsername.Size = new System.Drawing.Size(230, 33);
+            this.txtuserUsername.Size = new System.Drawing.Size(217, 33);
             this.txtuserUsername.TabIndex = 18;
             // 
             // label11
@@ -295,7 +283,7 @@
             this.label11.BackColor = System.Drawing.Color.LightBlue;
             this.label11.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label11.Location = new System.Drawing.Point(24, 43);
+            this.label11.Location = new System.Drawing.Point(32, 40);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(103, 26);
             this.label11.TabIndex = 19;
@@ -318,7 +306,7 @@
             // txtCurrentDate
             // 
             this.txtCurrentDate.BackColor = System.Drawing.Color.LightCyan;
-            this.txtCurrentDate.Location = new System.Drawing.Point(35, 43);
+            this.txtCurrentDate.Location = new System.Drawing.Point(34, 116);
             this.txtCurrentDate.Name = "txtCurrentDate";
             this.txtCurrentDate.ReadOnly = true;
             this.txtCurrentDate.Size = new System.Drawing.Size(359, 33);
@@ -330,7 +318,7 @@
             this.btnSAVE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
             this.btnSAVE.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSAVE.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnSAVE.Location = new System.Drawing.Point(35, 89);
+            this.btnSAVE.Location = new System.Drawing.Point(34, 162);
             this.btnSAVE.Name = "btnSAVE";
             this.btnSAVE.Size = new System.Drawing.Size(169, 32);
             this.btnSAVE.TabIndex = 28;
@@ -343,7 +331,7 @@
             this.btnEDIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
             this.btnEDIT.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEDIT.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnEDIT.Location = new System.Drawing.Point(225, 89);
+            this.btnEDIT.Location = new System.Drawing.Point(224, 162);
             this.btnEDIT.Name = "btnEDIT";
             this.btnEDIT.Size = new System.Drawing.Size(169, 32);
             this.btnEDIT.TabIndex = 29;
@@ -419,13 +407,25 @@
             this.logout.Text = "Log out";
             this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.LightBlue;
+            this.label1.Location = new System.Drawing.Point(12, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(319, 44);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "EmploNexus: Profile";
+            // 
             // Frm_AProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::EmploNexus.Properties.Resources._6765093_3429734;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(894, 443);
+            this.ClientSize = new System.Drawing.Size(894, 427);
             this.Controls.Add(this.txtCurrentTime);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.grpButtons);
@@ -456,7 +456,6 @@
 
         #endregion
         private System.Windows.Forms.TextBox txtCurrentTime;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox grpEmployee;
         private System.Windows.Forms.TextBox txtempID;
         private System.Windows.Forms.Label label9;
@@ -487,5 +486,6 @@
         private System.Windows.Forms.ToolStripMenuItem salary;
         private System.Windows.Forms.ToolStripMenuItem attendance;
         private System.Windows.Forms.ToolStripMenuItem logout;
+        private System.Windows.Forms.Label label1;
     }
 }

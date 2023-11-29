@@ -20,8 +20,8 @@ namespace EmploNexus.Forms
 
         private void Frm_Employee_Dashboard_Load(object sender, EventArgs e)
         {
-            Frm_Login frm = new Frm_Login();
-            txtName_User.Text = frm.LoggedInUsername;
+            string username = UserLogged.GetInstance().UserAccounts.username;
+            txtName_User.Text = $"{char.ToUpper(username[0])}{username.Substring(1).ToLower()}";
 
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
@@ -44,6 +44,14 @@ namespace EmploNexus.Forms
             this.Hide();
         }
 
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //View Attendance
+            FrmEnAttendance enAttendance = new FrmEnAttendance();
+            enAttendance.Show();
+            this.Hide();
+        }
+
         private void btnSalary_Click(object sender, EventArgs e)
         {
             Frm_EViewSalary eViewSalary = new Frm_EViewSalary();
@@ -51,11 +59,10 @@ namespace EmploNexus.Forms
             this.Hide();
         }
 
-        private void btnProfile_Click(object sender, EventArgs e)
+        private void btnAttendance_Click(object sender, EventArgs e)
         {
-            //Profile
-            Frm_EProfile eProfile = new Frm_EProfile();
-            eProfile.Show();
+            FrmEnAttendance enAttendance = new FrmEnAttendance();
+            enAttendance.Show();
             this.Hide();
         }
 

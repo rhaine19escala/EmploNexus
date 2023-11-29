@@ -345,7 +345,7 @@ namespace EmploNexus.Forms
             this.grpBox_Name.Size = new System.Drawing.Size(197, 64);
             this.grpBox_Name.TabIndex = 12;
             this.grpBox_Name.TabStop = false;
-            this.grpBox_Name.Text = "Name";
+            this.grpBox_Name.Text = "Username";
             // 
             // txtName_User
             // 

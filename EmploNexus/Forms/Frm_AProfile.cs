@@ -62,10 +62,8 @@ namespace EmploNexus.Forms
 
                 if (user != null)
                 {
-                    // Display UserAccount details
                     txtuserUsername.Text = user.username;
 
-                    // Display Employee details
                     Employee employee = repo.GetEmployeeById(userEmpId);
 
                     if (employee != null)
@@ -73,16 +71,13 @@ namespace EmploNexus.Forms
                         txtempID.Text = employee.emp_ID.ToString();
                         txtempName.Text = employee.emp_name;
 
-                        // Set Gender based on the gender ID
                         cmbBox_empGender.SelectedValue = employee.emp_genderId; 
 
                         DOB_date.Value = employee.emp_DOB;
                         txtempEmail.Text = employee.emp_email;
 
-                        // Set Department based on the department ID
                         cmbBox_empDepartment.SelectedValue = employee.emp_departmentId;
 
-                        // Set Position based on the position ID
                         cmbBox_empPosition.SelectedValue = employee.emp_positionId;
                     }
                     else
@@ -100,24 +95,6 @@ namespace EmploNexus.Forms
                 MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void SetComboBoxTextByValue(ComboBox comboBox, int value)
-        {
-            foreach (var item in comboBox.Items)
-            {
-                if (item is KeyValuePair<int, string>)
-                {
-                    var comboItem = (KeyValuePair<int, string>)item;
-                    if (comboItem.Key == value)
-                    {
-                        comboBox.SelectedItem = comboItem;
-                        break;
-                    }
-                }
-            }
-        }
-
-
 
         public void loadUser()
         {

@@ -73,9 +73,29 @@ namespace EmploNexus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _57617307 {
+            get {
+                object obj = ResourceManager.GetObject("57617307", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _6765093_3429734 {
             get {
                 object obj = ResourceManager.GetObject("6765093_3429734", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap a_surreal_landscape_with_floating_island_by_babixya_dg87lyc_fullview {
+            get {
+                object obj = ResourceManager.GetObject("a_surreal_landscape_with_floating_island_by_babixya_dg87lyc-fullview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

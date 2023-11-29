@@ -22,7 +22,8 @@ namespace EmploNexus.Forms
 
         private void Frm_Admin_Dashboard_Load(object sender, EventArgs e)
         {
-            txtName_User.Text = UserLogged.GetInstance().UserAccounts.username.ToUpper();
+            string username = UserLogged.GetInstance().UserAccounts.username;
+            txtName_User.Text = $"{char.ToUpper(username[0])}{username.Substring(1).ToLower()}";
 
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
