@@ -111,7 +111,7 @@ namespace EmploNexus
             {
                 { 1, "Human Resources" },
                 { 2, "Finance" },
-                { 2, "Information Technology" }
+                { 3, "Information Technology" }
             };
 
             if (departmentMapping.TryGetValue(departmentId, out var departmentName))

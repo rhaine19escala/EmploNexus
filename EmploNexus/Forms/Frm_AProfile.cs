@@ -55,53 +55,67 @@ namespace EmploNexus.Forms
 
         private void DisplayEmployeeData(int userEmpId)
         {
-            UserAccount user = repo.GetUserByUsername(loggedUsername);
-
-            if (user != null)
+            try
             {
-                // Display UserAccount details
-                txtuserUsername.Text = user.username;
-                txtuserPassword.Text = user.password;
+                UserAccount user = repo.GetUserByUsername(loggedUsername);
 
-                // Display Employee details
-                Employee employee = repo.GetEmployeeById(userEmpId);
-
-                if (employee != null)
+                if (user != null)
                 {
-                    txtempID.Text = employee.emp_ID.ToString();
-                    txtempName.Text = employee.emp_name;
+                    // Display UserAccount details
+                    txtuserUsername.Text = user.username;
 
-                    // Set Gender based on the gender name
-                    SetComboBoxSelectedValue(cmbBox_empGender, repo.GetGenderNameById(employee.emp_genderId));
+                    // Display Employee details
+                    Employee employee = repo.GetEmployeeById(userEmpId);
 
-                    DOB_date.Value = employee.emp_DOB;
-                    txtempEmail.Text = employee.emp_email;
+                    if (employee != null)
+                    {
+                        txtempID.Text = employee.emp_ID.ToString();
+                        txtempName.Text = employee.emp_name;
 
-                    // Set Department based on the department description
-                    SetComboBoxSelectedValue(cmbBox_empDepartment, repo.GetDepartmentNameById(employee.emp_departmentId));
+                        // Set Gender based on the gender ID
+                        cmbBox_empGender.SelectedValue = employee.emp_genderId; 
 
-                    // Set Position based on the position description
-                    SetComboBoxSelectedValue(cmbBox_empPosition, repo.GetPositionNameById(employee.emp_positionId));
+                        DOB_date.Value = employee.emp_DOB;
+                        txtempEmail.Text = employee.emp_email;
+
+                        // Set Department based on the department ID
+                        cmbBox_empDepartment.SelectedValue = employee.emp_departmentId;
+
+                        // Set Position based on the position ID
+                        cmbBox_empPosition.SelectedValue = employee.emp_positionId;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Employee details not found!", "EmploNexus: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Employee details not found!", "EmploNexus: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("User details not found!", "EmploNexus: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("User details not found!", "EmploNexus: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void SetComboBoxSelectedValue(ComboBox comboBox, string value)
+        private void SetComboBoxTextByValue(ComboBox comboBox, int value)
         {
-            int index = comboBox.FindStringExact(value);
-            if (index != -1)
+            foreach (var item in comboBox.Items)
             {
-                comboBox.SelectedIndex = index;
+                if (item is KeyValuePair<int, string>)
+                {
+                    var comboItem = (KeyValuePair<int, string>)item;
+                    if (comboItem.Key == value)
+                    {
+                        comboBox.SelectedItem = comboItem;
+                        break;
+                    }
+                }
             }
         }
+
 
 
         public void loadUser()
@@ -153,7 +167,6 @@ namespace EmploNexus.Forms
             cmbBox_empPosition.Enabled = false;
             //User Account Details
             txtuserUsername.Enabled = false;
-            txtuserPassword.Enabled = false;
             //Save Button
             btnSAVE.Enabled = false;
         }
@@ -170,7 +183,6 @@ namespace EmploNexus.Forms
             cmbBox_empPosition.Enabled = false;
             //User Account Details
             txtuserUsername.Enabled = false;
-            txtuserPassword.Enabled = false;
             //Save Button
             btnSAVE.Enabled = false;
 
@@ -189,7 +201,6 @@ namespace EmploNexus.Forms
             cmbBox_empPosition.Enabled = true;
             //User Account Details
             txtuserUsername.Enabled = true;
-            txtuserPassword.Enabled = true;
             //Save Button
             btnSAVE.Enabled = true;
 

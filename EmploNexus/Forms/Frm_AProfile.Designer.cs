@@ -48,9 +48,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtuserUsername = new System.Windows.Forms.TextBox();
-            this.txtuserPassword = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.grpButtons = new System.Windows.Forms.GroupBox();
             this.txtCurrentDate = new System.Windows.Forms.TextBox();
             this.btnSAVE = new System.Windows.Forms.Button();
@@ -273,14 +271,12 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.txtuserUsername);
-            this.groupBox1.Controls.Add(this.txtuserPassword);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.LightBlue;
             this.groupBox1.Location = new System.Drawing.Point(450, 100);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(424, 139);
+            this.groupBox1.Size = new System.Drawing.Size(424, 89);
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Account Details";
@@ -292,14 +288,6 @@
             this.txtuserUsername.Name = "txtuserUsername";
             this.txtuserUsername.Size = new System.Drawing.Size(230, 33);
             this.txtuserUsername.TabIndex = 18;
-            // 
-            // txtuserPassword
-            // 
-            this.txtuserPassword.BackColor = System.Drawing.Color.LightCyan;
-            this.txtuserPassword.Location = new System.Drawing.Point(176, 79);
-            this.txtuserPassword.Name = "txtuserPassword";
-            this.txtuserPassword.Size = new System.Drawing.Size(230, 33);
-            this.txtuserPassword.TabIndex = 32;
             // 
             // label11
             // 
@@ -313,18 +301,6 @@
             this.label11.TabIndex = 19;
             this.label11.Text = "Username";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.LightBlue;
-            this.label12.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label12.Location = new System.Drawing.Point(24, 82);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(96, 26);
-            this.label12.TabIndex = 21;
-            this.label12.Text = "Password";
-            // 
             // grpButtons
             // 
             this.grpButtons.BackColor = System.Drawing.Color.Transparent;
@@ -333,9 +309,9 @@
             this.grpButtons.Controls.Add(this.btnEDIT);
             this.grpButtons.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpButtons.ForeColor = System.Drawing.Color.LightBlue;
-            this.grpButtons.Location = new System.Drawing.Point(450, 249);
+            this.grpButtons.Location = new System.Drawing.Point(450, 195);
             this.grpButtons.Name = "grpButtons";
-            this.grpButtons.Size = new System.Drawing.Size(424, 156);
+            this.grpButtons.Size = new System.Drawing.Size(424, 210);
             this.grpButtons.TabIndex = 37;
             this.grpButtons.TabStop = false;
             // 
@@ -498,9 +474,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtuserUsername;
-        private System.Windows.Forms.TextBox txtuserPassword;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox grpButtons;
         private System.Windows.Forms.Button btnSAVE;
         private System.Windows.Forms.Button btnEDIT;
