@@ -154,6 +154,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="vw_emp_salary">
+      <EntityTypeMapping TypeName="EmploNexusModel.vw_emp_salary">
+        <MappingFragment StoreEntitySet="vw_emp_salary">
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="PAY_DATE" ColumnName="PAY_DATE" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_addAttendance" FunctionName="EmploNexusModel.Store.sp_addAttendance" />
     <FunctionImportMapping FunctionImportName="sp_addEmployee" FunctionName="EmploNexusModel.Store.sp_addEmployee" />
     <FunctionImportMapping FunctionImportName="sp_addSalary" FunctionName="EmploNexusModel.Store.sp_addSalary" />

@@ -137,6 +137,9 @@
     <Compile Include="AppData\vw_all_user_role.cs">
       <DependentUpon>EmploNexus_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="AppData\vw_emp_salary.cs">
+      <DependentUpon>EmploNexus_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Frm_AeAttendance_Management.cs">
       <SubType>Form</SubType>
     </Compile>
