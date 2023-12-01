@@ -35,6 +35,12 @@ namespace EmploNexus
             return emploNexusEntities.Employees.FirstOrDefault(e => e.emp_ID == userEmpId);
         }
 
+        public UserAccount GetUserById(int userEmpId)
+        {
+            emploNexusEntities = new EmploNexusu_uEntities();
+            return emploNexusEntities.UserAccounts.FirstOrDefault(u => u.user_empID == userEmpId);
+        }
+
         public List<vw_all_user_role> GetAllUserRole()
         {
             emploNexusEntities = new EmploNexusu_uEntities();
@@ -77,23 +83,37 @@ namespace EmploNexus
 
         public void UpdateEmployeeData(int empId, string empName, int genderId, DateTime dob, string empEmail, int departmentId, int positionId)
         {
-            var employee = emploNexusEntities.Employees.FirstOrDefault(e => e.emp_ID == empId);
+            var userAccount = emploNexusEntities.UserAccounts.FirstOrDefault(e => e.user_empID == empId);
+            try
+            {
+                if (userAccount != null)
+                {
+                    var employeeInfo = emploNexusEntities.Employees.FirstOrDefault(e => e.emp_ID == userAccount.user_empID);
 
-            if (employee != null)
-            {
-                employee.emp_name = empName;
-                employee.emp_genderId = genderId;
-                employee.emp_DOB = dob;
-                employee.emp_email = empEmail;
-                employee.emp_departmentId = departmentId;
-                employee.emp_positionId = positionId;
-                emploNexusEntities.SaveChanges();
+                    if (employeeInfo != null)
+                    {
+                        employeeInfo.emp_name = empName;
+                        employeeInfo.emp_genderId = genderId;
+                        employeeInfo.emp_DOB = dob;
+                        employeeInfo.emp_email = empEmail;
+                        employeeInfo.emp_departmentId = departmentId;
+                        employeeInfo.emp_positionId = positionId;
+
+                        emploNexusEntities.SaveChanges();
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("Employee not found");
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                throw new InvalidOperationException("Employee not found");
+                MessageBox.Show("User account not found :" + ex.Message, "EmploNexus: Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
+
 
         public void UpdateUserData(int empId, string newUsername)
         {
@@ -117,13 +137,13 @@ namespace EmploNexus
             }
         }
 
-        public List<vw_all_salary> GetSalary(int employeeId)
+        public List<vw_emp_salary> GetSalary(int employeeId)
         {
             emploNexusEntities = new EmploNexusu_uEntities();
 
-            return emploNexusEntities.vw_all_salary
+            return emploNexusEntities.vw_emp_salary
                 .Where(e => e.EMPLOYEE_ID == employeeId)
-                .OrderBy(e => e.SALARY_NO_)
+                .OrderBy(e => e.PAY_DATE)
                 .ToList();
         }
 

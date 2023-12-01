@@ -24,7 +24,7 @@ namespace EmploNexus.Forms
             InitializeComponent();
             repo = new UserRepository();
             db = new EmploNexusu_uEntities();
-
+            loadUser();
             //
             loggedInempID = UserLogged.GetInstance().UserAccounts.user_empID;
             loggedUsername = UserLogged.GetInstance().UserAccounts.username;
@@ -87,9 +87,9 @@ namespace EmploNexus.Forms
             }
         }
 
+        //NOTE: COMBO BOX DATA STILL NOT DISPLAYING NEED ASAP ATTENTION!!
         private void DisplayEmployeeData(int userEmpId)
         {
-            //NOTE: COMBO BOX DATA STILL NOT DISPLAYING NEED ASAP ATTENTION!!
             try
             {
                 UserAccount user = repo.GetUserByUsername(loggedUsername);
@@ -97,12 +97,12 @@ namespace EmploNexus.Forms
                 if (user != null)
                 {
                     txtuserUsername.Text = user.username;
+                    txtempID.Text = user.user_empID.ToString();
 
                     Employee employee = repo.GetEmployeeById(userEmpId);
 
                     if (employee != null)
                     {
-                        txtempID.Text = employee.emp_ID.ToString();
                         txtempName.Text = employee.emp_name;
 
                         cmbBox_empGender.SelectedValue = employee.emp_genderId;
@@ -129,6 +129,7 @@ namespace EmploNexus.Forms
                 MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         public void loadUser()
         {
@@ -235,22 +236,24 @@ namespace EmploNexus.Forms
         {
             try
             {
-                int empId = loggedInempID;
-                string newUsername = txtuserUsername.Text;
+                if (int.TryParse(txtempID.Text, out int empId))
+                {
+                    string newUsername = txtuserUsername.Text;
 
-                string empName = txtempName.Text;
-                int genderId = (int)cmbBox_empGender.SelectedValue;
-                DateTime dob = DOB_date.Value;
-                string empEmail = txtempEmail.Text;
-                int departmentId = (int)cmbBox_empDepartment.SelectedValue;
-                int positionId = (int)cmbBox_empPosition.SelectedValue;
+                    string empName = txtempName.Text;
+                    int genderId = (int)cmbBox_empGender.SelectedValue;
+                    DateTime dob = DOB_date.Value;
+                    string empEmail = txtempEmail.Text;
+                    int departmentId = (int)cmbBox_empDepartment.SelectedValue;
+                    int positionId = (int)cmbBox_empPosition.SelectedValue;
 
-                repo.UpdateUserData(empId, newUsername);
+                    repo.UpdateUserData(empId, newUsername);
 
-                repo.UpdateEmployeeData(empId, empName, genderId, dob, empEmail, departmentId, positionId);
+                    repo.UpdateEmployeeData(empId, empName, genderId, dob, empEmail, departmentId, positionId);
 
-                MessageBox.Show("Employee Info updated successfully.", "EmploNexus: Profile", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DisableEditing();
+                    MessageBox.Show("Employee Info updated successfully.", "EmploNexus: Profile", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DisableEditing();
+                }
             }
             catch (Exception ex)
             {
