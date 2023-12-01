@@ -154,6 +154,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="vw_emp_Attendance">
+      <EntityTypeMapping TypeName="EmploNexusModel.vw_emp_Attendance">
+        <MappingFragment StoreEntitySet="vw_emp_Attendance">
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="DATE" ColumnName="DATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="vw_emp_salary">
       <EntityTypeMapping TypeName="EmploNexusModel.vw_emp_salary">
         <MappingFragment StoreEntitySet="vw_emp_salary">

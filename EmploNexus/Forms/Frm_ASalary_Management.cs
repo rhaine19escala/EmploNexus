@@ -302,7 +302,11 @@ namespace EmploNexus.Forms
             {
                 using (var db = new EmploNexusu_uEntities())
                 {
-                    int salaryID = Convert.ToInt32(txtSalaryID.Text);
+                    if (!int.TryParse(txtSalaryID.Text, out int salaryID))
+                    {
+                        MessageBox.Show("Invalid Salary ID", "EmploNexus: Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     int user_empIDToAdd = Convert.ToInt32(txtempID.Text);
                     decimal newSalaryAmount = Convert.ToDecimal(txtempSalary.Text);
                     DateTime newPayrollDate = payrollDate.Value;
@@ -381,7 +385,7 @@ namespace EmploNexus.Forms
                         decimal newSalaryAmount = Convert.ToDecimal(txtempSalary.Text);
                         DateTime newPayrollDate = payrollDate.Value;
 
-                        var existingSalary = db.Salaries.SingleOrDefault(u => u.salary_ID == salaryID && u.Salaryemp_ID == user_empIDToUpdate && u.salary_PayDate == newPayrollDate);
+                        var existingSalary = db.Salaries.SingleOrDefault(u => u.salary_ID == salaryID && u.Salaryemp_ID == user_empIDToUpdate);
 
                         if (existingSalary != null)
                         {

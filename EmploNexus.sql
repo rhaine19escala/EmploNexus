@@ -187,6 +187,13 @@ SELECT A.AttendanceNo AS 'ATTENDANCE NO.', A.AttendanceEmp_ID AS 'EMPLOYEE_ID', 
 FROM Attendance A
 INNER JOIN Employees E ON A.AttendanceEmp_ID = E.emp_ID;
 
+------VIEW ALL USER ATTENDANCE
+CREATE VIEW vw_emp_Attendance
+AS
+SELECT A.AttendanceEmp_ID AS 'EMPLOYEE_ID', A.AttendanceDate AS 'DATE', A.AttendanceStatusId AS 'STATUS'
+FROM Attendance A
+INNER JOIN Employees E ON A.AttendanceEmp_ID = E.emp_ID;
+
 ------VIEW ALL USER EMPLOYEE ID
 CREATE VIEW vw_all_empID
 AS

@@ -43,6 +43,7 @@ namespace EmploNexus.AppData
         public DbSet<vw_all_employee> vw_all_employee { get; set; }
         public DbSet<vw_all_salary> vw_all_salary { get; set; }
         public DbSet<vw_all_user_role> vw_all_user_role { get; set; }
+        public DbSet<vw_emp_Attendance> vw_emp_Attendance { get; set; }
         public DbSet<vw_emp_salary> vw_emp_salary { get; set; }
     
         public virtual int sp_addAttendance(Nullable<int> attendanceEmp_ID, Nullable<System.DateTime> attendanceDate, Nullable<int> attendanceStatusId)

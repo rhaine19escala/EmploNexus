@@ -35,12 +35,6 @@ namespace EmploNexus
             return emploNexusEntities.Employees.FirstOrDefault(e => e.emp_ID == userEmpId);
         }
 
-        public UserAccount GetUserById(int userEmpId)
-        {
-            emploNexusEntities = new EmploNexusu_uEntities();
-            return emploNexusEntities.UserAccounts.FirstOrDefault(u => u.user_empID == userEmpId);
-        }
-
         public List<vw_all_user_role> GetAllUserRole()
         {
             emploNexusEntities = new EmploNexusu_uEntities();
@@ -79,6 +73,20 @@ namespace EmploNexus
         {
             emploNexusEntities = new EmploNexusu_uEntities();
             return emploNexusEntities.vw_all_empInfo.OrderBy(e => e.EMPLOYEE_NO_).ToList();
+        }
+
+        public List<vw_emp_salary> GetSalary(int employeeId)
+        {
+            emploNexusEntities = new EmploNexusu_uEntities();
+
+            return emploNexusEntities.vw_emp_salary.Where(e => e.EMPLOYEE_ID == employeeId).OrderBy(e => e.PAY_DATE).ToList();
+        }
+
+        public List<vw_emp_Attendance> GetAttendance(int employeeId)
+        {
+            emploNexusEntities = new EmploNexusu_uEntities();
+
+            return emploNexusEntities.vw_emp_Attendance.Where(e => e.EMPLOYEE_ID == employeeId).OrderBy(e => e.DATE).ToList();
         }
 
         public void UpdateEmployeeData(int empId, string empName, int genderId, DateTime dob, string empEmail, int departmentId, int positionId)
@@ -134,16 +142,6 @@ namespace EmploNexus
             {
                 throw new InvalidOperationException("User not found");
             }
-        }
-
-        public List<vw_emp_salary> GetSalary(int employeeId)
-        {
-            emploNexusEntities = new EmploNexusu_uEntities();
-
-            return emploNexusEntities.vw_emp_salary
-                .Where(e => e.EMPLOYEE_ID == employeeId)
-                .OrderBy(e => e.PAY_DATE)
-                .ToList();
         }
 
         public string GetRoleNameById(int roleId)
