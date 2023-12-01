@@ -92,6 +92,14 @@ namespace EmploNexus.Forms
             }
         }
 
+        private void Status()
+        {
+            int selectedRowIndex = dgv_EmpAttendance.SelectedCells[0].RowIndex;
+            int columnIndex = 2;
+            object formattedValue = dgv_EmpAttendance.Rows[selectedRowIndex].Cells[columnIndex].FormattedValue;
+            txtAttendanceStatus.Text = formattedValue.ToString();
+        }
+
         private void dgv_EmpAttendance_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.ColumnIndex == 2 && e.RowIndex >= 0 && e.Value != null)
@@ -152,14 +160,6 @@ namespace EmploNexus.Forms
             txtempID.Clear();
             txtAttendanceStatus.Clear();
             txtAttendanceDate.Clear();
-        }
-
-        private void Status()
-        {
-            int selectedRowIndex = dgv_EmpAttendance.SelectedCells[0].RowIndex;
-            int columnIndex = 2;
-            object formattedValue = dgv_EmpAttendance.Rows[selectedRowIndex].Cells[columnIndex].FormattedValue;
-            txtAttendanceStatus.Text = formattedValue.ToString();
         }
     }  
 }

@@ -139,9 +139,9 @@ namespace EmploNexus.Forms
             this.panel1.Controls.Add(this.dgv_EmpAttendance);
             this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Location = new System.Drawing.Point(14, 109);
+            this.panel1.Location = new System.Drawing.Point(14, 103);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(901, 304);
+            this.panel1.Size = new System.Drawing.Size(901, 310);
             this.panel1.TabIndex = 21;
             // 
             // groupBox1
@@ -155,9 +155,9 @@ namespace EmploNexus.Forms
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.LightBlue;
-            this.groupBox1.Location = new System.Drawing.Point(17, 54);
+            this.groupBox1.Location = new System.Drawing.Point(17, 61);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(436, 172);
+            this.groupBox1.Size = new System.Drawing.Size(436, 234);
             this.groupBox1.TabIndex = 52;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attendance Details";
@@ -165,7 +165,7 @@ namespace EmploNexus.Forms
             // txtAttendanceStatus
             // 
             this.txtAttendanceStatus.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAttendanceStatus.Location = new System.Drawing.Point(182, 121);
+            this.txtAttendanceStatus.Location = new System.Drawing.Point(182, 128);
             this.txtAttendanceStatus.Name = "txtAttendanceStatus";
             this.txtAttendanceStatus.ReadOnly = true;
             this.txtAttendanceStatus.Size = new System.Drawing.Size(230, 29);
@@ -174,7 +174,7 @@ namespace EmploNexus.Forms
             // txtAttendanceDate
             // 
             this.txtAttendanceDate.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAttendanceDate.Location = new System.Drawing.Point(182, 80);
+            this.txtAttendanceDate.Location = new System.Drawing.Point(182, 87);
             this.txtAttendanceDate.Name = "txtAttendanceDate";
             this.txtAttendanceDate.ReadOnly = true;
             this.txtAttendanceDate.Size = new System.Drawing.Size(230, 29);
@@ -186,7 +186,7 @@ namespace EmploNexus.Forms
             this.label5.BackColor = System.Drawing.Color.LightBlue;
             this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label5.Location = new System.Drawing.Point(30, 37);
+            this.label5.Location = new System.Drawing.Point(30, 44);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(130, 26);
             this.label5.TabIndex = 35;
@@ -198,7 +198,7 @@ namespace EmploNexus.Forms
             this.label3.BackColor = System.Drawing.Color.LightBlue;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label3.Location = new System.Drawing.Point(30, 121);
+            this.label3.Location = new System.Drawing.Point(30, 128);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 26);
             this.label3.TabIndex = 17;
@@ -207,7 +207,7 @@ namespace EmploNexus.Forms
             // txtempID
             // 
             this.txtempID.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtempID.Location = new System.Drawing.Point(182, 37);
+            this.txtempID.Location = new System.Drawing.Point(182, 44);
             this.txtempID.Name = "txtempID";
             this.txtempID.ReadOnly = true;
             this.txtempID.Size = new System.Drawing.Size(230, 29);
@@ -219,7 +219,7 @@ namespace EmploNexus.Forms
             this.label2.BackColor = System.Drawing.Color.LightBlue;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label2.Location = new System.Drawing.Point(30, 80);
+            this.label2.Location = new System.Drawing.Point(30, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 26);
             this.label2.TabIndex = 33;
@@ -231,7 +231,7 @@ namespace EmploNexus.Forms
             this.lblTitle.BackColor = System.Drawing.Color.LightBlue;
             this.lblTitle.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.lblTitle.Location = new System.Drawing.Point(13, 8);
+            this.lblTitle.Location = new System.Drawing.Point(13, 15);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(288, 32);
             this.lblTitle.TabIndex = 51;
@@ -243,7 +243,7 @@ namespace EmploNexus.Forms
             this.dgv_EmpAttendance.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv_EmpAttendance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_EmpAttendance.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgv_EmpAttendance.Location = new System.Drawing.Point(474, 66);
+            this.dgv_EmpAttendance.Location = new System.Drawing.Point(474, 73);
             this.dgv_EmpAttendance.Name = "dgv_EmpAttendance";
             this.dgv_EmpAttendance.ReadOnly = true;
             this.dgv_EmpAttendance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -258,7 +258,7 @@ namespace EmploNexus.Forms
             this.btnRefresh.BackgroundImage = global::EmploNexus.Properties.Resources.refresh;
             this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRefresh.ForeColor = System.Drawing.Color.AliceBlue;
-            this.btnRefresh.Location = new System.Drawing.Point(853, 29);
+            this.btnRefresh.Location = new System.Drawing.Point(853, 36);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(31, 31);
             this.btnRefresh.TabIndex = 49;
@@ -273,7 +273,7 @@ namespace EmploNexus.Forms
             this.label10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label10.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.SkyBlue;
-            this.label10.Location = new System.Drawing.Point(474, 31);
+            this.label10.Location = new System.Drawing.Point(474, 38);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(323, 28);
             this.label10.TabIndex = 47;

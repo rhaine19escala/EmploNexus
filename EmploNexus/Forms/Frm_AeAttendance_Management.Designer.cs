@@ -62,6 +62,8 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgv_AllAttendanceWdetails = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtAttendanceNo = new System.Windows.Forms.TextBox();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_allempInfo)).BeginInit();
@@ -270,6 +272,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.txtAttendanceNo);
             this.groupBox1.Controls.Add(this.cmbBox_status);
             this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.btnDelete);
@@ -293,7 +297,7 @@
             // 
             this.cmbBox_status.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBox_status.FormattingEnabled = true;
-            this.cmbBox_status.Location = new System.Drawing.Point(178, 121);
+            this.cmbBox_status.Location = new System.Drawing.Point(185, 177);
             this.cmbBox_status.Name = "cmbBox_status";
             this.cmbBox_status.Size = new System.Drawing.Size(230, 30);
             this.cmbBox_status.TabIndex = 36;
@@ -303,7 +307,7 @@
             this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
             this.btnClear.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnClear.Location = new System.Drawing.Point(316, 307);
+            this.btnClear.Location = new System.Drawing.Point(316, 301);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(92, 32);
             this.btnClear.TabIndex = 31;
@@ -316,7 +320,7 @@
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
             this.btnDelete.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnDelete.Location = new System.Drawing.Point(218, 307);
+            this.btnDelete.Location = new System.Drawing.Point(218, 301);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(92, 32);
             this.btnDelete.TabIndex = 30;
@@ -330,7 +334,7 @@
             this.label5.BackColor = System.Drawing.Color.LightBlue;
             this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label5.Location = new System.Drawing.Point(26, 41);
+            this.label5.Location = new System.Drawing.Point(26, 49);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(130, 26);
             this.label5.TabIndex = 35;
@@ -341,7 +345,7 @@
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
             this.btnUpdate.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnUpdate.Location = new System.Drawing.Point(120, 307);
+            this.btnUpdate.Location = new System.Drawing.Point(120, 301);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(92, 32);
             this.btnUpdate.TabIndex = 29;
@@ -355,7 +359,7 @@
             this.label3.BackColor = System.Drawing.Color.LightBlue;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label3.Location = new System.Drawing.Point(26, 125);
+            this.label3.Location = new System.Drawing.Point(26, 181);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 26);
             this.label3.TabIndex = 17;
@@ -366,7 +370,7 @@
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
             this.btnAdd.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnAdd.Location = new System.Drawing.Point(22, 307);
+            this.btnAdd.Location = new System.Drawing.Point(22, 301);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(92, 32);
             this.btnAdd.TabIndex = 28;
@@ -377,7 +381,7 @@
             // txtempID
             // 
             this.txtempID.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtempID.Location = new System.Drawing.Point(178, 41);
+            this.txtempID.Location = new System.Drawing.Point(185, 49);
             this.txtempID.Name = "txtempID";
             this.txtempID.Size = new System.Drawing.Size(230, 29);
             this.txtempID.TabIndex = 34;
@@ -386,7 +390,7 @@
             // 
             this.attendanceDate.CustomFormat = "";
             this.attendanceDate.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attendanceDate.Location = new System.Drawing.Point(178, 81);
+            this.attendanceDate.Location = new System.Drawing.Point(185, 139);
             this.attendanceDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.attendanceDate.Name = "attendanceDate";
             this.attendanceDate.Size = new System.Drawing.Size(230, 29);
@@ -399,7 +403,7 @@
             this.label2.BackColor = System.Drawing.Color.LightBlue;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label2.Location = new System.Drawing.Point(26, 84);
+            this.label2.Location = new System.Drawing.Point(26, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 26);
             this.label2.TabIndex = 33;
@@ -435,6 +439,26 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.LightBlue;
+            this.label7.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label7.Location = new System.Drawing.Point(26, 102);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(146, 26);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "Attendance no.";
+            // 
+            // txtAttendanceNo
+            // 
+            this.txtAttendanceNo.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAttendanceNo.Location = new System.Drawing.Point(185, 102);
+            this.txtAttendanceNo.Name = "txtAttendanceNo";
+            this.txtAttendanceNo.Size = new System.Drawing.Size(47, 29);
+            this.txtAttendanceNo.TabIndex = 38;
             // 
             // Frm_AeAttendance_Management
             // 
@@ -504,5 +528,7 @@
         private System.Windows.Forms.TextBox txtempSearch;
         private System.Windows.Forms.ComboBox cmbBox_status;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtAttendanceNo;
     }
 }

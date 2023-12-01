@@ -309,7 +309,7 @@ namespace EmploNexus.Forms
                     }
                     int user_empIDToAdd = Convert.ToInt32(txtempID.Text);
                     decimal newSalaryAmount = Convert.ToDecimal(txtempSalary.Text);
-                    DateTime newPayrollDate = payrollDate.Value;
+                    DateTime newPayrollDate = payrollDate.Value.Date;
 
                     bool isDuplicateDate = db.Salaries.Any(u => u.salary_ID == salaryID && u.Salaryemp_ID == user_empIDToAdd && u.salary_PayDate == newPayrollDate);
 
@@ -383,9 +383,9 @@ namespace EmploNexus.Forms
                         int salaryID = Convert.ToInt32(txtSalaryID.Text);
                         int user_empIDToUpdate = Convert.ToInt32(txtempID.Text);
                         decimal newSalaryAmount = Convert.ToDecimal(txtempSalary.Text);
-                        DateTime newPayrollDate = payrollDate.Value;
+                        DateTime newPayrollDate = payrollDate.Value.Date;
 
-                        var existingSalary = db.Salaries.SingleOrDefault(u => u.salary_ID == salaryID && u.Salaryemp_ID == user_empIDToUpdate);
+                        Salary existingSalary = db.Salaries.SingleOrDefault(u => u.salary_ID == salaryID && u.Salaryemp_ID == user_empIDToUpdate);
 
                         if (existingSalary != null)
                         {
@@ -415,7 +415,7 @@ namespace EmploNexus.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Salary Info not Updated Successfully!. \nError :" + ex.Message, "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Salary Info not Updated Successfully! \nError :" + ex.Message, "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ClearInputFields();
             }
         }
@@ -450,7 +450,7 @@ namespace EmploNexus.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(" Salary Info not Deleted Successfully!. \nError :" + ex.Message, "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(" Salary Info not Deleted Successfully! \nError :" + ex.Message, "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

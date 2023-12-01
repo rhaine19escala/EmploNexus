@@ -41,7 +41,7 @@ namespace EmploNexus.Forms
             {
                 e.Cancel = true;
                 MessageBox.Show("Please select the current date for attendance.", "EmploNexus: Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                attendanceDate.Value = DateTime.Today;
+                attendanceDate.Value = DateTime.Today.Date;
             }
         }
 
@@ -115,6 +115,7 @@ namespace EmploNexus.Forms
             {
                 if (e.RowIndex >= 0 && e.RowIndex < dgv_AllAttendanceWdetails.Rows.Count)
                 {
+                    txtAttendanceNo.Text = Convert.ToInt32(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[0].Value).ToString();
                     txtempID.Text = Convert.ToInt32(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[1].Value).ToString();
 
                     if (DateTime.TryParse(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[2].Value?.ToString(), out DateTime selectedDate))
@@ -123,7 +124,7 @@ namespace EmploNexus.Forms
                     }
                     else
                     {
-                        attendanceDate.Value = DateTime.Today;
+                        attendanceDate.Value = DateTime.Today.Date;
                     }
 
                     int status = Convert.ToInt32(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[3].Value);
@@ -148,7 +149,7 @@ namespace EmploNexus.Forms
                 {
                     txtempID.Text = Convert.ToInt32(dgv_allempInfo.Rows[e.RowIndex].Cells[1].Value).ToString();
                     cmbBox_status.SelectedIndex = 0;
-                    attendanceDate.Value = DateTime.Today;
+                    attendanceDate.Value = DateTime.Today.Date;
                 }
                 else
                 {
@@ -322,23 +323,41 @@ namespace EmploNexus.Forms
             {
                 using (var db = new EmploNexusu_uEntities())
                 {
-                    Attendance att = new Attendance
+                    if (!int.TryParse(txtAttendanceNo.Text, out int attendanceNo))
                     {
-                        AttendanceEmp_ID = Convert.ToInt32(txtempID.Text),
-                        AttendanceStatusId = (Int32)cmbBox_status.SelectedValue,
-                        AttendanceDate = attendanceDate.Value
-                    };
+                        MessageBox.Show("Invalid Attendance No.", "EmploNexus: Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    int user_empIDToAdd = Convert.ToInt32(txtempID.Text);
+                    int statusId = (Int32)cmbBox_status.SelectedValue;
+                    DateTime attendance = attendanceDate.Value.Date;
 
-                    db.Attendances.Add(att);
-                    db.SaveChanges();
-                    loadUser();
-                    MessageBox.Show("Attendance Info Added Successfully!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearInputFields();
+                    bool isDuplicateDate = db.Attendances.Any(u => u.AttendanceNo == attendanceNo && u.AttendanceEmp_ID == user_empIDToAdd && u.AttendanceDate == attendance);
+
+                    if (!isDuplicateDate)
+                    {
+                        Attendance att = new Attendance
+                        {
+                            AttendanceEmp_ID = user_empIDToAdd,
+                            AttendanceStatusId = statusId,
+                            AttendanceDate = attendance
+                        };
+
+                        db.Attendances.Add(att);
+                        db.SaveChanges();
+                        loadUser();
+                        MessageBox.Show("Attendance Info Added Successfully!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ClearInputFields();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Attendance Info not Added. Duplicate date found!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Salary Info not Added Successfully!. \nError :" + ex.Message, "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Attendance Info not Added Successfully! \nError :" + ex.Message, "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ClearInputFields();
             }
         }
@@ -368,22 +387,38 @@ namespace EmploNexus.Forms
                     DialogResult result = MessageBox.Show("Are you sure you want to Update this Attendance Information?", "EmploNexus: Attendance Information Management", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                     if (result == DialogResult.OK)
                     {
+                        int attendanceNo = Convert.ToInt32(txtAttendanceNo.Text);
                         int user_empIDToUpdate = Convert.ToInt32(txtempID.Text);
-                        Attendance existingUser = db.Attendances.FirstOrDefault(u => u.AttendanceEmp_ID == user_empIDToUpdate);
+                        int statusId = (Int32)cmbBox_status.SelectedValue;
+                        DateTime attendance = attendanceDate.Value;
+
+                        Attendance existingUser = db.Attendances.FirstOrDefault(u => u.AttendanceNo == attendanceNo && u.AttendanceEmp_ID == user_empIDToUpdate);
+
                         if (existingUser != null)
                         {
-                            existingUser.AttendanceEmp_ID = Convert.ToInt32(txtempID.Text);
-                            existingUser.AttendanceStatusId = (Int32)cmbBox_status.SelectedValue;
-                            existingUser.AttendanceDate = attendanceDate.Value;
+                            bool isDuplicate = db.Attendances.Any(u => u.AttendanceEmp_ID == user_empIDToUpdate
+                                && u.AttendanceDate == attendance
+                                && u.AttendanceNo != existingUser.AttendanceNo);
 
-                            db.SaveChanges();
-                            loadUser();
-                            MessageBox.Show("Attendance Info Updated Successfully!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            ClearInputFields();
+                            if (!isDuplicate)
+                            {
+                                existingUser.AttendanceEmp_ID = user_empIDToUpdate;
+                                existingUser.AttendanceStatusId = statusId;
+                                existingUser.AttendanceDate = attendance;
+
+                                db.SaveChanges();
+                                loadUser();
+                                MessageBox.Show("Attendance Info Updated Successfully!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                ClearInputFields();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Attendance Info not found!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Attendance Info not found!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Attendance Info not Updated. No matching record found!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
@@ -424,7 +459,7 @@ namespace EmploNexus.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(" Attendance Info not Deleted Successfully!. \nError :" + ex.Message, "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(" Attendance Info not Deleted Successfully! \nError :" + ex.Message, "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -479,6 +514,7 @@ namespace EmploNexus.Forms
         public void ClearInputFields()
         {
             errorProvider1.Clear();
+            txtAttendanceNo.Clear();
             txtempID.Clear();
             cmbBox_status.SelectedIndex = 0;
             attendanceDate.Value = DateTime.Today;
@@ -492,6 +528,7 @@ namespace EmploNexus.Forms
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             loadUser();
+            ClearInputFields();
         }
 
     }
