@@ -62,6 +62,8 @@
             this.txtempSearch = new System.Windows.Forms.TextBox();
             this.grpEmployee = new System.Windows.Forms.GroupBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSalaryID = new System.Windows.Forms.TextBox();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_AllSalaryWdetails)).BeginInit();
             this.panel1.SuspendLayout();
@@ -191,7 +193,7 @@
             // txtempSalary
             // 
             this.txtempSalary.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtempSalary.Location = new System.Drawing.Point(189, 88);
+            this.txtempSalary.Location = new System.Drawing.Point(188, 142);
             this.txtempSalary.Name = "txtempSalary";
             this.txtempSalary.Size = new System.Drawing.Size(230, 29);
             this.txtempSalary.TabIndex = 26;
@@ -202,11 +204,11 @@
             this.label8.BackColor = System.Drawing.Color.LightBlue;
             this.label8.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label8.Location = new System.Drawing.Point(20, 90);
+            this.label8.Location = new System.Drawing.Point(19, 144);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(87, 26);
+            this.label8.Size = new System.Drawing.Size(140, 26);
             this.label8.TabIndex = 27;
-            this.label8.Text = "Amount";
+            this.label8.Text = "Wage Amount";
             // 
             // btnAdd
             // 
@@ -264,7 +266,7 @@
             // 
             this.payrollDate.CustomFormat = "";
             this.payrollDate.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.payrollDate.Location = new System.Drawing.Point(189, 126);
+            this.payrollDate.Location = new System.Drawing.Point(188, 180);
             this.payrollDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.payrollDate.Name = "payrollDate";
             this.payrollDate.Size = new System.Drawing.Size(230, 29);
@@ -277,7 +279,7 @@
             this.label2.BackColor = System.Drawing.Color.LightBlue;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label2.Location = new System.Drawing.Point(20, 129);
+            this.label2.Location = new System.Drawing.Point(19, 183);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(139, 26);
             this.label2.TabIndex = 33;
@@ -286,7 +288,7 @@
             // txtempID
             // 
             this.txtempID.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtempID.Location = new System.Drawing.Point(189, 50);
+            this.txtempID.Location = new System.Drawing.Point(189, 42);
             this.txtempID.Name = "txtempID";
             this.txtempID.Size = new System.Drawing.Size(230, 29);
             this.txtempID.TabIndex = 34;
@@ -297,7 +299,7 @@
             this.label5.BackColor = System.Drawing.Color.LightBlue;
             this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label5.Location = new System.Drawing.Point(20, 50);
+            this.label5.Location = new System.Drawing.Point(20, 42);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(130, 26);
             this.label5.TabIndex = 35;
@@ -412,6 +414,8 @@
             // grpEmployee
             // 
             this.grpEmployee.BackColor = System.Drawing.Color.Transparent;
+            this.grpEmployee.Controls.Add(this.label6);
+            this.grpEmployee.Controls.Add(this.txtSalaryID);
             this.grpEmployee.Controls.Add(this.btnUpdate);
             this.grpEmployee.Controls.Add(this.payrollDate);
             this.grpEmployee.Controls.Add(this.btnAdd);
@@ -434,6 +438,26 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.LightBlue;
+            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label6.Location = new System.Drawing.Point(19, 105);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(97, 26);
+            this.label6.TabIndex = 37;
+            this.label6.Text = "Salary ID";
+            // 
+            // txtSalaryID
+            // 
+            this.txtSalaryID.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalaryID.Location = new System.Drawing.Point(188, 105);
+            this.txtSalaryID.Name = "txtSalaryID";
+            this.txtSalaryID.Size = new System.Drawing.Size(47, 29);
+            this.txtSalaryID.TabIndex = 36;
             // 
             // Frm_ASalary_Management
             // 
@@ -503,5 +527,7 @@
         private System.Windows.Forms.DataGridView dgv_allempInfo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtSalaryID;
     }
 }

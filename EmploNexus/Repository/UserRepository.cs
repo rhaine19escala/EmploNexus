@@ -114,7 +114,6 @@ namespace EmploNexus
             }
         }
 
-
         public void UpdateUserData(int empId, string newUsername)
         {
             var user = emploNexusEntities.UserAccounts.FirstOrDefault(u => u.user_empID == empId);

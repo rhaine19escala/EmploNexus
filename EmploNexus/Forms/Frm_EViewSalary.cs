@@ -30,9 +30,6 @@ namespace EmploNexus.Forms
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
 
-            payrollDate.Format = DateTimePickerFormat.Custom;
-            payrollDate.CustomFormat = "MM/dd/yyyy";
-
             loadUser();
         }
 
@@ -74,13 +71,15 @@ namespace EmploNexus.Forms
             {
                 if (e.RowIndex >= 0 && e.RowIndex < dgv_SalaryEmp.Rows.Count)
                 {
+                    txtempID.Text = Convert.ToInt32(dgv_SalaryEmp.Rows[e.RowIndex].Cells[0].Value).ToString();
+
                     if (DateTime.TryParse(dgv_SalaryEmp.Rows[e.RowIndex].Cells[1].Value?.ToString(), out DateTime selectedDate))
                     {
-                        payrollDate.Value = selectedDate;
+                        txtWageDate.Text = selectedDate.ToString("MM/dd/yyyy");
                     }
                     else
                     {
-                        payrollDate.Value = DateTime.Today;
+                        txtWageDate.Text = DateTime.Today.ToString("MM/dd/yyyy");
                     }
 
                     if (decimal.TryParse(dgv_SalaryEmp.Rows[e.RowIndex].Cells[2].Value?.ToString(), out decimal salary))
@@ -124,12 +123,23 @@ namespace EmploNexus.Forms
         {
             loadUser();
             txtempSalary.Clear();
-            payrollDate.Value = DateTime.Today;
+            txtempID.Clear();
+            txtWageDate.Clear();
         }
 
-        private void btnPrint_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
+            decimal totalWageAmount = 0;
 
+            foreach (DataGridViewRow row in dgv_SalaryEmp.Rows)
+            {
+                if (row.Cells["SALARY"].Value != null && decimal.TryParse(row.Cells["SALARY"].Value.ToString(), out decimal salary))
+                {
+                    totalWageAmount += salary;
+                }
+            }
+
+            txtTotalWageAmount.Text = totalWageAmount.ToString("C", CultureInfo.GetCultureInfo("en-PH"));
         }
-    }
+    }   
 }

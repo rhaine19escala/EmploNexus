@@ -106,6 +106,8 @@ namespace EmploNexus.Forms
             {
                 if (e.RowIndex >= 0 && e.RowIndex < dgv_AllSalaryWdetails.Rows.Count)
                 {
+                    txtSalaryID.Text = Convert.ToInt32(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[0].Value).ToString();
+
                     txtempID.Text = Convert.ToInt32(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[1].Value).ToString();
 
                     if (DateTime.TryParse(dgv_AllSalaryWdetails.Rows[e.RowIndex].Cells[2].Value?.ToString(), out DateTime selectedDate))
@@ -158,6 +160,7 @@ namespace EmploNexus.Forms
             try
             {
                 txtempID.Text = Convert.ToInt32(dgv_allempInfo.Rows[e.RowIndex].Cells[1].Value).ToString();
+                txtSalaryID.Clear();
                 txtempSalary.Clear();
                 payrollDate.Value = DateTime.Today;
             }
@@ -299,23 +302,37 @@ namespace EmploNexus.Forms
             {
                 using (var db = new EmploNexusu_uEntities())
                 {
-                    Salary sal = new Salary
-                    {
-                        Salaryemp_ID = Convert.ToInt32(txtempID.Text),
-                        salary_Amount = Convert.ToDecimal(txtempSalary.Text),
-                        salary_PayDate = payrollDate.Value
-                    };
+                    int salaryID = Convert.ToInt32(txtSalaryID.Text);
+                    int user_empIDToAdd = Convert.ToInt32(txtempID.Text);
+                    decimal newSalaryAmount = Convert.ToDecimal(txtempSalary.Text);
+                    DateTime newPayrollDate = payrollDate.Value;
 
-                    db.Salaries.Add(sal);
-                    db.SaveChanges();
-                    loadUser();
-                    MessageBox.Show("Salary Info Added Successfully!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearInputFields();
+                    bool isDuplicateDate = db.Salaries.Any(u => u.salary_ID == salaryID && u.Salaryemp_ID == user_empIDToAdd && u.salary_PayDate == newPayrollDate);
+
+                    if (!isDuplicateDate)
+                    {
+                        Salary sal = new Salary
+                        {
+                            Salaryemp_ID = user_empIDToAdd,
+                            salary_Amount = newSalaryAmount,
+                            salary_PayDate = newPayrollDate
+                        };
+
+                        db.Salaries.Add(sal);
+                        db.SaveChanges();
+                        loadUser();
+                        MessageBox.Show("Salary Info Added Successfully!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ClearInputFields();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Salary Info not Added. Duplicate date found!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Salary Info not Added Successfully!. \nError :" + ex.Message, "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Salary Info not Added Successfully! \nError :" + ex.Message, "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ClearInputFields();
             }
         }
@@ -351,39 +368,54 @@ namespace EmploNexus.Forms
                 return;
             }
 
-            using (var db = new EmploNexusu_uEntities())
+            try
             {
-                try
-                {
-                    DialogResult result = MessageBox.Show("Are you sure you want to Update this Salary Information?", "EmploNexus: Salary Information Management", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                    if (result == DialogResult.OK)
-                    {
-                        int user_empIDToUpdate = Convert.ToInt32(txtempID.Text);
-                        Salary existingUser = db.Salaries.FirstOrDefault(u => u.Salaryemp_ID == user_empIDToUpdate);
-                        if (existingUser != null)
-                        {
-                            existingUser.Salaryemp_ID = Convert.ToInt32(txtempID.Text);
-                            existingUser.salary_Amount = Convert.ToDecimal(txtempSalary.Text);
-                            existingUser.salary_PayDate = payrollDate.Value;
+                DialogResult result = MessageBox.Show("Are you sure you want to Update this Salary Information?", "EmploNexus: Salary Information Management", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
-                            db.SaveChanges();
-                            loadUser();
-                            MessageBox.Show("Salary Info Updated Successfully!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            ClearInputFields();
+                if (result == DialogResult.OK)
+                {
+                    using (var db = new EmploNexusu_uEntities())
+                    {
+                        int salaryID = Convert.ToInt32(txtSalaryID.Text);
+                        int user_empIDToUpdate = Convert.ToInt32(txtempID.Text);
+                        decimal newSalaryAmount = Convert.ToDecimal(txtempSalary.Text);
+                        DateTime newPayrollDate = payrollDate.Value;
+
+                        var existingSalary = db.Salaries.SingleOrDefault(u => u.salary_ID == salaryID && u.Salaryemp_ID == user_empIDToUpdate && u.salary_PayDate == newPayrollDate);
+
+                        if (existingSalary != null)
+                        {
+                            bool isDuplicate = db.Salaries.Any(u => u.salary_ID != salaryID && u.Salaryemp_ID == user_empIDToUpdate && u.salary_PayDate == newPayrollDate);
+
+                            if (!isDuplicate)
+                            {
+                                existingSalary.salary_Amount = newSalaryAmount;
+                                existingSalary.salary_PayDate = newPayrollDate;
+
+                                db.SaveChanges();
+                                loadUser();
+                                MessageBox.Show("Salary Info Updated Successfully!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                ClearInputFields();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Salary Info not Updated. Duplicate date found!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Salary Info not found!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Salary Info not Updated. No matching record found!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Salary Info not Updated Successfully!. \nError :" + ex.Message, "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    ClearInputFields();
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Salary Info not Updated Successfully!. \nError :" + ex.Message, "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ClearInputFields();
             }
         }
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -426,6 +458,7 @@ namespace EmploNexus.Forms
         public void ClearInputFields()
         {
             errorProvider1.Clear();
+            txtSalaryID.Clear();
             txtempID.Clear();
             txtempSalary.Clear();
             payrollDate.Value = DateTime.Today;
