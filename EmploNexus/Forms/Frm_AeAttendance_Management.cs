@@ -35,13 +35,26 @@ namespace EmploNexus.Forms
 
         private void attendanceDate_Validating(object sender, CancelEventArgs e)
         {
+            //DateTime selectedDate = attendanceDate.Value.Date;
+
+            //if (selectedDate != DateTime.Today)
+            //{
+            //    e.Cancel = true;
+            //    MessageBox.Show("Please select the current date for attendance.", "EmploNexus: Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    attendanceDate.Value = DateTime.Today.Date;
+            //}
+
             DateTime selectedDate = attendanceDate.Value.Date;
 
-            if (selectedDate != DateTime.Today)
+            DateTime minDate = DateTime.Today.Date;
+            DateTime maxDate = DateTime.Today.AddDays(7).Date;
+
+            if (selectedDate < minDate || selectedDate > maxDate)
             {
                 e.Cancel = true;
-                MessageBox.Show("Please select the current date for attendance.", "EmploNexus: Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                attendanceDate.Value = DateTime.Today.Date;
+
+                MessageBox.Show($"Please select a date between {minDate.ToShortDateString()} and {maxDate.ToShortDateString()} for attendance.", "EmploNexus: Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                attendanceDate.Value = minDate;
             }
         }
 
@@ -51,7 +64,9 @@ namespace EmploNexus.Forms
 
             attendanceDate.Format = DateTimePickerFormat.Custom;
             attendanceDate.CustomFormat = "MM/dd/yyyy";
-            attendanceDate.MinDate = DateTime.Today;
+            attendanceDate.MinDate = DateTime.Today.AddDays(-7).Date;
+            attendanceDate.MaxDate = DateTime.Today.AddDays(7).Date;
+            attendanceDate.Value = DateTime.Today.Date;
         }
 
         private void loadUser()
@@ -111,11 +126,19 @@ namespace EmploNexus.Forms
 
         private void dgv_AllAttendanceWdetails_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 if (e.RowIndex >= 0 && e.RowIndex < dgv_AllAttendanceWdetails.Rows.Count)
                 {
-                    txtAttendanceNo.Text = Convert.ToInt32(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[0].Value).ToString();
+
+                    int attendanceId = Convert.ToInt32(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[0].Value);
+                    var attendanceRecord = db.Attendances.FirstOrDefault(u => u.AttendanceNo == attendanceId);
+                    if (attendanceRecord != null)
+                    {
+                        txtAttendanceNo.Text = attendanceRecord.AttendanceNo.ToString();
+                    }
+
+                    //txtAttendanceNo.Text = Convert.ToInt32(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[0].Value).ToString();
                     txtempID.Text = Convert.ToInt32(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[1].Value).ToString();
 
                     if (DateTime.TryParse(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[2].Value?.ToString(), out DateTime selectedDate))
@@ -127,6 +150,8 @@ namespace EmploNexus.Forms
                         attendanceDate.Value = DateTime.Today.Date;
                     }
 
+
+
                     int status = Convert.ToInt32(dgv_AllAttendanceWdetails.Rows[e.RowIndex].Cells[3].Value);
                     cmbBox_status.SelectedValue = status;
                 }
@@ -134,11 +159,11 @@ namespace EmploNexus.Forms
                 {
                     MessageBox.Show("Invalid row index selected.", "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error Encountered : " + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error Encountered : " + ex.Message, "EmploNexus : Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void dgv_allempInfo_CellClick(object sender, DataGridViewCellEventArgs e)
