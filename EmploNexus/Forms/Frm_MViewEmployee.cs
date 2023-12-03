@@ -68,5 +68,13 @@ namespace EmploNexus.Forms
             mViewSalary.Show();
             this.Hide();
         }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            //View Attendance
+            Frm_MAttendance mAttendance = new Frm_MAttendance();
+            mAttendance.Show();
+            this.Hide();
+        }
     }
 }

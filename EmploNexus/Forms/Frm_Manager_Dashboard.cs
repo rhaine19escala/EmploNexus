@@ -19,46 +19,17 @@ namespace EmploNexus.Forms
 
         private void Frm_Manager_Dashboard_Load(object sender, EventArgs e)
         {
-            Frm_Login frm = new Frm_Login();
-            txtName_User.Text = frm.LoggedInUsername;
+            string username = UserLogged.GetInstance().UserAccounts.username;
+            txtName_User.Text = $"{char.ToUpper(username[0])}{username.Substring(1).ToLower()}";
 
             DateTime currentTime = DateTime.Now;
             txtCurrentTime.Text = currentTime.ToString("hh:mm:ss tt");
             txtCurrentDate.Text = currentTime.ToString("MM-d-yyyy");
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (res == DialogResult.OK)
-            {
-                Frm_Login logout = new Frm_Login();
-                logout.Show();
-                this.Hide();
-            }
-        }
-
-        private void logOutToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (res == DialogResult.OK)
-            {
-                Frm_Login logout = new Frm_Login();
-                logout.Show();
-                this.Hide();
-            }
-        }
-
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Profile
-            Frm_MProfile mProfile = new Frm_MProfile();
-            mProfile.Show();
-            this.Hide();
-        }
-
-        private void btnProfile_Click(object sender, EventArgs e)
-        {
             Frm_MProfile mProfile = new Frm_MProfile();
             mProfile.Show();
             this.Hide();
@@ -92,6 +63,43 @@ namespace EmploNexus.Forms
             Frm_MViewSalary mViewSalary = new Frm_MViewSalary();
             mViewSalary.Show();
             this.Hide();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //View Attendance
+            Frm_MAttendance mAttendance = new Frm_MAttendance();
+            mAttendance.Show();
+            this.Hide();
+        }
+
+        private void btnAttendance_Click(object sender, EventArgs e)
+        {
+            Frm_MAttendance mAttendance = new Frm_MAttendance();
+            mAttendance.Show();
+            this.Hide();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (res == DialogResult.OK)
+            {
+                Frm_Login logout = new Frm_Login();
+                logout.Show();
+                this.Hide();
+            }
+        }
+
+        private void logOutToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (res == DialogResult.OK)
+            {
+                Frm_Login logout = new Frm_Login();
+                logout.Show();
+                this.Hide();
+            }
         }
     }
 }

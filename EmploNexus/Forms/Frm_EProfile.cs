@@ -130,7 +130,6 @@ namespace EmploNexus.Forms
             }
         }
 
-
         public void loadUser()
         {
             loadCbBoxGender();

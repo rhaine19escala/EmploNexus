@@ -142,9 +142,7 @@ namespace EmploNexus.Forms
                 nUserAccount.username = txtuser_name.Text;
                 nUserAccount.password = txtpass_word.Text;
                 nUserAccount.roleId = (Int32)cmbBoxRole.SelectedValue;
-
-                username = txtuser_name.Text;
-
+               
                 db.UserAccounts.Add(nUserAccount);
                 db.SaveChanges();
 
@@ -153,6 +151,7 @@ namespace EmploNexus.Forms
                 if (answer == DialogResult.Yes)
                 {
                     this.Hide();
+                    username = txtuser_name.Text;
                 }
 
             }
@@ -160,21 +159,6 @@ namespace EmploNexus.Forms
             {
                 MessageBox.Show("Error Encountered : " + ex.Message, "EmploNexus: Registration", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }           
-        }
-
-        private void cmbBoxGender_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbBoxDepartment_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbBoxPosition_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void grpBox_useraccIfno_Enter(object sender, EventArgs e)

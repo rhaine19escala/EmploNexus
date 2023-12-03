@@ -30,35 +30,48 @@ namespace EmploNexus.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_MProfile));
-            this.label1 = new System.Windows.Forms.Label();
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtuserUsername = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.grpButtons = new System.Windows.Forms.GroupBox();
+            this.txtCurrentDate = new System.Windows.Forms.TextBox();
+            this.btnSAVE = new System.Windows.Forms.Button();
+            this.btnEDIT = new System.Windows.Forms.Button();
+            this.grpEmployee = new System.Windows.Forms.GroupBox();
+            this.txtempID = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbBox_empPosition = new System.Windows.Forms.ComboBox();
+            this.txtempName = new System.Windows.Forms.TextBox();
+            this.DOB_date = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbBox_empDepartment = new System.Windows.Forms.ComboBox();
+            this.txtempEmail = new System.Windows.Forms.TextBox();
+            this.cmbBox_empGender = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.grpButtons.SuspendLayout();
+            this.grpEmployee.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.LightBlue;
-            this.label1.Location = new System.Drawing.Point(12, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(359, 41);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "EmploNexus: Profile";
             // 
             // txtCurrentTime
             // 
             this.txtCurrentTime.BackColor = System.Drawing.Color.LightCyan;
             this.txtCurrentTime.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrentTime.Location = new System.Drawing.Point(503, 12);
+            this.txtCurrentTime.Location = new System.Drawing.Point(718, 12);
             this.txtCurrentTime.Name = "txtCurrentTime";
             this.txtCurrentTime.ReadOnly = true;
             this.txtCurrentTime.Size = new System.Drawing.Size(163, 29);
@@ -74,7 +87,7 @@ namespace EmploNexus.Forms
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(678, 32);
+            this.menuStrip1.Size = new System.Drawing.Size(893, 32);
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menu_File";
             // 
@@ -82,9 +95,9 @@ namespace EmploNexus.Forms
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.logoutToolStripMenuItem,
             this.toolStripMenuItem2,
             this.logoutToolStripMenuItem1,
+            this.toolStripMenuItem3,
             this.logOutToolStripMenuItem2});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(49, 26);
@@ -93,49 +106,324 @@ namespace EmploNexus.Forms
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(197, 26);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(256, 26);
             this.toolStripMenuItem1.Text = "Back";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click_1);
-            // 
-            // logoutToolStripMenuItem
-            // 
-            this.logoutToolStripMenuItem.Enabled = false;
-            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
-            this.logoutToolStripMenuItem.Text = "Profile";
-            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click_1);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(197, 26);
-            this.toolStripMenuItem2.Text = "View Employee";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(256, 26);
+            this.toolStripMenuItem2.Text = "Employee Management";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // logoutToolStripMenuItem1
             // 
             this.logoutToolStripMenuItem1.Name = "logoutToolStripMenuItem1";
-            this.logoutToolStripMenuItem1.Size = new System.Drawing.Size(197, 26);
-            this.logoutToolStripMenuItem1.Text = "View Salary";
+            this.logoutToolStripMenuItem1.Size = new System.Drawing.Size(256, 26);
+            this.logoutToolStripMenuItem1.Text = "Salary Details";
             this.logoutToolStripMenuItem1.Click += new System.EventHandler(this.logoutToolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(256, 26);
+            this.toolStripMenuItem3.Text = "Attendance Details";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // logOutToolStripMenuItem2
             // 
             this.logOutToolStripMenuItem2.Name = "logOutToolStripMenuItem2";
-            this.logOutToolStripMenuItem2.Size = new System.Drawing.Size(197, 26);
+            this.logOutToolStripMenuItem2.Size = new System.Drawing.Size(256, 26);
             this.logOutToolStripMenuItem2.Text = "Log out";
             this.logOutToolStripMenuItem2.Click += new System.EventHandler(this.logOutToolStripMenuItem2_Click_1);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.txtuserUsername);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.LightBlue;
+            this.groupBox1.Location = new System.Drawing.Point(449, 99);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(424, 89);
+            this.groupBox1.TabIndex = 43;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Account Details";
+            // 
+            // txtuserUsername
+            // 
+            this.txtuserUsername.BackColor = System.Drawing.Color.LightCyan;
+            this.txtuserUsername.Location = new System.Drawing.Point(179, 37);
+            this.txtuserUsername.Name = "txtuserUsername";
+            this.txtuserUsername.Size = new System.Drawing.Size(217, 33);
+            this.txtuserUsername.TabIndex = 18;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.LightBlue;
+            this.label11.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label11.Location = new System.Drawing.Point(32, 40);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(103, 26);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "Username";
+            // 
+            // grpButtons
+            // 
+            this.grpButtons.BackColor = System.Drawing.Color.Transparent;
+            this.grpButtons.Controls.Add(this.txtCurrentDate);
+            this.grpButtons.Controls.Add(this.btnSAVE);
+            this.grpButtons.Controls.Add(this.btnEDIT);
+            this.grpButtons.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpButtons.ForeColor = System.Drawing.Color.LightBlue;
+            this.grpButtons.Location = new System.Drawing.Point(449, 194);
+            this.grpButtons.Name = "grpButtons";
+            this.grpButtons.Size = new System.Drawing.Size(424, 210);
+            this.grpButtons.TabIndex = 42;
+            this.grpButtons.TabStop = false;
+            // 
+            // txtCurrentDate
+            // 
+            this.txtCurrentDate.BackColor = System.Drawing.Color.LightCyan;
+            this.txtCurrentDate.Location = new System.Drawing.Point(34, 116);
+            this.txtCurrentDate.Name = "txtCurrentDate";
+            this.txtCurrentDate.ReadOnly = true;
+            this.txtCurrentDate.Size = new System.Drawing.Size(359, 33);
+            this.txtCurrentDate.TabIndex = 38;
+            this.txtCurrentDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnSAVE
+            // 
+            this.btnSAVE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnSAVE.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSAVE.ForeColor = System.Drawing.Color.LightBlue;
+            this.btnSAVE.Location = new System.Drawing.Point(34, 162);
+            this.btnSAVE.Name = "btnSAVE";
+            this.btnSAVE.Size = new System.Drawing.Size(169, 32);
+            this.btnSAVE.TabIndex = 28;
+            this.btnSAVE.Text = "SAVE PROFILE";
+            this.btnSAVE.UseVisualStyleBackColor = false;
+            this.btnSAVE.Click += new System.EventHandler(this.btnSAVE_Click);
+            // 
+            // btnEDIT
+            // 
+            this.btnEDIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnEDIT.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEDIT.ForeColor = System.Drawing.Color.LightBlue;
+            this.btnEDIT.Location = new System.Drawing.Point(224, 162);
+            this.btnEDIT.Name = "btnEDIT";
+            this.btnEDIT.Size = new System.Drawing.Size(169, 32);
+            this.btnEDIT.TabIndex = 29;
+            this.btnEDIT.Text = "EDIT PROFILE";
+            this.btnEDIT.UseVisualStyleBackColor = false;
+            this.btnEDIT.Click += new System.EventHandler(this.btnEDIT_Click);
+            // 
+            // grpEmployee
+            // 
+            this.grpEmployee.BackColor = System.Drawing.Color.Transparent;
+            this.grpEmployee.Controls.Add(this.txtempID);
+            this.grpEmployee.Controls.Add(this.label9);
+            this.grpEmployee.Controls.Add(this.label2);
+            this.grpEmployee.Controls.Add(this.cmbBox_empPosition);
+            this.grpEmployee.Controls.Add(this.txtempName);
+            this.grpEmployee.Controls.Add(this.DOB_date);
+            this.grpEmployee.Controls.Add(this.label3);
+            this.grpEmployee.Controls.Add(this.cmbBox_empDepartment);
+            this.grpEmployee.Controls.Add(this.txtempEmail);
+            this.grpEmployee.Controls.Add(this.cmbBox_empGender);
+            this.grpEmployee.Controls.Add(this.label4);
+            this.grpEmployee.Controls.Add(this.label5);
+            this.grpEmployee.Controls.Add(this.label6);
+            this.grpEmployee.Controls.Add(this.label7);
+            this.grpEmployee.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpEmployee.ForeColor = System.Drawing.Color.LightBlue;
+            this.grpEmployee.Location = new System.Drawing.Point(19, 99);
+            this.grpEmployee.Name = "grpEmployee";
+            this.grpEmployee.Size = new System.Drawing.Size(424, 305);
+            this.grpEmployee.TabIndex = 41;
+            this.grpEmployee.TabStop = false;
+            this.grpEmployee.Text = "Employee Details";
+            // 
+            // txtempID
+            // 
+            this.txtempID.BackColor = System.Drawing.Color.LightCyan;
+            this.txtempID.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtempID.Location = new System.Drawing.Point(172, 42);
+            this.txtempID.Name = "txtempID";
+            this.txtempID.Size = new System.Drawing.Size(230, 29);
+            this.txtempID.TabIndex = 14;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.LightBlue;
+            this.label9.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label9.Location = new System.Drawing.Point(26, 149);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(97, 26);
+            this.label9.TabIndex = 35;
+            this.label9.Text = "Birthdate";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.LightBlue;
+            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label2.Location = new System.Drawing.Point(26, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(130, 26);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Employee ID";
+            // 
+            // cmbBox_empPosition
+            // 
+            this.cmbBox_empPosition.BackColor = System.Drawing.Color.LightCyan;
+            this.cmbBox_empPosition.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBox_empPosition.FormattingEnabled = true;
+            this.cmbBox_empPosition.Location = new System.Drawing.Point(172, 254);
+            this.cmbBox_empPosition.Name = "cmbBox_empPosition";
+            this.cmbBox_empPosition.Size = new System.Drawing.Size(230, 30);
+            this.cmbBox_empPosition.TabIndex = 34;
+            // 
+            // txtempName
+            // 
+            this.txtempName.BackColor = System.Drawing.Color.LightCyan;
+            this.txtempName.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtempName.Location = new System.Drawing.Point(172, 77);
+            this.txtempName.Name = "txtempName";
+            this.txtempName.Size = new System.Drawing.Size(230, 29);
+            this.txtempName.TabIndex = 16;
+            // 
+            // DOB_date
+            // 
+            this.DOB_date.CalendarMonthBackground = System.Drawing.Color.LightCyan;
+            this.DOB_date.CustomFormat = "";
+            this.DOB_date.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DOB_date.Location = new System.Drawing.Point(172, 148);
+            this.DOB_date.Name = "DOB_date";
+            this.DOB_date.Size = new System.Drawing.Size(230, 29);
+            this.DOB_date.TabIndex = 34;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.LightBlue;
+            this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label3.Location = new System.Drawing.Point(26, 77);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 26);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Name";
+            // 
+            // cmbBox_empDepartment
+            // 
+            this.cmbBox_empDepartment.BackColor = System.Drawing.Color.LightCyan;
+            this.cmbBox_empDepartment.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBox_empDepartment.FormattingEnabled = true;
+            this.cmbBox_empDepartment.Location = new System.Drawing.Point(172, 218);
+            this.cmbBox_empDepartment.Name = "cmbBox_empDepartment";
+            this.cmbBox_empDepartment.Size = new System.Drawing.Size(230, 30);
+            this.cmbBox_empDepartment.TabIndex = 33;
+            // 
+            // txtempEmail
+            // 
+            this.txtempEmail.BackColor = System.Drawing.Color.LightCyan;
+            this.txtempEmail.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtempEmail.Location = new System.Drawing.Point(172, 183);
+            this.txtempEmail.Name = "txtempEmail";
+            this.txtempEmail.Size = new System.Drawing.Size(230, 29);
+            this.txtempEmail.TabIndex = 18;
+            // 
+            // cmbBox_empGender
+            // 
+            this.cmbBox_empGender.BackColor = System.Drawing.Color.LightCyan;
+            this.cmbBox_empGender.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBox_empGender.FormattingEnabled = true;
+            this.cmbBox_empGender.Location = new System.Drawing.Point(172, 112);
+            this.cmbBox_empGender.Name = "cmbBox_empGender";
+            this.cmbBox_empGender.Size = new System.Drawing.Size(230, 30);
+            this.cmbBox_empGender.TabIndex = 32;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.LightBlue;
+            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label4.Location = new System.Drawing.Point(26, 183);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 26);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "E-mail";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.LightBlue;
+            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label5.Location = new System.Drawing.Point(26, 113);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 26);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Gender";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.LightBlue;
+            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label6.Location = new System.Drawing.Point(26, 218);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(122, 26);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Department";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.LightBlue;
+            this.label7.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label7.Location = new System.Drawing.Point(26, 254);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(120, 26);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Job Position";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.LightBlue;
+            this.label1.Location = new System.Drawing.Point(11, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(319, 44);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "EmploNexus: Profile";
             // 
             // Frm_MProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::EmploNexus.Properties.Resources.alexandr_podvalny_n_Jb_d8O43Q_unsplash;
+            this.BackgroundImage = global::EmploNexus.Properties.Resources._6765093_3429734;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(678, 369);
+            this.ClientSize = new System.Drawing.Size(893, 421);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpButtons);
+            this.Controls.Add(this.grpEmployee);
             this.Controls.Add(this.txtCurrentTime);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -148,20 +436,48 @@ namespace EmploNexus.Forms
             this.Load += new System.EventHandler(this.Frm_MViewEmployee_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.grpButtons.ResumeLayout(false);
+            this.grpButtons.PerformLayout();
+            this.grpEmployee.ResumeLayout(false);
+            this.grpEmployee.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCurrentTime;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtuserUsername;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.GroupBox grpButtons;
+        private System.Windows.Forms.TextBox txtCurrentDate;
+        private System.Windows.Forms.Button btnSAVE;
+        private System.Windows.Forms.Button btnEDIT;
+        private System.Windows.Forms.GroupBox grpEmployee;
+        private System.Windows.Forms.TextBox txtempID;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbBox_empPosition;
+        private System.Windows.Forms.TextBox txtempName;
+        private System.Windows.Forms.DateTimePicker DOB_date;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbBox_empDepartment;
+        private System.Windows.Forms.TextBox txtempEmail;
+        private System.Windows.Forms.ComboBox cmbBox_empGender;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label1;
     }
 }

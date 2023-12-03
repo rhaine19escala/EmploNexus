@@ -185,6 +185,12 @@
     <Compile Include="Forms\Frm_EnAttendance.Designer.cs">
       <DependentUpon>Frm_EnAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Frm_MAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_MAttendance.Designer.cs">
+      <DependentUpon>Frm_MAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Frm_MProfile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -271,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_EnAttendance.resx">
       <DependentUpon>Frm_EnAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_MAttendance.resx">
+      <DependentUpon>Frm_MAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_MProfile.resx">
       <DependentUpon>Frm_MProfile.cs</DependentUpon>
