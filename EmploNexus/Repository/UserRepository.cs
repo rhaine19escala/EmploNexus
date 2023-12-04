@@ -89,6 +89,14 @@ namespace EmploNexus
             return emploNexusEntities.vw_emp_Attendance.Where(e => e.EMPLOYEE_ID == employeeId).OrderBy(e => e.DATE).ToList();
         }
 
+        public List<vw_manage_employee> GetEmployeesInSameDepartment(int currentUserId, int currentDepartmentId)
+        {
+            emploNexusEntities = new EmploNexusu_uEntities();
+
+            return emploNexusEntities.vw_manage_employee.Where(e => e.EMPLOYEE_ID != currentUserId && e.DEPARTMENT == currentDepartmentId).OrderBy(e => e.EMPLOYEE_ID).ToList();
+        }
+
+
         public void UpdateEmployeeData(int empId, string empName, int genderId, DateTime dob, string empEmail, int departmentId, int positionId)
         {
             var userAccount = emploNexusEntities.UserAccounts.FirstOrDefault(e => e.user_empID == empId);

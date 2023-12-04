@@ -172,6 +172,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="vw_manage_employee">
+      <EntityTypeMapping TypeName="EmploNexusModel.vw_manage_employee">
+        <MappingFragment StoreEntitySet="vw_manage_employee">
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE ID" />
+          <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE NAME" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+          <ScalarProperty Name="JOB_POSITION" ColumnName="JOB POSITION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_addAttendance" FunctionName="EmploNexusModel.Store.sp_addAttendance" />
     <FunctionImportMapping FunctionImportName="sp_addEmployee" FunctionName="EmploNexusModel.Store.sp_addEmployee" />
     <FunctionImportMapping FunctionImportName="sp_addSalary" FunctionName="EmploNexusModel.Store.sp_addSalary" />

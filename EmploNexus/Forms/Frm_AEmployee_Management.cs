@@ -453,6 +453,7 @@ namespace EmploNexus.Forms
                 MessageBox.Show(" Employee Info not Deleted Successfully!. \nError :" + ex.Message, "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             using (var db = new EmploNexusu_uEntities())

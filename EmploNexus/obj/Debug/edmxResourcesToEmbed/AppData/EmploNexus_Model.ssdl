@@ -195,7 +195,25 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_emp_salary' does not have a prim
     <Property Name="PAY_DATE" Type="date" Nullable="false" />
     <Property Name="SALARY" Type="decimal" Precision="10" Scale="2" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Attendanc__Atten__2E1BDC42">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EmploNexus.dbo.vw_manage_employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_manage_employee">
+    <Key>
+      <PropertyRef Name="EMPLOYEE ID" />
+      <PropertyRef Name="EMPLOYEE NAME" />
+      <PropertyRef Name="GENDER" />
+      <PropertyRef Name="EMAIL" />
+      <PropertyRef Name="DEPARTMENT" />
+      <PropertyRef Name="JOB POSITION" />
+    </Key>
+    <Property Name="EMPLOYEE ID" Type="int" Nullable="false" />
+    <Property Name="EMPLOYEE NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="GENDER" Type="int" Nullable="false" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="DEPARTMENT" Type="int" Nullable="false" />
+    <Property Name="JOB POSITION" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Attendanc__Atten__2B3F6F97">
     <End Role="Status" Type="Self.Status" Multiplicity="1" />
     <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
     <ReferentialConstraint>
@@ -208,8 +226,8 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_emp_salary' does not have a prim
     </ReferentialConstraint>
   </Association>
   <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Attendanc__Atten__2F10007B' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Attendanc__Atten__2F10007B" />-->
+warning 6035: The relationship 'FK__Attendanc__Atten__2C3393D0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Attendanc__Atten__2C3393D0" />-->
   <Association Name="FK__Employees__emp_d__22AA2996">
     <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
     <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
@@ -250,8 +268,8 @@ warning 6035: The relationship 'FK__Employees__emp_I__20C1E124' has columns that
     </ReferentialConstraint>
   </Association>
   <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Salary__Salaryem__29572725' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Salary__Salaryem__29572725" />-->
+warning 6035: The relationship 'FK__Salary__Salaryem__276EDEB3' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Salary__Salaryem__276EDEB3" />-->
   <Association Name="FK__UserAccou__roleI__1BFD2C07">
     <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
     <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
@@ -403,7 +421,17 @@ FROM [dbo].[vw_emp_Attendance] AS [vw_emp_Attendance]</DefiningQuery>
 [vw_emp_salary].[SALARY] AS [SALARY]
 FROM [dbo].[vw_emp_salary] AS [vw_emp_salary]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK__Attendanc__Atten__2E1BDC42" Association="Self.FK__Attendanc__Atten__2E1BDC42">
+    <EntitySet Name="vw_manage_employee" EntityType="Self.vw_manage_employee" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[vw_manage_employee].[EMPLOYEE ID] AS [EMPLOYEE ID], 
+[vw_manage_employee].[EMPLOYEE NAME] AS [EMPLOYEE NAME], 
+[vw_manage_employee].[GENDER] AS [GENDER], 
+[vw_manage_employee].[EMAIL] AS [EMAIL], 
+[vw_manage_employee].[DEPARTMENT] AS [DEPARTMENT], 
+[vw_manage_employee].[JOB POSITION] AS [JOB POSITION]
+FROM [dbo].[vw_manage_employee] AS [vw_manage_employee]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Attendanc__Atten__2B3F6F97" Association="Self.FK__Attendanc__Atten__2B3F6F97">
       <End Role="Status" EntitySet="Status" />
       <End Role="Attendance" EntitySet="Attendance" />
     </AssociationSet>

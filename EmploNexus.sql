@@ -207,6 +207,12 @@ AS
 SELECT E.emp_No AS 'EMPLOYEE NO.', E.emp_ID AS 'EMPLOYEE ID', E.emp_name AS 'EMPLOYEE NAME', E.emp_departmentId AS 'DEPARTMENT', E.emp_positionId AS 'JOB POSITION' 
 FROM Employees E
 
+------VIEW ALL EMPLOYEE MANAGE
+CREATE VIEW vw_manage_employee
+AS
+SELECT emp_ID AS 'EMPLOYEE ID', emp_name AS 'EMPLOYEE NAME', emp_genderId AS 'GENDER', emp_email AS 'EMAIL', emp_departmentId AS 'DEPARTMENT', emp_positionId AS 'JOB POSITION'
+FROM Employees
+
 ------STORED PROCEDURE ADD USER
 CREATE PROCEDURE sp_addUser
     @user_empID INT,

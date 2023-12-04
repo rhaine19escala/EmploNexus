@@ -200,7 +200,25 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_emp_salary' does not have a prim
           <Property Name="PAY_DATE" Type="date" Nullable="false" />
           <Property Name="SALARY" Type="decimal" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Attendanc__Atten__2E1BDC42">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EmploNexus.dbo.vw_manage_employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_manage_employee">
+          <Key>
+            <PropertyRef Name="EMPLOYEE ID" />
+            <PropertyRef Name="EMPLOYEE NAME" />
+            <PropertyRef Name="GENDER" />
+            <PropertyRef Name="EMAIL" />
+            <PropertyRef Name="DEPARTMENT" />
+            <PropertyRef Name="JOB POSITION" />
+          </Key>
+          <Property Name="EMPLOYEE ID" Type="int" Nullable="false" />
+          <Property Name="EMPLOYEE NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="GENDER" Type="int" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DEPARTMENT" Type="int" Nullable="false" />
+          <Property Name="JOB POSITION" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Attendanc__Atten__2B3F6F97">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
           <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -213,8 +231,8 @@ warning 6002: The table/view 'EmploNexus.dbo.vw_emp_salary' does not have a prim
           </ReferentialConstraint>
         </Association>
         <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Attendanc__Atten__2F10007B' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Attendanc__Atten__2F10007B" />-->
+warning 6035: The relationship 'FK__Attendanc__Atten__2C3393D0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Attendanc__Atten__2C3393D0" />-->
         <Association Name="FK__Employees__emp_d__22AA2996">
           <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
@@ -255,8 +273,8 @@ warning 6035: The relationship 'FK__Employees__emp_I__20C1E124' has columns that
           </ReferentialConstraint>
         </Association>
         <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__Salary__Salaryem__29572725' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__Salary__Salaryem__29572725" />-->
+warning 6035: The relationship 'FK__Salary__Salaryem__276EDEB3' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Salary__Salaryem__276EDEB3" />-->
         <Association Name="FK__UserAccou__roleI__1BFD2C07">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="UserAccounts" Type="Self.UserAccounts" Multiplicity="*" />
@@ -408,7 +426,17 @@ FROM [dbo].[vw_emp_Attendance] AS [vw_emp_Attendance]</DefiningQuery>
 [vw_emp_salary].[SALARY] AS [SALARY]
 FROM [dbo].[vw_emp_salary] AS [vw_emp_salary]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Attendanc__Atten__2E1BDC42" Association="Self.FK__Attendanc__Atten__2E1BDC42">
+          <EntitySet Name="vw_manage_employee" EntityType="Self.vw_manage_employee" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_manage_employee].[EMPLOYEE ID] AS [EMPLOYEE ID], 
+[vw_manage_employee].[EMPLOYEE NAME] AS [EMPLOYEE NAME], 
+[vw_manage_employee].[GENDER] AS [GENDER], 
+[vw_manage_employee].[EMAIL] AS [EMAIL], 
+[vw_manage_employee].[DEPARTMENT] AS [DEPARTMENT], 
+[vw_manage_employee].[JOB POSITION] AS [JOB POSITION]
+FROM [dbo].[vw_manage_employee] AS [vw_manage_employee]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Attendanc__Atten__2B3F6F97" Association="Self.FK__Attendanc__Atten__2B3F6F97">
             <End Role="Status" EntitySet="Status" />
             <End Role="Attendance" EntitySet="Attendance" />
           </AssociationSet>
@@ -442,7 +470,7 @@ FROM [dbo].[vw_emp_salary] AS [vw_emp_salary]</DefiningQuery>
           <Property Name="AttendanceDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="AttendanceStatusId" Type="Int32" Nullable="false" />
           <Property Name="AttendanceEmp_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Status" Relationship="Self.FK__Attendanc__Atten__2E1BDC42" FromRole="Attendance" ToRole="Status" />
+          <NavigationProperty Name="Status" Relationship="Self.FK__Attendanc__Atten__2B3F6F97" FromRole="Attendance" ToRole="Status" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -510,7 +538,7 @@ FROM [dbo].[vw_emp_salary] AS [vw_emp_salary]</DefiningQuery>
           </Key>
           <Property Name="statusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="statusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Attendances" Relationship="Self.FK__Attendanc__Atten__2E1BDC42" FromRole="Status" ToRole="Attendance" />
+          <NavigationProperty Name="Attendances" Relationship="Self.FK__Attendanc__Atten__2B3F6F97" FromRole="Status" ToRole="Attendance" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
@@ -623,7 +651,23 @@ FROM [dbo].[vw_emp_salary] AS [vw_emp_salary]</DefiningQuery>
           <Property Name="PAY_DATE" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="SALARY" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Attendanc__Atten__2E1BDC42">
+        <EntityType Name="vw_manage_employee">
+          <Key>
+            <PropertyRef Name="EMPLOYEE_ID" />
+            <PropertyRef Name="EMPLOYEE_NAME" />
+            <PropertyRef Name="GENDER" />
+            <PropertyRef Name="EMAIL" />
+            <PropertyRef Name="DEPARTMENT" />
+            <PropertyRef Name="JOB_POSITION" />
+          </Key>
+          <Property Name="EMPLOYEE_ID" Type="Int32" Nullable="false" />
+          <Property Name="EMPLOYEE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GENDER" Type="Int32" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DEPARTMENT" Type="Int32" Nullable="false" />
+          <Property Name="JOB_POSITION" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Attendanc__Atten__2B3F6F97">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
           <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -701,7 +745,8 @@ FROM [dbo].[vw_emp_salary] AS [vw_emp_salary]</DefiningQuery>
           <EntitySet Name="vw_all_user_role" EntityType="Self.vw_all_user_role" />
           <EntitySet Name="vw_emp_Attendance" EntityType="Self.vw_emp_Attendance" />
           <EntitySet Name="vw_emp_salary" EntityType="Self.vw_emp_salary" />
-          <AssociationSet Name="FK__Attendanc__Atten__2E1BDC42" Association="Self.FK__Attendanc__Atten__2E1BDC42">
+          <EntitySet Name="vw_manage_employee" EntityType="Self.vw_manage_employee" />
+          <AssociationSet Name="FK__Attendanc__Atten__2B3F6F97" Association="Self.FK__Attendanc__Atten__2B3F6F97">
             <End Role="Status" EntitySet="Status" />
             <End Role="Attendance" EntitySet="Attendances" />
           </AssociationSet>
@@ -958,6 +1003,18 @@ FROM [dbo].[vw_emp_salary] AS [vw_emp_salary]</DefiningQuery>
                 <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
                 <ScalarProperty Name="PAY_DATE" ColumnName="PAY_DATE" />
                 <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_manage_employee">
+            <EntityTypeMapping TypeName="EmploNexusModel.vw_manage_employee">
+              <MappingFragment StoreEntitySet="vw_manage_employee">
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE ID" />
+                <ScalarProperty Name="EMPLOYEE_NAME" ColumnName="EMPLOYEE NAME" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+                <ScalarProperty Name="JOB_POSITION" ColumnName="JOB POSITION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
