@@ -310,22 +310,6 @@ namespace EmploNexus.Forms
             this.Hide();
         }
 
-        private void salary_Click(object sender, EventArgs e)
-        {
-            //Salary Management
-            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
-            aSalary_Management.Show();
-            this.Hide();
-        }
-
-        private void attendance_Click(object sender, EventArgs e)
-        {
-            //Attendance Management
-            Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
-            attendance_Management.Show();
-            this.Hide();
-        }
-
         private void logout_Click(object sender, EventArgs e)
         {
             DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -336,5 +320,38 @@ namespace EmploNexus.Forms
                 this.Hide();
             }
         }
+
+        private void managementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Salary Management
+            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
+            aSalary_Management.Show();
+            this.Hide();
+        }
+
+        private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_ApersonalSalary apersonalSalary = new Frm_ApersonalSalary();
+            apersonalSalary.Show();
+            this.Hide();
+        }
+
+        private void managementToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            //Attendance Management
+            Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
+            attendance_Management.Show();
+            this.Hide();
+        }
+
+        private void detailsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //Attendance Personal Details
+            Frm_ApersonalAttendance apersonalAttendance = new Frm_ApersonalAttendance();
+            apersonalAttendance.Show();
+            this.Hide();
+        }
+    }
     }
 }

@@ -107,13 +107,7 @@ namespace EmploNexus.Forms
                 this.Hide();
             }
         }
-        private void toolStripMenuItem6_Click(object sender, EventArgs e)
-        {
-            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
-            aSalary_Management.Show();
-            this.Hide();
-        }
-
+        
         private bool IsValidEmail(string email)
         {
             string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
@@ -575,10 +569,33 @@ namespace EmploNexus.Forms
             loadUser();
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Frm_ApersonalSalary apersonalSalary = new Frm_ApersonalSalary();
+            apersonalSalary.Show();
+            this.Hide();
+        }
+
+        private void managementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
+            aSalary_Management.Show();
+            this.Hide();
+        }
+
+        private void managementToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            // Attendance
             Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
             attendance_Management.Show();
+            this.Hide();
+        }
+
+        private void detailsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //Attendance Personal Details
+            Frm_ApersonalAttendance apersonalAttendance = new Frm_ApersonalAttendance();
+            apersonalAttendance.Show();
             this.Hide();
         }
     }

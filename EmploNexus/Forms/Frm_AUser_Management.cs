@@ -65,12 +65,6 @@ namespace EmploNexus.Forms
             admin_Dashboard.Show();
             this.Hide();
         }
-        private void toolStripMenuItem6_Click(object sender, EventArgs e)
-        {
-            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
-            aSalary_Management.Show();
-            this.Hide();
-        }
 
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
@@ -449,10 +443,32 @@ namespace EmploNexus.Forms
             loadUser();
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void managementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
             attendance_Management.Show();
+            this.Hide();
+        }
+
+        private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Attendance Personal Details
+            Frm_ApersonalAttendance apersonalAttendance = new Frm_ApersonalAttendance();
+            apersonalAttendance.Show();
+            this.Hide();
+        }
+
+        private void managementToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
+            aSalary_Management.Show();
+            this.Hide();
+        }
+
+        private void detailsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Frm_ApersonalSalary apersonalSalary = new Frm_ApersonalSalary();
+            apersonalSalary.Show();
             this.Hide();
         }
     }

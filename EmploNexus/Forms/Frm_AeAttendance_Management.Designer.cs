@@ -38,7 +38,11 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.managementToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.detailsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.managementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,6 +53,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtempSearch = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtAttendanceNo = new System.Windows.Forms.TextBox();
             this.cmbBox_status = new System.Windows.Forms.ComboBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -62,8 +68,6 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgv_AllAttendanceWdetails = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtAttendanceNo = new System.Windows.Forms.TextBox();
             this.menuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_allempInfo)).BeginInit();
@@ -144,17 +148,49 @@
             // 
             // toolStripMenuItem6
             // 
+            this.toolStripMenuItem6.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.managementToolStripMenuItem1,
+            this.detailsToolStripMenuItem1});
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
             this.toolStripMenuItem6.Size = new System.Drawing.Size(280, 26);
-            this.toolStripMenuItem6.Text = "Salary Management";
-            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
+            this.toolStripMenuItem6.Text = "Salary";
+            // 
+            // managementToolStripMenuItem1
+            // 
+            this.managementToolStripMenuItem1.Name = "managementToolStripMenuItem1";
+            this.managementToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.managementToolStripMenuItem1.Text = "Management";
+            this.managementToolStripMenuItem1.Click += new System.EventHandler(this.managementToolStripMenuItem1_Click);
+            // 
+            // detailsToolStripMenuItem1
+            // 
+            this.detailsToolStripMenuItem1.Name = "detailsToolStripMenuItem1";
+            this.detailsToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.detailsToolStripMenuItem1.Text = "Details";
+            this.detailsToolStripMenuItem1.Click += new System.EventHandler(this.detailsToolStripMenuItem1_Click);
             // 
             // toolStripMenuItem1
             // 
-            this.toolStripMenuItem1.Enabled = false;
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.managementToolStripMenuItem,
+            this.detailsToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(280, 26);
-            this.toolStripMenuItem1.Text = "Attendance Management";
+            this.toolStripMenuItem1.Text = "Attendance";
+            // 
+            // managementToolStripMenuItem
+            // 
+            this.managementToolStripMenuItem.Enabled = false;
+            this.managementToolStripMenuItem.Name = "managementToolStripMenuItem";
+            this.managementToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.managementToolStripMenuItem.Text = "Management";
+            // 
+            // detailsToolStripMenuItem
+            // 
+            this.detailsToolStripMenuItem.Name = "detailsToolStripMenuItem";
+            this.detailsToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.detailsToolStripMenuItem.Text = "Details";
+            this.detailsToolStripMenuItem.Click += new System.EventHandler(this.detailsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem7
             // 
@@ -292,6 +328,26 @@
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attendance Details";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.LightBlue;
+            this.label7.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label7.Location = new System.Drawing.Point(26, 102);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(146, 26);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "Attendance no.";
+            // 
+            // txtAttendanceNo
+            // 
+            this.txtAttendanceNo.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAttendanceNo.Location = new System.Drawing.Point(185, 102);
+            this.txtAttendanceNo.Name = "txtAttendanceNo";
+            this.txtAttendanceNo.Size = new System.Drawing.Size(47, 29);
+            this.txtAttendanceNo.TabIndex = 38;
             // 
             // cmbBox_status
             // 
@@ -440,26 +496,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.LightBlue;
-            this.label7.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label7.Location = new System.Drawing.Point(26, 102);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(146, 26);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "Attendance no.";
-            // 
-            // txtAttendanceNo
-            // 
-            this.txtAttendanceNo.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAttendanceNo.Location = new System.Drawing.Point(185, 102);
-            this.txtAttendanceNo.Name = "txtAttendanceNo";
-            this.txtAttendanceNo.Size = new System.Drawing.Size(47, 29);
-            this.txtAttendanceNo.TabIndex = 38;
-            // 
             // Frm_AeAttendance_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -530,5 +566,9 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtAttendanceNo;
+        private System.Windows.Forms.ToolStripMenuItem managementToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem detailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem managementToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem detailsToolStripMenuItem1;
     }
 }

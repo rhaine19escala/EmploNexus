@@ -61,7 +61,11 @@
             this.useraccount = new System.Windows.Forms.ToolStripMenuItem();
             this.employee = new System.Windows.Forms.ToolStripMenuItem();
             this.salary = new System.Windows.Forms.ToolStripMenuItem();
+            this.managementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.attendance = new System.Windows.Forms.ToolStripMenuItem();
+            this.managementToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.detailsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.logout = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.grpEmployee.SuspendLayout();
@@ -423,17 +427,49 @@
             // 
             // salary
             // 
+            this.salary.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.managementToolStripMenuItem,
+            this.detailsToolStripMenuItem});
             this.salary.Name = "salary";
             this.salary.Size = new System.Drawing.Size(280, 26);
-            this.salary.Text = "Salary Management";
-            this.salary.Click += new System.EventHandler(this.salary_Click);
+            this.salary.Text = "Salary";
+            // 
+            // managementToolStripMenuItem
+            // 
+            this.managementToolStripMenuItem.Name = "managementToolStripMenuItem";
+            this.managementToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.managementToolStripMenuItem.Text = "Management";
+            this.managementToolStripMenuItem.Click += new System.EventHandler(this.managementToolStripMenuItem_Click);
+            // 
+            // detailsToolStripMenuItem
+            // 
+            this.detailsToolStripMenuItem.Name = "detailsToolStripMenuItem";
+            this.detailsToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.detailsToolStripMenuItem.Text = "Details";
+            this.detailsToolStripMenuItem.Click += new System.EventHandler(this.detailsToolStripMenuItem_Click);
             // 
             // attendance
             // 
+            this.attendance.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.managementToolStripMenuItem1,
+            this.detailsToolStripMenuItem1});
             this.attendance.Name = "attendance";
             this.attendance.Size = new System.Drawing.Size(280, 26);
-            this.attendance.Text = "Attendance Management";
-            this.attendance.Click += new System.EventHandler(this.attendance_Click);
+            this.attendance.Text = "Attendance";
+            // 
+            // managementToolStripMenuItem1
+            // 
+            this.managementToolStripMenuItem1.Name = "managementToolStripMenuItem1";
+            this.managementToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.managementToolStripMenuItem1.Text = "Management";
+            this.managementToolStripMenuItem1.Click += new System.EventHandler(this.managementToolStripMenuItem1_Click);
+            // 
+            // detailsToolStripMenuItem1
+            // 
+            this.detailsToolStripMenuItem1.Name = "detailsToolStripMenuItem1";
+            this.detailsToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.detailsToolStripMenuItem1.Text = "Details";
+            this.detailsToolStripMenuItem1.Click += new System.EventHandler(this.detailsToolStripMenuItem1_Click);
             // 
             // logout
             // 
@@ -525,5 +561,9 @@
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox checkPass;
+        private System.Windows.Forms.ToolStripMenuItem managementToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem detailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem managementToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem detailsToolStripMenuItem1;
     }
 }

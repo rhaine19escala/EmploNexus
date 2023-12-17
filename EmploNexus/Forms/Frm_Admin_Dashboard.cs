@@ -65,21 +65,7 @@ namespace EmploNexus.Forms
             employee_Management.Show();
             this.Hide();
         }
-
-        private void btnSalary_Click(object sender, EventArgs e)
-        {
-            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
-            aSalary_Management.Show();
-            this.Hide();
-        }
-
-        private void logoutToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
-            aSalary_Management.Show();
-            this.Hide();
-        }
-
+        
         private void btnUser_Click(object sender, EventArgs e)
         {
             Frm_AUser_Management aUser_Management = new Frm_AUser_Management();
@@ -96,17 +82,8 @@ namespace EmploNexus.Forms
         private void btnAttendance_Click(object sender, EventArgs e)
         {
             //Attendance
-            Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
-            attendance_Management.Show();
-            this.Hide();
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            //Attendance
-            Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
-            attendance_Management.Show();
-            this.Hide();
+            Frm_Attendance_HERE attendance_Management = new Frm_Attendance_HERE();
+            attendance_Management.ShowDialog();
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
@@ -115,6 +92,42 @@ namespace EmploNexus.Forms
            Frm_AProfile aProfile = new Frm_AProfile();
             aProfile.Show();
             this.Hide();
+        }
+
+        private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Attendance Personal Details
+            Frm_ApersonalAttendance apersonalAttendance = new Frm_ApersonalAttendance();
+            apersonalAttendance.Show();
+            this.Hide();
+        }
+
+        private void managementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Attendance
+            Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
+            attendance_Management.Show();
+            this.Hide();
+        }
+
+        private void managementToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
+            aSalary_Management.Show();
+            this.Hide();
+        }
+
+        private void detailsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Frm_ApersonalSalary apersonalSalary = new Frm_ApersonalSalary();
+            apersonalSalary.Show();
+            this.Hide();
+        }
+
+        private void btnSalary_Click(object sender, EventArgs e)
+        {
+            Frm_AtSalary_HERE atSalary_HERE = new Frm_AtSalary_HERE();
+            atSalary_HERE.ShowDialog();
         }
     }
 }

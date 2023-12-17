@@ -77,13 +77,6 @@ namespace EmploNexus.Forms
             this.Hide();
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
-            attendance_Management.Show();
-            this.Hide();
-        }
-
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
             DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -690,6 +683,28 @@ namespace EmploNexus.Forms
                 e.Graphics.DrawString(receiptContent.ToString(), itemFont, brush, rect, format);
             }
             MessageBox.Show("Printed Successfully!", "EmploNexus : Print", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_ApersonalSalary apersonalSalary = new Frm_ApersonalSalary();
+            apersonalSalary.Show();
+            this.Hide();
+        }
+
+        private void managementToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
+            attendance_Management.Show();
+            this.Hide();
+        }
+
+        private void detailsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //Attendance Personal Details
+            Frm_ApersonalAttendance apersonalAttendance = new Frm_ApersonalAttendance();
+            apersonalAttendance.Show();
+            this.Hide();
         }
     }
 }
