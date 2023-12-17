@@ -349,7 +349,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EmploNexus_Setup"
         "ProductCode" = "8:{F40C0638-82D6-4700-AF0F-27D0EA59AD23}"
-        "PackageCode" = "8:{106B4FA5-AA7E-4279-B485-B4A043D7F1E3}"
+        "PackageCode" = "8:{8C8FC260-DAB5-424E-A4A8-B94D21D5CEA5}"
         "UpgradeCode" = "8:{475C79F6-AB21-4833-8493-06F8CC46758B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
