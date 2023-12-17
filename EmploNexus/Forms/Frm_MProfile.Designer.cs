@@ -38,32 +38,35 @@ namespace EmploNexus.Forms
             this.logoutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtuserUsername = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.grpButtons = new System.Windows.Forms.GroupBox();
             this.txtCurrentDate = new System.Windows.Forms.TextBox();
             this.btnSAVE = new System.Windows.Forms.Button();
             this.btnEDIT = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkPass = new System.Windows.Forms.CheckBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtuserUsername = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.grpEmployee = new System.Windows.Forms.GroupBox();
+            this.txtempDepartment = new System.Windows.Forms.TextBox();
+            this.txtempPosition = new System.Windows.Forms.TextBox();
+            this.txtempGender = new System.Windows.Forms.TextBox();
             this.txtempID = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmbBox_empPosition = new System.Windows.Forms.ComboBox();
             this.txtempName = new System.Windows.Forms.TextBox();
             this.DOB_date = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.cmbBox_empDepartment = new System.Windows.Forms.ComboBox();
             this.txtempEmail = new System.Windows.Forms.TextBox();
-            this.cmbBox_empGender = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.grpButtons.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.grpEmployee.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,19 +141,104 @@ namespace EmploNexus.Forms
             this.logOutToolStripMenuItem2.Text = "Log out";
             this.logOutToolStripMenuItem2.Click += new System.EventHandler(this.logOutToolStripMenuItem2_Click_1);
             // 
+            // grpButtons
+            // 
+            this.grpButtons.BackColor = System.Drawing.Color.Transparent;
+            this.grpButtons.Controls.Add(this.txtCurrentDate);
+            this.grpButtons.Controls.Add(this.btnSAVE);
+            this.grpButtons.Controls.Add(this.btnEDIT);
+            this.grpButtons.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpButtons.ForeColor = System.Drawing.Color.LightBlue;
+            this.grpButtons.Location = new System.Drawing.Point(453, 255);
+            this.grpButtons.Name = "grpButtons";
+            this.grpButtons.Size = new System.Drawing.Size(424, 135);
+            this.grpButtons.TabIndex = 41;
+            this.grpButtons.TabStop = false;
+            // 
+            // txtCurrentDate
+            // 
+            this.txtCurrentDate.BackColor = System.Drawing.Color.LightCyan;
+            this.txtCurrentDate.Location = new System.Drawing.Point(37, 36);
+            this.txtCurrentDate.Name = "txtCurrentDate";
+            this.txtCurrentDate.ReadOnly = true;
+            this.txtCurrentDate.Size = new System.Drawing.Size(359, 33);
+            this.txtCurrentDate.TabIndex = 38;
+            this.txtCurrentDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnSAVE
+            // 
+            this.btnSAVE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnSAVE.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSAVE.ForeColor = System.Drawing.Color.LightBlue;
+            this.btnSAVE.Location = new System.Drawing.Point(37, 82);
+            this.btnSAVE.Name = "btnSAVE";
+            this.btnSAVE.Size = new System.Drawing.Size(169, 32);
+            this.btnSAVE.TabIndex = 28;
+            this.btnSAVE.Text = "SAVE PROFILE";
+            this.btnSAVE.UseVisualStyleBackColor = false;
+            this.btnSAVE.Click += new System.EventHandler(this.btnSAVE_Click);
+            // 
+            // btnEDIT
+            // 
+            this.btnEDIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnEDIT.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEDIT.ForeColor = System.Drawing.Color.LightBlue;
+            this.btnEDIT.Location = new System.Drawing.Point(227, 82);
+            this.btnEDIT.Name = "btnEDIT";
+            this.btnEDIT.Size = new System.Drawing.Size(169, 32);
+            this.btnEDIT.TabIndex = 29;
+            this.btnEDIT.Text = "EDIT PROFILE";
+            this.btnEDIT.UseVisualStyleBackColor = false;
+            this.btnEDIT.Click += new System.EventHandler(this.btnEDIT_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.checkPass);
+            this.groupBox1.Controls.Add(this.txtPass);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtuserUsername);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.LightBlue;
-            this.groupBox1.Location = new System.Drawing.Point(449, 99);
+            this.groupBox1.Location = new System.Drawing.Point(453, 85);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(424, 89);
-            this.groupBox1.TabIndex = 43;
+            this.groupBox1.Size = new System.Drawing.Size(424, 164);
+            this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Account Details";
+            // 
+            // checkPass
+            // 
+            this.checkPass.AutoSize = true;
+            this.checkPass.Location = new System.Drawing.Point(179, 116);
+            this.checkPass.Name = "checkPass";
+            this.checkPass.Size = new System.Drawing.Size(171, 30);
+            this.checkPass.TabIndex = 22;
+            this.checkPass.Text = "Show Password";
+            this.checkPass.UseVisualStyleBackColor = true;
+            this.checkPass.CheckedChanged += new System.EventHandler(this.checkPass_CheckedChanged);
+            // 
+            // txtPass
+            // 
+            this.txtPass.BackColor = System.Drawing.Color.LightCyan;
+            this.txtPass.Location = new System.Drawing.Point(179, 77);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '•';
+            this.txtPass.Size = new System.Drawing.Size(217, 33);
+            this.txtPass.TabIndex = 21;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.LightBlue;
+            this.label8.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.label8.Location = new System.Drawing.Point(32, 80);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(96, 26);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Password";
             // 
             // txtuserUsername
             // 
@@ -172,81 +260,58 @@ namespace EmploNexus.Forms
             this.label11.TabIndex = 19;
             this.label11.Text = "Username";
             // 
-            // grpButtons
-            // 
-            this.grpButtons.BackColor = System.Drawing.Color.Transparent;
-            this.grpButtons.Controls.Add(this.txtCurrentDate);
-            this.grpButtons.Controls.Add(this.btnSAVE);
-            this.grpButtons.Controls.Add(this.btnEDIT);
-            this.grpButtons.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpButtons.ForeColor = System.Drawing.Color.LightBlue;
-            this.grpButtons.Location = new System.Drawing.Point(449, 194);
-            this.grpButtons.Name = "grpButtons";
-            this.grpButtons.Size = new System.Drawing.Size(424, 210);
-            this.grpButtons.TabIndex = 42;
-            this.grpButtons.TabStop = false;
-            // 
-            // txtCurrentDate
-            // 
-            this.txtCurrentDate.BackColor = System.Drawing.Color.LightCyan;
-            this.txtCurrentDate.Location = new System.Drawing.Point(34, 116);
-            this.txtCurrentDate.Name = "txtCurrentDate";
-            this.txtCurrentDate.ReadOnly = true;
-            this.txtCurrentDate.Size = new System.Drawing.Size(359, 33);
-            this.txtCurrentDate.TabIndex = 38;
-            this.txtCurrentDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnSAVE
-            // 
-            this.btnSAVE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
-            this.btnSAVE.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSAVE.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnSAVE.Location = new System.Drawing.Point(34, 162);
-            this.btnSAVE.Name = "btnSAVE";
-            this.btnSAVE.Size = new System.Drawing.Size(169, 32);
-            this.btnSAVE.TabIndex = 28;
-            this.btnSAVE.Text = "SAVE PROFILE";
-            this.btnSAVE.UseVisualStyleBackColor = false;
-            this.btnSAVE.Click += new System.EventHandler(this.btnSAVE_Click);
-            // 
-            // btnEDIT
-            // 
-            this.btnEDIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
-            this.btnEDIT.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEDIT.ForeColor = System.Drawing.Color.LightBlue;
-            this.btnEDIT.Location = new System.Drawing.Point(224, 162);
-            this.btnEDIT.Name = "btnEDIT";
-            this.btnEDIT.Size = new System.Drawing.Size(169, 32);
-            this.btnEDIT.TabIndex = 29;
-            this.btnEDIT.Text = "EDIT PROFILE";
-            this.btnEDIT.UseVisualStyleBackColor = false;
-            this.btnEDIT.Click += new System.EventHandler(this.btnEDIT_Click);
-            // 
             // grpEmployee
             // 
             this.grpEmployee.BackColor = System.Drawing.Color.Transparent;
+            this.grpEmployee.Controls.Add(this.txtempDepartment);
+            this.grpEmployee.Controls.Add(this.txtempPosition);
+            this.grpEmployee.Controls.Add(this.txtempGender);
             this.grpEmployee.Controls.Add(this.txtempID);
             this.grpEmployee.Controls.Add(this.label9);
             this.grpEmployee.Controls.Add(this.label2);
-            this.grpEmployee.Controls.Add(this.cmbBox_empPosition);
             this.grpEmployee.Controls.Add(this.txtempName);
             this.grpEmployee.Controls.Add(this.DOB_date);
             this.grpEmployee.Controls.Add(this.label3);
-            this.grpEmployee.Controls.Add(this.cmbBox_empDepartment);
             this.grpEmployee.Controls.Add(this.txtempEmail);
-            this.grpEmployee.Controls.Add(this.cmbBox_empGender);
             this.grpEmployee.Controls.Add(this.label4);
             this.grpEmployee.Controls.Add(this.label5);
             this.grpEmployee.Controls.Add(this.label6);
             this.grpEmployee.Controls.Add(this.label7);
             this.grpEmployee.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpEmployee.ForeColor = System.Drawing.Color.LightBlue;
-            this.grpEmployee.Location = new System.Drawing.Point(19, 99);
+            this.grpEmployee.Location = new System.Drawing.Point(23, 85);
             this.grpEmployee.Name = "grpEmployee";
             this.grpEmployee.Size = new System.Drawing.Size(424, 305);
-            this.grpEmployee.TabIndex = 41;
+            this.grpEmployee.TabIndex = 39;
             this.grpEmployee.TabStop = false;
             this.grpEmployee.Text = "Employee Details";
+            // 
+            // txtempDepartment
+            // 
+            this.txtempDepartment.BackColor = System.Drawing.Color.LightCyan;
+            this.txtempDepartment.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtempDepartment.Location = new System.Drawing.Point(172, 218);
+            this.txtempDepartment.Name = "txtempDepartment";
+            this.txtempDepartment.Size = new System.Drawing.Size(230, 29);
+            this.txtempDepartment.TabIndex = 39;
+            // 
+            // txtempPosition
+            // 
+            this.txtempPosition.BackColor = System.Drawing.Color.LightCyan;
+            this.txtempPosition.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtempPosition.Location = new System.Drawing.Point(172, 254);
+            this.txtempPosition.Name = "txtempPosition";
+            this.txtempPosition.Size = new System.Drawing.Size(230, 29);
+            this.txtempPosition.TabIndex = 40;
+            // 
+            // txtempGender
+            // 
+            this.txtempGender.BackColor = System.Drawing.Color.LightCyan;
+            this.txtempGender.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtempGender.Location = new System.Drawing.Point(172, 113);
+            this.txtempGender.Name = "txtempGender";
+            this.txtempGender.Size = new System.Drawing.Size(230, 29);
+            this.txtempGender.TabIndex = 36;
             // 
             // txtempID
             // 
@@ -281,16 +346,6 @@ namespace EmploNexus.Forms
             this.label2.TabIndex = 15;
             this.label2.Text = "Employee ID";
             // 
-            // cmbBox_empPosition
-            // 
-            this.cmbBox_empPosition.BackColor = System.Drawing.Color.LightCyan;
-            this.cmbBox_empPosition.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBox_empPosition.FormattingEnabled = true;
-            this.cmbBox_empPosition.Location = new System.Drawing.Point(172, 254);
-            this.cmbBox_empPosition.Name = "cmbBox_empPosition";
-            this.cmbBox_empPosition.Size = new System.Drawing.Size(230, 30);
-            this.cmbBox_empPosition.TabIndex = 34;
-            // 
             // txtempName
             // 
             this.txtempName.BackColor = System.Drawing.Color.LightCyan;
@@ -322,16 +377,6 @@ namespace EmploNexus.Forms
             this.label3.TabIndex = 17;
             this.label3.Text = "Name";
             // 
-            // cmbBox_empDepartment
-            // 
-            this.cmbBox_empDepartment.BackColor = System.Drawing.Color.LightCyan;
-            this.cmbBox_empDepartment.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBox_empDepartment.FormattingEnabled = true;
-            this.cmbBox_empDepartment.Location = new System.Drawing.Point(172, 218);
-            this.cmbBox_empDepartment.Name = "cmbBox_empDepartment";
-            this.cmbBox_empDepartment.Size = new System.Drawing.Size(230, 30);
-            this.cmbBox_empDepartment.TabIndex = 33;
-            // 
             // txtempEmail
             // 
             this.txtempEmail.BackColor = System.Drawing.Color.LightCyan;
@@ -340,16 +385,6 @@ namespace EmploNexus.Forms
             this.txtempEmail.Name = "txtempEmail";
             this.txtempEmail.Size = new System.Drawing.Size(230, 29);
             this.txtempEmail.TabIndex = 18;
-            // 
-            // cmbBox_empGender
-            // 
-            this.cmbBox_empGender.BackColor = System.Drawing.Color.LightCyan;
-            this.cmbBox_empGender.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBox_empGender.FormattingEnabled = true;
-            this.cmbBox_empGender.Location = new System.Drawing.Point(172, 112);
-            this.cmbBox_empGender.Name = "cmbBox_empGender";
-            this.cmbBox_empGender.Size = new System.Drawing.Size(230, 30);
-            this.cmbBox_empGender.TabIndex = 32;
             // 
             // label4
             // 
@@ -405,10 +440,10 @@ namespace EmploNexus.Forms
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.LightBlue;
-            this.label1.Location = new System.Drawing.Point(11, 44);
+            this.label1.Location = new System.Drawing.Point(15, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(319, 44);
-            this.label1.TabIndex = 44;
+            this.label1.TabIndex = 38;
             this.label1.Text = "EmploNexus: Profile";
             // 
             // Frm_MProfile
@@ -417,11 +452,11 @@ namespace EmploNexus.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::EmploNexus.Properties.Resources._6765093_3429734;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(893, 421);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(893, 408);
             this.Controls.Add(this.grpButtons);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpEmployee);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCurrentTime);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
@@ -436,10 +471,10 @@ namespace EmploNexus.Forms
             this.Load += new System.EventHandler(this.Frm_MViewEmployee_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.grpButtons.ResumeLayout(false);
             this.grpButtons.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.grpEmployee.ResumeLayout(false);
             this.grpEmployee.PerformLayout();
             this.ResumeLayout(false);
@@ -456,24 +491,27 @@ namespace EmploNexus.Forms
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtuserUsername;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox grpButtons;
         private System.Windows.Forms.TextBox txtCurrentDate;
         private System.Windows.Forms.Button btnSAVE;
         private System.Windows.Forms.Button btnEDIT;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox checkPass;
+        private System.Windows.Forms.TextBox txtPass;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtuserUsername;
+        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox grpEmployee;
+        private System.Windows.Forms.TextBox txtempDepartment;
+        private System.Windows.Forms.TextBox txtempPosition;
+        private System.Windows.Forms.TextBox txtempGender;
         private System.Windows.Forms.TextBox txtempID;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbBox_empPosition;
         private System.Windows.Forms.TextBox txtempName;
         private System.Windows.Forms.DateTimePicker DOB_date;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmbBox_empDepartment;
         private System.Windows.Forms.TextBox txtempEmail;
-        private System.Windows.Forms.ComboBox cmbBox_empGender;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

@@ -130,7 +130,7 @@ namespace EmploNexus
             }
         }
 
-        public void UpdateUserData(int empId, string newUsername)
+        public void UpdateUserData(int empId, string newUsername, string newPassword)
         {
             var user = emploNexusEntities.UserAccounts.FirstOrDefault(u => u.user_empID == empId);
 
@@ -139,6 +139,7 @@ namespace EmploNexus
                 if (!string.IsNullOrEmpty(newUsername))
                 {
                     user.username = newUsername;
+                    user.password = newPassword;
                     emploNexusEntities.SaveChanges();
                 }
                 else

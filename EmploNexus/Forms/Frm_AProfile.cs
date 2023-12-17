@@ -50,7 +50,6 @@ namespace EmploNexus.Forms
             DOB_date.CustomFormat = "MM/dd/yyyy";
 
             DisableStartProfileState();
-            loadUser();
         }
 
         private void DisplayEmployeeData(int userEmpId)
@@ -63,6 +62,7 @@ namespace EmploNexus.Forms
                 if (user != null)
                 {
                     txtuserUsername.Text = user.username;
+                    txtPass.Text = user.password;
 
                     Employee employee = repo.GetEmployeeById(userEmpId);
 
@@ -70,15 +70,12 @@ namespace EmploNexus.Forms
                     {
                         txtempID.Text = employee.emp_ID.ToString();
                         txtempName.Text = employee.emp_name;
-
-                        cmbBox_empGender.SelectedValue = employee.emp_genderId; 
-
                         DOB_date.Value = employee.emp_DOB;
                         txtempEmail.Text = employee.emp_email;
 
-                        cmbBox_empDepartment.SelectedValue = employee.emp_departmentId;
-
-                        cmbBox_empPosition.SelectedValue = employee.emp_positionId;
+                        txtempGender.Text = GetGenderText(employee.emp_genderId);
+                        txtempDepartment.Text = GetDepartmentText(employee.emp_departmentId);
+                        txtempPosition.Text = GetPositionText(employee.emp_positionId);
                     }
                     else
                     {
@@ -96,41 +93,45 @@ namespace EmploNexus.Forms
             }
         }
 
-        public void loadUser()
+        private string GetGenderText(int genderId)
         {
-            loadCbBoxGender();
-            loadCbBoxDepartment();
-            loadCbBoxPosition();
+            return (genderId == 1) ? "Male" : (genderId == 2) ? "Female" : "Male";
         }
 
-        public void loadCbBoxGender()
+        private string GetDepartmentText(int departmentId)
         {
-            // SELECT * FROM GENDER
-            var gender = db.Genders.ToList();
-
-            cmbBox_empGender.ValueMember = "genderId";
-            cmbBox_empGender.DisplayMember = "genderName";
-            cmbBox_empGender.DataSource = gender;
+            switch ((Departments)departmentId)
+            {
+                case Departments.HR:
+                    return "HR";
+                case Departments.Finance:
+                    return "Finance";
+                case Departments.IT:
+                    return "IT";
+                default:
+                    return "HR";
+            }
         }
 
-        public void loadCbBoxDepartment()
+        private string GetPositionText(int positionId)
         {
-            // SELECT * FROM DEPARTMENT
-            var department = db.Departments.ToList();
-
-            cmbBox_empDepartment.ValueMember = "departmentId";
-            cmbBox_empDepartment.DisplayMember = "departmentDescription";
-            cmbBox_empDepartment.DataSource = department;
-        }
-
-        public void loadCbBoxPosition()
-        {
-            // SELECT * FROM POSITION
-            var positions = db.Positions.ToList();
-
-            cmbBox_empPosition.ValueMember = "positionId";
-            cmbBox_empPosition.DisplayMember = "positionDescription";
-            cmbBox_empPosition.DataSource = positions;
+            switch ((Positions)positionId)
+            {
+                case Positions.HR_Manager:
+                    return "HR Manager";
+                case Positions.HR_Generalist:
+                    return "HR Generalist";
+                case Positions.Financial_Controller:
+                    return "Financial Controller";
+                case Positions.Accountant:
+                    return "Accountant";
+                case Positions.IT_Manager:
+                    return "IT Manager";
+                case Positions.Software_Developer:
+                    return "Software Developer";
+                default:
+                    return "HR Manager";
+            }
         }
 
         private void DisableStartProfileState()
@@ -138,13 +139,15 @@ namespace EmploNexus.Forms
             //Employee Details
             txtempID.Enabled = false;
             txtempName.Enabled = false;
-            cmbBox_empGender.Enabled = false;
             DOB_date.Enabled = false;
             txtempEmail.Enabled = false;
-            cmbBox_empDepartment.Enabled = false;
-            cmbBox_empPosition.Enabled = false;
+            txtempGender.Enabled = false;
+            txtempDepartment.Enabled = false;
+            txtempPosition.Enabled = false;
             //User Account Details
             txtuserUsername.Enabled = false;
+            txtPass.Enabled = false;
+            checkPass.Enabled = false;
             //Save Button
             btnSAVE.Enabled = false;
         }
@@ -154,13 +157,15 @@ namespace EmploNexus.Forms
             //Employee Details
             txtempID.Enabled = false;
             txtempName.Enabled = false;
-            cmbBox_empGender.Enabled = false;
             DOB_date.Enabled = false;
             txtempEmail.Enabled = false;
-            cmbBox_empDepartment.Enabled = false;
-            cmbBox_empPosition.Enabled = false;
+            txtempGender.Enabled = false;
+            txtempDepartment.Enabled = false;
+            txtempPosition.Enabled = false;
             //User Account Details
             txtuserUsername.Enabled = false;
+            txtPass.Enabled = false;
+            checkPass.Enabled = false;
             //Save Button
             btnSAVE.Enabled = false;
 
@@ -172,13 +177,15 @@ namespace EmploNexus.Forms
             //Employee Details
             txtempID.Enabled = true;
             txtempName.Enabled = true;
-            cmbBox_empGender.Enabled = true;
             DOB_date.Enabled = true;
             txtempEmail.Enabled = true;
-            cmbBox_empDepartment.Enabled = true;
-            cmbBox_empPosition.Enabled = true;
+            txtempGender.Enabled = true;
+            txtempDepartment.Enabled = true;
+            txtempPosition.Enabled = true;
             //User Account Details
             txtuserUsername.Enabled = true;
+            txtPass.Enabled = true;
+            checkPass.Enabled = true;
             //Save Button
             btnSAVE.Enabled = true;
 
@@ -197,6 +204,47 @@ namespace EmploNexus.Forms
             }
         }
 
+        private int GetGenderId(string genderText)
+        {
+            return genderText.ToLower() == "female" ? 2 : 1;
+        }
+
+        private int GetDepartmentId(string departmentText)
+        {
+            switch (departmentText.ToLower())
+            {
+                case "hr":
+                    return (int)Departments.HR;
+                case "finance":
+                    return (int)Departments.Finance;
+                case "it":
+                    return (int)Departments.IT;
+                default:
+                    return (int)Departments.HR;
+            }
+        }
+
+        private int GetPositionId(string positionText)
+        {
+            switch (positionText.ToLower())
+            {
+                case "hr manager":
+                    return (int)Positions.HR_Manager;
+                case "hr generalist":
+                    return (int)Positions.HR_Generalist;
+                case "financial controller":
+                    return (int)Positions.Financial_Controller;
+                case "accountant":
+                    return (int)Positions.Accountant;
+                case "it manager":
+                    return (int)Positions.IT_Manager;
+                case "software developer":
+                    return (int)Positions.Software_Developer;
+                default:
+                    return (int)Positions.HR_Manager;
+            }
+        }
+
 
         private void btnSAVE_Click(object sender, EventArgs e)
         {
@@ -204,15 +252,16 @@ namespace EmploNexus.Forms
             {
                 int empId = loggedInempID;
                 string newUsername = txtuserUsername.Text;
+                string newPass = txtPass.Text;
 
                 string empName = txtempName.Text;
-                int genderId = (int)cmbBox_empGender.SelectedValue;
                 DateTime dob = DOB_date.Value;
                 string empEmail = txtempEmail.Text;
-                int departmentId = (int)cmbBox_empDepartment.SelectedValue;
-                int positionId = (int)cmbBox_empPosition.SelectedValue;
+                int genderId = GetGenderId(txtempGender.Text);
+                int departmentId = GetDepartmentId(txtempDepartment.Text);
+                int positionId = GetPositionId(txtempPosition.Text);
 
-                repo.UpdateUserData(empId, newUsername);
+                repo.UpdateUserData(empId, newUsername, newPass);
 
                 repo.UpdateEmployeeData(empId, empName, genderId, dob, empEmail, departmentId, positionId);
 
@@ -225,6 +274,17 @@ namespace EmploNexus.Forms
             }
         }
 
+        private void checkPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkPass.Checked)
+            {
+                txtPass.PasswordChar = '\0';
+            }
+            else
+            {
+                txtPass.PasswordChar = '•';
+            }
+        }
 
         private void back_Click(object sender, EventArgs e)
         {
