@@ -164,29 +164,6 @@ namespace EmploNexus.Forms
             this.Hide();
         }
 
-        private void toolStripMenuItem6_Click(object sender, EventArgs e)
-        {
-            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
-            aSalary_Management.Show();
-            this.Hide();
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            //Attendance
-            Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
-            attendance_Management.Show();
-            this.Hide();
-        }
-
-        private void toolStripMenuItem9_Click(object sender, EventArgs e)
-        {
-            //salary details
-            Frm_ApersonalSalary apersonalSalary = new Frm_ApersonalSalary();
-            apersonalSalary.Show();
-            this.Hide();
-        }
-
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
             DialogResult res = MessageBox.Show("Are you sure you want to log out?", "EmploNexus: Log out", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -196,6 +173,29 @@ namespace EmploNexus.Forms
                 logout.Show();
                 this.Hide();
             }
+        }
+
+        private void managementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
+            aSalary_Management.Show();
+            this.Hide();
+        }
+
+        private void detailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //salary details
+            Frm_ApersonalSalary apersonalSalary = new Frm_ApersonalSalary();
+            apersonalSalary.Show();
+            this.Hide();
+        }
+
+        private void managementToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //Attendance
+            Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
+            attendance_Management.Show();
+            this.Hide();
         }
     }  
 }

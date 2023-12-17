@@ -353,5 +353,4 @@ namespace EmploNexus.Forms
             this.Hide();
         }
     }
-    }
 }

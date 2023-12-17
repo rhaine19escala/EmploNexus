@@ -237,14 +237,14 @@ namespace EmploNexus.Forms
             this.Hide();
         }
 
-        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        private void managementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
             aSalary_Management.Show();
             this.Hide();
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void managementToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             // Attendance
             Frm_AeAttendance_Management attendance_Management = new Frm_AeAttendance_Management();
@@ -252,7 +252,7 @@ namespace EmploNexus.Forms
             this.Hide();
         }
 
-        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        private void detailsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //Attendance Personal Details
             Frm_ApersonalAttendance apersonalAttendance = new Frm_ApersonalAttendance();

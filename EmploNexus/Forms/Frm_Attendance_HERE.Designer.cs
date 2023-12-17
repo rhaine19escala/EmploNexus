@@ -91,7 +91,7 @@
             this.MaximizeBox = false;
             this.Name = "Frm_Attendance_HERE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EmploNexus: Attendance";
+            this.Text = "EmploNexus: Attendance Information";
             this.grpbox_Attendance.ResumeLayout(false);
             this.ResumeLayout(false);
 

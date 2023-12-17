@@ -29,47 +29,47 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_AtSalary_HERE));
-            this.btnAttendance = new System.Windows.Forms.Button();
-            this.btnAttendancePersonal = new System.Windows.Forms.Button();
+            this.btnSalary = new System.Windows.Forms.Button();
+            this.btnSalaryPersonal = new System.Windows.Forms.Button();
             this.grpbox_Attendance = new System.Windows.Forms.GroupBox();
             this.grpbox_Attendance.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnAttendance
+            // btnSalary
             // 
-            this.btnAttendance.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnAttendance.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAttendance.BackgroundImage")));
-            this.btnAttendance.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAttendance.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAttendance.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.btnAttendance.Location = new System.Drawing.Point(23, 28);
-            this.btnAttendance.Name = "btnAttendance";
-            this.btnAttendance.Size = new System.Drawing.Size(292, 53);
-            this.btnAttendance.TabIndex = 20;
-            this.btnAttendance.Text = "SALARY MANAGEMENT";
-            this.btnAttendance.UseVisualStyleBackColor = false;
-            this.btnAttendance.Click += new System.EventHandler(this.btnAttendance_Click);
+            this.btnSalary.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnSalary.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalary.BackgroundImage")));
+            this.btnSalary.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSalary.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalary.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.btnSalary.Location = new System.Drawing.Point(23, 28);
+            this.btnSalary.Name = "btnSalary";
+            this.btnSalary.Size = new System.Drawing.Size(292, 53);
+            this.btnSalary.TabIndex = 20;
+            this.btnSalary.Text = "SALARY MANAGEMENT";
+            this.btnSalary.UseVisualStyleBackColor = false;
+            this.btnSalary.Click += new System.EventHandler(this.btnSalary_Click);
             // 
-            // btnAttendancePersonal
+            // btnSalaryPersonal
             // 
-            this.btnAttendancePersonal.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnAttendancePersonal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAttendancePersonal.BackgroundImage")));
-            this.btnAttendancePersonal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAttendancePersonal.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAttendancePersonal.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.btnAttendancePersonal.Location = new System.Drawing.Point(23, 101);
-            this.btnAttendancePersonal.Name = "btnAttendancePersonal";
-            this.btnAttendancePersonal.Size = new System.Drawing.Size(292, 53);
-            this.btnAttendancePersonal.TabIndex = 21;
-            this.btnAttendancePersonal.Text = "SALARY DETAILS";
-            this.btnAttendancePersonal.UseVisualStyleBackColor = false;
-            this.btnAttendancePersonal.Click += new System.EventHandler(this.btnAttendancePersonal_Click);
+            this.btnSalaryPersonal.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnSalaryPersonal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalaryPersonal.BackgroundImage")));
+            this.btnSalaryPersonal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSalaryPersonal.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalaryPersonal.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.btnSalaryPersonal.Location = new System.Drawing.Point(23, 101);
+            this.btnSalaryPersonal.Name = "btnSalaryPersonal";
+            this.btnSalaryPersonal.Size = new System.Drawing.Size(292, 53);
+            this.btnSalaryPersonal.TabIndex = 21;
+            this.btnSalaryPersonal.Text = "SALARY DETAILS";
+            this.btnSalaryPersonal.UseVisualStyleBackColor = false;
+            this.btnSalaryPersonal.Click += new System.EventHandler(this.btnSalaryPersonal_Click);
             // 
             // grpbox_Attendance
             // 
             this.grpbox_Attendance.BackColor = System.Drawing.Color.Transparent;
-            this.grpbox_Attendance.Controls.Add(this.btnAttendancePersonal);
-            this.grpbox_Attendance.Controls.Add(this.btnAttendance);
+            this.grpbox_Attendance.Controls.Add(this.btnSalaryPersonal);
+            this.grpbox_Attendance.Controls.Add(this.btnSalary);
             this.grpbox_Attendance.Location = new System.Drawing.Point(12, 12);
             this.grpbox_Attendance.Name = "grpbox_Attendance";
             this.grpbox_Attendance.Size = new System.Drawing.Size(343, 181);
@@ -91,7 +91,7 @@
             this.MaximizeBox = false;
             this.Name = "Frm_AtSalary_HERE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EmploNexus: Attendance";
+            this.Text = "EmploNexus: Salary Information";
             this.grpbox_Attendance.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -99,8 +99,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnAttendance;
-        private System.Windows.Forms.Button btnAttendancePersonal;
+        private System.Windows.Forms.Button btnSalary;
+        private System.Windows.Forms.Button btnSalaryPersonal;
         private System.Windows.Forms.GroupBox grpbox_Attendance;
     }
 }

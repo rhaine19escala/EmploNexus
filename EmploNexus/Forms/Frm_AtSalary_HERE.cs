@@ -17,17 +17,17 @@ namespace EmploNexus.Forms
             InitializeComponent();
         }
 
-        private void btnAttendance_Click(object sender, EventArgs e)
+        private void btnSalary_Click(object sender, EventArgs e)
         {
             Frm_ASalary_Management aSalary_Management = new Frm_ASalary_Management();
             aSalary_Management.Show();
             this.Hide();
         }
 
-        private void btnAttendancePersonal_Click(object sender, EventArgs e)
+        private void btnSalaryPersonal_Click(object sender, EventArgs e)
         {
-            Frm_ApersonalAttendance apersonalAttendance = new Frm_ApersonalAttendance();
-            apersonalAttendance.Show();
+            Frm_ApersonalSalary apersonalSalary = new Frm_ApersonalSalary();
+            apersonalSalary.Show();
             this.Hide();
         }
     }

@@ -170,11 +170,29 @@
     <Compile Include="Forms\Frm_ASalary_Management.Designer.cs">
       <DependentUpon>Frm_ASalary_Management.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Frm_AtSalary_HERE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_AtSalary_HERE.Designer.cs">
+      <DependentUpon>Frm_AtSalary_HERE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_Attendance_HERE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_Attendance_HERE.Designer.cs">
+      <DependentUpon>Frm_Attendance_HERE.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Frm_AUser_Management.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Frm_AUser_Management.Designer.cs">
       <DependentUpon>Frm_AUser_Management.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_ApersonalAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_ApersonalAttendance.Designer.cs">
+      <DependentUpon>Frm_ApersonalAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Frm_EProfile.cs">
       <SubType>Form</SubType>
@@ -187,6 +205,12 @@
     </Compile>
     <Compile Include="Forms\Frm_EnAttendance.Designer.cs">
       <DependentUpon>Frm_EnAttendance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Frm_ApersonalSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_ApersonalSalary.Designer.cs">
+      <DependentUpon>Frm_ApersonalSalary.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Frm_MAttendance.cs">
       <SubType>Form</SubType>
@@ -272,14 +296,26 @@
     <EmbeddedResource Include="Forms\Frm_ASalary_Management.resx">
       <DependentUpon>Frm_ASalary_Management.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_AtSalary_HERE.resx">
+      <DependentUpon>Frm_AtSalary_HERE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_Attendance_HERE.resx">
+      <DependentUpon>Frm_Attendance_HERE.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_AUser_Management.resx">
       <DependentUpon>Frm_AUser_Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_ApersonalAttendance.resx">
+      <DependentUpon>Frm_ApersonalAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_EProfile.resx">
       <DependentUpon>Frm_EProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_EnAttendance.resx">
       <DependentUpon>Frm_EnAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_ApersonalSalary.resx">
+      <DependentUpon>Frm_ApersonalSalary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_MAttendance.resx">
       <DependentUpon>Frm_MAttendance.cs</DependentUpon>

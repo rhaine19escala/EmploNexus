@@ -83,7 +83,8 @@ namespace EmploNexus.Forms
         {
             //Attendance
             Frm_Attendance_HERE attendance_Management = new Frm_Attendance_HERE();
-            attendance_Management.ShowDialog();
+            attendance_Management.Show();
+            this.Hide();
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
@@ -127,7 +128,8 @@ namespace EmploNexus.Forms
         private void btnSalary_Click(object sender, EventArgs e)
         {
             Frm_AtSalary_HERE atSalary_HERE = new Frm_AtSalary_HERE();
-            atSalary_HERE.ShowDialog();
+            atSalary_HERE.Show();
+            this.Hide();
         }
     }
 }
