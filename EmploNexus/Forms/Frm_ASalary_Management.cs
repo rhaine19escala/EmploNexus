@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -17,12 +18,17 @@ namespace EmploNexus.Forms
     {
         UserRepository repo;
         EmploNexusu_uEntities db;
+        private PrintDocument printDocument;
 
         public Frm_ASalary_Management()
         {
             InitializeComponent();
             db = new EmploNexusu_uEntities();
             repo = new UserRepository();
+
+            // Initialize the PrintDocument
+            printDocument = new PrintDocument();
+            printDocument.PrintPage += printDocument1_PrintPage;
         }
 
         private void Frm_ASalary_Management_Load(object sender, EventArgs e)
@@ -519,6 +525,99 @@ namespace EmploNexus.Forms
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             loadUser();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                printDocument.PrinterSettings = printDialog.PrinterSettings;
+                printDocument.Print();
+            }
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Font headerFont = new Font("Book Antiqua", 28, FontStyle.Bold);
+            Font subheaderFont = new Font("Book Antiqua", 25, FontStyle.Bold);
+            Font itemFont = new Font("Book Antiqua", 20, FontStyle.Bold);
+            Brush brush = Brushes.Black;
+
+            float startX = 30;
+            float startY = 30;
+            float lineHeight = itemFont.GetHeight();
+
+            StringBuilder receiptContent = new StringBuilder();
+            decimal totalSalary = 0;
+
+            e.Graphics.DrawString("======================================", subheaderFont, brush, startX, startY);
+            startY += lineHeight * 2;
+            e.Graphics.DrawString("                      EmploNexus", headerFont, brush, startX + 60, startY);
+            startY += lineHeight * 2;
+            e.Graphics.DrawString("======================================", subheaderFont, brush, startX, startY);
+            startY += lineHeight * 2;
+
+            e.Graphics.DrawString($"Date: {DateTime.Now}", itemFont, brush, startX, startY);
+            startY += lineHeight;
+            String username = UserLogged.GetInstance().UserAccounts.username.ToUpper();
+            e.Graphics.DrawString($"Username: {username}", itemFont, brush, startX, startY);
+            startY += lineHeight;
+            int empID = UserLogged.GetInstance().UserAccounts.user_empID;
+            Employee emp = repo.GetEmployeeById(empID);
+            if (emp != null)
+            {
+                string empName = emp.emp_name;
+                string email = emp.emp_email;
+                e.Graphics.DrawString($"Employee Name: {empName}", itemFont, brush, startX, startY);
+                startY += lineHeight;
+                e.Graphics.DrawString($"Email: {email}", itemFont, brush, startX, startY);
+            }
+            startY += lineHeight * 2;
+            e.Graphics.DrawString("======================================", subheaderFont, brush, startX, startY);
+            startY += lineHeight;
+            e.Graphics.DrawString("EMPLOYEE ID#".PadRight(30), itemFont, brush, 30, startY);
+            e.Graphics.DrawString("PAY DATE".PadRight(10), itemFont, brush, startX + 230, startY);
+            e.Graphics.DrawString("SALARY".PadRight(10), itemFont, brush, startX + 650, startY);
+            startY += lineHeight;
+            e.Graphics.DrawString("======================================", subheaderFont, brush, startX, startY);
+            startY += lineHeight;
+
+            for (int i = 0; i < dgv_AllSalaryWdetails.RowCount; i++)
+            {
+                string EmployeeNum = dgv_AllSalaryWdetails.Rows[i].Cells["EMPLOYEE_ID"].Value?.ToString();
+                string PayDate = dgv_AllSalaryWdetails.Rows[i].Cells["PAY_DATE"].Value?.ToString();
+                string EmpSal = dgv_AllSalaryWdetails.Rows[i].Cells["SALARY"].Value?.ToString();
+                if (decimal.TryParse(EmpSal, out decimal salaryAmount))
+                {
+                    totalSalary += salaryAmount;
+                    EmpSal = string.Format(new CultureInfo("en-PH"), "Php {0:N2}", salaryAmount);
+                }
+
+                receiptContent.AppendLine($"{EmployeeNum,-15}{PayDate,-40}{EmpSal,-10}");
+            }
+
+            float HereX = 30;
+            float HereY = 750;
+
+            e.Graphics.DrawString("======================================", subheaderFont, brush, HereX, HereY);
+            HereY += lineHeight;
+            CultureInfo culture = new CultureInfo("en-PH");
+            string formattedTotalSalary = string.Format(culture, "Php {0:N2}", totalSalary);
+            e.Graphics.DrawString($"Total Salary: ".PadRight(75) + formattedTotalSalary, itemFont, brush, HereX, HereY);
+            HereY += lineHeight;
+            e.Graphics.DrawString("======================================", subheaderFont, brush, HereX, HereY);
+
+            using (StringFormat format = new StringFormat())
+            {
+                format.Alignment = StringAlignment.Center;
+                format.LineAlignment = StringAlignment.Center;
+
+                RectangleF rect = new RectangleF(startX, startY, e.PageBounds.Width - startX * 2, e.PageBounds.Height - startY * 2);
+
+                e.Graphics.DrawString(receiptContent.ToString(), itemFont, brush, rect, format);
+            }
+            MessageBox.Show("Printed Successfully!", "EmploNexus : Print", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

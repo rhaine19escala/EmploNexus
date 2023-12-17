@@ -61,9 +61,11 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtempSearch = new System.Windows.Forms.TextBox();
             this.grpEmployee = new System.Windows.Forms.GroupBox();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label6 = new System.Windows.Forms.Label();
             this.txtSalaryID = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_AllSalaryWdetails)).BeginInit();
             this.panel1.SuspendLayout();
@@ -309,6 +311,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnPrint);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.dgv_allempInfo);
             this.panel1.Controls.Add(this.btnSearch);
@@ -435,10 +438,6 @@
             this.grpEmployee.TabStop = false;
             this.grpEmployee.Text = "Salary Details";
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -458,6 +457,27 @@
             this.txtSalaryID.Name = "txtSalaryID";
             this.txtSalaryID.Size = new System.Drawing.Size(47, 29);
             this.txtSalaryID.TabIndex = 36;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.White;
+            this.btnPrint.BackgroundImage = global::EmploNexus.Properties.Resources.printing;
+            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPrint.ForeColor = System.Drawing.Color.AliceBlue;
+            this.btnPrint.Location = new System.Drawing.Point(1003, 165);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(31, 31);
+            this.btnPrint.TabIndex = 55;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // Frm_ASalary_Management
             // 
@@ -529,5 +549,7 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtSalaryID;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }
