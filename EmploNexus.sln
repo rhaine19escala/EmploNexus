@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.34114.132
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmploNexus", "EmploNexus\EmploNexus.csproj", "{79AE32D3-569A-4AF4-9421-411ADC3E37A4}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "EmploNexus_Setup", "EmploNexus_Setup\EmploNexus_Setup.vdproj", "{904C9080-CEAA-4B98-9873-A8EC1A3F005D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,8 @@ Global
 		{79AE32D3-569A-4AF4-9421-411ADC3E37A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79AE32D3-569A-4AF4-9421-411ADC3E37A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79AE32D3-569A-4AF4-9421-411ADC3E37A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{904C9080-CEAA-4B98-9873-A8EC1A3F005D}.Debug|Any CPU.ActiveCfg = Debug
+		{904C9080-CEAA-4B98-9873-A8EC1A3F005D}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
