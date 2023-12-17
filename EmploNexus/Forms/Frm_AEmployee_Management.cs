@@ -344,6 +344,24 @@ namespace EmploNexus.Forms
                     MessageBox.Show("Employee Info Added Successfully!", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearInputFields();
                 }
+
+                //using (var db = new EmploNexusu_uEntities())
+                //{
+                //    db.Database.ExecuteSqlCommand(
+                //        "sp_addEmployee @emp_ID, @emp_name, @emp_genderId, @emp_DOB, @emp_email, @emp_departmentId, @emp_positionId",
+                //        new SqlParameter("@emp_ID", Convert.ToInt32(txtempID.Text)),
+                //        new SqlParameter("@emp_name", txtempName.Text),
+                //        new SqlParameter("@emp_genderId", (Int32)cmbBox_empGender.SelectedValue),
+                //        new SqlParameter("@emp_DOB", DOB_date.Value),
+                //        new SqlParameter("@emp_email", txtempEmail.Text),
+                //        new SqlParameter("@emp_departmentId", (Int32)cmbBox_empDepartment.SelectedValue),
+                //        new SqlParameter("@emp_positionId", (Int32)cmbBox_empPosition.SelectedValue)
+                //    );
+
+                //    loadUser();
+                //    MessageBox.Show("Employee Info Added Successfully!", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    ClearInputFields();
+                //}
             }
             catch (Exception ex)
             {
@@ -411,7 +429,24 @@ namespace EmploNexus.Forms
                         {
                             MessageBox.Show("Employee Info not found!", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
-                    }                  
+                    }
+
+                    //int user_empIDToUpdate = Convert.ToInt32(txtempID.Text);
+
+                    //db.Database.ExecuteSqlCommand(
+                    //    "sp_updateEmployee @emp_ID, @emp_name, @emp_genderId, @emp_DOB, @emp_email, @emp_departmentId, @emp_positionId",
+                    //    new SqlParameter("@emp_ID", user_empIDToUpdate),
+                    //    new SqlParameter("@emp_name", txtempName.Text),
+                    //    new SqlParameter("@emp_genderId", (Int32)cmbBox_empGender.SelectedValue),
+                    //    new SqlParameter("@emp_DOB", DOB_date.Value),
+                    //    new SqlParameter("@emp_email", txtempEmail.Text),
+                    //    new SqlParameter("@emp_departmentId", (Int32)cmbBox_empDepartment.SelectedValue),
+                    //    new SqlParameter("@emp_positionId", (Int32)cmbBox_empPosition.SelectedValue)
+                    //);
+
+                    //loadUser();
+                    //MessageBox.Show("Employee Info Updated Successfully!", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //ClearInputFields();
                 }
                 catch (Exception ex)
                 {
@@ -446,6 +481,18 @@ namespace EmploNexus.Forms
                             MessageBox.Show("Employeee Info not found!", "EmploNexus:  Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
+                    //using (var db = new EmploNexusu_uEntities())
+                    //{
+                    //    int user_empIDToDelete = Convert.ToInt32(txtempID.Text);
+
+                    //    db.Database.ExecuteSqlCommand(
+                    //        "sp_deleteEmployee @emp_ID",
+                    //        new SqlParameter("@emp_ID", user_empIDToDelete)
+                    //    );
+
+                    //    loadUser();
+                    //    MessageBox.Show("Employee Info Deleted Successfully!", "EmploNexus: Employee Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
                 }
             }
             catch (Exception ex)

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -379,6 +380,38 @@ namespace EmploNexus.Forms
                         MessageBox.Show("Attendance Info not Added. Duplicate date found!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
+                //using (var db = new EmploNexusu_uEntities())
+                //{
+                //    if (!int.TryParse(txtAttendanceNo.Text, out int attendanceNo))
+                //    {
+                //        MessageBox.Show("Invalid Attendance No.", "EmploNexus: Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //        return;
+                //    }
+
+                //    int user_empIDToAdd = Convert.ToInt32(txtempID.Text);
+                //    int statusId = (Int32)cmbBox_status.SelectedValue;
+                //    DateTime attendance = attendanceDate.Value.Date;
+
+                //    bool isDuplicateDate = db.Attendances.Any(u => u.AttendanceNo == attendanceNo && u.AttendanceEmp_ID == user_empIDToAdd && u.AttendanceDate == attendance);
+
+                //    if (!isDuplicateDate)
+                //    {
+                //        db.Database.ExecuteSqlCommand(
+                //            "sp_addAttendance @AttendanceEmp_ID, @AttendanceDate, @AttendanceStatusId",
+                //            new SqlParameter("@AttendanceEmp_ID", user_empIDToAdd),
+                //            new SqlParameter("@AttendanceDate", attendance),
+                //            new SqlParameter("@AttendanceStatusId", statusId)
+                //        );
+
+                //        loadUser();
+                //        MessageBox.Show("Attendance Info Added Successfully!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //        ClearInputFields();
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("Attendance Info not Added. Duplicate date found!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    }
+                //}
             }
             catch (Exception ex)
             {
@@ -445,6 +478,45 @@ namespace EmploNexus.Forms
                         {
                             MessageBox.Show("Attendance Info not Updated. No matching record found!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
+
+                        //int attendanceNo = Convert.ToInt32(txtAttendanceNo.Text);
+                        //int user_empIDToUpdate = Convert.ToInt32(txtempID.Text);
+                        //int statusId = (Int32)cmbBox_status.SelectedValue;
+                        //DateTime attendance = attendanceDate.Value;
+
+                        //using (var db = new EmploNexusu_uEntities())
+                        //{
+                        //    Attendance existingAttendance = db.Attendances.FirstOrDefault(u => u.AttendanceNo == attendanceNo && u.AttendanceEmp_ID == user_empIDToUpdate);
+
+                        //    if (existingAttendance != null)
+                        //    {
+                        //        bool isDuplicate = db.Attendances.Any(u => u.AttendanceEmp_ID == user_empIDToUpdate
+                        //            && u.AttendanceDate == attendance
+                        //            && u.AttendanceNo != existingAttendance.AttendanceNo);
+
+                        //        if (!isDuplicate)
+                        //        {
+                        //            db.Database.ExecuteSqlCommand(
+                        //                "sp_updateAttendance @AttendanceNo, @AttendanceDate, @AttendanceStatusId",
+                        //                new SqlParameter("@AttendanceNo", attendanceNo),
+                        //                new SqlParameter("@AttendanceDate", attendance),
+                        //                new SqlParameter("@AttendanceStatusId", statusId)
+                        //            );
+
+                        //            loadUser();
+                        //            MessageBox.Show("Attendance Info Updated Successfully!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //            ClearInputFields();
+                        //        }
+                        //        else
+                        //        {
+                        //            MessageBox.Show("Attendance Info not Updated. Duplicate date found!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        //        }
+                        //    }
+                        //    else
+                        //    {
+                        //        MessageBox.Show("Attendance Info not Updated. No matching record found!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        //    }
+                        //}
                     }
                 }
                 catch (Exception ex)
@@ -480,6 +552,18 @@ namespace EmploNexus.Forms
                             MessageBox.Show("Attendance Info not found!", "EmploNexus:  Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
+                    //using (var db = new EmploNexusu_uEntities())
+                    //{
+                    //    int user_empIDToDelete = Convert.ToInt32(txtempID.Text);
+
+                    //    db.Database.ExecuteSqlCommand(
+                    //        "sp_deleteAttendance @AttendanceNo",
+                    //        new SqlParameter("@AttendanceNo", user_empIDToDelete)
+                    //    );
+
+                    //    loadUser();
+                    //    MessageBox.Show("Attendance Info Deleted Successfully!", "EmploNexus: Attendance Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
                 }
             }
             catch (Exception ex)

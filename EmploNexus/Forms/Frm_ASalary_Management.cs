@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Globalization;
@@ -339,6 +340,38 @@ namespace EmploNexus.Forms
                         MessageBox.Show("Salary Info not Added. Duplicate date found!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
+                //using (var db = new EmploNexusu_uEntities())
+                //{
+                //    if (!int.TryParse(txtSalaryID.Text, out int salaryID))
+                //    {
+                //        MessageBox.Show("Invalid Salary ID", "EmploNexus: Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //        return;
+                //    }
+
+                //    int user_empIDToAdd = Convert.ToInt32(txtempID.Text);
+                //    decimal newSalaryAmount = Convert.ToDecimal(txtempSalary.Text);
+                //    DateTime newPayrollDate = payrollDate.Value.Date;
+
+                //    bool isDuplicateDate = db.Salaries.Any(u => u.salary_ID == salaryID && u.Salaryemp_ID == user_empIDToAdd && u.salary_PayDate == newPayrollDate);
+
+                //    if (!isDuplicateDate)
+                //    {
+                //        db.Database.ExecuteSqlCommand(
+                //            "sp_addSalary @Salaryemp_ID, @salary_Amount, @salary_PayDate",
+                //            new SqlParameter("@Salaryemp_ID", user_empIDToAdd),
+                //            new SqlParameter("@salary_Amount", newSalaryAmount),
+                //            new SqlParameter("@salary_PayDate", newPayrollDate)
+                //        );
+
+                //        loadUser();
+                //        MessageBox.Show("Salary Info Added Successfully!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //        ClearInputFields();
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("Salary Info not Added. Duplicate date found!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    }
+                //}
             }
             catch (Exception ex)
             {
@@ -417,6 +450,33 @@ namespace EmploNexus.Forms
                             MessageBox.Show("Salary Info not Updated. No matching record found!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
+                    //using (var db = new EmploNexusu_uEntities())
+                    //{
+                    //    int salaryID = Convert.ToInt32(txtSalaryID.Text);
+                    //    int user_empIDToUpdate = Convert.ToInt32(txtempID.Text);
+                    //    decimal newSalaryAmount = Convert.ToDecimal(txtempSalary.Text);
+                    //    DateTime newPayrollDate = payrollDate.Value.Date;
+
+                    //    bool isDuplicate = db.Salaries.Any(u => u.salary_ID != salaryID && u.Salaryemp_ID == user_empIDToUpdate && u.salary_PayDate == newPayrollDate);
+
+                    //    if (!isDuplicate)
+                    //    {
+                    //        db.Database.ExecuteSqlCommand(
+                    //            "sp_updateSalary @salary_ID, @salary_Amount, @salary_PayDate",
+                    //            new SqlParameter("@salary_ID", salaryID),
+                    //            new SqlParameter("@salary_Amount", newSalaryAmount),
+                    //            new SqlParameter("@salary_PayDate", newPayrollDate)
+                    //        );
+
+                    //        loadUser();
+                    //        MessageBox.Show("Salary Info Updated Successfully!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //        ClearInputFields();
+                    //    }
+                    //    else
+                    //    {
+                    //        MessageBox.Show("Salary Info not Updated. Duplicate date found!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //    }
+                    //}
                 }
             }
             catch (Exception ex)
@@ -452,6 +512,18 @@ namespace EmploNexus.Forms
                             MessageBox.Show("Salary Info not found!", "EmploNexus:  Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
+                    //using (var db = new EmploNexusu_uEntities())
+                    //{
+                    //    int user_empIDToDelete = Convert.ToInt32(txtempID.Text);
+
+                    //    db.Database.ExecuteSqlCommand(
+                    //        "sp_deleteSalary @salary_ID",
+                    //        new SqlParameter("@salary_ID", user_empIDToDelete)
+                    //    );
+
+                    //    loadUser();
+                    //    MessageBox.Show("Salary Info Deleted Successfully!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
                 }
             }
             catch (Exception ex)

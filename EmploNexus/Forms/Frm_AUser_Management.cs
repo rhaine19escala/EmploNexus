@@ -221,6 +221,20 @@ namespace EmploNexus.Forms
                     MessageBox.Show("User Added Successfully!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearInputFields();
                 }
+
+                //using (var db = new EmploNexusu_uEntities())
+                //{
+                //    db.Database.ExecuteSqlCommand(
+                //    "sp_addUser @user_empID, @username, @password, @roleId",
+                //    new SqlParameter("@user_empID", Convert.ToInt32(txtuser_empID.Text)),
+                //    new SqlParameter("@username", txtuserUsername.Text),
+                //    new SqlParameter("@password", txtuserPassword.Text),
+                //    new SqlParameter("@roleId", (Int32)cmbBoxRole.SelectedValue)
+                //    );
+                //    loadUser();
+                //    MessageBox.Show("User Added Successfully!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    ClearInputFields();
+                //}
             }
             catch (Exception ex)
             {
@@ -284,6 +298,23 @@ namespace EmploNexus.Forms
                             MessageBox.Show("User not found!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
+
+                    //if (result == DialogResult.OK)
+                    //{
+                    //    int user_empIDToUpdate = Convert.ToInt32(txtuser_empID.Text);
+
+                    //    db.Database.ExecuteSqlCommand(
+                    //    "sp_updateUser @user_empID, @username, @password, @roleId",
+                    //    new SqlParameter("@user_empID", user_empIDToUpdate),
+                    //    new SqlParameter("@username", txtuserUsername.Text),
+                    //    new SqlParameter("@password", txtuserPassword.Text),
+                    //    new SqlParameter("@roleId", (Int32)cmbBoxRole.SelectedValue)
+                    //    );
+
+                    //    loadUser();
+                    //    MessageBox.Show("User Updated Successfully!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //    ClearInputFields();
+                    //}
                 }
                 catch (Exception ex)
                 {
@@ -319,6 +350,29 @@ namespace EmploNexus.Forms
                         }
                     }
                 }
+
+                //if (result == DialogResult.OK)
+                //{
+                //    try
+                //    {
+                //        using (var db = new EmploNexusu_uEntities())
+                //        {
+                //            int user_empIDToDelete = Convert.ToInt32(txtuser_empID.Text);
+
+                //            db.Database.ExecuteSqlCommand(
+                //                "sp_deleteUser @user_empID",
+                //                new SqlParameter("@user_empID", user_empIDToDelete)
+                //            );
+
+                //            loadUser();
+                //            MessageBox.Show("User Deleted Successfully!", "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //        }
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        MessageBox.Show("User not Deleted Successfully!. \nError :" + ex.Message, "EmploNexus: User Management", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    }
+                //}
             }
             catch (Exception ex)
             {
