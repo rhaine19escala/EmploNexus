@@ -53,6 +53,8 @@ namespace EmploNexus.Forms
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_SalaryEmp)).BeginInit();
             this.panel1.SuspendLayout();
@@ -153,6 +155,7 @@ namespace EmploNexus.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.panel1.Controls.Add(this.btnPrint);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Controls.Add(this.label10);
@@ -323,6 +326,23 @@ namespace EmploNexus.Forms
             this.lblTitle.TabIndex = 21;
             this.lblTitle.Text = "Salary Information :";
             // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.White;
+            this.btnPrint.BackgroundImage = global::EmploNexus.Properties.Resources.printing;
+            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPrint.ForeColor = System.Drawing.Color.AliceBlue;
+            this.btnPrint.Location = new System.Drawing.Point(816, 30);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(31, 31);
+            this.btnPrint.TabIndex = 55;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // Frm_EViewSalary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -382,5 +402,7 @@ namespace EmploNexus.Forms
         private System.Windows.Forms.TextBox txtTotalWageAmount;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

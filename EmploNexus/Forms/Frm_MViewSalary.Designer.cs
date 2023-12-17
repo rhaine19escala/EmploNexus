@@ -40,6 +40,7 @@ namespace EmploNexus.Forms
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtTotalWageAmount = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -54,6 +55,7 @@ namespace EmploNexus.Forms
             this.label2 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgv_SalaryEmp = new System.Windows.Forms.DataGridView();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -147,6 +149,7 @@ namespace EmploNexus.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
+            this.panel1.Controls.Add(this.btnPrint);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Controls.Add(this.label10);
@@ -158,6 +161,19 @@ namespace EmploNexus.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(901, 312);
             this.panel1.TabIndex = 21;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.White;
+            this.btnPrint.BackgroundImage = global::EmploNexus.Properties.Resources.printing;
+            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPrint.ForeColor = System.Drawing.Color.AliceBlue;
+            this.btnPrint.Location = new System.Drawing.Point(816, 30);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(31, 31);
+            this.btnPrint.TabIndex = 54;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // groupBox1
             // 
@@ -332,6 +348,10 @@ namespace EmploNexus.Forms
             this.dgv_SalaryEmp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_SalaryEmp_CellClick);
             this.dgv_SalaryEmp.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_SalaryEmp_CellFormatting);
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // Frm_MViewSalary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -392,5 +412,7 @@ namespace EmploNexus.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.DataGridView dgv_SalaryEmp;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.Button btnPrint;
     }
 }
