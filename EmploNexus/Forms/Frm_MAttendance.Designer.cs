@@ -51,6 +51,7 @@ namespace EmploNexus.Forms
             this.dgv_EmpAttendance = new System.Windows.Forms.DataGridView();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -156,6 +157,7 @@ namespace EmploNexus.Forms
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.txtAttendanceStatus);
             this.groupBox1.Controls.Add(this.txtAttendanceDate);
             this.groupBox1.Controls.Add(this.label5);
@@ -174,7 +176,7 @@ namespace EmploNexus.Forms
             // txtAttendanceStatus
             // 
             this.txtAttendanceStatus.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAttendanceStatus.Location = new System.Drawing.Point(182, 128);
+            this.txtAttendanceStatus.Location = new System.Drawing.Point(182, 151);
             this.txtAttendanceStatus.Name = "txtAttendanceStatus";
             this.txtAttendanceStatus.ReadOnly = true;
             this.txtAttendanceStatus.Size = new System.Drawing.Size(230, 29);
@@ -183,7 +185,7 @@ namespace EmploNexus.Forms
             // txtAttendanceDate
             // 
             this.txtAttendanceDate.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAttendanceDate.Location = new System.Drawing.Point(182, 87);
+            this.txtAttendanceDate.Location = new System.Drawing.Point(182, 110);
             this.txtAttendanceDate.Name = "txtAttendanceDate";
             this.txtAttendanceDate.ReadOnly = true;
             this.txtAttendanceDate.Size = new System.Drawing.Size(230, 29);
@@ -195,7 +197,7 @@ namespace EmploNexus.Forms
             this.label5.BackColor = System.Drawing.Color.LightBlue;
             this.label5.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label5.Location = new System.Drawing.Point(30, 44);
+            this.label5.Location = new System.Drawing.Point(30, 67);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(130, 26);
             this.label5.TabIndex = 35;
@@ -207,7 +209,7 @@ namespace EmploNexus.Forms
             this.label3.BackColor = System.Drawing.Color.LightBlue;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label3.Location = new System.Drawing.Point(30, 128);
+            this.label3.Location = new System.Drawing.Point(30, 151);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 26);
             this.label3.TabIndex = 17;
@@ -216,7 +218,7 @@ namespace EmploNexus.Forms
             // txtempID
             // 
             this.txtempID.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtempID.Location = new System.Drawing.Point(182, 44);
+            this.txtempID.Location = new System.Drawing.Point(182, 67);
             this.txtempID.Name = "txtempID";
             this.txtempID.ReadOnly = true;
             this.txtempID.Size = new System.Drawing.Size(230, 29);
@@ -228,7 +230,7 @@ namespace EmploNexus.Forms
             this.label2.BackColor = System.Drawing.Color.LightBlue;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(38)))), ((int)(((byte)(62)))));
-            this.label2.Location = new System.Drawing.Point(30, 87);
+            this.label2.Location = new System.Drawing.Point(30, 110);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 26);
             this.label2.TabIndex = 33;
@@ -289,6 +291,19 @@ namespace EmploNexus.Forms
             this.label10.Text = "Employee Attendance Information";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(61)))), ((int)(((byte)(98)))));
+            this.btnClear.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.Color.LightBlue;
+            this.btnClear.Location = new System.Drawing.Point(318, 0);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(94, 32);
+            this.btnClear.TabIndex = 57;
+            this.btnClear.Text = "CLEAR";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // Frm_MAttendance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -344,5 +359,6 @@ namespace EmploNexus.Forms
         private System.Windows.Forms.DataGridView dgv_EmpAttendance;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnClear;
     }
 }

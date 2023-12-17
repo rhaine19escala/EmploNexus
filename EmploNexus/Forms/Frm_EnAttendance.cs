@@ -161,5 +161,10 @@ namespace EmploNexus.Forms
             txtAttendanceStatus.Clear();
             txtAttendanceDate.Clear();
         }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearAllFields();
+        }
     }  
 }
