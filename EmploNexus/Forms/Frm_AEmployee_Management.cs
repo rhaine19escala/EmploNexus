@@ -20,13 +20,13 @@ namespace EmploNexus.Forms
     {
         //String strConnection = @"Data Source=.\sqlexpress;Initial Catalog=EmploNexus;Integrated Security=True";
         UserRepository repo;
-        EmploNexusu_uEntities db;
+        EmploNexusT_TEntities db;
 
         public Frm_AEmployee_Management()
         {
             InitializeComponent();
             //
-            db = new EmploNexusu_uEntities();
+            db = new EmploNexusT_TEntities();
         }
 
         private void Frm_Employee_Management_Load(object sender, EventArgs e)
@@ -325,7 +325,7 @@ namespace EmploNexus.Forms
 
             try
             {
-                using (var db = new EmploNexusu_uEntities())
+                using (var db = new EmploNexusT_TEntities())
                 {
                     Employee emp = new Employee
                     {
@@ -345,7 +345,7 @@ namespace EmploNexus.Forms
                     ClearInputFields();
                 }
 
-                //using (var db = new EmploNexusu_uEntities())
+                //using (var db = new EmploNexusT_TEntities())
                 //{
                 //    db.Database.ExecuteSqlCommand(
                 //        "sp_addEmployee @emp_ID, @emp_name, @emp_genderId, @emp_DOB, @emp_email, @emp_departmentId, @emp_positionId",
@@ -402,7 +402,7 @@ namespace EmploNexus.Forms
                 return;
             }
 
-            using (var db = new EmploNexusu_uEntities())
+            using (var db = new EmploNexusT_TEntities())
             {               
                 try
                 {
@@ -463,7 +463,7 @@ namespace EmploNexus.Forms
                 DialogResult result = MessageBox.Show("Are you sure you want to Delete this Employee Information?", "EmploNexus: Employee Information Management", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if(result == DialogResult.OK)
                 {
-                    using (var db = new EmploNexusu_uEntities())
+                    using (var db = new EmploNexusT_TEntities())
                     {
                         int user_empIDToDelete = Convert.ToInt32(txtempID.Text);
 
@@ -503,7 +503,7 @@ namespace EmploNexus.Forms
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            using (var db = new EmploNexusu_uEntities())
+            using (var db = new EmploNexusT_TEntities())
             {
                 try
                 {

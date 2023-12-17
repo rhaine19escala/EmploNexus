@@ -15,12 +15,12 @@ namespace EmploNexus.Forms
     public partial class Frm_MViewEmployee : Form
     {
         UserRepository repo;
-        EmploNexusu_uEntities db;
+        EmploNexusT_TEntities db;
 
         public Frm_MViewEmployee()
         {      
             InitializeComponent();
-            db = new EmploNexusu_uEntities();
+            db = new EmploNexusT_TEntities();
             repo = new UserRepository();
         }
 
@@ -227,7 +227,7 @@ namespace EmploNexus.Forms
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            using (var db = new EmploNexusu_uEntities())
+            using (var db = new EmploNexusT_TEntities())
             {
                 try
                 {
@@ -337,7 +337,7 @@ namespace EmploNexus.Forms
                 return;
             }
 
-            using (var db = new EmploNexusu_uEntities())
+            using (var db = new EmploNexusT_TEntities())
             {
                 try
                 {

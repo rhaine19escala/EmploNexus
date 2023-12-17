@@ -15,7 +15,7 @@ namespace EmploNexus.Forms
     public partial class Frm_AProfile : Form
     {
         UserRepository repo;
-        EmploNexusu_uEntities db;
+        EmploNexusT_TEntities db;
         private bool isEditing = false;
         private int loggedInempID;
         private string loggedUsername;
@@ -24,7 +24,7 @@ namespace EmploNexus.Forms
         {
             InitializeComponent();
             repo = new UserRepository();
-            db = new EmploNexusu_uEntities();
+            db = new EmploNexusT_TEntities();
 
             //
             loggedInempID = UserLogged.GetInstance().UserAccounts.user_empID;

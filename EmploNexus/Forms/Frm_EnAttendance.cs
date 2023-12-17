@@ -14,11 +14,11 @@ namespace EmploNexus.Forms
     public partial class FrmEnAttendance : Form
     {
         UserRepository repo;
-        EmploNexusu_uEntities db;
+        EmploNexusT_TEntities db;
         public FrmEnAttendance()
         {         
             InitializeComponent();
-            db = new EmploNexusu_uEntities();
+            db = new EmploNexusT_TEntities();
             repo = new UserRepository();
         }
 

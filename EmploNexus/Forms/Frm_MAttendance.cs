@@ -14,11 +14,12 @@ namespace EmploNexus.Forms
     public partial class Frm_MAttendance : Form
     {
         UserRepository repo;
-        EmploNexusu_uEntities db;
+        EmploNexusT_TEntities db;
+
         public Frm_MAttendance()
         {         
             InitializeComponent();
-            db = new EmploNexusu_uEntities();
+            db = new EmploNexusT_TEntities();
             repo = new UserRepository();
         }
 

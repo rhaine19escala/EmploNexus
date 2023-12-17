@@ -17,18 +17,18 @@ namespace EmploNexus.Forms
     public partial class Frm_AUser_Management : Form
     {
         UserRepository repo;
-        private EmploNexusu_uEntities emploNexusEntities;
+        private EmploNexusT_TEntities emploNexusEntities;
 
         public Frm_AUser_Management()
         {
             InitializeComponent();
-            emploNexusEntities = new EmploNexusu_uEntities();
+            emploNexusEntities = new EmploNexusT_TEntities();
 
         }
 
         private void Frm_AUser_Management_Load(object sender, EventArgs e)
         {
-            emploNexusEntities = new EmploNexusu_uEntities();
+            emploNexusEntities = new EmploNexusT_TEntities();
             repo = new UserRepository();
 
             DateTime currentTime = DateTime.Now;
@@ -206,7 +206,7 @@ namespace EmploNexus.Forms
 
             try
             {
-                using (var db = new EmploNexusu_uEntities())
+                using (var db = new EmploNexusT_TEntities())
                 {
                     UserAccount nUserAccount = new UserAccount
                     {
@@ -222,7 +222,7 @@ namespace EmploNexus.Forms
                     ClearInputFields();
                 }
 
-                //using (var db = new EmploNexusu_uEntities())
+                //using (var db = new EmploNexusT_TEntities())
                 //{
                 //    db.Database.ExecuteSqlCommand(
                 //    "sp_addUser @user_empID, @username, @password, @roleId",
@@ -273,7 +273,7 @@ namespace EmploNexus.Forms
                 return;
             }
 
-            using (var db = new EmploNexusu_uEntities())
+            using (var db = new EmploNexusT_TEntities())
             {              
                 try
                 {
@@ -331,7 +331,7 @@ namespace EmploNexus.Forms
 
                 if (result == DialogResult.OK)
                 {
-                    using (var db = new EmploNexusu_uEntities())
+                    using (var db = new EmploNexusT_TEntities())
                     {
                         int user_empIDToDelete = Convert.ToInt32(txtuser_empID.Text);
 
@@ -382,7 +382,7 @@ namespace EmploNexus.Forms
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            using (var db = new EmploNexusu_uEntities())
+            using (var db = new EmploNexusT_TEntities())
             {
                 try
                 {

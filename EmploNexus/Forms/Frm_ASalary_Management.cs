@@ -18,13 +18,13 @@ namespace EmploNexus.Forms
     public partial class Frm_ASalary_Management : Form
     {
         UserRepository repo;
-        EmploNexusu_uEntities db;
+        EmploNexusT_TEntities db;
         private PrintDocument printDocument;
 
         public Frm_ASalary_Management()
         {
             InitializeComponent();
-            db = new EmploNexusu_uEntities();
+            db = new EmploNexusT_TEntities();
             repo = new UserRepository();
 
             // Initialize the PrintDocument
@@ -307,7 +307,7 @@ namespace EmploNexus.Forms
 
             try
             {
-                using (var db = new EmploNexusu_uEntities())
+                using (var db = new EmploNexusT_TEntities())
                 {
                     if (!int.TryParse(txtSalaryID.Text, out int salaryID))
                     {
@@ -417,7 +417,7 @@ namespace EmploNexus.Forms
 
                 if (result == DialogResult.OK)
                 {
-                    using (var db = new EmploNexusu_uEntities())
+                    using (var db = new EmploNexusT_TEntities())
                     {
                         int salaryID = Convert.ToInt32(txtSalaryID.Text);
                         int user_empIDToUpdate = Convert.ToInt32(txtempID.Text);
@@ -450,7 +450,7 @@ namespace EmploNexus.Forms
                             MessageBox.Show("Salary Info not Updated. No matching record found!", "EmploNexus: Salary Information Management", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-                    //using (var db = new EmploNexusu_uEntities())
+                    //using (var db = new EmploNexusT_TEntities())
                     //{
                     //    int salaryID = Convert.ToInt32(txtSalaryID.Text);
                     //    int user_empIDToUpdate = Convert.ToInt32(txtempID.Text);
@@ -494,7 +494,7 @@ namespace EmploNexus.Forms
                 DialogResult result = MessageBox.Show("Are you sure you want to Delete this Salary Information?", "EmploNexus: Salary Information Management", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (result == DialogResult.OK)
                 {
-                    using (var db = new EmploNexusu_uEntities())
+                    using (var db = new EmploNexusT_TEntities())
                     {
                         int user_empIDToDelete = Convert.ToInt32(txtempID.Text);
 
@@ -548,7 +548,7 @@ namespace EmploNexus.Forms
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            using (var db = new EmploNexusu_uEntities())
+            using (var db = new EmploNexusT_TEntities())
             {
                 try
                 {

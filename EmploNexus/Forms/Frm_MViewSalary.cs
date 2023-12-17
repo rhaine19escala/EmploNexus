@@ -17,13 +17,13 @@ namespace EmploNexus.Forms
     public partial class Frm_MViewSalary : Form
     {
         UserRepository repo;
-        EmploNexusu_uEntities db;
+        EmploNexusT_TEntities db;
         private PrintDocument printDocument;
 
         public Frm_MViewSalary()
         {          
             InitializeComponent();
-            db = new EmploNexusu_uEntities();
+            db = new EmploNexusT_TEntities();
             repo = new UserRepository();
 
             // Initialize the PrintDocument

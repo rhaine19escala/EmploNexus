@@ -16,13 +16,13 @@ namespace EmploNexus.Forms
     public partial class Frm_AeAttendance_Management : Form
     {
         UserRepository repo;
-        EmploNexusu_uEntities db;
+        EmploNexusT_TEntities db;
 
         public Frm_AeAttendance_Management()
         {
             InitializeComponent();
             repo = new UserRepository();
-            db = new EmploNexusu_uEntities();
+            db = new EmploNexusT_TEntities();
         }
 
         private void Frm_AeAttendance_Management_Load(object sender, EventArgs e)
@@ -347,7 +347,7 @@ namespace EmploNexus.Forms
 
             try
             {
-                using (var db = new EmploNexusu_uEntities())
+                using (var db = new EmploNexusT_TEntities())
                 {
                     if (!int.TryParse(txtAttendanceNo.Text, out int attendanceNo))
                     {
@@ -438,7 +438,7 @@ namespace EmploNexus.Forms
                 return;
             }
 
-            using (var db = new EmploNexusu_uEntities())
+            using (var db = new EmploNexusT_TEntities())
             {
                 try
                 {
@@ -534,7 +534,7 @@ namespace EmploNexus.Forms
                 DialogResult result = MessageBox.Show("Are you sure you want to Delete this Attendance Information?", "EmploNexus: Attendance Information Management", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (result == DialogResult.OK)
                 {
-                    using (var db = new EmploNexusu_uEntities())
+                    using (var db = new EmploNexusT_TEntities())
                     {
                         int user_empIDToDelete = Convert.ToInt32(txtempID.Text);
 
@@ -574,7 +574,7 @@ namespace EmploNexus.Forms
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            using (var db = new EmploNexusu_uEntities())
+            using (var db = new EmploNexusT_TEntities())
             {
                 try
                 {

@@ -17,13 +17,13 @@ namespace EmploNexus.Forms
     public partial class Frm_Registration : Form
     {
         public string username = String.Empty;
-        EmploNexusu_uEntities db;
+        EmploNexusT_TEntities db;
 
         public Frm_Registration()
         {
             InitializeComponent();
             //
-            db = new EmploNexusu_uEntities();
+            db = new EmploNexusT_TEntities();
         }
 
         private void Frm_Register_Load(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace EmploNexus.Forms
 
         private bool EmpIDExistsInDatabase(string employeeID)
         {
-            using (var db = new EmploNexusu_uEntities())
+            using (var db = new EmploNexusT_TEntities())
             {
                 int empID = Convert.ToInt32(employeeID);
                 return db.Employees.Any(e => e.emp_ID == empID);
@@ -70,7 +70,7 @@ namespace EmploNexus.Forms
 
         private bool UsernameExistsInDatabase(string username)
         {
-            using (var db = new EmploNexusu_uEntities())
+            using (var db = new EmploNexusT_TEntities())
             {
                 return db.UserAccounts.Any(u => u.username == username);
             }

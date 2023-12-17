@@ -14,84 +14,84 @@ namespace EmploNexus
 {
     public class UserRepository
     {
-        private EmploNexusu_uEntities emploNexusEntities;
+        private EmploNexusT_TEntities emploNexusEntities;
 
         public UserRepository()
         {
-            emploNexusEntities = new EmploNexusu_uEntities();
+            emploNexusEntities = new EmploNexusT_TEntities();
         }
      
         public UserAccount GetUserByUsername(String username)
         {
             // re-initialize emploNexusEntities object because sometimes data in the list not updated
-            emploNexusEntities = new EmploNexusu_uEntities();
+            emploNexusEntities = new EmploNexusT_TEntities();
             // SELECT TOP 1 * FROM USERACCOUNT WHERE username == username
             return emploNexusEntities.UserAccounts.Where(s => s.username == username).FirstOrDefault();
         }
 
         public Employee GetEmployeeById(int userEmpId)
         {
-            emploNexusEntities = new EmploNexusu_uEntities();
+            emploNexusEntities = new EmploNexusT_TEntities();
             return emploNexusEntities.Employees.FirstOrDefault(e => e.emp_ID == userEmpId);
         }
 
         public List<vw_all_user_role> GetAllUserRole()
         {
-            emploNexusEntities = new EmploNexusu_uEntities();
+            emploNexusEntities = new EmploNexusT_TEntities();
 
             return emploNexusEntities.vw_all_user_role.OrderBy(e => e.USER_NO_).ToList();
         }
 
         public List<vw_all_employee> GetEmployeeList()
         {
-            emploNexusEntities = new EmploNexusu_uEntities();
+            emploNexusEntities = new EmploNexusT_TEntities();
             return emploNexusEntities.vw_all_employee.OrderBy(e => e.EMPLOYEE_NO_).ToList();
         }
 
         public List<vw_all_salary> GetEmployeeSalary()
         {
-            emploNexusEntities = new EmploNexusu_uEntities();
+            emploNexusEntities = new EmploNexusT_TEntities();
 
             return emploNexusEntities.vw_all_salary.OrderBy(e => e.SALARY_NO_).ToList();
         }
 
         public List<vw_all_attendance> GetAllAttendance()
         {
-            emploNexusEntities = new EmploNexusu_uEntities();
+            emploNexusEntities = new EmploNexusT_TEntities();
 
             return emploNexusEntities.vw_all_attendance.OrderBy(e => e.ATTENDANCE_NO_).ToList();
         }
 
         public List<vw_all_empID> AllEmployeeID()
         {
-            emploNexusEntities = new EmploNexusu_uEntities();
+            emploNexusEntities = new EmploNexusT_TEntities();
 
             return emploNexusEntities.vw_all_empID.OrderBy(e => e.USER_NO_).ToList();
         }
 
         public List<vw_all_empInfo> AllEmployeeInfo()
         {
-            emploNexusEntities = new EmploNexusu_uEntities();
+            emploNexusEntities = new EmploNexusT_TEntities();
             return emploNexusEntities.vw_all_empInfo.OrderBy(e => e.EMPLOYEE_NO_).ToList();
         }
 
         public List<vw_emp_salary> GetSalary(int employeeId)
         {
-            emploNexusEntities = new EmploNexusu_uEntities();
+            emploNexusEntities = new EmploNexusT_TEntities();
 
             return emploNexusEntities.vw_emp_salary.Where(e => e.EMPLOYEE_ID == employeeId).OrderBy(e => e.PAY_DATE).ToList();
         }
 
         public List<vw_emp_Attendance> GetAttendance(int employeeId)
         {
-            emploNexusEntities = new EmploNexusu_uEntities();
+            emploNexusEntities = new EmploNexusT_TEntities();
 
             return emploNexusEntities.vw_emp_Attendance.Where(e => e.EMPLOYEE_ID == employeeId).OrderBy(e => e.DATE).ToList();
         }
 
         public List<vw_manage_employee> GetEmployeesInSameDepartment(int currentUserId, int currentDepartmentId)
         {
-            emploNexusEntities = new EmploNexusu_uEntities();
+            emploNexusEntities = new EmploNexusT_TEntities();
 
             return emploNexusEntities.vw_manage_employee.Where(e => e.EMPLOYEE_ID != currentUserId && e.DEPARTMENT == currentDepartmentId).OrderBy(e => e.EMPLOYEE_ID).ToList();
         }
@@ -223,7 +223,7 @@ namespace EmploNexus
         {
             try
             {
-                using (var emploNexusEntities = new EmploNexusu_uEntities())
+                using (var emploNexusEntities = new EmploNexusT_TEntities())
                 {
                     var newUser = new UserAccount();
                     newUser.username = username;

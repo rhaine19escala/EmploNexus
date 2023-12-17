@@ -727,7 +727,7 @@ FROM [dbo].[vw_manage_employee] AS [vw_manage_employee]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EmploNexusu_uEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EmploNexusT_TEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Attendances" EntityType="Self.Attendance" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
@@ -834,7 +834,7 @@ FROM [dbo].[vw_manage_employee] AS [vw_manage_employee]</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EmploNexusModelStoreContainer" CdmEntityContainer="EmploNexusu_uEntities">
+        <EntityContainerMapping StorageEntityContainer="EmploNexusModelStoreContainer" CdmEntityContainer="EmploNexusT_TEntities">
           <EntitySetMapping Name="Attendances">
             <EntityTypeMapping TypeName="EmploNexusModel.Attendance">
               <MappingFragment StoreEntitySet="Attendance">
